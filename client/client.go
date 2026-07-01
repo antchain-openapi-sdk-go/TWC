@@ -8,9 +8,9 @@ import (
 	antchainutil "github.com/antchain-openapi-sdk-go/antchain-util/service"
 )
 
-/**
- * Model for initing client
- */
+// Description:
+//
+// Model for initing client
 type Config struct {
 	// accesskey id
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
@@ -19,26 +19,66 @@ type Config struct {
 	// security token
 	SecurityToken *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
 	// http protocol
+	//
+	// example:
+	//
+	// http
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// read timeout
+	//
+	// example:
+	//
+	// 10
 	ReadTimeout *int `json:"readTimeout,omitempty" xml:"readTimeout,omitempty"`
 	// connect timeout
+	//
+	// example:
+	//
+	// 10
 	ConnectTimeout *int `json:"connectTimeout,omitempty" xml:"connectTimeout,omitempty"`
 	// http proxy
+	//
+	// example:
+	//
+	// http://localhost
 	HttpProxy *string `json:"httpProxy,omitempty" xml:"httpProxy,omitempty"`
 	// https proxy
+	//
+	// example:
+	//
+	// https://localhost
 	HttpsProxy *string `json:"httpsProxy,omitempty" xml:"httpsProxy,omitempty"`
 	// endpoint
+	//
+	// example:
+	//
+	// cs.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	// proxy white list
+	//
+	// example:
+	//
+	// http://localhost
 	NoProxy *string `json:"noProxy,omitempty" xml:"noProxy,omitempty"`
 	// max idle conns
+	//
+	// example:
+	//
+	// 3
 	MaxIdleConns *int `json:"maxIdleConns,omitempty" xml:"maxIdleConns,omitempty"`
 	// user agent
+	//
+	// example:
+	//
+	// Alibabacloud/1
 	UserAgent *string `json:"userAgent,omitempty" xml:"userAgent,omitempty"`
 	// socks5 proxy
 	Socks5Proxy *string `json:"socks5Proxy,omitempty" xml:"socks5Proxy,omitempty"`
 	// socks5 network
+	//
+	// example:
+	//
+	// TCP
 	Socks5NetWork *string `json:"socks5NetWork,omitempty" xml:"socks5NetWork,omitempty"`
 	// 长链接最大空闲时长
 	MaxIdleTimeMillis *int `json:"maxIdleTimeMillis,omitempty" xml:"maxIdleTimeMillis,omitempty"`
@@ -161,6 +201,9 @@ type CaSystemCrossPageRequest struct {
 	// 用印次数
 	SealTimes *int64 `json:"seal_times,omitempty" xml:"seal_times,omitempty"`
 	// 是否采取系统默认骑缝章用印规则
+	// example:
+	//
+	// true, false
 	DefaultCrossPageRule *bool `json:"default_cross_page_rule,omitempty" xml:"default_cross_page_rule,omitempty"`
 	// 默认骑缝章页数
 	DefaultCrossPage *int64 `json:"default_cross_page,omitempty" xml:"default_cross_page,omitempty"`
@@ -212,6 +255,9 @@ func (s *CaSystemCrossPageRequest) SetDefaultCrossPage(v int64) *CaSystemCrossPa
 // 正文章信息
 type CaSystemMainBodyRequest struct {
 	// 正文章模式坐标ABSOLUTE_POSITION, 关键字KEY_WORD
+	// example:
+	//
+	// ABSOLUTE_POSITION, KEY_WORD
 	MainBodyModel *string `json:"main_body_model,omitempty" xml:"main_body_model,omitempty" require:"true"`
 	// 签署页码
 	PosPage *int64 `json:"pos_page,omitempty" xml:"pos_page,omitempty" require:"true"`
@@ -220,10 +266,19 @@ type CaSystemMainBodyRequest struct {
 	// 签署区位置纵坐标;mainBodyModel为ABSOLUTE_POSITION时必填
 	PosY *int64 `json:"pos_y,omitempty" xml:"pos_y,omitempty"`
 	// 关键字：mainBodyModel为KEY_WORD时必填
+	// example:
+	//
+	// 关键字
 	KeyWord *string `json:"key_word,omitempty" xml:"key_word,omitempty"`
 	// mainBodyModel为KEY_WORD时必填
+	// example:
+	//
+	// 关键字类型
 	KeyWordType *int64 `json:"key_word_type,omitempty" xml:"key_word_type,omitempty"`
 	// 第几个关键字;mainBodyModel为KEY_WORD时必填
+	// example:
+	//
+	// 1
 	KwIndex *int64 `json:"kw_index,omitempty" xml:"kw_index,omitempty"`
 	// x偏移量
 	KwShiftX *int64 `json:"kw_shift_x,omitempty" xml:"kw_shift_x,omitempty"`
@@ -287,14 +342,26 @@ func (s *CaSystemMainBodyRequest) SetKwShiftY(v int64) *CaSystemMainBodyRequest 
 // 签署区域信息（包括印模信息）
 type CaSystemSignAreaRequest struct {
 	// 印章印模oss-fileKey 或者oss可预览下载地址
+	// example:
+	//
+	// ESIGN/ato/ca_png/ORG/111.png
 	SealPicAddr *string `json:"seal_pic_addr,omitempty" xml:"seal_pic_addr,omitempty"`
 	// 用印对齐类型
+	// example:
+	//
+	// BOTTOM_LEFT
 	LocationType *string `json:"location_type,omitempty" xml:"location_type,omitempty" require:"true"`
 	// 章的旋转角度
 	RotateAngle *int64 `json:"rotate_angle,omitempty" xml:"rotate_angle,omitempty"`
 	// 签署位置类型	1代表正文章，2代表骑缝章
+	// example:
+	//
+	// 1,2
 	PositionType *int64 `json:"position_type,omitempty" xml:"position_type,omitempty" require:"true"`
 	// 指定外部印章类型
+	// example:
+	//
+	// 目前支持手签(PERSONAL)或公章(OFFICIAL)
 	ExternalSealType *string `json:"external_seal_type,omitempty" xml:"external_seal_type,omitempty"`
 	// 骑缝章信息
 	CaSystemCrossPageRequest *CaSystemCrossPageRequest `json:"ca_system_cross_page_request,omitempty" xml:"ca_system_cross_page_request,omitempty"`
@@ -348,6 +415,9 @@ func (s *CaSystemSignAreaRequest) SetCaSystemMainBodyRequest(v *CaSystemMainBody
 // 法务电子签签署文件列表（包含印模和签署区域）
 type CaSystemSignFileRequest struct {
 	// 单次请求文件唯一id，与AntSignFileRequest中的fileId对应
+	// example:
+	//
+	// 签署文件id
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
 	// 签署区域信息（包括印模信息）
 	CaSystemSignAreaRequestList []*CaSystemSignAreaRequest `json:"ca_system_sign_area_request_list,omitempty" xml:"ca_system_sign_area_request_list,omitempty" require:"true" type:"Repeated"`
@@ -374,12 +444,24 @@ func (s *CaSystemSignFileRequest) SetCaSystemSignAreaRequestList(v []*CaSystemSi
 // 司法纠纷平台通用文件信息结构体
 type JudicialFileInfo struct {
 	// 文件全名, 包含后缀
+	// example:
+	//
+	// 文件全名.pdf
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
 	// 文件key
+	// example:
+	//
+	// c3h2g1f3jf12g3123lhfs
 	FileKey *string `json:"file_key,omitempty" xml:"file_key,omitempty"`
 	// 文件下载地址
+	// example:
+	//
+	// http://www.testfile.net/products/TWC/file/downloadurl
 	DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
 	// 司法纠纷平台文件类型
+	// example:
+	//
+	// 文件类型
 	JudicialFileType *string `json:"judicial_file_type,omitempty" xml:"judicial_file_type,omitempty"`
 }
 
@@ -414,8 +496,14 @@ func (s *JudicialFileInfo) SetJudicialFileType(v string) *JudicialFileInfo {
 // 文件key和文件名称
 type FileInfo struct {
 	// 文件key
+	// example:
+	//
+	// 4293ed08-3576-4f35-a65d-0d63ae8c0e8b.jpg
 	FileKey *string `json:"file_key,omitempty" xml:"file_key,omitempty" require:"true"`
 	// 文件名称
+	// example:
+	//
+	// userInfo.jpg
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty" require:"true"`
 	// 文件类型(枚举)
 	// CASE_NOTICE: 立案通知书
@@ -423,6 +511,9 @@ type FileInfo struct {
 	// CASE_EFFECT_PROVE: 裁决书司法生效证明
 	// CASE_SERVED_NOTICE: 电子送达通知
 	// PAYMETN_INFO: 缴费相关文件
+	// example:
+	//
+	// CASE_NOTICE
 	FileType *string `json:"file_type,omitempty" xml:"file_type,omitempty"`
 }
 
@@ -452,12 +543,24 @@ func (s *FileInfo) SetFileType(v string) *FileInfo {
 // 租赁分期履约信息
 type RentalInstallmentPerformance struct {
 	// 被申请人还款期数
+	// example:
+	//
+	// 10
 	RepaymentPeriod *int64 `json:"repayment_period,omitempty" xml:"repayment_period,omitempty" require:"true"`
 	// 被申请人第几期租金支付方式
+	// example:
+	//
+	// 支付宝
 	RentPaymentType *string `json:"rent_payment_type,omitempty" xml:"rent_payment_type,omitempty" require:"true"`
 	// 被申请人第几期还款时间
+	// example:
+	//
+	// 2021-05-07
 	AppliedRepaymentTime *string `json:"applied_repayment_time,omitempty" xml:"applied_repayment_time,omitempty" require:"true"`
 	// 被申请人第几期还款金额
+	// example:
+	//
+	// 123.00
 	AppliedRepaymentAmount *string `json:"applied_repayment_amount,omitempty" xml:"applied_repayment_amount,omitempty" require:"true"`
 }
 
@@ -492,20 +595,44 @@ func (s *RentalInstallmentPerformance) SetAppliedRepaymentAmount(v string) *Rent
 // 订单商品信息
 type OrderItem struct {
 	// 产品名称
+	// example:
+	//
+	// 戴尔电脑
 	ProductName *string `json:"product_name,omitempty" xml:"product_name,omitempty" require:"true"`
 	// 商品品牌
+	// example:
+	//
+	// 戴尔
 	CommodityBrand *string `json:"commodity_brand,omitempty" xml:"commodity_brand,omitempty" require:"true"`
 	// 商品版本
+	// example:
+	//
+	// 戴尔成就3681
 	CommodityVersion *string `json:"commodity_version,omitempty" xml:"commodity_version,omitempty" require:"true"`
 	// 商品规格
+	// example:
+	//
+	// 英特尔酷睿i3
 	CommoditySpecification *string `json:"commodity_specification,omitempty" xml:"commodity_specification,omitempty" require:"true"`
 	// 商品颜色
+	// example:
+	//
+	// 黑色
 	CommodityColor *string `json:"commodity_color,omitempty" xml:"commodity_color,omitempty"`
 	// 商品详情
+	// example:
+	//
+	// 戴尔电脑
 	CommodityDetails *string `json:"commodity_details,omitempty" xml:"commodity_details,omitempty"`
 	// 商品官方价格
+	// example:
+	//
+	// 6666.00
 	CommodityOfficialPrice *string `json:"commodity_official_price,omitempty" xml:"commodity_official_price,omitempty" require:"true"`
 	// 租赁物数量
+	// example:
+	//
+	// 10
 	LeaseNumber *int64 `json:"lease_number,omitempty" xml:"lease_number,omitempty" require:"true"`
 }
 
@@ -560,29 +687,47 @@ func (s *OrderItem) SetLeaseNumber(v int64) *OrderItem {
 // 签署信息
 type BclSignField struct {
 	// 页码信息：当签署区sign_type为RIDE_SEAM时, 页码可以_-_分割, 例如1到15页，填"1-15"； 其他情况只能是数字；
+	// example:
+	//
+	// 1
 	PosPage *string `json:"pos_page,omitempty" xml:"pos_page,omitempty" require:"true" maxLength:"8"`
 	// 页面签署位置x坐标
 	// 非负数，小数位最多两位x坐标
 	// sign_type：SINGLE_PAGE 必填
 	// sign_type：RIDE_SEAM  无需填写
+	// example:
+	//
+	// 101.12
 	PosX *string `json:"pos_x,omitempty" xml:"pos_x,omitempty" maxLength:"8"`
 	// 页面签署位置y坐标
 	// 非负数，小数位最多两位，y坐标
+	// example:
+	//
+	// 111.21
 	PosY *string `json:"pos_y,omitempty" xml:"pos_y,omitempty" require:"true" maxLength:"8"`
 	// 签署类型
 	// 1.单页签署: SINGLE_PAGE
 	// 2.骑缝签署: RIDE_SEAM
 	// 默认：SINGLE_PAGE
+	// example:
+	//
+	// SINGLE_PAGE
 	SignFieldType *string `json:"sign_field_type,omitempty" xml:"sign_field_type,omitempty" require:"true" maxLength:"16"`
 	// 是否添加签署时间
 	// 1.不添加: false
 	// 2.添加: true
 	// 默认：false
+	// example:
+	//
+	// false
 	AddSignDate *bool `json:"add_sign_date,omitempty" xml:"add_sign_date,omitempty"`
 	// 签章日期字体大小
 	// 默认12，范围10-20
 	// 商家签署区不支持；
 	// 当add_sign_date为true时,该字段必填；为false是该字段不能传值，必须为空；
+	// example:
+	//
+	// 12
 	SignDateFontSize *int64 `json:"sign_date_font_size,omitempty" xml:"sign_date_font_size,omitempty" maximum:"20" minimum:"10"`
 	// 签章日期格式
 	// yyyy年MM月dd日（默认值） yyyy-MM-dd
@@ -590,21 +735,33 @@ type BclSignField struct {
 	// yyyy-MM-dd HH:mm:ss
 	// 商家签署区不支持；
 	//  当add_sign_date为true时,该字段必填；为false是该字段不能传值，必须为空；
+	// example:
+	//
+	// 2023年12月11日
 	SignDateFormat *string `json:"sign_date_format,omitempty" xml:"sign_date_format,omitempty" maxLength:"32"`
 	// 页码信息
 	// 当add_sign_date为true时，代表签署的印章必须展示签署日期，默认放在印章正下方，签署人可拖拽日期到当前页面的其他位置，如果发起方指定签署位置的同时，需要同时指定日期盖章位置，则需传入日期盖章页码（与印章页码相同），在传入X\Y坐标即可
 	// 商家签署区不支持；
 	//  当add_sign_date为true时,该字段必填；为false是该字段不能传值，必须为空；
+	// example:
+	//
+	// 1
 	SignDatePosPage *int64 `json:"sign_date_pos_page,omitempty" xml:"sign_date_pos_page,omitempty" minimum:"1"`
 	// 页面签章日期x坐标
 	// 非负数，小数位最多两位，默认0
 	// 商家签署区不支持；
 	//  当add_sign_date为true时,该字段必填；为false是该字段不能传值，必须为空；
+	// example:
+	//
+	// 112.12
 	SignDatePosX *string `json:"sign_date_pos_x,omitempty" xml:"sign_date_pos_x,omitempty" maxLength:"8"`
 	// 页面签章日期y坐标
 	// 非负数，小数位最多两位，默认0
 	// 商家签署区不支持；
 	//  当add_sign_date为true时,该字段必填；为false是该字段不能传值，必须为空；
+	// example:
+	//
+	// 101.23
 	SignDatePosY *string `json:"sign_date_pos_y,omitempty" xml:"sign_date_pos_y,omitempty" maxLength:"8"`
 }
 
@@ -669,10 +826,19 @@ func (s *BclSignField) SetSignDatePosY(v string) *BclSignField {
 // 租赁分期信息
 type RentalStagingInformation struct {
 	// 分期期数
+	// example:
+	//
+	// 10
 	InstallmentsNumber *int64 `json:"installments_number,omitempty" xml:"installments_number,omitempty" require:"true"`
 	// 租金每期应还款时间
+	// example:
+	//
+	// 2021-05-31
 	PaymentTimeEachCycle *string `json:"payment_time_each_cycle,omitempty" xml:"payment_time_each_cycle,omitempty" require:"true"`
 	// 租金每期应还款额
+	// example:
+	//
+	// 123.00
 	PaymentEachCycle *string `json:"payment_each_cycle,omitempty" xml:"payment_each_cycle,omitempty" require:"true"`
 }
 
@@ -702,9 +868,15 @@ func (s *RentalStagingInformation) SetPaymentEachCycle(v string) *RentalStagingI
 // 租赁订单关联的商品
 type BclOrderProductInfo struct {
 	// 创建商品后返回的商品id
+	// example:
+	//
+	// PROD1223
 	ProductId *string `json:"product_id,omitempty" xml:"product_id,omitempty" require:"true" maxLength:"32"`
 	// 商品数量
 	// 目前只允许一个商品
+	// example:
+	//
+	// 1
 	ProductNumber *int64 `json:"product_number,omitempty" xml:"product_number,omitempty" require:"true" minimum:"1"`
 }
 
@@ -729,20 +901,38 @@ func (s *BclOrderProductInfo) SetProductNumber(v int64) *BclOrderProductInfo {
 // 租赁宝plus退保详情
 type InsuranceCancelRecordInfo struct {
 	// 保单单号
+	// example:
+	//
+	// 123123123123213
 	BclInsuranceRecordId *string `json:"bcl_insurance_record_id,omitempty" xml:"bcl_insurance_record_id,omitempty" require:"true"`
 	// 退保id
+	// example:
+	//
+	// 12312312312123
 	CancelInsuranceId *string `json:"cancel_insurance_id,omitempty" xml:"cancel_insurance_id,omitempty" require:"true"`
 	// 退还保费 单位分, 退保成功时返回
+	// example:
+	//
+	// 12312
 	CancelAmount *int64 `json:"cancel_amount,omitempty" xml:"cancel_amount,omitempty"`
 	// 申请退保时间
 	// 格式: yyyy-MM-dd HH:mm:ss
+	// example:
+	//
+	// 2023-04-05 12:12:23
 	CancelApplyTime *string `json:"cancel_apply_time,omitempty" xml:"cancel_apply_time,omitempty" require:"true"`
 	// 退保状态
 	// RECORD_CANCEL_INIT: 退保初始
 	// RECORD_CANCEL_SUCC: 退保成功
 	// RECORD_CANCEL_FAIL: 退保失败
+	// example:
+	//
+	// RECORD_CANCEL_SUCC
 	CancelStatus *string `json:"cancel_status,omitempty" xml:"cancel_status,omitempty" require:"true"`
 	// 退保失败原, 退保失败时返回
+	// example:
+	//
+	// 退保失败, 保单已失效
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
@@ -787,30 +977,60 @@ func (s *InsuranceCancelRecordInfo) SetRemark(v string) *InsuranceCancelRecordIn
 // 存证关联实体（个人/企业）的身份识别信息
 type NotaryUser struct {
 	// 用户类型，PERSON或者ENTERPRISE
+	// example:
+	//
+	// PERSON
 	UserType *string `json:"user_type,omitempty" xml:"user_type,omitempty" require:"true"`
 	// 证件类型
 	// ● 个人：支持身份证IDENTITY_CARD
 	// ● 企业：支持UNIFIED_SOCIAL_CREDIT_CODE（统一社会信用代码）和ENTERPRISE_REGISTERED_NUMBER（企业工商注册号）
+	// example:
+	//
+	// IDENTITY_CARD
 	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty" require:"true"`
 	// 证件用户名称
 	// ● 个人：身份证姓名
 	// ● 企业：企业名称
+	// example:
+	//
+	// 小王
 	CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty" require:"true"`
 	// 证件号
 	// ● 个人：身份证号
 	// ● 企业：社会统一信用代码或企业工商注册号，与证件类型保持一致即可
+	// example:
+	//
+	// 12332112312312
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty" require:"true"`
 	// 个人必填，用户手机号码
+	// example:
+	//
+	// 18811111111
 	PersonMobileNo *string `json:"person_mobile_no,omitempty" xml:"person_mobile_no,omitempty"`
 	// 企业选填，法人证件类型，仅支持身份证，IDENTITY_CARD
+	// example:
+	//
+	// IDENTITY_CARD
 	LegalPersonCertType *string `json:"legal_person_cert_type,omitempty" xml:"legal_person_cert_type,omitempty"`
 	// 企业选填，法人身份证姓名
+	// example:
+	//
+	// 小李
 	LegalPersonCertName *string `json:"legal_person_cert_name,omitempty" xml:"legal_person_cert_name,omitempty"`
 	// 企业选填，法人身份证号
+	// example:
+	//
+	// 123123321123
 	LegalPersonCertNo *string `json:"legal_person_cert_no,omitempty" xml:"legal_person_cert_no,omitempty"`
 	// 企业选填，法人手机号
+	// example:
+	//
+	// 18811111111
 	LegalPersonMobileNo *string `json:"legal_person_mobile_no,omitempty" xml:"legal_person_mobile_no,omitempty"`
 	// 扩展属性
+	// example:
+	//
+	// {"key":"value"}
 	Properties *string `json:"properties,omitempty" xml:"properties,omitempty"`
 }
 
@@ -875,34 +1095,73 @@ func (s *NotaryUser) SetProperties(v string) *NotaryUser {
 // 法务电子签签署人信息
 type AntSignUserInfoRequest struct {
 	// signUserId
+	// example:
+	//
+	// signUserId
 	SignUserId *string `json:"sign_user_id,omitempty" xml:"sign_user_id,omitempty"`
 	// 是否为我方（蚂蚁域）公司
+	// example:
+	//
+	// true, false
 	OurCorp *bool `json:"our_corp,omitempty" xml:"our_corp,omitempty" require:"true"`
 	// 签署文件列表（包含印模和签署区域）
 	CaSystemSignFileRequestList []*CaSystemSignFileRequest `json:"ca_system_sign_file_request_list,omitempty" xml:"ca_system_sign_file_request_list,omitempty" require:"true" type:"Repeated"`
 	// 用户类型
+	// example:
+	//
+	// PERSON：个人 ORG：机构
 	SignUserType *string `json:"sign_user_type,omitempty" xml:"sign_user_type,omitempty" require:"true"`
 	// 签署人名称
+	// example:
+	//
+	// 张三
 	SignerName *string `json:"signer_name,omitempty" xml:"signer_name,omitempty" require:"true"`
 	// 签署人证件类型
+	// example:
+	//
+	// CRED_PSN_CH_IDCARD：大陆身份证 CRED_ORG_USCC：统一社会信用代码
 	SignerCertType *string `json:"signer_cert_type,omitempty" xml:"signer_cert_type,omitempty" require:"true"`
 	// 签署人证件号码
+	// example:
+	//
+	// 4201212121212121
 	SignerCertNumber *string `json:"signer_cert_number,omitempty" xml:"signer_cert_number,omitempty" require:"true"`
+	// 企业子类型
+	// example:
+	//
 	// 企业子类型
 	SignSubType *string `json:"sign_sub_type,omitempty" xml:"sign_sub_type,omitempty"`
 	// 签署方联系手机号
+	// example:
+	//
+	// 12313124112
 	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
 	// 邮件联系地址
+	// example:
+	//
+	// 1212121@163.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// 签署顺序
+	// example:
+	//
+	// -1
 	Order *int64 `json:"order,omitempty" xml:"order,omitempty"`
 	// 是否自动签署
 	// true：自动签署需传递坐标信息
 	// false：非自动签署，不需要传递坐标信息，签署文件会发送给签署方签署
+	// example:
+	//
+	// true, false
 	AutoSign *bool `json:"auto_sign,omitempty" xml:"auto_sign,omitempty" require:"true"`
 	// 签署方签署操作人签署时支持的印章来源类型目前支持上传公章(UPLOAD)、手写签名(PERSONAL)
+	// example:
+	//
+	// ["UPLOAD","PERSONAL"]
 	SealSourceTypes []*string `json:"seal_source_types,omitempty" xml:"seal_source_types,omitempty" type:"Repeated"`
 	// 法务电子签签署完重定向链接
+	// example:
+	//
+	// https://twcuniversal-sit.dl.alipaydev.com/web/eletriCombineSign
 	RedirectUrl *string `json:"redirect_url,omitempty" xml:"redirect_url,omitempty" require:"true"`
 }
 
@@ -987,30 +1246,66 @@ func (s *AntSignUserInfoRequest) SetRedirectUrl(v string) *AntSignUserInfoReques
 // 订单信息
 type OrderInfo struct {
 	// 出租方平台名称
+	// example:
+	//
+	// 租赁宝
 	LessorPlatformName *string `json:"lessor_platform_name,omitempty" xml:"lessor_platform_name,omitempty" require:"true"`
 	// 订单号
+	// example:
+	//
+	// 232278957595482
 	OrderNumber *string `json:"order_number,omitempty" xml:"order_number,omitempty" require:"true"`
 	// 合同编号
+	// example:
+	//
+	// 232278957595482
 	ContractNo *string `json:"contract_no,omitempty" xml:"contract_no,omitempty" require:"true"`
 	// 合同名称
+	// example:
+	//
+	// 租赁宝合同
 	ContractName *string `json:"contract_name,omitempty" xml:"contract_name,omitempty" require:"true"`
 	// 订单商品信息
 	OrderItems []*OrderItem `json:"order_items,omitempty" xml:"order_items,omitempty" require:"true" type:"Repeated"`
 	// 设备及配件总价
+	// example:
+	//
+	// 123.00
 	TotalDevicePrice *string `json:"total_device_price,omitempty" xml:"total_device_price,omitempty" require:"true"`
 	// 押金金额
+	// example:
+	//
+	// 123.00
 	DepositAmount *string `json:"deposit_amount,omitempty" xml:"deposit_amount,omitempty" require:"true"`
 	// 免押金额
+	// example:
+	//
+	// 1123.00
 	FreeDeposit *string `json:"free_deposit,omitempty" xml:"free_deposit,omitempty" require:"true"`
 	// 签约时间
+	// example:
+	//
+	// 2021-05-07 17:13:50
 	SigningTime *string `json:"signing_time,omitempty" xml:"signing_time,omitempty" require:"true"`
 	// 租期起始时间
+	// example:
+	//
+	// 2021-05-07 17:13:50
 	LeaseStartTime *string `json:"lease_start_time,omitempty" xml:"lease_start_time,omitempty" require:"true"`
 	// 租期结束时间
+	// example:
+	//
+	// 2021-05-07 17:13:50
 	LeaseEndTime *string `json:"lease_end_time,omitempty" xml:"lease_end_time,omitempty" require:"true"`
 	// 买断金额计算公式
+	// example:
+	//
+	// 到期转售买断款+未还租金-实付押金
 	BuyoutAmountFormulaCalc *string `json:"buyout_amount_formula_calc,omitempty" xml:"buyout_amount_formula_calc,omitempty" require:"true"`
 	// 首付款
+	// example:
+	//
+	// 123.00
 	PayInAdvance *string `json:"pay_in_advance,omitempty" xml:"pay_in_advance,omitempty" require:"true"`
 }
 
@@ -1090,12 +1385,24 @@ func (s *OrderInfo) SetPayInAdvance(v string) *OrderInfo {
 // 物流信息
 type LogisticsInfo struct {
 	// 发货时间
+	// example:
+	//
+	// 2021-05-07
 	DeliveryTime *string `json:"delivery_time,omitempty" xml:"delivery_time,omitempty" require:"true"`
 	// 快递物流公司
+	// example:
+	//
+	// 圆通速递
 	ExpressLogisticsCompany *string `json:"express_logistics_company,omitempty" xml:"express_logistics_company,omitempty" require:"true"`
 	// 快递单号
+	// example:
+	//
+	// 127974979371979
 	CourierNumber *string `json:"courier_number,omitempty" xml:"courier_number,omitempty" require:"true"`
 	// 签收时间
+	// example:
+	//
+	// 2021-06-01
 	SignTime *string `json:"sign_time,omitempty" xml:"sign_time,omitempty" require:"true"`
 }
 
@@ -1130,10 +1437,19 @@ func (s *LogisticsInfo) SetSignTime(v string) *LogisticsInfo {
 // 文件验签签名数据
 type ContractDocSignVerifySignatureInfo struct {
 	// 是否篡改
+	// example:
+	//
+	// true, false
 	IsModify *bool `json:"is_modify,omitempty" xml:"is_modify,omitempty"`
 	// 签署时间来源
+	// example:
+	//
+	// tsr
 	TimeFrom *string `json:"time_from,omitempty" xml:"time_from,omitempty"`
 	// 签署时间
+	// example:
+	//
+	// 2020-11-18 20:30:41
 	SignDate *string `json:"sign_date,omitempty" xml:"sign_date,omitempty"`
 }
 
@@ -1163,6 +1479,9 @@ func (s *ContractDocSignVerifySignatureInfo) SetSignDate(v string) *ContractDocS
 // 合同文件信息
 type BclContractFileInfo struct {
 	// 文件OSS Id
+	// example:
+	//
+	// 0003fa8261d1cd6cb419264d516f9b5.pdf
 	OssFileId *string `json:"oss_file_id,omitempty" xml:"oss_file_id,omitempty" require:"true" maxLength:"64"`
 	// 买家用户签署区信息
 	UserSignFields []*BclSignField `json:"user_sign_fields,omitempty" xml:"user_sign_fields,omitempty" require:"true" type:"Repeated"`
@@ -1171,6 +1490,9 @@ type BclContractFileInfo struct {
 	// 合同模板填充项内容扩展字段:
 	// 以key:value传入，JSON对象模板签署链路，不能传"  "或空"{}"，k-v模式，k和v都必须有。
 	// 当订单创建选择是模板签署时，该字段必填。
+	// example:
+	//
+	// {"甲方":"测试甲方","乙方":"测试乙方"}
 	SimpleFormFields *string `json:"simple_form_fields,omitempty" xml:"simple_form_fields,omitempty" maxLength:"2048"`
 }
 
@@ -1205,39 +1527,90 @@ func (s *BclContractFileInfo) SetSimpleFormFields(v string) *BclContractFileInfo
 // 签署人状态
 type AntSignOperatorResult struct {
 	// 签署方UserId
+	// example:
+	//
+	// 签署方UserId
 	SignUserId *string `json:"sign_user_id,omitempty" xml:"sign_user_id,omitempty" require:"true"`
+	// 签署方证件号
+	// example:
+	//
 	// 签署方证件号
 	SignCertNo *string `json:"sign_cert_no,omitempty" xml:"sign_cert_no,omitempty" require:"true"`
 	// 签署方证件名称
+	// example:
+	//
+	// 签署方证件名称
 	SignCertName *string `json:"sign_cert_name,omitempty" xml:"sign_cert_name,omitempty" require:"true"`
+	// 签署方证件类型
+	// example:
+	//
 	// 签署方证件类型
 	SignCertType *string `json:"sign_cert_type,omitempty" xml:"sign_cert_type,omitempty" require:"true"`
 	// 是否授权
+	// example:
+	//
+	// 是否授权
 	Authorized *int64 `json:"authorized,omitempty" xml:"authorized,omitempty" require:"true"`
+	// 授权时间
+	// example:
+	//
 	// 授权时间
 	AuthorizeTime *string `json:"authorize_time,omitempty" xml:"authorize_time,omitempty"`
 	// 授权人证件号码
+	// example:
+	//
+	// 授权人证件号码
 	AuthPersonCertNo *string `json:"auth_person_cert_no,omitempty" xml:"auth_person_cert_no,omitempty"`
+	// 授权人证件名称
+	// example:
+	//
 	// 授权人证件名称
 	AuthPersonCertName *string `json:"auth_person_cert_name,omitempty" xml:"auth_person_cert_name,omitempty"`
 	// 授权人证件类型
+	// example:
+	//
+	// 授权人证件类型
 	AuthPersonCertType *string `json:"auth_person_cert_type,omitempty" xml:"auth_person_cert_type,omitempty"`
 	// 邮件联系地址
+	// example:
+	//
+	// 邮件联系地址
 	EmailAddress *string `json:"email_address,omitempty" xml:"email_address,omitempty"`
+	// 电话联系方式
+	// example:
+	//
 	// 电话联系方式
 	MobileNumber *string `json:"mobile_number,omitempty" xml:"mobile_number,omitempty"`
 	// 签署顺序
 	SignOrder *int64 `json:"sign_order,omitempty" xml:"sign_order,omitempty"`
 	// 签署失败原因
+	// example:
+	//
+	// 签署失败原因
 	FailInfo *string `json:"fail_info,omitempty" xml:"fail_info,omitempty"`
+	// 备注
+	// example:
+	//
 	// 备注
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// 是否我方公司
+	// example:
+	//
+	// 是否我方公司
 	OurCorp *int64 `json:"our_corp,omitempty" xml:"our_corp,omitempty"`
+	// 签署状态
+	// example:
+	//
 	// 签署状态
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// 签署时间
+	// example:
+	//
+	// 签署时间
 	SignTime *string `json:"sign_time,omitempty" xml:"sign_time,omitempty"`
+	// [签署方子类型 企业子类型： BUS：企业 SINGLE：个体工商户 GOV：党政机关 INST：事业单位 COMMON：社会组织 OTHER：其他组织
+	// example:
+	//
 	// [签署方子类型 企业子类型： BUS：企业 SINGLE：个体工商户 GOV：党政机关 INST：事业单位 COMMON：社会组织 OTHER：其他组织
 	SignSubType *string `json:"sign_sub_type,omitempty" xml:"sign_sub_type,omitempty"`
 }
@@ -1343,8 +1716,14 @@ func (s *AntSignOperatorResult) SetSignSubType(v string) *AntSignOperatorResult 
 // 履约信息
 type PerformanceInfo struct {
 	// 支付租金总额
+	// example:
+	//
+	// 10000.00
 	RentPayTotal *string `json:"rent_pay_total,omitempty" xml:"rent_pay_total,omitempty" require:"true"`
 	// 买断金额
+	// example:
+	//
+	// 10000.00
 	BuyoutAmount *string `json:"buyout_amount,omitempty" xml:"buyout_amount,omitempty" require:"true"`
 	// 租赁分期履约信息
 	RentalInstallmentPerformance []*RentalInstallmentPerformance `json:"rental_installment_performance,omitempty" xml:"rental_installment_performance,omitempty" type:"Repeated"`
@@ -1376,14 +1755,29 @@ func (s *PerformanceInfo) SetRentalInstallmentPerformance(v []*RentalInstallment
 // 文本签证书信息
 type ContractTextSignVerifyCertInfo struct {
 	// 证书所有者
+	// example:
+	//
+	// 杭州**有限公司
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// 证书序列号
+	// example:
+	//
+	// 6bdea579b491bxxxxxxx
 	Serial *string `json:"serial,omitempty" xml:"serial,omitempty"`
 	// 证书有效期开始时间
+	// example:
+	//
+	// 2020-04-13 11:46:18
 	StartDate *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
 	// 证书有效期结束时间
+	// example:
+	//
+	// 2021-04-13 11:46:18
 	EndDate *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
 	// 证书发布者名称
+	// example:
+	//
+	// 智慧CA_测试CA
 	IssuerCn *string `json:"issuer_cn,omitempty" xml:"issuer_cn,omitempty"`
 }
 
@@ -1423,25 +1817,43 @@ func (s *ContractTextSignVerifyCertInfo) SetIssuerCn(v string) *ContractTextSign
 // 承诺详情
 type BclPromiseDetailInfo struct {
 	// 承诺期数
+	// example:
+	//
+	// 1
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty" require:"true"`
 	// 承诺金额 单位分
+	// example:
+	//
+	// 12322
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty" require:"true"`
 	// 本期还款状态
 	// 1.已还款：PAID
 	// 2.部分还款：PART_PAID
 	// 3.未还款：UN_PAID
+	// example:
+	//
+	// UN_PAID
 	Status *string `json:"status,omitempty" xml:"status,omitempty" require:"true"`
 	// 每期约定还款时间
 	// 示例：2023-06-7T10:50:23+08:00
+	// example:
+	//
+	// 2023-06-7T10:50:23+08:00
 	PromiseTime *string `json:"promise_time,omitempty" xml:"promise_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 每期应还日期
 	// 示例：2023-06-27T10:50:23+08:00
+	// example:
+	//
+	// 2023-06-27T10:50:23+08:00
 	PayTime *string `json:"pay_time,omitempty" xml:"pay_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 归还方式
 	// 1.租赁代扣： PROXY_WITHHOLDING
 	// 2.主动还款：ACTIVE_REPAYMENT
 	// 3.网商委托代扣：MY_BANK_DIRECT_PAYMENT
 	// 4.预授权代扣：PRE_AUTHORIZATION_WITHHOLDING
+	// example:
+	//
+	// ACTIVE_REPAYMENT
 	Way *string `json:"way,omitempty" xml:"way,omitempty" require:"true" maxLength:"32"`
 }
 
@@ -1486,12 +1898,24 @@ func (s *BclPromiseDetailInfo) SetWay(v string) *BclPromiseDetailInfo {
 // 签署子任务完成的文件里表
 type AntSignFileResult struct {
 	// fileName	文件名称
+	// example:
+	//
+	// 111.pdf
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
 	// 文件osskey
+	// example:
+	//
+	// key
 	FileKey *string `json:"file_key,omitempty" xml:"file_key,omitempty"`
 	// 文件id
+	// example:
+	//
+	// 12313124112
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// 文件http链接
+	// example:
+	//
+	// http://aaaa
 	HttpFileUrl *string `json:"http_file_url,omitempty" xml:"http_file_url,omitempty"`
 }
 
@@ -1526,8 +1950,14 @@ func (s *AntSignFileResult) SetHttpFileUrl(v string) *AntSignFileResult {
 // 文件信息
 type BclFileInfo struct {
 	// 文件名称 包含后缀
+	// example:
+	//
+	// asasd物流.jpg
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty" require:"true"`
 	// 文件下载链接
+	// example:
+	//
+	// https://oss.com/asdqwe
 	FileUrl *string `json:"file_url,omitempty" xml:"file_url,omitempty" require:"true"`
 }
 
@@ -1552,34 +1982,76 @@ func (s *BclFileInfo) SetFileUrl(v string) *BclFileInfo {
 // 自动进件订单信息
 type LeaseOrderInfo struct {
 	// 出租方平台名称
+	// example:
+	//
+	// 租赁宝
 	LessorPlatformName *string `json:"lessor_platform_name,omitempty" xml:"lessor_platform_name,omitempty"`
 	// 订单号
+	// example:
+	//
+	// 232278957595482
 	OrderNumber *string `json:"order_number,omitempty" xml:"order_number,omitempty" require:"true"`
 	// 合同编号
+	// example:
+	//
+	// 232278957595482
 	ContractNo *string `json:"contract_no,omitempty" xml:"contract_no,omitempty"`
 	// 合同名称
+	// example:
+	//
+	// 租赁合同
 	ContractName *string `json:"contract_name,omitempty" xml:"contract_name,omitempty"`
 	// 订单商品信息列表
 	OrderItems []*OrderItem `json:"order_items,omitempty" xml:"order_items,omitempty" require:"true" type:"Repeated"`
 	// 设备及配件总价（单位元）
+	// example:
+	//
+	// 123.00
 	TotalDevicePrice *string `json:"total_device_price,omitempty" xml:"total_device_price,omitempty" require:"true"`
 	// 押金金额（单位元）
+	// example:
+	//
+	// 123.00
 	DepositAmount *string `json:"deposit_amount,omitempty" xml:"deposit_amount,omitempty"`
 	// 免押金额
+	// example:
+	//
+	// 123.00
 	FreeDeposit *string `json:"free_deposit,omitempty" xml:"free_deposit,omitempty"`
 	// 签约时间
+	// example:
+	//
+	// 2021-05-31
 	SignTime *string `json:"sign_time,omitempty" xml:"sign_time,omitempty"`
 	// 租期起始时间
+	// example:
+	//
+	// 2021-06-01
 	LeaseStartTime *string `json:"lease_start_time,omitempty" xml:"lease_start_time,omitempty"`
 	// 租期结束时间
+	// example:
+	//
+	// 2022-06-01
 	LeaseEndTime *string `json:"lease_end_time,omitempty" xml:"lease_end_time,omitempty"`
 	// 买断金额计算公式
+	// example:
+	//
+	// 商品官方价-已还租金-实付押金-首付款
 	BuyoutAmountFormulaCalc *string `json:"buyout_amount_formula_calc,omitempty" xml:"buyout_amount_formula_calc,omitempty"`
 	// 首付款（单位元）
+	// example:
+	//
+	// 1123.00
 	PayInAdvance *string `json:"pay_in_advance,omitempty" xml:"pay_in_advance,omitempty"`
 	// 创建时间
+	// example:
+	//
+	// 2019-12-12
 	OrderCreateTime *string `json:"order_create_time,omitempty" xml:"order_create_time,omitempty"`
 	// 到期买断价 保留两位小数 单位元
+	// example:
+	//
+	// 23.33
 	BuyOutPrice *string `json:"buy_out_price,omitempty" xml:"buy_out_price,omitempty"`
 }
 
@@ -1669,36 +2141,78 @@ func (s *LeaseOrderInfo) SetBuyOutPrice(v string) *LeaseOrderInfo {
 // 返回的bcl订单签署区信息
 type BclContractSignFieldInfo struct {
 	// 签署流程id
+	// example:
+	//
+	// 8dfg0h80sg8sd0fa45b9cvb79
 	FlowId *string `json:"flow_id,omitempty" xml:"flow_id,omitempty"`
 	// 文件id
+	// example:
+	//
+	// 9dfgsh7da89g7adfgh
 	ContractFileId *string `json:"contract_file_id,omitempty" xml:"contract_file_id,omitempty"`
 	// 签署人id
+	// example:
+	//
+	// b9sc0bn9sffs
 	ContractUserId *string `json:"contract_user_id,omitempty" xml:"contract_user_id,omitempty"`
 	// 签署页码
+	// example:
+	//
+	// 1
 	PosPage *string `json:"pos_page,omitempty" xml:"pos_page,omitempty"`
 	// x坐标
+	// example:
+	//
+	// 11.11
 	PosX *string `json:"pos_x,omitempty" xml:"pos_x,omitempty"`
 	// y坐标
+	// example:
+	//
+	// 22.22
 	PosY *string `json:"pos_y,omitempty" xml:"pos_y,omitempty"`
 	// 签署类型，AUTO-自动，HAND-手动
+	// example:
+	//
+	// AUTO
 	SignType *string `json:"sign_type,omitempty" xml:"sign_type,omitempty"`
 	// 签署区类型，
 	// 单页签署: SINGLE_PAGE，
 	// 骑缝签署: RIDE_SEAM，
 	// 默认 SINGLE_PAGE
+	// example:
+	//
+	// SINGLE_PAGE
 	SignFieldType *string `json:"sign_field_type,omitempty" xml:"sign_field_type,omitempty"`
 	// 是否添加签署时间
 	// 不添加: false 添加: true ， 默认false, 商家不支持指定日期坐标
+	// example:
+	//
+	// true, false
 	AddSignDate *bool `json:"add_sign_date,omitempty" xml:"add_sign_date,omitempty"`
 	// 签章日期字体大小,默认12 商家签署区不支持
+	// example:
+	//
+	// 12
 	SignDateFontSize *int64 `json:"sign_date_font_size,omitempty" xml:"sign_date_font_size,omitempty"`
 	// 签章日期格式，yyyy年MM月dd日 商家签署区不支持
+	// example:
+	//
+	// yyyy年MM月dd日
 	SignDateFormat *string `json:"sign_date_format,omitempty" xml:"sign_date_format,omitempty"`
 	// 签章日期页码信息
+	// example:
+	//
+	// 1
 	SignDatePosPage *int64 `json:"sign_date_pos_page,omitempty" xml:"sign_date_pos_page,omitempty"`
 	// 签章日期x坐标
+	// example:
+	//
+	// 11.11
 	SignDatePosX *string `json:"sign_date_pos_x,omitempty" xml:"sign_date_pos_x,omitempty"`
 	// 签章日期y坐标
+	// example:
+	//
+	// 22.22
 	SignDatePosY *string `json:"sign_date_pos_y,omitempty" xml:"sign_date_pos_y,omitempty"`
 }
 
@@ -1783,24 +2297,48 @@ func (s *BclContractSignFieldInfo) SetSignDatePosY(v string) *BclContractSignFie
 // 司法纠纷平台自然人通用结构体
 type JudicialPersonInfo struct {
 	// 姓名
+	// example:
+	//
+	// 张三
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// 身份证号码
+	// example:
+	//
+	// 310101199901010011
 	CertNumber *string `json:"cert_number,omitempty" xml:"cert_number,omitempty"`
 	// 联系电话
+	// example:
+	//
+	// 1350000000
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	// 民族
+	// example:
+	//
+	// 汉
 	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	// 通讯地址
+	// example:
+	//
 	// 通讯地址
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
 	// 身份证明
 	IdentityCertification *JudicialFileInfo `json:"identity_certification,omitempty" xml:"identity_certification,omitempty"`
 	// 职务
+	// example:
+	//
+	// 法人代表
 	JobTitle *string `json:"job_title,omitempty" xml:"job_title,omitempty"`
 	// 任职证明
 	JobCertification *JudicialFileInfo `json:"job_certification,omitempty" xml:"job_certification,omitempty"`
 	// 性别， 0-男，1-女
+	// example:
+	//
+	// 0
 	Sex *int64 `json:"sex,omitempty" xml:"sex,omitempty"`
 	// 联系邮件地址
+	// example:
+	//
+	// email@ali.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 }
 
@@ -1865,12 +2403,24 @@ func (s *JudicialPersonInfo) SetEmail(v string) *JudicialPersonInfo {
 // 法务电子签待签署文件列表
 type AntSignFileRequest struct {
 	// 文件名称
+	// example:
+	//
+	// 测试文字.pdf
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty" require:"true"`
 	// 文件httpUrl
+	// example:
+	//
+	// http://aaaaa
 	FileHttpUrl *string `json:"file_http_url,omitempty" xml:"file_http_url,omitempty" require:"true"`
 	// 单次请求文件唯一id，与CaSystemSignFileRequest中的fileId对应
+	// example:
+	//
+	// 79ffa96040044b49b0fde8c3feb4898
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
 	// 文件类型（只支持pdf）
+	// example:
+	//
+	// pdf
 	FileType *string `json:"file_type,omitempty" xml:"file_type,omitempty" require:"true"`
 }
 
@@ -1905,6 +2455,9 @@ func (s *AntSignFileRequest) SetFileType(v string) *AntSignFileRequest {
 // 承诺信息
 type CommitmentInfo struct {
 	// 租金总额
+	// example:
+	//
+	// 7890.00
 	TotalRent *string `json:"total_rent,omitempty" xml:"total_rent,omitempty" require:"true"`
 	// 租赁分期信息
 	RentalStagingInformation []*RentalStagingInformation `json:"rental_staging_information,omitempty" xml:"rental_staging_information,omitempty" require:"true" type:"Repeated"`
@@ -1931,16 +2484,34 @@ func (s *CommitmentInfo) SetRentalStagingInformation(v []*RentalStagingInformati
 // 当被申请人为法人
 type LegalPerson struct {
 	// 被申请人姓名
+	// example:
+	//
+	// 李四
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 法人统一社会信用编码
+	// example:
+	//
+	// 412702199812252774
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty" require:"true"`
 	// 法定代表人姓名
+	// example:
+	//
+	// 李四
 	RepresentativeName *string `json:"representative_name,omitempty" xml:"representative_name,omitempty"`
 	// 联系方式
+	// example:
+	//
+	// 13812123232
 	LegalPhoneNumber *string `json:"legal_phone_number,omitempty" xml:"legal_phone_number,omitempty"`
 	// 住所地（同营业执照地址）
+	// example:
+	//
+	// 北京市朝阳区XX地址
 	LegalAddress *string `json:"legal_address,omitempty" xml:"legal_address,omitempty"`
 	// 企业经营地址
+	// example:
+	//
+	// 北京市朝阳区XX地址
 	LegalBusinessAddress *string `json:"legal_business_address,omitempty" xml:"legal_business_address,omitempty"`
 	// 营业执照照片
 	// 文件信息列表（先调用接口获取上传url和fileKey）
@@ -1993,12 +2564,24 @@ func (s *LegalPerson) SetLegalIdNumberFile(v []*FileInfo) *LegalPerson {
 // 司法纠纷平台银行信息结构体
 type JudicialBankInfo struct {
 	// 开户行
+	// example:
+	//
+	// 开户银行
 	AccountBank *string `json:"account_bank,omitempty" xml:"account_bank,omitempty" require:"true"`
 	// 开户账号
+	// example:
+	//
+	// f3232sdj32fl312ksdj
 	AccountNumber *string `json:"account_number,omitempty" xml:"account_number,omitempty" require:"true"`
 	// 开户名称
+	// example:
+	//
+	// 示例开户名称
 	AccountName *string `json:"account_name,omitempty" xml:"account_name,omitempty" require:"true"`
 	// 开户联系电话
+	// example:
+	//
+	// 15000000000
 	AccountContactPhone *string `json:"account_contact_phone,omitempty" xml:"account_contact_phone,omitempty" require:"true"`
 }
 
@@ -2033,6 +2616,9 @@ func (s *JudicialBankInfo) SetAccountContactPhone(v string) *JudicialBankInfo {
 // 文本签签名信息
 type ContractTextSignVerifySignatureInfo struct {
 	// 是否被篡改
+	// example:
+	//
+	// true, false
 	IsModify *bool `json:"is_modify,omitempty" xml:"is_modify,omitempty"`
 }
 
@@ -2052,11 +2638,20 @@ func (s *ContractTextSignVerifySignatureInfo) SetIsModify(v bool) *ContractTextS
 // 阶段存证内容类表，根据模板定义传入
 type PhaseNotary struct {
 	// 阶段编号，与模板阶段编号保持一致，不同阶段阶段编号不一样，要与阶段存证内容保持一致
+	// example:
+	//
+	// 1
 	PhaseNo *int64 `json:"phase_no,omitempty" xml:"phase_no,omitempty" require:"true"`
 	// 阶段存证内容，如果模板数据类型定义是Hash(哈希)则填入Hash即可，如果定义是Structure(结构化)，则填入模板所有字段json对象的字符串Base64后的值
+	// example:
+	//
+	// 123123
 	NotaryContent *string `json:"notary_content,omitempty" xml:"notary_content,omitempty" require:"true"`
 	// 业务方原始数据ID，业务方确保唯一，方便与业务方进行数据核对使用
 	//
+	// example:
+	//
+	// xxxx
 	OriginDataId *string `json:"origin_data_id,omitempty" xml:"origin_data_id,omitempty" require:"true"`
 }
 
@@ -2086,22 +2681,43 @@ func (s *PhaseNotary) SetOriginDataId(v string) *PhaseNotary {
 // 租赁宝plus用户信息
 type BclInsuranceUserInfo struct {
 	// 用户名称
+	// example:
+	//
+	// 蚂蚁区块链科技（上海）有限公司
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty" require:"true"`
 	// 保险用户类型：
 	// HOLDER_ORG: 投保人（机构）
 	// INSURED_ORG: 被保人（机构）
 	// INSURANCE_ORG: 保司（机构）
+	// example:
+	//
+	// HOLDER_ORG
 	UserType *string `json:"user_type,omitempty" xml:"user_type,omitempty" require:"true"`
 	// 证件号名称:
 	// USCC，社会统一信用代码，目前仅支持
+	// example:
+	//
+	// USCC
 	IdType *string `json:"id_type,omitempty" xml:"id_type,omitempty" require:"true"`
 	// 证件号码
+	// example:
+	//
+	// 91310101MA1FPCXA3G
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty" require:"true"`
 	// 联系地址
+	// example:
+	//
+	// 上海市黄浦区外马路618号8层803室
 	Address *string `json:"address,omitempty" xml:"address,omitempty" require:"true"`
 	// 联系方式
+	// example:
+	//
+	// 021-61686888
 	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty" require:"true"`
 	// 邮件地址
+	// example:
+	//
+	// xxx@aa.com
 	Mail *string `json:"mail,omitempty" xml:"mail,omitempty" require:"true"`
 }
 
@@ -2152,24 +2768,48 @@ func (s *BclInsuranceUserInfo) SetMail(v string) *BclInsuranceUserInfo {
 type BclUserInfo struct {
 	// 用户账号ID
 	// 长度不超过64位，本期只支持支付宝userid
+	// example:
+	//
+	// 2088xxxxx
 	UserAccountId *string `json:"user_account_id,omitempty" xml:"user_account_id,omitempty" require:"true" maxLength:"64"`
 	// 用户账号平台类型
 	// 1.支付宝：ALIPAY
 	// 本期暂时只支持支付宝
+	// example:
+	//
+	// ALIPAY
 	UserAccountType *string `json:"user_account_type,omitempty" xml:"user_account_type,omitempty" require:"true" maxLength:"16"`
 	// 承租人/企业姓名,长度不超过32位
+	// example:
+	//
+	// 张三
 	UserCertName *string `json:"user_cert_name,omitempty" xml:"user_cert_name,omitempty" require:"true" maxLength:"128"`
 	// 承租人/企业证件号,长度不超过64位
+	// example:
+	//
+	// 5002331982122xx233
 	UserCertNo *string `json:"user_cert_no,omitempty" xml:"user_cert_no,omitempty" require:"true" maxLength:"64"`
 	// 承租人/企业证件类型:
 	// 1.身份证：IDENTITY_CARD
 	// 本期暂时只支持个人身份证
+	// example:
+	//
+	// IDENTITY_CARD
 	UserCertType *string `json:"user_cert_type,omitempty" xml:"user_cert_type,omitempty" require:"true" maxLength:"32"`
 	// 承租人/企业手机号,长度不超过32位
+	// example:
+	//
+	// 172312xx231
 	UserPhoneNumber *string `json:"user_phone_number,omitempty" xml:"user_phone_number,omitempty" require:"true" maxLength:"32"`
 	// 承租人身份证人像面/企业营业执照 先调用文件上传的接口,这里填上传后返回的fileid
+	// example:
+	//
+	// 24343.jpg
 	UserCertFrontFileId *string `json:"user_cert_front_file_id,omitempty" xml:"user_cert_front_file_id,omitempty" require:"true" maxLength:"64"`
 	// 承租人身份证国徽面 先调用文件上传的接口,这里填上传后返回的fileid
+	// example:
+	//
+	// 342323.jpg
 	UserCertBackFileId *string `json:"user_cert_back_file_id,omitempty" xml:"user_cert_back_file_id,omitempty" maxLength:"64"`
 }
 
@@ -2224,14 +2864,29 @@ func (s *BclUserInfo) SetUserCertBackFileId(v string) *BclUserInfo {
 // 签署链接
 type AntSignUrlResult struct {
 	// 签署方名称
+	// example:
+	//
+	// 某某
 	SignCertName *string `json:"sign_cert_name,omitempty" xml:"sign_cert_name,omitempty" require:"true"`
 	// 签署方证件号（脱敏）
+	// example:
+	//
+	// 421011111111111111
 	SignCertNo *string `json:"sign_cert_no,omitempty" xml:"sign_cert_no,omitempty" require:"true"`
 	// 签署方 id
+	// example:
+	//
+	// CA20220920000002
 	SignUserId *string `json:"sign_user_id,omitempty" xml:"sign_user_id,omitempty" require:"true"`
 	// 加密后的签署方证件号(用来关联签署方的签署链接)
+	// example:
+	//
+	// 9***************3G
 	EncryptSignCertNo *string `json:"encrypt_sign_cert_no,omitempty" xml:"encrypt_sign_cert_no,omitempty" require:"true"`
 	// 签署链接：电子签任务为异步任务，请确保已处于签署中（SIGNNING）状态，再给用户发送签署链接，否则用户签署会不成功
+	// example:
+	//
+	// https://p.tb.cn/_5He390eo6NzfmuCzcNhzwO
 	SignUrl *string `json:"sign_url,omitempty" xml:"sign_url,omitempty" require:"true"`
 }
 
@@ -2271,8 +2926,14 @@ func (s *AntSignUrlResult) SetSignUrl(v string) *AntSignUrlResult {
 // 自动进件履约信息
 type LeasePerformanceInfo struct {
 	// 支付租金总额
+	// example:
+	//
+	// 123.00
 	RentPayTotal *string `json:"rent_pay_total,omitempty" xml:"rent_pay_total,omitempty" require:"true"`
 	// 买断金额
+	// example:
+	//
+	// 123.00
 	BuyoutAmount *string `json:"buyout_amount,omitempty" xml:"buyout_amount,omitempty"`
 	// 租赁分期履约信息
 	RentalInstallmentPerformance []*RentalInstallmentPerformance `json:"rental_installment_performance,omitempty" xml:"rental_installment_performance,omitempty" type:"Repeated"`
@@ -2304,16 +2965,34 @@ func (s *LeasePerformanceInfo) SetRentalInstallmentPerformance(v []*RentalInstal
 // 答辩人为自然人对象
 type NaturalPerson struct {
 	// 自然人姓名
+	// example:
+	//
+	// 李四
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 自然人手机号码
+	// example:
+	//
+	// 13821323232
 	MobileNumber *string `json:"mobile_number,omitempty" xml:"mobile_number,omitempty" require:"true"`
 	// 自然人身份号码
+	// example:
+	//
+	// 412702199812252774
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty" require:"true"`
 	// 自然人民族
+	// example:
+	//
+	// 汉
 	Nation *string `json:"nation,omitempty" xml:"nation,omitempty"`
 	// 自然人身份地址
+	// example:
+	//
+	// 北京市朝阳区XX地址
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
 	// 自然人电子邮箱
+	// example:
+	//
+	// 323232321@alibba-inc.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// 自然人身份证正反面照片
 	// 文件信息 列表（先调用接口获取上传url和fileKey）
@@ -2366,14 +3045,29 @@ func (s *NaturalPerson) SetIdNumberFile(v []*FileInfo) *NaturalPerson {
 // 文件签验签证书结构体
 type ContractDocSignVerifyCertInfo struct {
 	// 证书所有者
+	// example:
+	//
+	// 杭州**有限公司
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// 证书序列号
+	// example:
+	//
+	// 536deb6bfce98a9143f143ca
 	Serial *string `json:"serial,omitempty" xml:"serial,omitempty"`
 	// 证书开始日期
+	// example:
+	//
+	// 2020-04-13 11:46:18
 	StartDate *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
 	// 证书结束日期
+	// example:
+	//
+	// 2021-04-13 11:46:18
 	EndDate *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
 	// 证书颁发机构
+	// example:
+	//
+	// 智慧CA_测试
 	IssuerCn *string `json:"issuer_cn,omitempty" xml:"issuer_cn,omitempty"`
 }
 
@@ -2413,20 +3107,44 @@ func (s *ContractDocSignVerifyCertInfo) SetIssuerCn(v string) *ContractDocSignVe
 // 可信存证存证地点信息
 type Location struct {
 	// 所在城市
+	// example:
+	//
+	// 杭州
 	City *string `json:"city,omitempty" xml:"city,omitempty"`
 	// 使用设备的IMEI号
+	// example:
+	//
+	// 359426002899056
 	Imei *string `json:"imei,omitempty" xml:"imei,omitempty"`
 	// 使用设备的IMSI号
+	// example:
+	//
+	// 460001357924680
 	Imsi *string `json:"imsi,omitempty" xml:"imsi,omitempty"`
 	// 使用设备的IP地址
+	// example:
+	//
+	// 0.0.0.0
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
 	// 纬度
+	// example:
+	//
+	// 66.33
 	Latitude *string `json:"latitude,omitempty" xml:"latitude,omitempty"`
 	// 经度
+	// example:
+	//
+	// 23.26
 	Longitude *string `json:"longitude,omitempty" xml:"longitude,omitempty"`
 	// 使用设备的Wi-Fi物理地址
+	// example:
+	//
+	// 00-01-6C-06-A6-29
 	MacAddr *string `json:"mac_addr,omitempty" xml:"mac_addr,omitempty"`
 	// 扩展属性
+	// example:
+	//
+	// {"key":"value"}
 	Properties *string `json:"properties,omitempty" xml:"properties,omitempty"`
 }
 
@@ -2481,7 +3199,13 @@ func (s *Location) SetProperties(v string) *Location {
 // 签署子任务结果
 type AntSignTaskResult struct {
 	// 子任务流水号
+	// example:
+	//
+	// 子任务流水号
 	SubBizNo *string `json:"sub_biz_no,omitempty" xml:"sub_biz_no,omitempty"`
+	// 签署子任务id
+	// example:
+	//
 	// 签署子任务id
 	SignTaskId *string `json:"sign_task_id,omitempty" xml:"sign_task_id,omitempty"`
 	// 签署子任务状态:
@@ -2489,7 +3213,13 @@ type AntSignTaskResult struct {
 	// SIGNING-签署中
 	// SIGNED-已签署
 	// REJECTED-已拒绝
+	// example:
+	//
+	// INIT
 	SignTaskStatus *string `json:"sign_task_status,omitempty" xml:"sign_task_status,omitempty"`
+	// 上下游透传参数
+	// example:
+	//
 	// 上下游透传参数
 	ExtraParam *string `json:"extra_param,omitempty" xml:"extra_param,omitempty"`
 	// 签署子任务完成的文件里表
@@ -2539,8 +3269,14 @@ func (s *AntSignTaskResult) SetAntSignOperatorResultList(v []*AntSignOperatorRes
 // 法务电子签章图片信息
 type PngDetails struct {
 	// 明细唯一id
+	// example:
+	//
+	// 1
 	Id *string `json:"id,omitempty" xml:"id,omitempty" require:"true"`
 	// 图片 osskey
+	// example:
+	//
+	// ESIGN/ato/ca_png/ORG/111.png
 	FileKey *string `json:"file_key,omitempty" xml:"file_key,omitempty" require:"true"`
 }
 
@@ -2565,16 +3301,34 @@ func (s *PngDetails) SetFileKey(v string) *PngDetails {
 // 自动进件案件基础信息
 type CaseBasicInfo struct {
 	// 案件租户id
+	// example:
+	//
+	// ORGJC1CN
 	BizTenantId *string `json:"biz_tenant_id,omitempty" xml:"biz_tenant_id,omitempty" require:"true"`
 	// 案件类型:LEASE：租赁，FINANCIAL：金融，OTHER：其他
+	// example:
+	//
+	// LEASE
 	CaseType *string `json:"case_type,omitempty" xml:"case_type,omitempty" require:"true"`
 	// 标的金额（单位元）
+	// example:
+	//
+	// 123.00
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
 	// 业务来源主键
+	// example:
+	//
+	// 232278957595482
 	InputSourceId *string `json:"input_source_id,omitempty" xml:"input_source_id,omitempty" require:"true"`
 	// 案件进件来源
+	// example:
+	//
+	// 租赁宝
 	InputSource *string `json:"input_source,omitempty" xml:"input_source,omitempty" require:"true"`
 	// 根据业务来源主键对应订单号下的租赁事实报告和证据列表页面的嵌入URL
+	// example:
+	//
+	// https://www.aliyun.com
 	CaseExt *string `json:"case_ext,omitempty" xml:"case_ext,omitempty"`
 }
 
@@ -2619,16 +3373,34 @@ func (s *CaseBasicInfo) SetCaseExt(v string) *CaseBasicInfo {
 // 电子合同存证代扣计划执行操作信息
 type ContractNotaryDeductExecutionInfo struct {
 	// 付款方的区块链合同签署账号
+	// example:
+	//
+	// someId
 	PayerId *string `json:"payer_id,omitempty" xml:"payer_id,omitempty" require:"true"`
 	// 扣款金额，单位分
+	// example:
+	//
+	// 100
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty" require:"true"`
 	// 扣款渠道
+	// example:
+	//
+	// channel
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty" require:"true"`
 	// 扣款操作是否成功
+	// example:
+	//
+	// true, false
 	Result *bool `json:"result,omitempty" xml:"result,omitempty" require:"true"`
 	// 扣款操作发起时间
+	// example:
+	//
+	// 1589198173000
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty" require:"true"`
 	// 代扣计划ID
+	// example:
+	//
+	// 04181b49ee5d7eb0099a289ac8a45df6afb5aa2679c5284444698a9790099269_1
 	Order *string `json:"order,omitempty" xml:"order,omitempty" require:"true"`
 }
 
@@ -2673,10 +3445,19 @@ func (s *ContractNotaryDeductExecutionInfo) SetOrder(v string) *ContractNotaryDe
 // 数字票根计量字段
 type MetricInfo struct {
 	// 实际计收金额，单位：分。如传100，即为100分，1元
+	// example:
+	//
+	// 100
 	CollectAmount *int64 `json:"collect_amount,omitempty" xml:"collect_amount,omitempty" require:"true"`
 	// 计收受理时间
+	// example:
+	//
+	// 2022-04-15 17:05:37
 	CollectTime *string `json:"collect_time,omitempty" xml:"collect_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 计收的订单流水号
+	// example:
+	//
+	// 12345678
 	CollectSerialNumber *string `json:"collect_serial_number,omitempty" xml:"collect_serial_number,omitempty" require:"true"`
 }
 
@@ -2706,14 +3487,29 @@ func (s *MetricInfo) SetCollectSerialNumber(v string) *MetricInfo {
 // 融资租赁资方承诺
 type LeaseCreditPromiseInfo struct {
 	// 租期index
+	// example:
+	//
+	// 1
 	Term *int64 `json:"term,omitempty" xml:"term,omitempty" require:"true"`
 	// 应还金额
+	// example:
+	//
+	// 123400
 	PayMoney *int64 `json:"pay_money,omitempty" xml:"pay_money,omitempty" require:"true"`
 	// 应还款时间
+	// example:
+	//
+	// 2019-07-31 12:00:00
 	PayDate *string `json:"pay_date,omitempty" xml:"pay_date,omitempty" require:"true"`
 	// 垫付日
+	// example:
+	//
+	// 2019-07-31 12:00:00
 	PayInAdvanceTime *string `json:"pay_in_advance_time,omitempty" xml:"pay_in_advance_time,omitempty" require:"true"`
 	// 垫付金额
+	// example:
+	//
+	// 123400
 	PayInAdvanceMoney *int64 `json:"pay_in_advance_money,omitempty" xml:"pay_in_advance_money,omitempty" require:"true"`
 }
 
@@ -2753,8 +3549,14 @@ func (s *LeaseCreditPromiseInfo) SetPayInAdvanceMoney(v int64) *LeaseCreditPromi
 // 融资租赁订单额外信息
 type LeaseOrderExtra struct {
 	// 额外信息的主键
+	// example:
+	//
+	// "key"
 	Key *string `json:"key,omitempty" xml:"key,omitempty" require:"true"`
 	// 额外信息的值
+	// example:
+	//
+	// "value"
 	Value *string `json:"value,omitempty" xml:"value,omitempty" require:"true"`
 }
 
@@ -2779,40 +3581,79 @@ func (s *LeaseOrderExtra) SetValue(v string) *LeaseOrderExtra {
 // 发起人对象
 type ProposerObject struct {
 	// 申请人姓名
+	// example:
+	//
+	// 李四
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 统一社会信用代码
+	// example:
+	//
+	// 412702199812252774
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty" require:"true"`
 	// 联系电话
+	// example:
+	//
+	// 13821212121
 	PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty"`
 	// 电子邮箱地址
+	// example:
+	//
+	// 323232321@alibba-inc.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// 经营地址
+	// example:
+	//
+	// 北京市朝阳区XX地址
 	BusinessAddress *string `json:"business_address,omitempty" xml:"business_address,omitempty"`
 	// 营业执照照片
 	// 文件信息 列表
 	IdNumberFile []*FileInfo `json:"id_number_file,omitempty" xml:"id_number_file,omitempty" type:"Repeated"`
 	// 法定代表人姓名
+	// example:
+	//
+	// 李四
 	RepresentativeName *string `json:"representative_name,omitempty" xml:"representative_name,omitempty"`
 	// 法定代表人性别
 	// 0: 男 1: 女
+	// example:
+	//
+	// 0
 	RepresentativeSex *int64 `json:"representative_sex,omitempty" xml:"representative_sex,omitempty"`
 	// 法定代表人身份证号码
+	// example:
+	//
+	// 412702199812252774
 	RepresentativeIdNumber *string `json:"representative_id_number,omitempty" xml:"representative_id_number,omitempty"`
 	// 法定代表人手机号码
+	// example:
+	//
+	// 1383312323
 	RepresentativeMobileNumber *string `json:"representative_mobile_number,omitempty" xml:"representative_mobile_number,omitempty"`
 	// 法定代表人代表身份证明
 	// 文件信息列表
 	RepresentativeIdNumberFile []*FileInfo `json:"representative_id_number_file,omitempty" xml:"representative_id_number_file,omitempty" type:"Repeated"`
 	// 法定代表人职务
+	// example:
+	//
+	// 经理
 	RepresentativePost *string `json:"representative_post,omitempty" xml:"representative_post,omitempty"`
 	// 法定代表人职务证明
 	// 文件信息列表
 	RepresentativePostFile []*FileInfo `json:"representative_post_file,omitempty" xml:"representative_post_file,omitempty" type:"Repeated"`
 	// 签章管理员姓名
+	// example:
+	//
+	// 李四
 	SignatureManagerName *string `json:"signature_manager_name,omitempty" xml:"signature_manager_name,omitempty"`
 	// 签章管理员身份证号码
+	// example:
+	//
+	// 412702199812252774
 	SignatureManagerIdCard *string `json:"signature_manager_id_card,omitempty" xml:"signature_manager_id_card,omitempty"`
 	// 签章管理员手机号码
+	// example:
+	//
+	// 13812123232
 	SignatureManagerPhone *string `json:"signature_manager_phone,omitempty" xml:"signature_manager_phone,omitempty"`
 }
 
@@ -2907,10 +3748,19 @@ func (s *ProposerObject) SetSignatureManagerPhone(v string) *ProposerObject {
 // 融资租赁人脸认证提前还款租期记录
 type FinanceCertifyRentalInfo struct {
 	// 租期
+	// example:
+	//
+	// 1
 	RentTerm *int64 `json:"rent_term,omitempty" xml:"rent_term,omitempty" require:"true"`
 	// 本期扣款金额，123400表示12.34元
+	// example:
+	//
+	// 123400
 	RentalMoney *int64 `json:"rental_money,omitempty" xml:"rental_money,omitempty" require:"true"`
 	// 还款日期，格式为"2019-07-31 12:00:00"
+	// example:
+	//
+	// 2019-07-31 12:00:00
 	RentalReturnTime *string `json:"rental_return_time,omitempty" xml:"rental_return_time,omitempty" require:"true"`
 }
 
@@ -2940,24 +3790,54 @@ func (s *FinanceCertifyRentalInfo) SetRentalReturnTime(v string) *FinanceCertify
 // 创建电子合同签署盖章区时的申请信息
 type ContractSignFieldApplication struct {
 	// 是否添加签署时间戳，默认不添加，时间格式如"2019-03-11 10:12:12"
+	// example:
+	//
+	// true, false
 	AddSignTime *bool `json:"add_sign_time,omitempty" xml:"add_sign_time,omitempty"`
 	// 签约主体账号标识， 将使用该主体账号对应的数字证书完成本次签署，如：当存在签署操作人代某机构签署时，需要传入该机构的账号id
+	// example:
+	//
+	// 2c7de24aff3340f5b944ebac49545b8e
 	AuthorizedAccountId *string `json:"authorized_account_id,omitempty" xml:"authorized_account_id,omitempty" require:"true"`
 	// 电子合同文件ID
+	// example:
+	//
+	// fe7df2f477d649c18ebcfdfffeba253d
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
 	// 签署区顺序，默认1,且不小于1，顺序越小越先处理
+	// example:
+	//
+	// 1
 	Order *int64 `json:"order,omitempty" xml:"order,omitempty"`
 	// 页码信息：当签署区signType为2时, 页码可以_-_分割, 例如1到15页，填"1-15"； 其他情况只能是数字
+	// example:
+	//
+	// 1
 	PosPage *string `json:"pos_page,omitempty" xml:"pos_page,omitempty" require:"true"`
 	// x坐标转为字符串的值，默认空，页面签章必填，骑缝签章不填写
+	// example:
+	//
+	// 158.72531
 	PosX *string `json:"pos_x,omitempty" xml:"pos_x,omitempty"`
 	// y坐标转为字符串的值
+	// example:
+	//
+	// 431.05658
 	PosY *string `json:"pos_y,omitempty" xml:"pos_y,omitempty" require:"true"`
 	// 印章id ，如不传，则采用账号下的默认印章
+	// example:
+	//
+	// bcd7ffd9-5caf-4342-bd1c-02257229ccd5
 	SealId *string `json:"seal_id,omitempty" xml:"seal_id,omitempty"`
 	// 第三方业务流水号id，保证相同签署人、相同签约主体、相同签署顺序的任务，对应的第三方业务流水id唯一，默认空
+	// example:
+	//
+	// someordernumber
 	ThirdOrderNo *string `json:"third_order_no,omitempty" xml:"third_order_no,omitempty"`
 	// 签署区宽，默认印章宽度
+	// example:
+	//
+	// 1
 	Width *string `json:"width,omitempty" xml:"width,omitempty"`
 	// 签署类型，1-单页签署，2-骑缝签署，默认1
 	SignType *int64 `json:"sign_type,omitempty" xml:"sign_type,omitempty"`
@@ -3029,16 +3909,34 @@ func (s *ContractSignFieldApplication) SetSignType(v int64) *ContractSignFieldAp
 // 机构信息
 type ContractUserOrganizationApplication struct {
 	// 证件号，该字段只有为空才允许修改
+	// example:
+	//
+	// 12330100470104939U
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty"`
 	// 证件类型 ，默认CRED_ORG_USCC
+	// example:
+	//
+	// CRED_ORG_USCC
 	IdType *string `json:"id_type,omitempty" xml:"id_type,omitempty"`
 	// 企业法定代表人名称
+	// example:
+	//
+	// 测试法人
 	LegalPerson *string `json:"legal_person,omitempty" xml:"legal_person,omitempty"`
 	// 企业法定代表人证件号
+	// example:
+	//
+	// 311111111111111111
 	LegalPersonId *string `json:"legal_person_id,omitempty" xml:"legal_person_id,omitempty"`
 	// 机构名称
+	// example:
+	//
+	// 测试企业
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// 机构账号id
+	// example:
+	//
+	// ORGJC1CN1591666666666
 	OrganizationId *string `json:"organization_id,omitempty" xml:"organization_id,omitempty" require:"true"`
 }
 
@@ -3123,10 +4021,19 @@ func (s *LeaseEvidentialElement) SetPerformanceInfo(v *LeasePerformanceInfo) *Le
 // 电子合同签署盖章区
 type ContractSignField struct {
 	// 电子合同用户ID
+	// example:
+	//
+	// faea8237c61a4fdea864ee8d7621e14f
 	AccountId *string `json:"account_id,omitempty" xml:"account_id,omitempty" require:"true"`
 	// 电子合同文档ID
+	// example:
+	//
+	// fe7df2f477d649c18ebcfdfffeba253d
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
 	// 电子合同签署区id
+	// example:
+	//
+	// b76b69d5b48d4f689cae997e42809ac4
 	SignfieldId *string `json:"signfield_id,omitempty" xml:"signfield_id,omitempty" require:"true"`
 }
 
@@ -3157,10 +4064,19 @@ func (s *ContractSignField) SetSignfieldId(v string) *ContractSignField {
 type BclPromiseInfo struct {
 	// 承诺租期 单位
 	// 月 MONTH
+	// example:
+	//
+	// MONTH
 	RentUnit *string `json:"rent_unit,omitempty" xml:"rent_unit,omitempty" require:"true"`
 	// 总期数
+	// example:
+	//
+	// 12
 	RentTerm *int64 `json:"rent_term,omitempty" xml:"rent_term,omitempty" require:"true"`
 	// 总金额 单位分
+	// example:
+	//
+	// 123123
 	TotalRentMoney *int64 `json:"total_rent_money,omitempty" xml:"total_rent_money,omitempty" require:"true"`
 	// 承诺履约详情
 	PromiseDetails []*BclPromiseDetailInfo `json:"promise_details,omitempty" xml:"promise_details,omitempty" require:"true" type:"Repeated"`
@@ -3197,48 +4113,114 @@ func (s *BclPromiseInfo) SetPromiseDetails(v []*BclPromiseDetailInfo) *BclPromis
 // 签署区详情
 type ContractSignFieldDetail struct {
 	// 签约主体类别，0-个人，1-机构，默认0,2 是不限
+	// example:
+	//
+	// 1
 	ActorIndentityType *int64 `json:"actor_indentity_type,omitempty" xml:"actor_indentity_type,omitempty"`
 	// 添加时间
+	// example:
+	//
+	// 1561473111450
 	AddTime *int64 `json:"add_time,omitempty" xml:"add_time,omitempty"`
 	// 是否指定位置，TRUE表示不允许更新位置，配置项，无默认值
+	// example:
+	//
+	// true, false
 	AssignedPosbean *bool `json:"assigned_posbean,omitempty" xml:"assigned_posbean,omitempty"`
 	// 是否指定印章数据，TRUE表示不允许更新印章，配置项，无默认值
+	// example:
+	//
+	// true, false
 	AssignedSeal *bool `json:"assigned_seal,omitempty" xml:"assigned_seal,omitempty"`
 	// 签约主体账号标识，将使用该主体账号对应的数字证书完成本次签署，如：当存在签署操作人代某机构签署时，需要传入该机构的账号id
+	// example:
+	//
+	// 2c7de24aff3340f5b944ebac49545b8e
 	AuthorizedAccountId *string `json:"authorized_account_id,omitempty" xml:"authorized_account_id,omitempty"`
 	// 是否自动执行，TRUE需要静默授权，配置项，无默认值
+	// example:
+	//
+	// true, false
 	AutoExecute *bool `json:"auto_execute,omitempty" xml:"auto_execute,omitempty"`
 	// 执行失败原因
+	// example:
+	//
+	//
 	ExecuteFailedReason *string `json:"execute_failed_reason,omitempty" xml:"execute_failed_reason,omitempty"`
 	// 文件file id
+	// example:
+	//
+	// fe7df2f477d649c18ebcfdfffeba253d
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// 流程id
+	// example:
+	//
+	// b2cb74258a634179b0df3cc54791c8b6
 	FlowId *string `json:"flow_id,omitempty" xml:"flow_id,omitempty"`
 	// 签署区顺序，默认1,且不小于1，顺序越小越先处理
+	// example:
+	//
+	// 1
 	Order *int64 `json:"order,omitempty" xml:"order,omitempty"`
 	// 页码信息，可以_,_或_-_分割
+	// example:
+	//
+	// 1
 	PosPage *string `json:"pos_page,omitempty" xml:"pos_page,omitempty"`
 	// x坐标
+	// example:
+	//
+	// 158.72531
 	PosX *string `json:"pos_x,omitempty" xml:"pos_x,omitempty"`
 	// y坐标
+	// example:
+	//
+	// 431.05658
 	PosY *string `json:"pos_y,omitempty" xml:"pos_y,omitempty"`
 	// 印章文件file key
+	// example:
+	//
+	//
 	SealFileKey *string `json:"seal_file_key,omitempty" xml:"seal_file_key,omitempty"`
 	// 印章id
+	// example:
+	//
+	//
 	SealId *string `json:"seal_id,omitempty" xml:"seal_id,omitempty"`
 	// 印章类型，支持多种类型时逗号分割，0-手绘印章，1-模版印章，为空不限制
+	// example:
+	//
+	//
 	SealType *string `json:"seal_type,omitempty" xml:"seal_type,omitempty"`
 	// 签署操作人个人账号标识，即操作本次签署的个人，如需e签宝通知用户签署，则系统向该账号下绑定的手机、邮箱发送签署链接
+	// example:
+	//
+	// faea8237c61a4fdea864ee8d7621e14f
 	SignerAccountId *string `json:"signer_account_id,omitempty" xml:"signer_account_id,omitempty"`
 	// 签署区Id
+	// example:
+	//
+	// b76b69d5b48d4f689cae997e42809ac4
 	SignfieldId *string `json:"signfield_id,omitempty" xml:"signfield_id,omitempty"`
 	// 签署类型，0-不限，1-单页签署，2-骑缝签署,4-关键字签署，默认1
+	// example:
+	//
+	// 0
 	SignType *int64 `json:"sign_type,omitempty" xml:"sign_type,omitempty"`
 	// 签署区状态（0："等待执行，1："执行中"，2："执行失败"，3："审批中"，4： "执行完成"）
+	// example:
+	//
+	// 1
 	Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
 	// 状态描述
+	// example:
+	//
+	// 执行中
 	StatusDescription *string `json:"status_description,omitempty" xml:"status_description,omitempty"`
 	// 签署区宽
+	// example:
+	//
+	//
 	Width *string `json:"width,omitempty" xml:"width,omitempty"`
 }
 
@@ -3363,16 +4345,34 @@ func (s *ContractSignFieldDetail) SetWidth(v string) *ContractSignFieldDetail {
 // 采购供应商初始化
 type SupplierInfo struct {
 	// 供应商id
+	// example:
+	//
+	// ABCDEFGH
 	AgentSupplierId *string `json:"agent_supplier_id,omitempty" xml:"agent_supplier_id,omitempty" require:"true"`
 	// 被代理机构社会统一信用码
+	// example:
+	//
+	// 12345678
 	AgentSupplierCorpId *string `json:"agent_supplier_corp_id,omitempty" xml:"agent_supplier_corp_id,omitempty" require:"true"`
 	// 被代理机构名称
+	// example:
+	//
+	// 阿里巴巴有限公司
 	AgentSupplierCorpName *string `json:"agent_supplier_corp_name,omitempty" xml:"agent_supplier_corp_name,omitempty" require:"true"`
 	// 被代理供应商名称
+	// example:
+	//
+	// 阿里
 	AgentSupplierName *string `json:"agent_supplier_name,omitempty" xml:"agent_supplier_name,omitempty" require:"true"`
 	// 被代理机构的法人名称
+	// example:
+	//
+	// 张三
 	AgentSupplierCorpOwnerName *string `json:"agent_supplier_corp_owner_name,omitempty" xml:"agent_supplier_corp_owner_name,omitempty" require:"true"`
 	// 额外信息
+	// example:
+	//
+	// {}
 	ExtraInfo *string `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 }
 
@@ -3417,12 +4417,24 @@ func (s *SupplierInfo) SetExtraInfo(v string) *SupplierInfo {
 // 电子合同存证代扣计划信息
 type ContractNotaryDeductPlanInfo struct {
 	// PAYERIDNUMBER
+	// example:
+	//
+	// 付款方ID
 	PayerId *string `json:"payer_id,omitempty" xml:"payer_id,omitempty" require:"true"`
 	// “总金额：”+总金额“+”“总期数：”+总期数，“+”每期金额时间（X期金额，时间）
+	// example:
+	//
+	// 代扣计划说明
 	DeductPlanInfo *string `json:"deduct_plan_info,omitempty" xml:"deduct_plan_info,omitempty" require:"true"`
 	// AGREEMEND_ID_NUMBER
+	// example:
+	//
+	// 代扣协议ID
 	AgreementNo *string `json:"agreement_no,omitempty" xml:"agreement_no,omitempty" require:"true"`
 	// 代扣计划发起时间
+	// example:
+	//
+	// 1589198173000
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty" require:"true"`
 }
 
@@ -3457,30 +4469,69 @@ func (s *ContractNotaryDeductPlanInfo) SetTimestamp(v string) *ContractNotaryDed
 // 电子合同存证结束信息
 type ContractNotaryFinishInfo struct {
 	// 本阶段存证内容哈希值
+	// example:
+	//
+	// content
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// 签署文件份数
+	// example:
+	//
+	// 3
 	FileNum *int64 `json:"file_num,omitempty" xml:"file_num,omitempty" require:"true"`
 	// 发起人ID
+	// example:
+	//
+	// account_id_of_initiator
 	Initiator *string `json:"initiator,omitempty" xml:"initiator,omitempty" require:"true"`
 	// 签署人ID（支持多个，不同ID间用“,”分隔开）
+	// example:
+	//
+	// account_id_1,account_id_2
 	Signatories *string `json:"signatories,omitempty" xml:"signatories,omitempty" require:"true"`
 	// 存证阶段发生时间，UNIX时间戳(毫秒)
+	// example:
+	//
+	// 1589198173000
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty" require:"true"`
 	// 存证凭据，仅在批量核验时需要填写
+	// example:
+	//
+	// 95a8201ad7362f9d224937cfb715b086ea1cf0d884f1c5b1f3ed092fddff1c92
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty"`
 	// signatories对应的用户类型
+	// example:
+	//
+	// PERSON,ENTERPRISE,PERSON
 	UserTypes *string `json:"user_types,omitempty" xml:"user_types,omitempty"`
 	// 签署合同所属行业
+	// example:
+	//
+	// finance
 	BusinessType *string `json:"business_type,omitempty" xml:"business_type,omitempty"`
 	// 合同对应的金额，如果不涉及金额，填充为0，个数与file_num对应
+	// example:
+	//
+	// 888,0,888
 	Amounts *string `json:"amounts,omitempty" xml:"amounts,omitempty"`
 	// 签署方数量
+	// example:
+	//
+	// 2
 	SignPartyCount *int64 `json:"sign_party_count,omitempty" xml:"sign_party_count,omitempty"`
 	// 发起人名称
+	// example:
+	//
+	// 张三
 	IntiatorName *string `json:"intiator_name,omitempty" xml:"intiator_name,omitempty"`
 	// 签署人名称,多个逗号隔开
+	// example:
+	//
+	// 李四,王五
 	SignatorNames *string `json:"signator_names,omitempty" xml:"signator_names,omitempty"`
 	// 详细文件哈希
+	// example:
+	//
+	// a91a8201ad7362f9d224937cfb715b086ea1cf0d884f1c5b1f3ed092fddff1cqa
 	DetailInfoFileHash *string `json:"detail_info_file_hash,omitempty" xml:"detail_info_file_hash,omitempty"`
 }
 
@@ -3560,8 +4611,14 @@ func (s *ContractNotaryFinishInfo) SetDetailInfoFileHash(v string) *ContractNota
 // 见证流程文档检验数据
 type WitnessDocs struct {
 	// 文档摘要值
+	// example:
+	//
+	// 04181b49ee5d7eb0099a289ac8a45df6afb5aa2679c5284444698a9790099269
 	DocHash *string `json:"doc_hash,omitempty" xml:"doc_hash,omitempty" require:"true"`
 	// 第三方文档id
+	// example:
+	//
+	// someId
 	ThirdDocId *string `json:"third_doc_id,omitempty" xml:"third_doc_id,omitempty" require:"true"`
 }
 
@@ -3586,20 +4643,44 @@ func (s *WitnessDocs) SetThirdDocId(v string) *WitnessDocs {
 // 平台方自动签署区信息
 type ContractPlatformSignField struct {
 	// 是否添加签署时间戳，默认不添加，时间格式如"2019-03-11 10:12:12"
+	// example:
+	//
+	// true, false
 	AddSignTime *bool `json:"add_sign_time,omitempty" xml:"add_sign_time,omitempty"`
 	// 签署区顺序，默认1,且不小于1，顺序越小越先处理
+	// example:
+	//
+	// 1
 	Order *int64 `json:"order,omitempty" xml:"order,omitempty"`
 	// 页码信息，当签署区signType为2时, 页码可以_-_分割, 其他情况只能是数字
+	// example:
+	//
+	// 1
 	PosPage *string `json:"pos_page,omitempty" xml:"pos_page,omitempty" require:"true"`
 	// x坐标转为字符串的值，默认空
+	// example:
+	//
+	// 158.72531
 	PosX *string `json:"pos_x,omitempty" xml:"pos_x,omitempty"`
 	// y坐标转为字符串的值
+	// example:
+	//
+	// 431.05658
 	PosY *string `json:"pos_y,omitempty" xml:"pos_y,omitempty" require:"true"`
 	// 印章id ，如不传，则采用账号下的默认印章
+	// example:
+	//
+	// bcd7ffd9-5caf-4342-bd1c-02257229ccd5
 	SealId *string `json:"seal_id,omitempty" xml:"seal_id,omitempty"`
 	// 第三方业务流水号id，保证相同签署人、相同签约主体、相同签署顺序的任务，对应的第三方业务流水id唯一，默认空
+	// example:
+	//
+	// someordernumber
 	ThirdOrderNo *string `json:"third_order_no,omitempty" xml:"third_order_no,omitempty"`
 	// 签署区宽，默认印章宽度
+	// example:
+	//
+	// 1
 	Width *string `json:"width,omitempty" xml:"width,omitempty"`
 }
 
@@ -3658,6 +4739,9 @@ type ContractDocSignVerifyInfo struct {
 	// 签名信息
 	Signature *ContractDocSignVerifySignatureInfo `json:"signature,omitempty" xml:"signature,omitempty"`
 	// 印章数据
+	// example:
+	//
+	// 35058319XXxxxxxx33
 	SealData *string `json:"seal_data,omitempty" xml:"seal_data,omitempty"`
 }
 
@@ -3691,10 +4775,19 @@ type WitnessSignData struct {
 	// 印章id列表
 	SealIds []*string `json:"seal_ids,omitempty" xml:"seal_ids,omitempty" type:"Repeated"`
 	// 待签署文档摘要值，批量签时必传
+	// example:
+	//
+	// 04181b49ee5d7eb0099a289ac8a45df6afb5aa2679c5284444698a9790099269
 	SignHash *string `json:"sign_hash,omitempty" xml:"sign_hash,omitempty"`
 	// 签署位置信息
+	// example:
+	//
+	//
 	SignPosData *string `json:"sign_pos_data,omitempty" xml:"sign_pos_data,omitempty"`
 	// 第三方文档id，批量签时必传
+	// example:
+	//
+	//
 	ThirdDocId *string `json:"third_doc_id,omitempty" xml:"third_doc_id,omitempty"`
 }
 
@@ -3734,21 +4827,48 @@ func (s *WitnessSignData) SetThirdDocId(v string) *WitnessSignData {
 // 生成签名图片明细
 type CreatePngDetails struct {
 	// 明细唯一id，必填（用于标识明细中的唯一键，返回多个图片地址时，根据id去进行匹配）
+	// example:
+	//
+	// 明细唯一id，必填（用于标识明细中的唯一键，返回多个图片地址时，根据id去进行匹配）
 	Id *string `json:"id,omitempty" xml:"id,omitempty" require:"true"`
 	// 身份类型，必填，SignUserTypeEnum
+	// example:
+	//
+	// 1、PERSON：个人 2、ORG：公司
 	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty" require:"true"`
 	// 名称，个人姓名/公司名称
+	// example:
+	//
+	// 个人姓名/公司名称
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 证件号，个人身份证/公司统一社会信用代码
+	// example:
+	//
+	// 个人身份证/公司统一社会信用代码
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty" require:"true"`
 	// 字体大小，选填，推荐不传（除特殊场景需要），默认40
+	// example:
+	//
+	// 40
 	FontSize *int64 `json:"font_size,omitempty" xml:"font_size,omitempty"`
 	// 自定义名称，选填，不传则默认按照name参数中的值生成文件名。此参数主要用于同一个人需要生成不同样式的签名图片场景
+	// example:
+	//
+	// 自定义名称
 	CustomName *string `json:"custom_name,omitempty" xml:"custom_name,omitempty"`
+	// 字体颜色，选填，推荐不传（除特殊场景需要），默认黑色
+	// example:
+	//
 	// 字体颜色，选填，推荐不传（除特殊场景需要），默认黑色
 	FontColor *string `json:"font_color,omitempty" xml:"font_color,omitempty"`
 	// [是否带边框，选填，推荐不传（除特殊场景需要），默认false]": "boolean"
+	// example:
+	//
+	// 是否带边框，选填，推荐不传（除特殊场景需要），默认false
 	WithBorder *bool `json:"with_border,omitempty" xml:"with_border,omitempty"`
+	// [边框颜色，选填，推荐不传（除特殊场景需要），默认红色]
+	// example:
+	//
 	// [边框颜色，选填，推荐不传（除特殊场景需要），默认红色]
 	BorderColor *string `json:"border_color,omitempty" xml:"border_color,omitempty"`
 }
@@ -3809,19 +4929,31 @@ func (s *CreatePngDetails) SetBorderColor(v string) *CreatePngDetails {
 // 案件基础信息
 type CaseBaseInfo struct {
 	// caseID
+	// example:
+	//
+	// 123213
 	CaseId *string `json:"case_id,omitempty" xml:"case_id,omitempty" require:"true"`
 	// PENDING_RIGHTS_PROTECTION(1, "待发起维权"),
 	// TO_BE_SUBMITTED(2, "待提交"),
 	// ACCEPTED_AND_PROCESSED(3, "收案处理中"),
 	// RESULTS_TO_BE_CONFIRMED(4, "结果待确认"),
 	// CLOSED(5, "已关闭"),
+	// example:
+	//
+	// CLOSED
 	CasePhase *string `json:"case_phase,omitempty" xml:"case_phase,omitempty" require:"true"`
 	// 维权ID
+	// example:
+	//
+	// 12323
 	RecordId *string `json:"record_id,omitempty" xml:"record_id,omitempty" require:"true"`
 	// MEDIATION(1, "调解"),
 	// LITIGATION(2, "诉讼"),
 	// ARBITRATION(3, "仲裁"),
 	// CARRIED_OUT(4, "执行"),
+	// example:
+	//
+	// MEDIATION
 	RecordType *string `json:"record_type,omitempty" xml:"record_type,omitempty" require:"true"`
 	// MATERIAL_PREPARATION(1, "材料准备中"),
 	// SUBMITTED(2, "已提交"),
@@ -3844,18 +4976,39 @@ type CaseBaseInfo struct {
 	// WITHDRAW_SIGN_REVOCATION(19, "撤案签署撤销"),
 	// SIGNED(20, "签署完成"),
 	// WITHDRAW_SIGNED(21, "撤案签署完成"),
+	// example:
+	//
+	// SUBMITTED
 	CaseStatus *string `json:"case_status,omitempty" xml:"case_status,omitempty" require:"true"`
 	// 案件提交时间
+	// example:
+	//
+	// 2022-01-06 15:23:32
 	SubmitTime *string `json:"submit_time,omitempty" xml:"submit_time,omitempty" require:"true"`
 	// 维权机构
+	// example:
+	//
+	// 宁波仲裁委
 	ArbitralBody *string `json:"arbitral_body,omitempty" xml:"arbitral_body,omitempty" require:"true"`
 	// 结案时间 如没有则为""
+	// example:
+	//
+	// 2022-01-06 12:23:12
 	CloseTime *string `json:"close_time,omitempty" xml:"close_time,omitempty"`
 	// 案号 如没有则为""
+	// example:
+	//
+	// 第x年xx号
 	AcceptanceNumber *string `json:"acceptance_number,omitempty" xml:"acceptance_number,omitempty"`
 	// 案件回款金额,两位小数 单位(元) 如没有则为""
+	// example:
+	//
+	// 1200.23
 	CasePaymentActualAmount *string `json:"case_payment_actual_amount,omitempty" xml:"case_payment_actual_amount,omitempty"`
 	// 是否能够下载 true可以下载 false没有可下载文件
+	// example:
+	//
+	// true
 	CanDownload *string `json:"can_download,omitempty" xml:"can_download,omitempty" require:"true"`
 }
 
@@ -3925,14 +5078,29 @@ func (s *CaseBaseInfo) SetCanDownload(v string) *CaseBaseInfo {
 // 电子合同存证合同文档信息
 type ContractNotaryDocumentInfo struct {
 	// 签署完成的合同hash
+	// example:
+	//
+	// content
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// 签署人ID（支持多个，不同ID间用“,”分隔开）
+	// example:
+	//
+	// account_id_1,account_id_2
 	Signatories *string `json:"signatories,omitempty" xml:"signatories,omitempty" require:"true"`
 	// 存证结束时间，UNIX时间戳(毫秒)
+	// example:
+	//
+	// 1589198173000
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty" require:"true"`
 	// 存证凭据，仅在批量核验时需要填写
+	// example:
+	//
+	// 95a8201ad7362f9d224937cfb715b086ea1cf0d884f1c5b1f3ed092fddff1c92
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty"`
 	// 签署的文件ID
+	// example:
+	//
+	// 6afb5aa2679c5284444698a9790099269
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
 }
 
@@ -3972,12 +5140,24 @@ func (s *ContractNotaryDocumentInfo) SetFileId(v string) *ContractNotaryDocument
 // 关键字位置列表
 type KeywordsPosition struct {
 	// 关键字
+	// example:
+	//
+	// keyword1
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty" require:"true"`
 	// 页码
+	// example:
+	//
+	// 32
 	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
 	// x坐标
+	// example:
+	//
+	// 315.43
 	PosX *string `json:"pos_x,omitempty" xml:"pos_x,omitempty" require:"true"`
 	// y坐标
+	// example:
+	//
+	// 185.65723
 	PosY *string `json:"pos_y,omitempty" xml:"pos_y,omitempty" require:"true"`
 }
 
@@ -4012,12 +5192,24 @@ func (s *KeywordsPosition) SetPosY(v string) *KeywordsPosition {
 // 电子合同文档的下载地址
 type ContractDocAddress struct {
 	// 电子合同文档ID
+	// example:
+	//
+	// 01e50a9cedb74493a2d320b4f4732a29
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
 	// 电子合同文档名称，默认文件名称
+	// example:
+	//
+	// 第一份合同.pdf
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty" require:"true"`
 	// 电子合同下载文档地址, 有效时间1小时
+	// example:
+	//
+	// https://xxxoss.oss-cn-hangzhou.aliyuncs.com/xxx.pdf?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
 	FileUrl *string `json:"file_url,omitempty" xml:"file_url,omitempty" require:"true"`
 	// 合同文件的存证地址
+	// example:
+	//
+	// a89495ddd334870a58686afe48a8eb83efe2dd51e4c06da7220eb1cde0f995e2
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty"`
 }
 
@@ -4052,28 +5244,64 @@ func (s *ContractDocAddress) SetTxHash(v string) *ContractDocAddress {
 // 数字票根通用字段
 type StubCommonInfo struct {
 	// 项目名称
+	// example:
+	//
+	// 黄山景区数字票根
 	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty" require:"true"`
 	// 客户名称（三方合约中甲方名称：景区或服务商）
+	// example:
+	//
+	// 黄山景区
 	SceneName *string `json:"scene_name,omitempty" xml:"scene_name,omitempty" require:"true"`
 	// 业务类型。目前只有数字票根这一个情景，枚举为：TICKET_STUB
+	// example:
+	//
+	// TICKET_STUB
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty" require:"true"`
 	// 业务来源；Alipay：支付宝，Scene：景区
+	// example:
+	//
+	// Alipay
 	BizSource *string `json:"biz_source,omitempty" xml:"biz_source,omitempty" require:"true"`
 	// 订单id。若bizSource为支付宝情况下传支付宝流水号（业务系统的出票流水号）；若bizSource为景区时传上游生成的订单号
+	// example:
+	//
+	// xxxxxx
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 订单名称
+	// example:
+	//
+	// xxxxxx
 	OrderName *string `json:"order_name,omitempty" xml:"order_name,omitempty"`
 	// 订单总金额，单位：分。如传100，即为100分，1元
+	// example:
+	//
+	// 100
 	OrderAmount *int64 `json:"order_amount,omitempty" xml:"order_amount,omitempty" require:"true"`
 	// 下单时间
+	// example:
+	//
+	// 2022-04-15 17:05:37
 	OrderTime *string `json:"order_time,omitempty" xml:"order_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 待分账金额，单位：分。如传100，即为100分，1元
+	// example:
+	//
+	// 100
 	StubAmount *int64 `json:"stub_amount,omitempty" xml:"stub_amount,omitempty" require:"true"`
 	// 客户id。支付宝情况下传支付宝id，2088打头；景区时可传自定义的客户id
+	// example:
+	//
+	// 2088xxxxx
 	CustomerId *string `json:"customer_id,omitempty" xml:"customer_id,omitempty" require:"true"`
 	// 景区支付宝id，当biz_source为Alipay时，该字段必填
+	// example:
+	//
+	// 2088xxxxx
 	SceneAlipayId *string `json:"scene_alipay_id,omitempty" xml:"scene_alipay_id,omitempty"`
 	// 数字票根背面业务类型，如 IMAGE（背面上传照片业务）、IMAGEANDAR（背面上传照片和AR孔明灯业务）
+	// example:
+	//
+	// IMAGE
 	BackType *string `json:"back_type,omitempty" xml:"back_type,omitempty"`
 }
 
@@ -4152,6 +5380,9 @@ type WitnessFlowConfig struct {
 	// 个人实名认证方式, 银行四要素：2；芝麻认证-人脸识别：3；微众-人脸识别：4；
 	PersonRealnameTypes []*int64 `json:"person_realname_types,omitempty" xml:"person_realname_types,omitempty" type:"Repeated"`
 	// 是否需要实名认证
+	// example:
+	//
+	// true, false
 	RealNameCert *bool `json:"real_name_cert,omitempty" xml:"real_name_cert,omitempty"`
 	// 意愿认证方式, 芝麻认证-人脸识别：2；短信验证码：3；微众-人脸识别：4；ukey认证：5；签署密码认证：6；
 	WillingnessTypes []*int64 `json:"willingness_types,omitempty" xml:"willingness_types,omitempty" type:"Repeated"`
@@ -4188,6 +5419,9 @@ func (s *WitnessFlowConfig) SetWillingnessTypes(v []*int64) *WitnessFlowConfig {
 // 见证流程审批数据
 type WitnessApprovalData struct {
 	// 审批流程id
+	// example:
+	//
+	// someId
 	ApprovalFlowId *string `json:"approval_flow_id,omitempty" xml:"approval_flow_id,omitempty"`
 	// 印章id列表
 	SealIds []*string `json:"seal_ids,omitempty" xml:"seal_ids,omitempty" type:"Repeated"`
@@ -4214,40 +5448,94 @@ func (s *WitnessApprovalData) SetSealIds(v []*string) *WitnessApprovalData {
 // 供应商商品信息
 type SupplierProductItem struct {
 	// 供应商名称
+	// example:
+	//
+	// 戴尔
 	SupplierName *string `json:"supplier_name,omitempty" xml:"supplier_name,omitempty"`
+	// 商品型号
+	// example:
+	//
 	// 商品型号
 	ProductModel *string `json:"product_model,omitempty" xml:"product_model,omitempty" require:"true"`
 	// 供应商id
+	// example:
+	//
+	// 供应商id
 	SupplierId *string `json:"supplier_id,omitempty" xml:"supplier_id,omitempty"`
 	// 商品唯一id
+	// example:
+	//
+	// 2023423424
 	ProductId *string `json:"product_id,omitempty" xml:"product_id,omitempty" require:"true"`
 	// 3C
+	// example:
+	//
+	// 一级类目
 	MainClass *string `json:"main_class,omitempty" xml:"main_class,omitempty" require:"true"`
 	// 预计发货量
+	// example:
+	//
+	// 100
 	EstimatedShipment *int64 `json:"estimated_shipment,omitempty" xml:"estimated_shipment,omitempty"`
 	// 二级类目
+	// example:
+	//
+	// 3C_pc
 	SubClass *string `json:"sub_class,omitempty" xml:"sub_class,omitempty" require:"true"`
+	// 商品详情
+	// example:
+	//
 	// 商品详情
 	ProductDetailInfo *string `json:"product_detail_info,omitempty" xml:"product_detail_info,omitempty" require:"true"`
 	// 商品品牌
+	// example:
+	//
+	// 商品品牌
 	ProductBrand *string `json:"product_brand,omitempty" xml:"product_brand,omitempty" require:"true"`
 	// 商品来源
+	// example:
+	//
+	// 1
 	ProductOrigin *int64 `json:"product_origin,omitempty" xml:"product_origin,omitempty" require:"true"`
+	// 商品名称
+	// example:
+	//
 	// 商品名称
 	ProductName *string `json:"product_name,omitempty" xml:"product_name,omitempty" require:"true"`
 	// 商品版本
+	// example:
+	//
+	// 0
 	ProductVersion *int64 `json:"product_version,omitempty" xml:"product_version,omitempty" require:"true"`
 	// 商品安装费用
+	// example:
+	//
+	// 100
 	InstallPrice *int64 `json:"install_price,omitempty" xml:"install_price,omitempty"`
 	// 实际库存
+	// example:
+	//
+	// 0
 	RealStock *int64 `json:"real_stock,omitempty" xml:"real_stock,omitempty"`
 	// 保证金
+	// example:
+	//
+	// 0
 	DepositPrice *int64 `json:"deposit_price,omitempty" xml:"deposit_price,omitempty"`
 	// 商品url
+	// example:
+	//
+	// http://www.product.url
 	ProductUrl *string `json:"product_url,omitempty" xml:"product_url,omitempty"`
 	// 官网价
+	// example:
+	//
+	// 1000
 	ProductPrice *int64 `json:"product_price,omitempty" xml:"product_price,omitempty" require:"true"`
 	// 商品预留字段
+	// example:
+	//
+	// {}
 	ExtraInfo *string `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 }
 
@@ -4352,12 +5640,24 @@ func (s *SupplierProductItem) SetExtraInfo(v string) *SupplierProductItem {
 // 阶段存证进度查询结果
 type PhaseQueryResult struct {
 	// 阶段ID
+	// example:
+	//
+	// 4a605f04-ae9f-48d3-88ba-05c073ad5484
 	PhaseId *string `json:"phase_id,omitempty" xml:"phase_id,omitempty" require:"true"`
 	// 阶段存证的链上交易Hash，只有status为FINISH才会返回
+	// example:
+	//
+	// 04181b49ee5d7eb0099a289ac8a45df6afb5aa2679c5284444698a97900xx269
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 阶段存证状态
+	// example:
+	//
+	// FINISH
 	Status *string `json:"status,omitempty" xml:"status,omitempty" require:"true"`
 	// 阶段注册成功时间戳
+	// example:
+	//
+	// 12345678
 	RegisterTime *int64 `json:"register_time,omitempty" xml:"register_time,omitempty" require:"true"`
 }
 
@@ -4392,8 +5692,14 @@ func (s *PhaseQueryResult) SetRegisterTime(v int64) *PhaseQueryResult {
 // 采购商品信息
 type ApplySupplierOrderProductInput struct {
 	// 采购商品id
+	// example:
+	//
+	// 202024234234
 	ProductId *string `json:"product_id,omitempty" xml:"product_id,omitempty" require:"true"`
 	// 采购商品数量
+	// example:
+	//
+	// 100
 	ProductNum *int64 `json:"product_num,omitempty" xml:"product_num,omitempty" require:"true"`
 }
 
@@ -4418,19 +5724,45 @@ func (s *ApplySupplierOrderProductInput) SetProductNum(v int64) *ApplySupplierOr
 // 智能合同机构账户创建申请信息
 type ContractOrganizationApplication struct {
 	// 证件号
+	// example:
+	//
+	// 12330100470104939U
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty" require:"true"`
 	// 证件类型，默认CRED_ORG_USCC，详见机构证件类型说明 （https://antchain.antgroup.com/docs/2/424437#）
+	// example:
+	//
+	// CRED_ORG_USCC
 	IdType *string `json:"id_type,omitempty" xml:"id_type,omitempty" require:"true"`
 	// 企业法人名称
+	// example:
+	//
+	// 测试法人
 	LegalPerson *string `json:"legal_person,omitempty" xml:"legal_person,omitempty"`
 	// 企业法人证件号
+	// example:
+	//
+	// 311111111111111111
 	LegalPersonId *string `json:"legal_person_id,omitempty" xml:"legal_person_id,omitempty"`
 	// 机构名称
+	// example:
+	//
+	// 测试企业
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 机构唯一标识，可传入第三方平台的机构用户id等
+	// example:
+	//
+	// B002
 	OrganizationId *string `json:"organization_id,omitempty" xml:"organization_id,omitempty"`
 	// 机构子类型：ENTERPRISE（企业）、SELF-EMPLOYED（个体工商户）、SUBSIDIARY（分公司）、OTHERORG（其他机构）。若填入这些类型，将会进行相应参数校验，例如：企业类型要求进行企业四要素校验，企业证件号必须是91开头，并且企业类型在签署时会需要授权后才可进行签署；个体工商户要求证件号必须是92开头，其余类型无其他校验。不填入此参数不会进行校验。
+	// example:
+	//
+	// ENTERPRISE
 	OrgType *string `json:"org_type,omitempty" xml:"org_type,omitempty"`
+	// 灰度切流配置:true-灰度切流/ false-灰度切流
+	// example:
+	//
+	// false
+	NewAppId *bool `json:"new_app_id,omitempty" xml:"new_app_id,omitempty"`
 }
 
 func (s ContractOrganizationApplication) String() string {
@@ -4476,13 +5808,27 @@ func (s *ContractOrganizationApplication) SetOrgType(v string) *ContractOrganiza
 	return s
 }
 
+func (s *ContractOrganizationApplication) SetNewAppId(v bool) *ContractOrganizationApplication {
+	s.NewAppId = &v
+	return s
+}
+
 // 阶段存证结果
 type PhaseCreateResult struct {
 	// 阶段编号，与模板阶段编号保持一致，不同阶段阶段编号不一样，要与阶段存证内容保持一致
+	// example:
+	//
+	// 1
 	PhaseNo *int64 `json:"phase_no,omitempty" xml:"phase_no,omitempty" require:"true"`
 	// 阶段ID，阶段存证的唯一标记
+	// example:
+	//
+	// 4a605f04-ae9f-48d3-88ba-05c073ad5484
 	PhaseId *string `json:"phase_id,omitempty" xml:"phase_id,omitempty" require:"true"`
 	// 业务方原始数据ID，方便与业务方进行数据核对使用，并且如果同一个阶段多次存证，则需要根据业务方原始数据ID识别不同的阶段存证响应
+	// example:
+	//
+	// xxx
 	OriginDataId *string `json:"origin_data_id,omitempty" xml:"origin_data_id,omitempty" require:"true"`
 }
 
@@ -4512,26 +5858,50 @@ func (s *PhaseCreateResult) SetOriginDataId(v string) *PhaseCreateResult {
 // 证据清单
 type EvidentialCheckList struct {
 	// 证据名称英文
+	// example:
+	//
+	// LEGAL_IDENETITY_CERT
 	EvidentialNameEn *string `json:"evidential_name_en,omitempty" xml:"evidential_name_en,omitempty" require:"true"`
 	// 文件名称
+	// example:
+	//
+	// a.txt
 	OssFileName *string `json:"oss_file_name,omitempty" xml:"oss_file_name,omitempty" require:"true"`
 	// 文件fileKey ，调用获取文件上传链接时对应的fileKey
+	// example:
+	//
+	// 201906182149291c15e6c2d400fc3323b09f44a4e79bdf2db867a3fb9400a168de3325205519.jpg
 	OssFileKey *string `json:"oss_file_key,omitempty" xml:"oss_file_key,omitempty" require:"true"`
 	// 证据来源
 	// BUSINESS_UPLOAD	业务传入
 	// ADD_MANULLY	手动添加
+	// example:
+	//
+	// BUSINESS_UPLOAD
 	SourcesOfEvidence *string `json:"sources_of_evidence,omitempty" xml:"sources_of_evidence,omitempty" require:"true"`
 	// 证据类型
 	// BLOCKCHAIN_DEPOSIT	区块链存证
 	// USER_UPLOAD	用户上传
+	// example:
+	//
+	// BLOCKCHAIN_DEPOSIT
 	EvidenceType *string `json:"evidence_type,omitempty" xml:"evidence_type,omitempty" require:"true"`
 	// 存证类型
 	// TEXT	文本
 	// FILE	文件
+	// example:
+	//
+	// TEXT
 	DepositType *string `json:"deposit_type,omitempty" xml:"deposit_type,omitempty" require:"true"`
 	// 存证哈希 当为区块链存证必填
+	// example:
+	//
+	// 1234545676575675673
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty"`
 	// 存证时间 当为区块链存证必填
+	// example:
+	//
+	// 2021-05-07 17:13:50
 	DepositTime *string `json:"deposit_time,omitempty" xml:"deposit_time,omitempty"`
 }
 
@@ -4586,10 +5956,19 @@ func (s *EvidentialCheckList) SetDepositTime(v string) *EvidentialCheckList {
 // 见证流程签署结果数据
 type WitnessSignResult struct {
 	// 签名结果，外部用户签署返回
+	// example:
+	//
+	//
 	SignResult *string `json:"sign_result,omitempty" xml:"sign_result,omitempty"`
 	// 签署日志id，外部用户签署返回
+	// example:
+	//
+	//
 	SignlogId *string `json:"signlog_id,omitempty" xml:"signlog_id,omitempty"`
 	// 第三方文档id
+	// example:
+	//
+	//
 	ThirdDocId *string `json:"third_doc_id,omitempty" xml:"third_doc_id,omitempty"`
 }
 
@@ -4619,14 +5998,29 @@ func (s *WitnessSignResult) SetThirdDocId(v string) *WitnessSignResult {
 // 核验请求时对应的存证元数据
 type NotaryCheckMeta struct {
 	// 对应的法院编号
+	// example:
+	//
+	// hzfy
 	AgencyCode *string `json:"agency_code,omitempty" xml:"agency_code,omitempty"`
 	// 哈希算法, notary_type 为 HASH 时此参数必填
+	// example:
+	//
+	// SHA256
 	HashAlgorithm *string `json:"hash_algorithm,omitempty" xml:"hash_algorithm,omitempty"`
 	// 存证内容
+	// example:
+	//
+	// 5p2t5bee5LuK5aSp5aSp5rCU6Zi0
 	NotaryContent *string `json:"notary_content,omitempty" xml:"notary_content,omitempty" require:"true"`
 	// 交易哈希
+	// example:
+	//
+	// aac0cf38b6072352f6b3be4cc0a3cf3950058472eacdda91e6723d75e2994567
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 应用ID
+	// example:
+	//
+	// dstj
 	ApplicationCode *string `json:"application_code,omitempty" xml:"application_code,omitempty"`
 }
 
@@ -4666,12 +6060,24 @@ func (s *NotaryCheckMeta) SetApplicationCode(v string) *NotaryCheckMeta {
 // 电子合同存证代扣计划退款信息
 type ContractNotaryDeductRefundInfo struct {
 	// PAYERIDNUMBER
+	// example:
+	//
+	// 付款方ID
 	PayerId *string `json:"payer_id,omitempty" xml:"payer_id,omitempty" require:"true"`
 	// 退款金额，单位分
+	// example:
+	//
+	// 100
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty" require:"true"`
 	// 代扣计划ID
+	// example:
+	//
+	// 04181b49ee5d7eb0099a289ac8a45df6afb5aa2679c5284444698a9790099269_1
 	Order *string `json:"order,omitempty" xml:"order,omitempty" require:"true"`
 	// 退款操作发起时间
+	// example:
+	//
+	// 1589198173000
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty" require:"true"`
 }
 
@@ -4706,6 +6112,9 @@ func (s *ContractNotaryDeductRefundInfo) SetTimestamp(v string) *ContractNotaryD
 // 共享项目，资产端的采购平台回传的物流信息
 type SupplierLogisticInfo struct {
 	// 采购平台的物流单号
+	// example:
+	//
+	// SF1234567890
 	LogisticOrderId *string `json:"logistic_order_id,omitempty" xml:"logistic_order_id,omitempty" require:"true"`
 }
 
@@ -4725,18 +6134,39 @@ func (s *SupplierLogisticInfo) SetLogisticOrderId(v string) *SupplierLogisticInf
 // 人保扩展信息
 type RenbaoExtInfo struct {
 	// 银行区域代码，可网上查询各银行最新对应的区域代码，比如杭州的区域代码为：3301
+	// example:
+	//
+	// 3301
 	RecBankAreaCode *string `json:"rec_bank_area_code,omitempty" xml:"rec_bank_area_code,omitempty" require:"true" maxLength:"8"`
 	// 投保人收款账号
+	// example:
+	//
+	// 8765123556748921
 	AccountNo *string `json:"account_no,omitempty" xml:"account_no,omitempty" require:"true" maxLength:"32"`
 	// 完整银行名称，不需要具体到分行
+	// example:
+	//
+	// 工商银行
 	BankName *string `json:"bank_name,omitempty" xml:"bank_name,omitempty" require:"true" maxLength:"32"`
 	// 投保人户名
+	// example:
+	//
+	// XXXXX有限公司
 	AccountName *string `json:"account_name,omitempty" xml:"account_name,omitempty" require:"true" maxLength:"64"`
 	// 联行号
+	// example:
+	//
+	// 827330119378
 	Cnaps *string `json:"cnaps,omitempty" xml:"cnaps,omitempty" require:"true" maxLength:"16"`
 	// 统一社会信用代码
+	// example:
+	//
+	// 173829930011029381
 	IdentifyNo *string `json:"identify_no,omitempty" xml:"identify_no,omitempty" require:"true" maxLength:"32"`
 	// 银行代码
+	// example:
+	//
+	// BOC
 	BankCode *string `json:"bank_code,omitempty" xml:"bank_code,omitempty" require:"true" maxLength:"16"`
 }
 
@@ -4790,6 +6220,9 @@ type JudicialEventOperateInfo struct {
 	//   延期确认: DELAY_CONFIRM
 	//   回款确认: CASH_CONFIRM
 	//
+	// example:
+	//
+	// DELAY_CONFIRM
 	OperateType *string `json:"operate_type,omitempty" xml:"operate_type,omitempty" require:"true"`
 	// 响应内容
 	// 延期确认
@@ -4798,10 +6231,19 @@ type JudicialEventOperateInfo struct {
 	// 回款确认:
 	//   确认-CONFIRM
 	//   有异议-DISSENT
+	// example:
+	//
+	// CONFIRM
 	OperateOpinion *string `json:"operate_opinion,omitempty" xml:"operate_opinion,omitempty" require:"true"`
 	// 当延期申请不同意,回款确认有异议时填写原因
+	// example:
+	//
+	// 请求延期,请批准
 	OperateReason *string `json:"operate_reason,omitempty" xml:"operate_reason,omitempty"`
 	// 回款记录编号,回款确认时必填
+	// example:
+	//
+	// 202243243234a
 	ReqBizNo *string `json:"req_biz_no,omitempty" xml:"req_biz_no,omitempty"`
 }
 
@@ -4836,18 +6278,39 @@ func (s *JudicialEventOperateInfo) SetReqBizNo(v string) *JudicialEventOperateIn
 // 电子合同签署流程的配置信息
 type ContractSignFlowConfig struct {
 	// 回调通知地址 ,默认取项目配置通知地址
+	// example:
+	//
+	// http://127.0.0.1:9110/notice
 	NoticeDeveloperUrl *string `json:"notice_developer_url,omitempty" xml:"notice_developer_url,omitempty"`
 	// 签署通知和审批通知的通知方式，传 "" 表示不需要通知，传"1"表示短信通知。短信功能需要联系售后开白名单才会生效。
+	// example:
+	//
+	// 1
 	NoticeType *string `json:"notice_type,omitempty" xml:"notice_type,omitempty" require:"true"`
 	// 签署成功或者流程结束后的默认重定向地址，默认签署完成停在当前页面
+	// example:
+	//
+	// http://127.0.0.1:8110/h5/forword
 	RedirectUrl *string `json:"redirect_url,omitempty" xml:"redirect_url,omitempty"`
 	// 【该字段已废弃】签署平台，逗号分割，1-开放服务h5，2-支付宝签 ，默认值1
+	// example:
+	//
+	// 1
 	SignPlatform *string `json:"sign_platform,omitempty" xml:"sign_platform,omitempty"`
 	// 签署失败时的跳转地址，如果不做单独配置，默认与redirect_url一致（配合twc.notary.contract.signflow.create接口使用）
+	// example:
+	//
+	// http://127.0.0.1:8110/h5/forword/failure
 	RedirectUrlOnFailure *string `json:"redirect_url_on_failure,omitempty" xml:"redirect_url_on_failure,omitempty"`
 	// 是否允许自由签署，默认false（配合twc.notary.contract.signflow.create接口使用）
+	// example:
+	//
+	// true, false
 	FreeSignature *bool `json:"free_signature,omitempty" xml:"free_signature,omitempty"`
 	// 代扣签署回调地址,配合代扣签署一起使用
+	// example:
+	//
+	// http://127.0.0.1:8110/xxx
 	CombineSignRedirectUrl *string `json:"combine_sign_redirect_url,omitempty" xml:"combine_sign_redirect_url,omitempty"`
 }
 
@@ -4897,14 +6360,29 @@ func (s *ContractSignFlowConfig) SetCombineSignRedirectUrl(v string) *ContractSi
 // 融资租赁商品出租详细信息
 type RentInfo struct {
 	// 租金
+	// example:
+	//
+	// 2933300
 	RentPrice *int64 `json:"rent_price,omitempty" xml:"rent_price,omitempty" require:"true"`
 	// 租期
+	// example:
+	//
+	// 12
 	RentTerm *int64 `json:"rent_term,omitempty" xml:"rent_term,omitempty" require:"true"`
 	// 手续费
+	// example:
+	//
+	// 1234
 	Commission *int64 `json:"commission,omitempty" xml:"commission,omitempty" require:"true"`
 	// 买断价
+	// example:
+	//
+	// 0
 	BuyoutPrice *int64 `json:"buyout_price,omitempty" xml:"buyout_price,omitempty" require:"true"`
 	// 留购价
+	// example:
+	//
+	// 31903
 	RetainedPrice *int64 `json:"retained_price,omitempty" xml:"retained_price,omitempty" require:"true"`
 }
 
@@ -4944,20 +6422,44 @@ func (s *RentInfo) SetRetainedPrice(v int64) *RentInfo {
 // 融资租赁清分信息
 type LeaseClearingInfo struct {
 	// 还款批次
+	// example:
+	//
+	// 1
 	ReturnIndex *int64 `json:"return_index,omitempty" xml:"return_index,omitempty" require:"true"`
 	// 清分状态
+	// example:
+	//
+	// 1
 	ClearingState *int64 `json:"clearing_state,omitempty" xml:"clearing_state,omitempty" require:"true"`
 	// 清分金额,精确到毫厘，即123400表示12.34元
+	// example:
+	//
+	// 123400
 	ClearingMoney *int64 `json:"clearing_money,omitempty" xml:"clearing_money,omitempty" require:"true"`
 	// 开始清分时间
+	// example:
+	//
+	// 2019-07-31 12:00:00
 	StartTime *string `json:"start_time,omitempty" xml:"start_time,omitempty" require:"true"`
 	// 结束清分时间
+	// example:
+	//
+	// 2019-08-31 12:00:00
 	EndTime *string `json:"end_time,omitempty" xml:"end_time,omitempty" require:"true"`
 	// 清分单号
+	// example:
+	//
+	// 2021231231231313
 	ClearingOrderId *string `json:"clearing_order_id,omitempty" xml:"clearing_order_id,omitempty" require:"true"`
 	// 清分收款账号
+	// example:
+	//
+	// 88234234234xxxx
 	ClearingAccount *string `json:"clearing_account,omitempty" xml:"clearing_account,omitempty" require:"true"`
 	// 清分额外说明
+	// example:
+	//
+	// ""
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty" require:"true"`
 }
 
@@ -5012,16 +6514,28 @@ func (s *LeaseClearingInfo) SetMemo(v string) *LeaseClearingInfo {
 // 实人信息
 type BclCertifyInfo struct {
 	// 认证id
+	// example:
+	//
+	// 071b2346e73dfe309345ff9954722d01
 	CertifyId *string `json:"certify_id,omitempty" xml:"certify_id,omitempty"`
 	// 认证url 如果status待认证,该字段非空,
 	// 如果认证失败,这里的新的认证链接,支持重复认证
+	// example:
+	//
+	// https://asdqweqw.com/asd
 	CertifyUrl *string `json:"certify_url,omitempty" xml:"certify_url,omitempty"`
 	// 认证描述
+	// example:
+	//
+	// 通过
 	ResultDesc *string `json:"result_desc,omitempty" xml:"result_desc,omitempty"`
 	// 认证状态
 	// 1.待认证：INIT
 	// 2.认证成功：PASS
 	// 3.认证失败：FAIL
+	// example:
+	//
+	// INIT
 	Status *string `json:"status,omitempty" xml:"status,omitempty" require:"true"`
 }
 
@@ -5056,12 +6570,24 @@ func (s *BclCertifyInfo) SetStatus(v string) *BclCertifyInfo {
 // 子任务信息
 type SubAntSignResult struct {
 	// 子业务流水号
+	// example:
+	//
+	// subBizNo12345678901
 	SubBizNo *string `json:"sub_biz_no,omitempty" xml:"sub_biz_no,omitempty" require:"true"`
+	// 子任务流水号
+	// example:
+	//
 	// 子任务流水号
 	SignTaskId *string `json:"sign_task_id,omitempty" xml:"sign_task_id,omitempty"`
 	// 我方userId
+	// example:
+	//
+	// 我方userId
 	OurUserId *string `json:"our_user_id,omitempty" xml:"our_user_id,omitempty"`
 	// 是否关联业务
+	// example:
+	//
+	// true, false
 	RelatedBusiness *bool `json:"related_business,omitempty" xml:"related_business,omitempty"`
 	// 签署链接
 	AntSignUrlResultList []*AntSignUrlResult `json:"ant_sign_url_result_list,omitempty" xml:"ant_sign_url_result_list,omitempty" require:"true" type:"Repeated"`
@@ -5103,22 +6629,49 @@ func (s *SubAntSignResult) SetAntSignUrlResultList(v []*AntSignUrlResult) *SubAn
 // 代扣订单信息
 type DeductOrderInfo struct {
 	// 订单id
+	// example:
+	//
+	// 9d3057dfdcad494fb2d9033130
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 商户统一社会信用代码
+	// example:
+	//
+	// 91310101MA1FPODA3G
 	MerchantId *string `json:"merchant_id,omitempty" xml:"merchant_id,omitempty" require:"true"`
 	// 租户id
+	// example:
+	//
+	// CYRMAXCZ
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
 	// 用户支付宝uid
+	// example:
+	//
+	// 2088xxxxxxxx8721
 	AlipayUserId *string `json:"alipay_user_id,omitempty" xml:"alipay_user_id,omitempty" require:"true"`
 	// 商品名称
+	// example:
+	//
+	// iPhone19 Pro Max
 	ProductName *string `json:"product_name,omitempty" xml:"product_name,omitempty"`
 	// 订单创建时间
+	// example:
+	//
+	// 2024-01-01 00:00:00
 	OrderCreateDate *string `json:"order_create_date,omitempty" xml:"order_create_date,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 订单状态
+	// example:
+	//
+	// OPEN
 	OrderStatusCode *string `json:"order_status_code,omitempty" xml:"order_status_code,omitempty"`
 	// 订单子状态,ORDER_FULFILLMENT: 履约中;ORDER_FULFILLMENT_COMPLETED:履约完成;
+	// example:
+	//
+	// ORDER_FULFILLMENT
 	OrderSubStatusCode *string `json:"order_sub_status_code,omitempty" xml:"order_sub_status_code,omitempty" require:"true"`
 	// 总金额，单位为分
+	// example:
+	//
+	// 100
 	TotalRentMoney *int64 `json:"total_rent_money,omitempty" xml:"total_rent_money,omitempty" require:"true"`
 }
 
@@ -5180,6 +6733,9 @@ type BclContractFlowInfo struct {
 	// 合同主题
 	// 注：名称不支持以下9个字符：/ \ : * " < > | ？
 	// 仅当使用合同服务时必填
+	// example:
+	//
+	// 主题信息
 	BusinessScene *string `json:"business_scene,omitempty" xml:"business_scene,omitempty" maxLength:"32"`
 	// 流程中的签署文件信息
 	// 本期只支持一个文件
@@ -5187,18 +6743,33 @@ type BclContractFlowInfo struct {
 	FileInfo []*BclContractFileInfo `json:"file_info,omitempty" xml:"file_info,omitempty" type:"Repeated"`
 	// 签署失败时的跳转地址
 	// 如果不做单独配置，默认与redirect_url一致
+	// example:
+	//
+	// http://www.xxx.com
 	RedirectUrlOnFailure *string `json:"redirect_url_on_failure,omitempty" xml:"redirect_url_on_failure,omitempty" maxLength:"512"`
 	// 流程结束后的默认重定向地址
 	// 默认签署完成停在当前页面
+	// example:
+	//
+	// http://www.xxx.com
 	RedirectUrl *string `json:"redirect_url,omitempty" xml:"redirect_url,omitempty" maxLength:"512"`
 	// 签署平台，ALIPAY（支付宝小程序）或H5，默认H5
+	// example:
+	//
+	// ALIPAY
 	SignPlatform *string `json:"sign_platform,omitempty" xml:"sign_platform,omitempty"`
 	// 收款方的ID，调用创建收款方接口获得
+	// example:
+	//
+	// 202308181123XXX
 	PayeeId *string `json:"payee_id,omitempty" xml:"payee_id,omitempty"`
 	// 签署模式:
 	// 模板签署:TEMPLATE_SIGN,使用同模板流程创建合同信息；
 	// 原文签署:ORIGINAL_SIGN，使用原来的流程创建合同信息;
 	// 未传值即为(原文签署:ORIGINAL_SIGN)
+	// example:
+	//
+	// TEMPLATE_SIGN
 	SignMode *string `json:"sign_mode,omitempty" xml:"sign_mode,omitempty"`
 }
 
@@ -5248,46 +6819,109 @@ func (s *BclContractFlowInfo) SetSignMode(v string) *BclContractFlowInfo {
 // 手动签署区结构体
 type ContractEHandSignFieldApplication struct {
 	// 签署操作人个人账号标识，即操作本次签署的个人
+	// example:
+	//
+	// 2c7de24aff3340f5b944ebac49545b8e
 	AccountId *string `json:"account_id,omitempty" xml:"account_id,omitempty" require:"true"`
 	// 签约主体账号标识，即本次签署对应任务的归属方，默认是签署操作人个人
+	// example:
+	//
+	// 签署账号
 	AuthorizedAccountId *string `json:"authorized_account_id,omitempty" xml:"authorized_account_id,omitempty"`
 	// 机构签约类别，当签约主体为机构时必传：2-机构盖章；
+	// example:
+	//
+	// 2
 	ActorIndentityType *int64 `json:"actor_indentity_type,omitempty" xml:"actor_indentity_type,omitempty"`
 	// 电子合同文件ID
+	// example:
+	//
+	// fe7df2f477d649c18ebcfdfffeba253d
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
 	// 签署区顺序，默认1,且不小于1，顺序越小越先处理
+	// example:
+	//
+	// 1
 	Order *int64 `json:"order,omitempty" xml:"order,omitempty"`
 	// 页码信息：当签署区signType为2时, 页码可以_-_分割, 例如1到15页，填"1-15"； 其他情况只能是数字；不指定xy坐标签署区可不填写
+	// example:
+	//
+	// 1
 	PosPage *string `json:"pos_page,omitempty" xml:"pos_page,omitempty"`
 	// x坐标，页面签章必填，骑缝签章不填写
+	// example:
+	//
+	// 1.1
 	PosX *string `json:"pos_x,omitempty" xml:"pos_x,omitempty"`
 	// y坐标
+	// example:
+	//
+	// 1.1
 	PosY *string `json:"pos_y,omitempty" xml:"pos_y,omitempty"`
 	// 印章id
+	// example:
+	//
+	// bcd7ffd9-5caf-4342-bd1c-02257229ccd5
 	SealId *string `json:"seal_id,omitempty" xml:"seal_id,omitempty"`
 	// 是否需要添加签署日期，0-禁止 1-必须 ，默认0
+	// example:
+	//
+	// -
 	SignDateBeanType *int64 `json:"sign_date_bean_type,omitempty" xml:"sign_date_bean_type,omitempty"`
 	// 签章日期字体大小,默认12
+	// example:
+	//
+	// -
 	SignDateFontSize *int64 `json:"sign_date_font_size,omitempty" xml:"sign_date_font_size,omitempty"`
 	// 签章日期格式，yyyy年MM月dd日
+	// example:
+	//
+	// yyyy年MM月dd日
 	SignDateFormat *string `json:"sign_date_format,omitempty" xml:"sign_date_format,omitempty"`
 	// 页码信息，当signDateBeanType为1时，代表签署的印章必须展示签署日期，默认放在印章正下方，签署人可拖拽日期到当前页面的其他位置，如果发起方指定签署位置的同时，需要同时指定日期盖章位置，则需传入日期盖章页码（与印章页码相同），在传入X\Y坐标即可。
+	// example:
+	//
+	// -
 	SignDatePosPage *int64 `json:"sign_date_pos_page,omitempty" xml:"sign_date_pos_page,omitempty"`
 	// 签章日期x坐标，默认0
+	// example:
+	//
+	// 1.1
 	SignDatePosX *string `json:"sign_date_pos_x,omitempty" xml:"sign_date_pos_x,omitempty"`
 	// 签章日期y坐标，默认0
+	// example:
+	//
+	// 1.1
 	SignDatePosY *string `json:"sign_date_pos_y,omitempty" xml:"sign_date_pos_y,omitempty"`
 	// 签署类型，1-单页签署，2-骑缝签署，默认1
+	// example:
+	//
+	// -
 	SignType *int64 `json:"sign_type,omitempty" xml:"sign_type,omitempty"`
 	// 第三方业务流水号id，保证相同签署人、相同签约主体、相同签署顺序的任务，对应的第三方业务流水id唯一，默认空
+	// example:
+	//
+	// someordernumber
 	ThirdOrderNo *string `json:"third_order_no,omitempty" xml:"third_order_no,omitempty"`
 	// 签署区宽，默认印章宽度
+	// example:
+	//
+	// 100.0
 	Width *string `json:"width,omitempty" xml:"width,omitempty"`
 	// 印章ids，只支持企业用户进行印章ID列表的设置；用于手动签署时，指定企业印章进行展示，实现手动选择印章进行签署。
+	// example:
+	//
+	// ["印章id1","印章id2",....]
 	SealIds []*string `json:"seal_ids,omitempty" xml:"seal_ids,omitempty" type:"Repeated"`
 	// 签署区预设xy坐标类型，0：不指定X/Y坐标 1：指定X/Y坐标 默认：指定X/Y坐标 ; 签署区设置时可以不指定XY坐标，签署方在签署时拖拽确定最终签署区域，支持在页面任何区域拖拽，个人和企业签署用印都支持
+	// example:
+	//
+	// 0
 	SignFieldType *int64 `json:"sign_field_type,omitempty" xml:"sign_field_type,omitempty"`
 	// 个人用户是否需要静默签署授权,默认false false-不需要,true-需要
+	// example:
+	//
+	// false
 	AgreeAutoSign *bool `json:"agree_auto_sign,omitempty" xml:"agree_auto_sign,omitempty"`
 }
 
@@ -5407,20 +7041,41 @@ func (s *ContractEHandSignFieldApplication) SetAgreeAutoSign(v bool) *ContractEH
 // 阶段详情信息
 type PhaseDetail struct {
 	// 阶段id
+	// example:
+	//
+	// 877c4383-9c83-477b-b7ec-03828a946***
 	PhaseId *string `json:"phase_id,omitempty" xml:"phase_id,omitempty" require:"true"`
 	// 阶段编号
+	// example:
+	//
+	// 1
 	PhaseNo *int64 `json:"phase_no,omitempty" xml:"phase_no,omitempty" require:"true"`
 	// 阶段存证时间
+	// example:
+	//
+	// 1661262742335
 	RegisterTime *int64 `json:"register_time,omitempty" xml:"register_time,omitempty" require:"true"`
 	// 阶段存证凭据
+	// example:
+	//
+	// 04181b49ee5d7eb0099a289ac8a45df6afb5aa2679c5284444698a9790099269
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 模板字段类型，Hash/Structure，(Hash->哈希,Structure->结构化)
+	// example:
+	//
+	// Hash/Structure
 	DataType *string `json:"data_type,omitempty" xml:"data_type,omitempty" require:"true"`
 	// 阶段存证内容
 	// 如果模板数据类型定义是Hash(哈希)则返回存证时Hash
 	// 如果定义是Structure(结构化)，则返回所有字段json对象的字符串Base64后的值
+	// example:
+	//
+	// 111111
 	NotaryContent *string `json:"notary_content,omitempty" xml:"notary_content,omitempty" require:"true"`
 	// 模板字段类型为Structure时才有值，结构化数据里面英文key对应的中文名称关系，json格式，key为字段英文名，value为字段中文名称
+	// example:
+	//
+	// { "name":"名称" }
 	DataTypeKey *string `json:"data_type_key,omitempty" xml:"data_type_key,omitempty" require:"true"`
 }
 
@@ -5470,16 +7125,34 @@ func (s *PhaseDetail) SetDataTypeKey(v string) *PhaseDetail {
 // 企业四要素校验
 type CompanyFourMetaInfo struct {
 	// 企业证件名称
+	// example:
+	//
+	// XX公司
 	CompanyCertName *string `json:"company_cert_name,omitempty" xml:"company_cert_name,omitempty" require:"true"`
 	// 企业证件号码
+	// example:
+	//
+	// 9111011421316034XK
 	CompanyCertNo *string `json:"company_cert_no,omitempty" xml:"company_cert_no,omitempty" require:"true"`
 	// 证件类型, 默认社会统一信用代码  NATIONAL_LEGAL_MERGE:统一社会信用代码，NATIONAL_LEGAL：营业执照号码
+	// example:
+	//
+	// NATIONAL_LEGAL_MERGE
 	CompanyCertType *string `json:"company_cert_type,omitempty" xml:"company_cert_type,omitempty"`
 	// 法人证件名称
+	// example:
+	//
+	// 张三
 	LegalPersonCertName *string `json:"legal_person_cert_name,omitempty" xml:"legal_person_cert_name,omitempty" require:"true"`
 	// 法人证件号码
+	// example:
+	//
+	// 110103202110131593
 	LegalPersonCertNo *string `json:"legal_person_cert_no,omitempty" xml:"legal_person_cert_no,omitempty" require:"true"`
 	// 法人证件类型 RESIDENT：居民身份证号，PASSPORT：护照，MILITARY：军官证
+	// example:
+	//
+	// RESIDENT
 	LegalPersonCertType *string `json:"legal_person_cert_type,omitempty" xml:"legal_person_cert_type,omitempty"`
 }
 
@@ -5524,32 +7197,74 @@ func (s *CompanyFourMetaInfo) SetLegalPersonCertType(v string) *CompanyFourMetaI
 // 案件进度查询返回结果
 type MediationCaseDetailInfo struct {
 	// 案件编码
+	// example:
+	//
+	// 测试案件编号001
 	CaseNumber *string `json:"case_number,omitempty" xml:"case_number,omitempty" require:"true"`
 	// 案号
+	// example:
+	//
+	// (2021)互调001号
 	CaseCode *string `json:"case_code,omitempty" xml:"case_code,omitempty" require:"true"`
 	// 案由
+	// example:
+	//
+	// 金融合同纠纷
 	CauseActionName *string `json:"cause_action_name,omitempty" xml:"cause_action_name,omitempty" require:"true"`
 	// 案件状态
+	// example:
+	//
+	// 已提交
 	CaseTatus *string `json:"case_tatus,omitempty" xml:"case_tatus,omitempty" require:"true"`
 	// 调解平台
+	// example:
+	//
+	// 北京版权调解中心
 	MediationPlatform *string `json:"mediation_platform,omitempty" xml:"mediation_platform,omitempty" require:"true"`
 	// 调解机构
+	// example:
+	//
+	// XX云调中心
 	MediationOrg *string `json:"mediation_org,omitempty" xml:"mediation_org,omitempty" require:"true"`
 	// 调解员
+	// example:
+	//
+	// 调解员1
 	Mediator *string `json:"mediator,omitempty" xml:"mediator,omitempty" require:"true"`
 	// 申请时间
+	// example:
+	//
+	// 1611545931418
 	ApplyTime *int64 `json:"apply_time,omitempty" xml:"apply_time,omitempty" require:"true"`
 	// 调解结果
+	// example:
+	//
+	// 调解成功
 	MediationResult *string `json:"mediation_result,omitempty" xml:"mediation_result,omitempty" require:"true"`
 	// 申请人意向金额
+	// example:
+	//
+	// 8500.21
 	AccuserIntentAmount *int64 `json:"accuser_intent_amount,omitempty" xml:"accuser_intent_amount,omitempty" require:"true"`
 	// 被申请人意向金额
+	// example:
+	//
+	// 7800.34
 	AccusedIntentAmount *int64 `json:"accused_intent_amount,omitempty" xml:"accused_intent_amount,omitempty" require:"true"`
 	// 和解金额
+	// example:
+	//
+	// 8213.12
 	MediationAmount *int64 `json:"mediation_amount,omitempty" xml:"mediation_amount,omitempty" require:"true"`
 	// 已确认事实
+	// example:
+	//
+	// 证据1、2、3的三性双方已确认
 	ConfirmFact *string `json:"confirm_fact,omitempty" xml:"confirm_fact,omitempty" require:"true"`
 	// 调解协议（已达成调解协议或未达成原因）
+	// example:
+	//
+	// 双方同意减免10%的费用,以7800.34元达成调解协议
 	MediationAgreement *string `json:"mediation_agreement,omitempty" xml:"mediation_agreement,omitempty" require:"true"`
 }
 
@@ -5634,6 +7349,9 @@ func (s *MediationCaseDetailInfo) SetMediationAgreement(v string) *MediationCase
 // 答辩人对象
 type PleaderObject struct {
 	// 法人或自然人标识，法人为1，自然人为0
+	// example:
+	//
+	// 0
 	PartyType *int64 `json:"party_type,omitempty" xml:"party_type,omitempty" require:"true"`
 	// 自然人信息
 	// 当partyType=1必填
@@ -5669,20 +7387,44 @@ func (s *PleaderObject) SetLegalPerson(v *LegalPerson) *PleaderObject {
 // 电子合同存证签署信息
 type ContractNotarySignInfo struct {
 	// 本阶段存证内容哈希值
+	// example:
+	//
+	// content
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// 电子合同文件hash，可能一次性签署多个文件，不同文件的hash间用“,”分隔开
+	// example:
+	//
+	// hash1,hash2
 	ContractHash *string `json:"contract_hash,omitempty" xml:"contract_hash,omitempty" require:"true"`
 	// 签署人ID
+	// example:
+	//
+	// account_id_of_signatory
 	Signatory *string `json:"signatory,omitempty" xml:"signatory,omitempty" require:"true"`
 	// 存证阶段发生时间，UNIX时间戳(毫秒)
+	// example:
+	//
+	// 1589198173000
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty" require:"true"`
 	// 存证凭据，仅在批量核验时需要填写
+	// example:
+	//
+	// 95a8201ad7362f9d224937cfb715b086ea1cf0d884f1c5b1f3ed092fddff1c92
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty"`
 	// 发起人名称
+	// example:
+	//
+	// 张三
 	IntiatorName *string `json:"intiator_name,omitempty" xml:"intiator_name,omitempty"`
 	// 签署人名称,多个逗号隔开
+	// example:
+	//
+	// 李四,王五
 	SignatorNames *string `json:"signator_names,omitempty" xml:"signator_names,omitempty"`
 	// 详细文件哈希
+	// example:
+	//
+	// 91a8201ad7362f9d224937cfb715b086ea1cf0d884f1c5b1f3ed092fddff1cqa
 	DetailInfoFileHash *string `json:"detail_info_file_hash,omitempty" xml:"detail_info_file_hash,omitempty"`
 }
 
@@ -5737,22 +7479,49 @@ func (s *ContractNotarySignInfo) SetDetailInfoFileHash(v string) *ContractNotary
 // 存证信息说明
 type NotaryInfo struct {
 	// 存证内容的哈希值，默认采用SHA256算法
+	// example:
+	//
+	// 6b7966f4a30a7fec43a6b5ca8e4610f63d320f03ee698945014c0bbc13c6beba
 	ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty" require:"true"`
 	// 合作人（版权存证函专用），会展示在存证证明中
+	// example:
+	//
+	// 合作人
 	Cooperation *string `json:"cooperation,omitempty" xml:"cooperation,omitempty"`
 	// 作品名称类型（版权存证函使用），会展示在存证证明中
+	// example:
+	//
+	// 音乐/视频/小说等
 	CreationType *string `json:"creation_type,omitempty" xml:"creation_type,omitempty"`
 	// 如果是文件存证，可填写文件名称
+	// example:
+	//
+	// name
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
 	// 计算content_hash的哈希算法，目前只支持SHA256
+	// example:
+	//
+	// SHA256
 	HashAlgorithm *string `json:"hash_algorithm,omitempty" xml:"hash_algorithm,omitempty"`
 	// 申请平台名，用于在存证函上显示用名称
+	// example:
+	//
+	// 某某平台
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
 	// 文件容量，默认为0
+	// example:
+	//
+	// 1024
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 	// 发起存证成功后，返回的存证凭据
+	// example:
+	//
+	// a89495ddd334870a58686afe48a8eb83efe2dd51e4c06da7220eb1cde0f995e2
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 存证事务ID
+	// example:
+	//
+	// 7bc888d8-1384-425c-9355-630cef0f4120
 	TransactionId *string `json:"transaction_id,omitempty" xml:"transaction_id,omitempty" require:"true"`
 }
 
@@ -5812,15 +7581,33 @@ func (s *NotaryInfo) SetTransactionId(v string) *NotaryInfo {
 // 司法纠纷平台企业信息通用结构体
 type JudicialOrgInfo struct {
 	// 企业名称
+	// example:
+	//
+	// 某知名有限公司
 	OrgName *string `json:"org_name,omitempty" xml:"org_name,omitempty" require:"true"`
 	// 企业或机构社会统一信用代码
+	// example:
+	//
+	// 92XXX
 	OrgCertNum *string `json:"org_cert_num,omitempty" xml:"org_cert_num,omitempty" require:"true"`
 	// 企业联系电话
+	// example:
+	//
+	// 15000000000
 	OrgPhone *string `json:"org_phone,omitempty" xml:"org_phone,omitempty" require:"true"`
 	// 企业联系邮箱
+	// example:
+	//
+	// email@org.com
 	OrgEmail *string `json:"org_email,omitempty" xml:"org_email,omitempty"`
 	// 企业通讯地址
+	// example:
+	//
+	// 上海市黄浦区外马路618号
 	OrgAddress *string `json:"org_address,omitempty" xml:"org_address,omitempty"`
+	// 企业营业执照地址
+	// example:
+	//
 	// 企业营业执照地址
 	ResidenceAddress *string `json:"residence_address,omitempty" xml:"residence_address,omitempty"`
 	// 企业或机构营业执照信息
@@ -5894,12 +7681,24 @@ func (s *JudicialOrgInfo) SetOrgBankInfo(v *JudicialBankInfo) *JudicialOrgInfo {
 // 合同存证信息
 type ContractNotaryInfo struct {
 	// 存证地址
+	// example:
+	//
+	// 04181b49ee5d7eb0099a289ac8a45df6afb5aa2679c5284444698a9790099269
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 存证相关联的文档ID
+	// example:
+	//
+	// 6afb5aa2679c5284444698a9790099269
 	DocId *string `json:"doc_id,omitempty" xml:"doc_id,omitempty"`
 	// 存证的内容哈希值
+	// example:
+	//
+	// 04181b49ee5d7eb0099a289ac8a45df6afb5aa2679c5284444698a9790099269
 	ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
 	// 存证事务ID
+	// example:
+	//
+	// 61d0147c-5e6d-46e8-8030-5c2fedb6cbc9
 	TransactionId *string `json:"transaction_id,omitempty" xml:"transaction_id,omitempty" require:"true"`
 }
 
@@ -5934,10 +7733,19 @@ func (s *ContractNotaryInfo) SetTransactionId(v string) *ContractNotaryInfo {
 // 个人信息
 type PersonInfo struct {
 	// 个人证件名称
+	// example:
+	//
+	// 张三
 	CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty" require:"true"`
 	// 个人证件号码
+	// example:
+	//
+	// 512223********1245
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty" require:"true"`
 	// 证件类型, 默认身份证 RESIDENT：居民身份证号，PASSPORT：护照，MILITARY：军官证
+	// example:
+	//
+	// RESIDENT
 	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
 }
 
@@ -5967,10 +7775,19 @@ func (s *PersonInfo) SetCertType(v string) *PersonInfo {
 // 共享项目，资产端的采购平台回传的订单商品信息
 type SupplierOrderProductInfo struct {
 	// 商品id
+	// example:
+	//
+	// product_id_123
 	ProductId *string `json:"product_id,omitempty" xml:"product_id,omitempty" require:"true"`
 	// 商品采购单价，单位：毫厘
+	// example:
+	//
+	// 10000
 	ProductPrice *int64 `json:"product_price,omitempty" xml:"product_price,omitempty" require:"true"`
 	// 商品的sn信息
+	// example:
+	//
+	// ["sn1","sn2"]
 	SnList []*string `json:"sn_list,omitempty" xml:"sn_list,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -6000,33 +7817,72 @@ func (s *SupplierOrderProductInfo) SetSnList(v []*string) *SupplierOrderProductI
 // 租赁订单信息
 type BclOrderInfo struct {
 	// 订单外部id,商户自己定义的订单id
+	// example:
+	//
+	// asdasdqwe123wer
 	OrderOuterId *string `json:"order_outer_id,omitempty" xml:"order_outer_id,omitempty" require:"true"`
 	// 订单创建时间
+	// example:
+	//
+	// 2023-04-05 12:12:23
 	OrderCreateTime *string `json:"order_create_time,omitempty" xml:"order_create_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// DUE_BUYOUT 到期买断
 	// DUE_RETURN 到期归还
+	// example:
+	//
+	// DUE_BUYOUT
 	DueMode *string `json:"due_mode,omitempty" xml:"due_mode,omitempty" require:"true"`
 	// 订单总金额 单位分
+	// example:
+	//
+	// 12300
 	TotalMoney *int64 `json:"total_money,omitempty" xml:"total_money,omitempty" require:"true"`
 	// 到期买断价  单位分，
 	// 到期金额，若为买断形式传买断金额，否则传到期归还金额
+	// example:
+	//
+	// 12300
 	BuyOutPrice *int64 `json:"buy_out_price,omitempty" xml:"buy_out_price,omitempty"`
 	// 芝麻信用订单免押金额 单位分
+	// example:
+	//
+	// 10035
 	DepositFree *int64 `json:"deposit_free,omitempty" xml:"deposit_free,omitempty"`
 	// 芝麻信用 实际预授权金额 单位分
+	// example:
+	//
+	// 12322
 	AcutalPreAuthFree *int64 `json:"acutal_pre_auth_free,omitempty" xml:"acutal_pre_auth_free,omitempty"`
 	// 网商直付通模式的代扣协议号
+	// example:
+	//
+	// ssdsf23324dfsdfsdf
 	MybankAgreementNo *string `json:"mybank_agreement_no,omitempty" xml:"mybank_agreement_no,omitempty"`
 	// 直付通代扣受理订单号
+	// example:
+	//
+	// asdasdqwewqes223
 	MybankAgreementOrderId *string `json:"mybank_agreement_order_id,omitempty" xml:"mybank_agreement_order_id,omitempty"`
 	// -网商代扣：MY_BANK_PROXY_WITHHOLDING
 	// -合同代扣：CONTRACT_PROXY_WITHHOLDING
+	// example:
+	//
+	// MY_BANK_PROXY_WITHHOLDING
 	OrderWithholdType *string `json:"order_withhold_type,omitempty" xml:"order_withhold_type,omitempty" require:"true"`
 	// 首付款金额 单位分
+	// example:
+	//
+	// 12323
 	DownPayment *int64 `json:"down_payment,omitempty" xml:"down_payment,omitempty"`
 	// 商品列表
+	// example:
+	//
+	// SANDBOX12312
 	ProductInfos []*BclOrderProductInfo `json:"product_infos,omitempty" xml:"product_infos,omitempty" require:"true" type:"Repeated"`
 	// 物流方式： POST 邮寄 OFFLINE 线下自取
+	// example:
+	//
+	// POST
 	LogisticType *string `json:"logistic_type,omitempty" xml:"logistic_type,omitempty" require:"true"`
 	// 订单状态
 	// 已创建 CREATED
@@ -6043,8 +7899,14 @@ type BclOrderInfo struct {
 	// 订单异常 ORDER_ERROR
 	//
 	//
+	// example:
+	//
+	// CREATED
 	Status *string `json:"status,omitempty" xml:"status,omitempty" require:"true"`
 	// 订单状态失败的描述
+	// example:
+	//
+	// 核身没有通过
 	StatusRemark *string `json:"status_remark,omitempty" xml:"status_remark,omitempty"`
 	// 承租方用户信息
 	UserInfo *BclUserInfo `json:"user_info,omitempty" xml:"user_info,omitempty" require:"true"`
@@ -6141,12 +8003,24 @@ func (s *BclOrderInfo) SetUserInfo(v *BclUserInfo) *BclOrderInfo {
 // 电子合同文档
 type ContractDoc struct {
 	// 上传的电子合同文档是否被加密过，0-未被加密，1-被加密过，默认0
+	// example:
+	//
+	// 1,0
 	Encryption *int64 `json:"encryption,omitempty" xml:"encryption,omitempty"`
 	// 电子合同文档的ID
+	// example:
+	//
+	// 01e50a9cedb74493a2d320b4f4732a29
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
 	// 电子合同文档名称，默认文件名称
+	// example:
+	//
+	// 第一份合同.pdf
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
 	// 电子合同文档密码, 如果encryption值为1, 文档密码不能为空，默认没有密码
+	// example:
+	//
+	// mypassword
 	FilePassword *string `json:"file_password,omitempty" xml:"file_password,omitempty"`
 }
 
@@ -6181,24 +8055,54 @@ func (s *ContractDoc) SetFilePassword(v string) *ContractDoc {
 // 合同印章
 type ContractSeal struct {
 	// 印章别名
+	// example:
+	//
+	// 红色四方形印章
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// 印章创建时间
+	// example:
+	//
+	// 1556161219000
 	CreateDate *int64 `json:"create_date,omitempty" xml:"create_date,omitempty"`
 	// 默认印章标识
+	// example:
+	//
+	// true, false
 	DefaultFlag *bool `json:"default_flag,omitempty" xml:"default_flag,omitempty"`
 	// 印章fileKey
+	// example:
+	//
+	// $fbd1d433-9f8f-4439-b184-7eb75861b31f$1759125409
 	FileKey *string `json:"file_key,omitempty" xml:"file_key,omitempty"`
 	// 印章高度
+	// example:
+	//
+	// 100
 	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
 	// 印章宽度
+	// example:
+	//
+	// 100
 	Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
 	// 印章id
+	// example:
+	//
+	// bcd7ffd9-5caf-4342-bd1c-02257229ccd5
 	SealId *string `json:"seal_id,omitempty" xml:"seal_id,omitempty"`
 	// 印章类型，1-机构模板章，2-个人模板章，3-自定义印章，4-手绘章
+	// example:
+	//
+	// 2
 	SealType *int64 `json:"seal_type,omitempty" xml:"seal_type,omitempty"`
 	// 印章下载地址, 有效时间1小时
+	// example:
+	//
+	// https://esignoss.oss-cn-hangzhou.aliyuncs.com/seal-service/18bcc4c7-91
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 	// 印章业务类型，CANCELLATION-作废章，COMMON-其它
+	// example:
+	//
+	// COMMON
 	SealBizType *string `json:"seal_biz_type,omitempty" xml:"seal_biz_type,omitempty"`
 }
 
@@ -6263,17 +8167,40 @@ func (s *ContractSeal) SetSealBizType(v string) *ContractSeal {
 // 智能合同个人账户创建申请信息
 type ContractAccountApplication struct {
 	// 邮箱地址，默认空
+	// example:
+	//
+	// xx@alipay.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// 证件号
+	// example:
+	//
+	// 311111111111111111
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty" require:"true"`
 	// 目前仅支持CRED_PSN_CH_IDCARD，即身份证号码
+	// example:
+	//
+	// CRED_PSN_CH_IDCARD
 	IdType *string `json:"id_type,omitempty" xml:"id_type,omitempty" require:"true"`
 	// 手机号码，默认空
+	// example:
+	//
+	// 15811111111
 	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
 	// 姓名
+	// example:
+	//
+	// 张三
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 用户唯一标识，可传入第三方平台的个人用户id等
+	// example:
+	//
+	// A001
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+	// 是否灰度切流: true-灰度切流。false-灰度切流
+	// example:
+	//
+	// false
+	NewAppId *bool `json:"new_app_id,omitempty" xml:"new_app_id,omitempty"`
 }
 
 func (s ContractAccountApplication) String() string {
@@ -6314,27 +8241,62 @@ func (s *ContractAccountApplication) SetUserId(v string) *ContractAccountApplica
 	return s
 }
 
+func (s *ContractAccountApplication) SetNewAppId(v bool) *ContractAccountApplication {
+	s.NewAppId = &v
+	return s
+}
+
 // 签署区列表数据
 type ContractPlatformSignFieldApplication struct {
 	// 文件file id
+	// example:
+	//
+	// fe7df2f477d649c18ebcfdfffeba253d
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
 	// 签署顺序，默认1,且不小于1，顺序越小越先处理
+	// example:
+	//
+	// 1
 	Order *int64 `json:"order,omitempty" xml:"order,omitempty"`
 	// 印章id， 仅限企业公章，暂不支持指定企业法定代表人印章 ，如不传，则采用账号下的默认印章
+	// example:
+	//
+	// bcd7ffd9-5caf-4342-bd1c-02257229ccd5
 	SealId *string `json:"seal_id,omitempty" xml:"seal_id,omitempty"`
 	// 第三方业务流水号id，保证相同签署人、相同签约主体、相同签署顺序的任务，对应的第三方业务流水id唯一，默认空
+	// example:
+	//
+	//
 	ThirdOrderNo *string `json:"third_order_no,omitempty" xml:"third_order_no,omitempty"`
 	// 页码信息，当签署区signType为2时, 页码可以_-_分割, 其他情况只能是数字
+	// example:
+	//
+	// 1
 	PosPage *string `json:"pos_page,omitempty" xml:"pos_page,omitempty" require:"true"`
 	// x坐标，默认空
+	// example:
+	//
+	// 158.72531
 	PosX *string `json:"pos_x,omitempty" xml:"pos_x,omitempty"`
 	// y坐标
+	// example:
+	//
+	// 431.05658
 	PosY *string `json:"pos_y,omitempty" xml:"pos_y,omitempty" require:"true"`
 	// 签署区宽，默认印章宽度
+	// example:
+	//
+	// 1
 	Width *string `json:"width,omitempty" xml:"width,omitempty"`
 	// 是否添加签署时间戳， 默认不添加，默认格式 yyyy-MM-dd HH : mm : ss
+	// example:
+	//
+	// true, false
 	AddSignTime *bool `json:"add_sign_time,omitempty" xml:"add_sign_time,omitempty"`
 	// 签署类型， 1-单页签署，2-骑缝签署，默认1
+	// example:
+	//
+	// 1
 	SignType *int64 `json:"sign_type,omitempty" xml:"sign_type,omitempty"`
 }
 
@@ -6399,8 +8361,14 @@ func (s *ContractPlatformSignFieldApplication) SetSignType(v int64) *ContractPla
 // 租赁业务存证信息记录
 type LeaseNotaryRecord struct {
 	// 存证阶段
+	// example:
+	//
+	// PLACE_ORDER
 	Phase *string `json:"phase,omitempty" xml:"phase,omitempty" require:"true"`
 	// 交易哈希，存证记录唯一标识
+	// example:
+	//
+	// 04181b49ee5d7eb0099a289ac8a45df6afb5aa2679c5284444698a9790099269
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 }
 
@@ -6465,42 +8433,84 @@ func (s *EvidentialElement) SetPerformanceInfo(v *PerformanceInfo) *EvidentialEl
 // 创建电子合同手动签署盖章区时的申请信息
 type ContractHandSignFieldApplication struct {
 	// 签署操作人个人账号标识，即操作本次签署的个人
+	// example:
+	//
+	// 2c7de24aff3340f5b944ebac49545b8e
 	AccountId *string `json:"account_id,omitempty" xml:"account_id,omitempty" require:"true"`
 	// 电子合同文件ID
+	// example:
+	//
+	// fe7df2f477d649c18ebcfdfffeba253d
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
 	// 签署区顺序，默认1,且不小于1，顺序越小越先处理
 	Order *int64 `json:"order,omitempty" xml:"order,omitempty"`
 	// 页码信息：当签署区signType为2时, 页码可以_-_分割, 例如1到15页，填"1-15"； 其他情况只能是数字；不指定xy坐标签署区可不填写
+	// example:
+	//
+	// 1
 	PosPage *string `json:"pos_page,omitempty" xml:"pos_page,omitempty"`
 	// x坐标，页面签章必填，骑缝签章不填写
+	// example:
+	//
+	// 1.1
 	PosX *string `json:"pos_x,omitempty" xml:"pos_x,omitempty"`
 	// y坐标
+	// example:
+	//
+	// 1.1
 	PosY *string `json:"pos_y,omitempty" xml:"pos_y,omitempty"`
 	// 印章id
+	// example:
+	//
+	// bcd7ffd9-5caf-4342-bd1c-02257229ccd5
 	SealId *string `json:"seal_id,omitempty" xml:"seal_id,omitempty"`
 	// 是否需要添加签署日期，0-禁止 1-必须 ，默认0
 	SignDateBeanType *int64 `json:"sign_date_bean_type,omitempty" xml:"sign_date_bean_type,omitempty"`
 	// 签章日期字体大小,默认12
 	SignDateFontSize *int64 `json:"sign_date_font_size,omitempty" xml:"sign_date_font_size,omitempty"`
 	// 签章日期格式，yyyy年MM月dd日
+	// example:
+	//
+	// yyyy年MM月dd日
 	SignDateFormat *string `json:"sign_date_format,omitempty" xml:"sign_date_format,omitempty"`
 	// 页码信息，当signDateBeanType为1时，代表签署的印章必须展示签署日期，默认放在印章正下方，签署人可拖拽日期到当前页面的其他位置，如果发起方指定签署位置的同时，需要同时指定日期盖章位置，则需传入日期盖章页码（与印章页码相同），在传入X\Y坐标即可。
 	SignDatePosPage *int64 `json:"sign_date_pos_page,omitempty" xml:"sign_date_pos_page,omitempty"`
 	// 签章日期x坐标，默认0
+	// example:
+	//
+	// 1.1
 	SignDatePosX *string `json:"sign_date_pos_x,omitempty" xml:"sign_date_pos_x,omitempty"`
 	// 签章日期y坐标，默认0
+	// example:
+	//
+	// 1.1
 	SignDatePosY *string `json:"sign_date_pos_y,omitempty" xml:"sign_date_pos_y,omitempty"`
 	// 签署类型，1-单页签署，2-骑缝签署，默认1
 	SignType *int64 `json:"sign_type,omitempty" xml:"sign_type,omitempty"`
 	// 第三方业务流水号id，保证相同签署人、相同签约主体、相同签署顺序的任务，对应的第三方业务流水id唯一，默认空
+	// example:
+	//
+	// someordernumber
 	ThirdOrderNo *string `json:"third_order_no,omitempty" xml:"third_order_no,omitempty"`
 	// 签署区宽，默认印章宽度
+	// example:
+	//
+	// 100.0
 	Width *string `json:"width,omitempty" xml:"width,omitempty"`
 	// 印章ids，只支持企业用户进行印章ID列表的设置；用于手动签署时，指定企业印章进行展示，实现手动选择印章进行签署。
+	// example:
+	//
+	// ["印章id1","印章id2",....]
 	SealIds []*string `json:"seal_ids,omitempty" xml:"seal_ids,omitempty" type:"Repeated"`
 	// 签署区预设xy坐标类型，0：不指定X/Y坐标 1：指定X/Y坐标 默认：指定X/Y坐标 ; 签署区设置时可以不指定XY坐标，签署方在签署时拖拽确定最终签署区域，支持在页面任何区域拖拽，个人和企业签署用印都支持
+	// example:
+	//
+	// 0
 	SignFieldType *int64 `json:"sign_field_type,omitempty" xml:"sign_field_type,omitempty"`
 	// 个人用户是否需要静默签署授权,默认false false-不需要,true-需要
+	// example:
+	//
+	// false
 	AgreeAutoSign *bool `json:"agree_auto_sign,omitempty" xml:"agree_auto_sign,omitempty"`
 }
 
@@ -6610,8 +8620,14 @@ func (s *ContractHandSignFieldApplication) SetAgreeAutoSign(v bool) *ContractHan
 // 再融资订单信息
 type RefinanceOrderInfoResponse struct {
 	// 订单id
+	// example:
+	//
+	// 20220118123123123
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 合约id
+	// example:
+	//
+	// ABCDEFGH_IJKLMNO_dfadfadfafdadfadfsdffdadf
 	ApplicationId *string `json:"application_id,omitempty" xml:"application_id,omitempty" require:"true"`
 }
 
@@ -6636,18 +8652,39 @@ func (s *RefinanceOrderInfoResponse) SetApplicationId(v string) *RefinanceOrderI
 // 供应商对应的产品详细信息
 type SupplierProductInfo struct {
 	// 产品额外信息
+	// example:
+	//
+	// {}
 	ExtraInfo *string `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 	// 产品id
+	// example:
+	//
+	// GS2020123
 	ProductId *string `json:"product_id,omitempty" xml:"product_id,omitempty" require:"true"`
 	// 电子商品唯一标识码
+	// example:
+	//
+	// 12323,123123,234234
 	ProductImeiId *string `json:"product_imei_id,omitempty" xml:"product_imei_id,omitempty" require:"true"`
 	// 产品名称
+	// example:
+	//
+	// IPAD mini 2012
 	ProductName *string `json:"product_name,omitempty" xml:"product_name,omitempty" require:"true" maxLength:"50" minLength:"1"`
 	// 采购产品的个数
+	// example:
+	//
+	// 1
 	ProductNumber *int64 `json:"product_number,omitempty" xml:"product_number,omitempty" require:"true"`
 	// 采购产品的价格，精确到毫厘，如12.34元表示为123400
+	// example:
+	//
+	// 10000
 	ProductPrice *int64 `json:"product_price,omitempty" xml:"product_price,omitempty" require:"true"`
 	// 产品版本
+	// example:
+	//
+	// 0
 	SupplierVersion *string `json:"supplier_version,omitempty" xml:"supplier_version,omitempty"`
 }
 
@@ -6697,12 +8734,21 @@ func (s *SupplierProductInfo) SetSupplierVersion(v string) *SupplierProductInfo 
 // 承诺详情
 type BclCreatePromiseDetailInfo struct {
 	// 承诺期数，最小值：1
+	// example:
+	//
+	// 1
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty" require:"true" minimum:"1"`
 	// 承诺金额，单位：分
 	// 最小值：1，正整数
+	// example:
+	//
+	// 1
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty" require:"true" minimum:"1"`
 	// 每期应还的日期
 	// 示例：格式 2023-06-27T10:50:23+08:00
+	// example:
+	//
+	// 2023-06-27T10:50:23+08:00
 	PromiseTime *string `json:"promise_time,omitempty" xml:"promise_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 }
 
@@ -6732,14 +8778,29 @@ func (s *BclCreatePromiseDetailInfo) SetPromiseTime(v string) *BclCreatePromiseD
 // 订单商品
 type LeaseOrderProductInfo struct {
 	// 商品编码 长度不可超过50
+	// example:
+	//
+	// 123456
 	ProductId *string `json:"product_id,omitempty" xml:"product_id,omitempty" require:"true"`
 	// 产品版本，每个版本可以对应一个价格 长度不可超过50，版本号未正整数，示例"123"
+	// example:
+	//
+	// 123
 	ProductVersion *string `json:"product_version,omitempty" xml:"product_version,omitempty" require:"true"`
 	// 商品名称 长度不可超过50
+	// example:
+	//
+	// iphone13
 	ProductName *string `json:"product_name,omitempty" xml:"product_name,omitempty" require:"true"`
 	// 采购价  精确到毫厘，即123400表示12.34元
+	// example:
+	//
+	// 123400
 	ProductPrice *int64 `json:"product_price,omitempty" xml:"product_price,omitempty" require:"true"`
 	// 供应商Id，用以做索引 长度不可超过50
+	// example:
+	//
+	// 小米
 	SupplierIsvAccount *string `json:"supplier_isv_account,omitempty" xml:"supplier_isv_account,omitempty" require:"true"`
 }
 
@@ -6779,10 +8840,19 @@ func (s *LeaseOrderProductInfo) SetSupplierIsvAccount(v string) *LeaseOrderProdu
 // 租赁风控查询的实体描述
 type LesseePerson struct {
 	// 承租人姓名
+	// example:
+	//
+	// 王一
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 承租人身份证号
+	// example:
+	//
+	// 11000000XXX
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty" require:"true"`
 	// 承租人手机号
+	// example:
+	//
+	// 130XXXX0123
 	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty" require:"true"`
 }
 
@@ -6812,14 +8882,23 @@ func (s *LesseePerson) SetMobile(v string) *LesseePerson {
 // 数字票根一键全流程存证相关参数
 type OnestepFlowNotaryInfo struct {
 	// 全流程模板id，需要提前创建好模板才能获取
+	// example:
+	//
+	// TP_4a605f04-ae9f-48d3-88ba-05c073ad5484
 	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty" require:"true"`
 	// 流程名称，同一个租户下同一个模板，建议唯一不重复
+	// example:
+	//
+	// 员工入职流程_员工xxxxx
 	FlowName *string `json:"flow_name,omitempty" xml:"flow_name,omitempty" require:"true"`
 	// 存证关联实体（个人/企业）的身份识别信息
 	NotaryUser *NotaryUser `json:"notary_user,omitempty" xml:"notary_user,omitempty" require:"true"`
 	// 阶段存证内容列表，根据模板定义传入
 	PhaseNotaryList []*PhaseNotary `json:"phase_notary_list,omitempty" xml:"phase_notary_list,omitempty" require:"true" type:"Repeated"`
 	// 扩展属性
+	// example:
+	//
+	// {"key":"value"}
 	Properties *string `json:"properties,omitempty" xml:"properties,omitempty"`
 }
 
@@ -6859,16 +8938,34 @@ func (s *OnestepFlowNotaryInfo) SetProperties(v string) *OnestepFlowNotaryInfo {
 // 更新后平台方经办人信息
 type ContractCreatorApplication struct {
 	// 邮箱地址
+	// example:
+	//
+	// wutest@tsign.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// 证件号
+	// example:
+	//
+	// 311111111111111111
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty" require:"true"`
 	// 证件类型
+	// example:
+	//
+	// CRED_PSN_CH_IDCARD
 	IdType *string `json:"id_type,omitempty" xml:"id_type,omitempty" require:"true"`
 	// 手机号码
+	// example:
+	//
+	// 15811111111
 	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
 	// 姓名
+	// example:
+	//
+	// 张三
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 创建人ID
+	// example:
+	//
+	// 0178c086a740475caf516f37901352b3
 	CreatorId *string `json:"creator_id,omitempty" xml:"creator_id,omitempty" require:"true"`
 }
 
@@ -6919,23 +9016,41 @@ type BclContractInfo struct {
 	// 4.代扣拒签：PROXY_REJECT
 	// 5.合同签署失败：SIGN_FAIL
 	// 6.签署完成：FINISH
+	// example:
+	//
+	// SIGNING
 	SignStatus *string `json:"sign_status,omitempty" xml:"sign_status,omitempty" require:"true"`
 	// 签署完成的合同文件
 	// 如果使用合同服务，只有签署完成才可获取
 	SignedFiles []*BclFileInfo `json:"signed_files,omitempty" xml:"signed_files,omitempty" type:"Repeated"`
 	// 签署链接，使用租赁宝代扣并且发起订单后才可以查询获取
+	// example:
+	//
+	// https://xxxx
 	SignUrl *string `json:"sign_url,omitempty" xml:"sign_url,omitempty"`
 	// 签署场景
+	// example:
+	//
+	// 签署场景
 	BusinessScene *string `json:"business_scene,omitempty" xml:"business_scene,omitempty"`
+	// 合同创建失败原因
+	// example:
+	//
 	// 合同创建失败原因
 	FlowErrMsg *string `json:"flow_err_msg,omitempty" xml:"flow_err_msg,omitempty"`
 	// 签署区列表
 	SignFieldInfos []*BclContractSignFieldInfo `json:"sign_field_infos,omitempty" xml:"sign_field_infos,omitempty" type:"Repeated"`
 	// 签署长链接，使用租赁宝代扣并且发起订单后才可以查询获取
+	// example:
+	//
+	// http://www.xxx.com
 	DestUrl *string `json:"dest_url,omitempty" xml:"dest_url,omitempty"`
 	// 签署模式：
 	// 模板签署:TEMPLATE_SIGN,使用同模板流程创建合同信息；
 	// 原文签署:ORIGINAL_SIGN，使用原来的流程创建合同信息
+	// example:
+	//
+	// TEMPLATE_SIGN
 	SignMode *string `json:"sign_mode,omitempty" xml:"sign_mode,omitempty"`
 }
 
@@ -6990,26 +9105,59 @@ func (s *BclContractInfo) SetSignMode(v string) *BclContractInfo {
 // 融资租赁里的产品详细信息
 type ProductInfo struct {
 	// 是否需要创建did
+	// example:
+	//
+	// true, false
 	NeedDid *bool `json:"need_did,omitempty" xml:"need_did,omitempty"`
 	// 产品品牌，长度不超过50
+	// example:
+	//
+	// 大金
 	ProductBrand *string `json:"product_brand,omitempty" xml:"product_brand,omitempty"`
 	// 产品Id，长度不超过50
+	// example:
+	//
+	// productId
 	ProductId *string `json:"product_id,omitempty" xml:"product_id,omitempty" require:"true"`
 	// 唯一标识码，imeiID，长度不超过50
+	// example:
+	//
+	// sn_number
 	ProductImeiId *string `json:"product_imei_id,omitempty" xml:"product_imei_id,omitempty"`
 	// 产品规格型号，长度不超过255
+	// example:
+	//
+	// LP3001
 	ProductModel *string `json:"product_model,omitempty" xml:"product_model,omitempty"`
 	// 产品名称，长度不超过50
+	// example:
+	//
+	// 大金空调
 	ProductName *string `json:"product_name,omitempty" xml:"product_name,omitempty" require:"true"`
 	// 产品数量
+	// example:
+	//
+	// 10
 	ProductNumber *int64 `json:"product_number,omitempty" xml:"product_number,omitempty" require:"true"`
 	// 产品采购含税价 精确到毫厘，即123400表示12.34元
+	// example:
+	//
+	// 123400
 	ProductPrice *int64 `json:"product_price,omitempty" xml:"product_price,omitempty" require:"true"`
 	// 供应商id
+	// example:
+	//
+	// supplierId
 	SupplierId *string `json:"supplier_id,omitempty" xml:"supplier_id,omitempty"`
 	// 供应商对应的产品版本，每个版本可以对应一个价格
+	// example:
+	//
+	// 001
 	SupplierVersion *string `json:"supplier_version,omitempty" xml:"supplier_version,omitempty"`
 	// 额外字段
+	// example:
+	//
+	// {}
 	ExtraInfo *string `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 }
 
@@ -7079,14 +9227,23 @@ func (s *ProductInfo) SetExtraInfo(v string) *ProductInfo {
 // 商家联系人信息
 type BclContactInfo struct {
 	// 联系人名称，最大长度：128
+	// example:
+	//
+	// 张三
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 联系人手机号
 	// 最大长度：20
 	// 示例：13812348888
+	// example:
+	//
+	// 138xxxx8888
 	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty" require:"true"`
 	// 联系人电话
 	// 最大长度：20
 	// 示例：0571-12345678
+	// example:
+	//
+	// 0571-12345678
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 }
 
@@ -7116,12 +9273,24 @@ func (s *BclContactInfo) SetPhone(v string) *BclContactInfo {
 // 查询全流程存证证据详情查询的请求信息
 type NotaryFlowDetailQueryReq struct {
 	// 全流程存证模板ID
+	// example:
+	//
+	// someId
 	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty" require:"true"`
 	// 全流程存证流程id
+	// example:
+	//
+	// someId
 	FlowId *string `json:"flow_id,omitempty" xml:"flow_id,omitempty" require:"true"`
 	// 链上证据包对应的链上交易Hash
+	// example:
+	//
+	// 9d5f26c7469ea9699a6e5f03ecfce24d
 	ChainPackTxHash *string `json:"chain_pack_tx_hash,omitempty" xml:"chain_pack_tx_hash,omitempty" require:"true"`
 	// 链上证据包授权码
+	// example:
+	//
+	// someId
 	Authcode *string `json:"authcode,omitempty" xml:"authcode,omitempty" require:"true"`
 }
 
@@ -7156,26 +9325,47 @@ func (s *NotaryFlowDetailQueryReq) SetAuthcode(v string) *NotaryFlowDetailQueryR
 // 履约详情
 type BclRentalInfo struct {
 	// 期数
+	// example:
+	//
+	// 1
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty" require:"true"`
 	// 金额 单位分
+	// example:
+	//
+	// 123123
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty" require:"true"`
 	// 租金归还时间
+	// example:
+	//
+	// 2023-04-05 12:12:23
 	Time *string `json:"time,omitempty" xml:"time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 归还方式
 	// 1.租赁代扣: PROXY_WITHHOLDING
 	// 2.主动还款：ACTIVE_REPAYMENT
 	// 3.网商委托代扣：MY_BANK_DIRECT_PAYMENT
 	// 4.预授权代扣：PRE_AUTHORIZATION_WITHHOLDING
+	// example:
+	//
+	// ALIPAY_WITHHOLDING
 	Way *string `json:"way,omitempty" xml:"way,omitempty" require:"true"`
 	// 还款渠道
 	// 1.支付宝：ALIPAY
 	// 2.平台代收（客户主动还款）：PLATFORM_COLLECTION
 	// 3.网商银行：MY_BANK
 	// 4.其他：OTHER
+	// example:
+	//
+	// ALIPAY
 	VoucherType *string `json:"voucher_type,omitempty" xml:"voucher_type,omitempty" require:"true"`
 	// 还款凭证编号
+	// example:
+	//
+	// asdqw23e123sd
 	VoucherSerial *string `json:"voucher_serial,omitempty" xml:"voucher_serial,omitempty" require:"true"`
 	// 手续费 如通过预授权、代扣的方式规划，必填
+	// example:
+	//
+	// 12321
 	Premium *int64 `json:"premium,omitempty" xml:"premium,omitempty" require:"true"`
 }
 
@@ -7225,12 +9415,24 @@ func (s *BclRentalInfo) SetPremium(v int64) *BclRentalInfo {
 // 支付扣款详情
 type PaymentDetail struct {
 	// 业务自定义扣款id，长度不能超过64
+	// example:
+	//
+	// miivpw2345678
 	BizTradeId *string `json:"biz_trade_id,omitempty" xml:"biz_trade_id,omitempty" require:"true"`
 	// 扣款期数
+	// example:
+	//
+	// 1
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty" require:"true"`
 	// 支付金额，单位：分
+	// example:
+	//
+	// 1200
 	PayMoney *int64 `json:"pay_money,omitempty" xml:"pay_money,omitempty" require:"true"`
 	// 计划扣款时间，格式"yyyy-MM-dd HH:mm:ss"
+	// example:
+	//
+	// 2022-01-19 12:00:00
 	PayDate *string `json:"pay_date,omitempty" xml:"pay_date,omitempty" require:"true"`
 }
 
@@ -7265,12 +9467,24 @@ func (s *PaymentDetail) SetPayDate(v string) *PaymentDetail {
 // 电子合同代扣计划取消操作信息
 type ContractNotaryDeductCancelInfo struct {
 	// 付款方的区块链合同签署账号
+	// example:
+	//
+	// someId
 	PayerId *string `json:"payer_id,omitempty" xml:"payer_id,omitempty" require:"true"`
 	// 是否取消成功
+	// example:
+	//
+	// true, false
 	CancelStatus *bool `json:"cancel_status,omitempty" xml:"cancel_status,omitempty" require:"true"`
 	// 取消操作发起时间
+	// example:
+	//
+	// 1589198173000
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty" require:"true"`
 	// 代扣订单号，多个订单号之间以‘,’隔开
+	// example:
+	//
+	// 04181b49ee5d7eb0099a289ac8a45df6afb5aa2679c5284444698a9790099269_1
 	Orders *string `json:"orders,omitempty" xml:"orders,omitempty" require:"true"`
 }
 
@@ -7305,16 +9519,34 @@ func (s *ContractNotaryDeductCancelInfo) SetOrders(v string) *ContractNotaryDedu
 // 平台方经办人信息
 type ContractPlatformAccountApplication struct {
 	// 邮箱地址
+	// example:
+	//
+	// xx@alipay.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// 证件号
+	// example:
+	//
+	// 311111111111111111
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty" require:"true"`
 	// 证件类型
+	// example:
+	//
+	// CRED_PSN_CH_IDCARD
 	IdType *string `json:"id_type,omitempty" xml:"id_type,omitempty" require:"true"`
 	// 手机号码
+	// example:
+	//
+	// 15811111111
 	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
 	// 姓名
+	// example:
+	//
+	// 张三
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 用户唯一标识，可传入第三方平台的个人用户id等
+	// example:
+	//
+	// A001
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
 }
 
@@ -7359,12 +9591,24 @@ func (s *ContractPlatformAccountApplication) SetUserId(v string) *ContractPlatfo
 // 调解回款银行账户
 type BankAccountInfo struct {
 	// 开户名称
+	// example:
+	//
+	// 张某某
 	AccountName *string `json:"account_name,omitempty" xml:"account_name,omitempty" require:"true"`
 	// 开户行
+	// example:
+	//
+	// 某某银行
 	AccountBank *string `json:"account_bank,omitempty" xml:"account_bank,omitempty" require:"true"`
 	// 开户账号
+	// example:
+	//
+	// 6234242342343456
 	AccountNumber *string `json:"account_number,omitempty" xml:"account_number,omitempty" require:"true"`
 	// 联系电话
+	// example:
+	//
+	// 132312312xx
 	AccountPhone *string `json:"account_phone,omitempty" xml:"account_phone,omitempty" require:"true"`
 }
 
@@ -7399,16 +9643,34 @@ func (s *BankAccountInfo) SetAccountPhone(v string) *BankAccountInfo {
 // 更新后平台方企业信息
 type ContractPlatformApplication struct {
 	// 证件号
+	// example:
+	//
+	// 311111111111111111
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty" require:"true"`
 	// 证件类型
+	// example:
+	//
+	// CRED_ORG_USCC
 	IdType *string `json:"id_type,omitempty" xml:"id_type,omitempty" require:"true"`
 	// 企业法人名称
+	// example:
+	//
+	// 张三
 	OrgLegalName *string `json:"org_legal_name,omitempty" xml:"org_legal_name,omitempty"`
 	// 企业法人证件号
+	// example:
+	//
+	// 311111111111111111
 	OrgLegalIdNumber *string `json:"org_legal_id_number,omitempty" xml:"org_legal_id_number,omitempty"`
 	// 机构名称
+	// example:
+	//
+	// 测试企业
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 平台方账号id
+	// example:
+	//
+	// 5c66842caf754a6dada4124b66666666
 	PlatformId *string `json:"platform_id,omitempty" xml:"platform_id,omitempty" require:"true"`
 }
 
@@ -7453,20 +9715,44 @@ func (s *ContractPlatformApplication) SetPlatformId(v string) *ContractPlatformA
 // 融资租赁用户侧还款条目
 type LeaseRentalInfo struct {
 	// 租期编号
+	// example:
+	//
+	// 1
 	Term *int64 `json:"term,omitempty" xml:"term,omitempty" require:"true"`
 	// 租金归还状态，1.足额归还2.部分归还3.未归还
+	// example:
+	//
+	// 1
 	RentalReturnState *int64 `json:"rental_return_state,omitempty" xml:"rental_return_state,omitempty" require:"true"`
 	// 租金归还金额,精确到毫厘，即123400表示12.34元
+	// example:
+	//
+	// 123400
 	RentalMoney *int64 `json:"rental_money,omitempty" xml:"rental_money,omitempty" require:"true"`
 	// 归还时间
+	// example:
+	//
+	// 2019-07-31 12:00:00
 	ReturnTime *string `json:"return_time,omitempty" xml:"return_time,omitempty" require:"true"`
 	// 归还方式，1.预授权代扣2.支付宝代扣3.主动还款4.其他，5网商直付通代扣
+	// example:
+	//
+	// 1
 	ReturnWay *int64 `json:"return_way,omitempty" xml:"return_way,omitempty" require:"true"`
 	// 还款凭证类型，1.支付宝2.平台代收（客户主动还款）3.其他
+	// example:
+	//
+	// 1
 	ReturnVoucherType *int64 `json:"return_voucher_type,omitempty" xml:"return_voucher_type,omitempty" require:"true"`
 	// 还款凭证编号，不超过128字符，支付宝流水号
+	// example:
+	//
+	// 20212312312313
 	ReturnVoucherSerial *string `json:"return_voucher_serial,omitempty" xml:"return_voucher_serial,omitempty" require:"true"`
 	// 剩余归还期数
+	// example:
+	//
+	// 11
 	RemainTerm *int64 `json:"remain_term,omitempty" xml:"remain_term,omitempty" require:"true"`
 }
 
@@ -7521,24 +9807,54 @@ func (s *LeaseRentalInfo) SetRemainTerm(v int64) *LeaseRentalInfo {
 // 核验结果
 type NotaryCheckResult struct {
 	// 存证所在区块高度
+	// example:
+	//
+	// 8888
 	BlockHeight *int64 `json:"block_height,omitempty" xml:"block_height,omitempty" require:"true" minimum:"0"`
 	// 核验结果错误码
+	// example:
+	//
+	// 错误码
 	ErrorCode *int64 `json:"error_code,omitempty" xml:"error_code,omitempty" require:"true"`
 	// 错误信息
+	// example:
+	//
+	// Permission denied
 	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty" require:"true"`
 	// 存证时间
+	// example:
+	//
+	// 2020-01-08 11:48:21
 	NotaryTime *string `json:"notary_time,omitempty" xml:"notary_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 存证类型
+	// example:
+	//
+	// FileNotary
 	NotaryType *string `json:"notary_type,omitempty" xml:"notary_type,omitempty" require:"true"`
 	// 核验是否成功
+	// example:
+	//
+	// true, false
 	Result *bool `json:"result,omitempty" xml:"result,omitempty" require:"true"`
 	// 存证事务ID
+	// example:
+	//
+	// 1a273ba1-b4c2-4bfe-93fc-c5997f3bcee9
 	TransactionId *string `json:"transaction_id,omitempty" xml:"transaction_id,omitempty" require:"true"`
 	// 交易哈希
+	// example:
+	//
+	// aac0cf38b6072352f6b3be4cc0a3cf3950058472eacdda91e6723d75e2994567
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 区块哈希
+	// example:
+	//
+	// c3a50d4a7b521d4de13cefb02e5368b616e619d8fab5469298facacfbb39239b
 	BlockHash *string `json:"block_hash,omitempty" xml:"block_hash,omitempty" require:"true"`
 	// 存证阶段
+	// example:
+	//
+	// start
 	Phase *string `json:"phase,omitempty" xml:"phase,omitempty" require:"true"`
 }
 
@@ -7603,34 +9919,70 @@ func (s *NotaryCheckResult) SetPhase(v string) *NotaryCheckResult {
 // 物流信息
 type BclLogisticsInfo struct {
 	// 物流订单
+	// example:
+	//
+	// aa32sasdwqe1w
 	LogisticsOrderId *string `json:"logistics_order_id,omitempty" xml:"logistics_order_id,omitempty" require:"true"`
 	// 物流公司
+	// example:
+	//
+	// 韵达
 	LogisticCompany *string `json:"logistic_company,omitempty" xml:"logistic_company,omitempty" require:"true"`
 	// 物流状态
 	// 1.已发货：SHIPPED
 	// 2.已签收：SIGNED
+	// example:
+	//
+	// SHIPPED
 	Status *string `json:"status,omitempty" xml:"status,omitempty" require:"true"`
 	// 发货时间
 	// 示例：2023-06-27T10:50:23+08:00
+	// example:
+	//
+	// 2023-06-27T10:50:23+08:00
 	DeliverTime *string `json:"deliver_time,omitempty" xml:"deliver_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 租赁类型
 	// 1.租赁：LEASE
 	// 2.退租：RETURN_LEASE
+	// example:
+	//
+	// LEASE
 	LeaseType *string `json:"lease_type,omitempty" xml:"lease_type,omitempty" require:"true"`
 	// 签收时间
 	// 示例：2023-06-27T10:50:23+08:00
+	// example:
+	//
+	// 2023-06-27T10:50:23+08:00
 	ArriveConfirmTime *string `json:"arrive_confirm_time,omitempty" xml:"arrive_confirm_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 签收文件下载链接
+	// example:
+	//
+	// 2023-04-05 12:12:23
 	ArriveConfirmFileUrl *string `json:"arrive_confirm_file_url,omitempty" xml:"arrive_confirm_file_url,omitempty" require:"true"`
 	// 发货地址
+	// example:
+	//
+	// xx省xx市
 	DeliverAddress *string `json:"deliver_address,omitempty" xml:"deliver_address,omitempty" require:"true"`
 	// 收货地址
+	// example:
+	//
+	// xx省xx市
 	ArriveAddress *string `json:"arrive_address,omitempty" xml:"arrive_address,omitempty" require:"true"`
 	// 收货人姓名 脱敏
+	// example:
+	//
+	// 张xx
 	ArriveName *string `json:"arrive_name,omitempty" xml:"arrive_name,omitempty" require:"true"`
 	// 收货人联系电话 脱敏
+	// example:
+	//
+	// 172xxxx1232
 	ArriveMobile *string `json:"arrive_mobile,omitempty" xml:"arrive_mobile,omitempty" require:"true"`
 	// 物流公司标志,参考菜鸟的物流公司定义
+	// example:
+	//
+	// YUNDA
 	LogisticCompanyCode *string `json:"logistic_company_code,omitempty" xml:"logistic_company_code,omitempty"`
 }
 
@@ -7705,30 +10057,69 @@ func (s *BclLogisticsInfo) SetLogisticCompanyCode(v string) *BclLogisticsInfo {
 // 融资租赁资金方还款条目信息
 type LeaseRepaymentInfo struct {
 	// 融资租赁还款流水
+	// example:
+	//
+	// 20211231123000123
 	RepaymentUniqueId *string `json:"repayment_unique_id,omitempty" xml:"repayment_unique_id,omitempty" require:"true"`
 	// 还款批次
+	// example:
+	//
+	// 1
 	ReturnIndex *string `json:"return_index,omitempty" xml:"return_index,omitempty" require:"true"`
 	// 还款日期
+	// example:
+	//
+	// 2019-07-31 12:00:00
 	ReturnTime *string `json:"return_time,omitempty" xml:"return_time,omitempty" require:"true"`
 	// 还款总额,本金+利息，精确到毫厘，即123400表示12.34元
+	// example:
+	//
+	// 123400
 	ReturnMoney *int64 `json:"return_money,omitempty" xml:"return_money,omitempty" require:"true"`
 	// 还款结果状态,1.成功 2.失败
+	// example:
+	//
+	// 1
 	ReturnStatus *int64 `json:"return_status,omitempty" xml:"return_status,omitempty" require:"true"`
 	// 还款结果简要描述,长度不超过256
+	// example:
+	//
+	// ""
 	ReturnDescription *string `json:"return_description,omitempty" xml:"return_description,omitempty" require:"true"`
 	// 还款来源,1.共管账号，2.网商清分
+	// example:
+	//
+	// 2
 	Source *int64 `json:"source,omitempty" xml:"source,omitempty" require:"true"`
 	// 剩余应还期数
+	// example:
+	//
+	// 1
 	RemainReturnTerm *int64 `json:"remain_return_term,omitempty" xml:"remain_return_term,omitempty" require:"true"`
 	// 本期剩余应还金额，精确到毫厘，即123400表示12.34元
+	// example:
+	//
+	// 123400
 	RemainReturnMoney *int64 `json:"remain_return_money,omitempty" xml:"remain_return_money,omitempty" require:"true"`
 	// 逾期状态,0为未逾期，1表示逾期
+	// example:
+	//
+	// 0
 	OverdueStatus *int64 `json:"overdue_status,omitempty" xml:"overdue_status,omitempty" require:"true"`
 	// 逾期利率（日利率）,精确到小数点后四位 12.34% 表示为1234
+	// example:
+	//
+	// 0
 	OverdueRate *int64 `json:"overdue_rate,omitempty" xml:"overdue_rate,omitempty" require:"true"`
 	// 逾期天数,支用到期日开始计算
+	// example:
+	//
+	// 0
 	OverdueDay *int64 `json:"overdue_day,omitempty" xml:"overdue_day,omitempty" require:"true"`
 	// 逾期应还款总额,本金+利息+逾期利息,精确到毫厘，即123400表示12.34元
+	// example:
+	//
+	// 0
 	OverdueMoney *int64 `json:"overdue_money,omitempty" xml:"overdue_money,omitempty" require:"true"`
 }
 
@@ -7808,6 +10199,9 @@ func (s *LeaseRepaymentInfo) SetOverdueMoney(v int64) *LeaseRepaymentInfo {
 // 数字票根扩展字段
 type StubExtraInfo struct {
 	// 票面视觉
+	// example:
+	//
+	// https://www.xx.com
 	TicketVision *string `json:"ticket_vision,omitempty" xml:"ticket_vision,omitempty"`
 }
 
@@ -7853,10 +10247,19 @@ func (s *ContractTextSignVerifySignInfo) SetCert(v *ContractTextSignVerifyCertIn
 // 用户端承诺信息
 type LeasePromiseInfo struct {
 	// 租期index
+	// example:
+	//
+	// 1
 	Term *int64 `json:"term,omitempty" xml:"term,omitempty" require:"true"`
 	// 应还款金额
+	// example:
+	//
+	// 123400
 	PayMoney *int64 `json:"pay_money,omitempty" xml:"pay_money,omitempty" require:"true"`
 	// 应还款时间
+	// example:
+	//
+	// 2019-07-31 12:00:00
 	PayDate *string `json:"pay_date,omitempty" xml:"pay_date,omitempty" require:"true"`
 }
 
@@ -7886,16 +10289,34 @@ func (s *LeasePromiseInfo) SetPayDate(v string) *LeasePromiseInfo {
 // 个人信息
 type ContractUserAccountApplication struct {
 	// 邮箱地址，默认不变
+	// example:
+	//
+	// xx@alipay.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// 证件号，该字段只有为空才允许修改
+	// example:
+	//
+	// 311111111111111111
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty"`
 	// 证件类型，默认为身份证
+	// example:
+	//
+	// CRED_PSN_CH_IDCARD
 	IdType *string `json:"id_type,omitempty" xml:"id_type,omitempty"`
 	// 手机号码，默认不变
+	// example:
+	//
+	// 15811111111
 	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
 	// 姓名，默认不变
+	// example:
+	//
+	// 张三
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// 用户/经办人账号id
+	// example:
+	//
+	// ORGJC1CN1591674666666
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
 }
 
@@ -7940,16 +10361,34 @@ func (s *ContractUserAccountApplication) SetUserId(v string) *ContractUserAccoun
 // 合约核验结果
 type ContractCheckResult struct {
 	// 交易hash
+	// example:
+	//
+	// 12345678
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 订单id
+	// example:
+	//
+	// 12345678
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 合约执行结果，Base64编码后的
+	// example:
+	//
+	// afafafdfa
 	ContentBase64 *string `json:"content_base64,omitempty" xml:"content_base64,omitempty"`
 	// 块高
+	// example:
+	//
+	// 12345678
 	BlockNumber *int64 `json:"block_number,omitempty" xml:"block_number,omitempty"`
 	// 消耗gas量
+	// example:
+	//
+	// 12345678
 	GasUsed *int64 `json:"gas_used,omitempty" xml:"gas_used,omitempty"`
 	// log信息
+	// example:
+	//
+	// adafada
 	LogBase64 *string `json:"log_base64,omitempty" xml:"log_base64,omitempty"`
 }
 
@@ -7994,10 +10433,19 @@ func (s *ContractCheckResult) SetLogBase64(v string) *ContractCheckResult {
 // 企业信息
 type CompanyTwoMetaInfo struct {
 	// 企业证件名称
+	// example:
+	//
+	// XX公司
 	CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty" require:"true"`
 	// 企业证件号码
+	// example:
+	//
+	// 9111011421316034XK
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty" require:"true"`
 	// 证件类型, 默认社会统一信用代码  NATIONAL_LEGAL_MERGE:统一社会信用代码，NATIONAL_LEGAL：营业执照号码
+	// example:
+	//
+	// NATIONAL_LEGAL_MERGE
 	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
 }
 
@@ -8027,8 +10475,14 @@ func (s *CompanyTwoMetaInfo) SetCertType(v string) *CompanyTwoMetaInfo {
 // 租赁宝plus保单详情
 type InsuranceRecordInfo struct {
 	// bcl订单id
+	// example:
+	//
+	// PROD12312312311232
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 保险单号
+	// example:
+	//
+	// 1231234343423423
 	BclInsuranceRecordId *string `json:"bcl_insurance_record_id,omitempty" xml:"bcl_insurance_record_id,omitempty" require:"true"`
 	// 投保人信息
 	Holder *BclInsuranceUserInfo `json:"holder,omitempty" xml:"holder,omitempty" require:"true"`
@@ -8046,22 +10500,46 @@ type InsuranceRecordInfo struct {
 	// RECORD_CANCEL_INIT: 退保初始
 	// RECORD_CANCEL_SUCC: 退保成功
 	// RECORD_CANCEL_FAIL: 退保失败
+	// example:
+	//
+	// RECORD_INSURE_SUCC
 	InsuranceStatus *string `json:"insurance_status,omitempty" xml:"insurance_status,omitempty" require:"true"`
 	// 起保时间
 	// 格式: yyyy-MM-dd HH:mm:ss
+	// example:
+	//
+	// 2023-04-05 12:12:23
 	InsuranceStartTime *string `json:"insurance_start_time,omitempty" xml:"insurance_start_time,omitempty"`
 	// 终保时间
 	// 格式: yyyy-MM-dd HH:mm:ss
+	// example:
+	//
+	// 2023-04-05 12:12:23
 	InsuranceEndTime *string `json:"insurance_end_time,omitempty" xml:"insurance_end_time,omitempty"`
 	// 保额 单位分
+	// example:
+	//
+	// 1232
 	InsuranceAmount *int64 `json:"insurance_amount,omitempty" xml:"insurance_amount,omitempty"`
 	// 保费 单位分
+	// example:
+	//
+	// 12312
 	Premium *int64 `json:"premium,omitempty" xml:"premium,omitempty"`
 	// riskGo分数
+	// example:
+	//
+	// 60
 	RiskgoScore *int64 `json:"riskgo_score,omitempty" xml:"riskgo_score,omitempty"`
 	// 保险详情地址
+	// example:
+	//
+	// http://xxasd.com
 	InsuranceUrl *string `json:"insurance_url,omitempty" xml:"insurance_url,omitempty"`
 	// 投保失败的具体原因, 投保失败时返回
+	// example:
+	//
+	// 缴费失败, 费用不足
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// 退保详情
 	InsuranceCancelRecordInfoList []*InsuranceCancelRecordInfo `json:"insurance_cancel_record_info_list,omitempty" xml:"insurance_cancel_record_info_list,omitempty" type:"Repeated"`
@@ -8148,24 +10626,54 @@ func (s *InsuranceRecordInfo) SetInsuranceCancelRecordInfoList(v []*InsuranceCan
 // 签字人
 type ContractFlowSigner struct {
 	// 签署顺序
+	// example:
+	//
+	// 1
 	SignOrder *int64 `json:"sign_order,omitempty" xml:"sign_order,omitempty"`
 	// 签署状态, 0-待签, 1-未签, 2-已签 3-待审批 4-拒签
+	// example:
+	//
+	// 1
 	SignStatus *int64 `json:"sign_status,omitempty" xml:"sign_status,omitempty"`
 	// 签署人账号id
+	// example:
+	//
+	// 24c93459216945468fdf1d899c521910
 	SignerAccountId *string `json:"signer_account_id,omitempty" xml:"signer_account_id,omitempty"`
 	// 签署人名称
+	// example:
+	//
+	// 孙中
 	SignerName *string `json:"signer_name,omitempty" xml:"signer_name,omitempty"`
 	// 签署人是否已实名
+	// example:
+	//
+	// true, false
 	SignerRealName *bool `json:"signer_real_name,omitempty" xml:"signer_real_name,omitempty"`
 	// 签约主体的账号id（个人/企业）；如签署人本签署，则返回签署人账号id；如签署人代机构签署，则返回机构账号id
+	// example:
+	//
+	// 2c7de24aff3340f5b944ebac49545b8e
 	SignerAuthorizedAccountId *string `json:"signer_authorized_account_id,omitempty" xml:"signer_authorized_account_id,omitempty"`
 	// 签约主体名称
+	// example:
+	//
+	// 深圳天谷信息科技有限公司
 	SignerAuthorizedAccountName *string `json:"signer_authorized_account_name,omitempty" xml:"signer_authorized_account_name,omitempty"`
 	// 签署主体是否已实名
+	// example:
+	//
+	// true, false
 	SignerAuthorizedAccountRealName *bool `json:"signer_authorized_account_real_name,omitempty" xml:"signer_authorized_account_real_name,omitempty"`
 	// 签署主体类型, 0-个人, 1-机构
+	// example:
+	//
+	// 1
 	SignerAuthorizedAccountType *int64 `json:"signer_authorized_account_type,omitempty" xml:"signer_authorized_account_type,omitempty"`
 	// 本次签署任务对应指定的第三方业务流水号id，当存在多个第三方业务流水号id时，返回多个，并逗号隔开
+	// example:
+	//
+	//
 	ThirdOrderNo *string `json:"third_order_no,omitempty" xml:"third_order_no,omitempty"`
 }
 
@@ -8231,10 +10739,19 @@ func (s *ContractFlowSigner) SetThirdOrderNo(v string) *ContractFlowSigner {
 type RepaymentOrderRequest struct {
 	// 代扣触发时间，精确到毫秒
 	// java.lang.System#currentTimeMillis()
+	// example:
+	//
+	// 12345600000
 	PayDate *int64 `json:"pay_date,omitempty" xml:"pay_date,omitempty" require:"true"`
 	// 代扣金额，整数 精确到分
+	// example:
+	//
+	// 1000
 	PayMoney *int64 `json:"pay_money,omitempty" xml:"pay_money,omitempty" require:"true"`
 	// 是否用户签署成功后立即触发第一期代扣
+	// example:
+	//
+	// 1
 	TriggerImmediately *int64 `json:"trigger_immediately,omitempty" xml:"trigger_immediately,omitempty"`
 }
 
@@ -8264,13 +10781,25 @@ func (s *RepaymentOrderRequest) SetTriggerImmediately(v int64) *RepaymentOrderRe
 // 用户与商家之间的协商记录
 type ReplyDetailInfo struct {
 	// 回复人名称
+	// example:
+	//
+	// 刘*
 	ReplierName *string `json:"replier_name,omitempty" xml:"replier_name,omitempty" require:"true"`
 	// 回复人角色 用户：USER 商家：MERCHANT 系统：SYSTEM 审核小二：AUDITOR 政府单位：GOVERNMENT
+	// example:
+	//
+	// USER
 	ReplierRole *string `json:"replier_role,omitempty" xml:"replier_role,omitempty" require:"true"`
 	// 回复时间
 	//
+	// example:
+	//
+	// 2020-02-14 14:23:12
 	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" require:"true"`
 	// 回复内容
+	// example:
+	//
+	// 已退款退货给您，物流单号为：12344444
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// 回复图片
 	Images []*string `json:"images,omitempty" xml:"images,omitempty" require:"true" type:"Repeated"`
@@ -8312,40 +10841,91 @@ func (s *ReplyDetailInfo) SetImages(v []*string) *ReplyDetailInfo {
 // 一步创建签署流程的签署区信息
 type OneStepSignField struct {
 	// 签署操作人个人账号标识，即操作本次签署的个人
+	// example:
+	//
+	// 2c7de24aff3340f5b944ebac49545b8e
 	AccountId *string `json:"account_id,omitempty" xml:"account_id,omitempty" require:"true"`
 	// 电子合同文件ID
+	// example:
+	//
+	// fe7df2f477d649c18ebcfdfffeba253d
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
 	// 签署区顺序，默认1,且不小于1，顺序越小越先处理
 	Order *int64 `json:"order,omitempty" xml:"order,omitempty"`
 	// 页码信息：当签署区signType为2时, 页码可以_-_分割, 例如1到15页，填"1-15"； 其他情况只能是数字；不指定xy坐标签署区可不填写
+	// example:
+	//
+	// 1
 	PosPage *string `json:"pos_page,omitempty" xml:"pos_page,omitempty"`
 	// x坐标
+	// example:
+	//
+	// 1.1
 	PosX *string `json:"pos_x,omitempty" xml:"pos_x,omitempty"`
 	// y坐标
+	// example:
+	//
+	// 1.1
 	PosY *string `json:"pos_y,omitempty" xml:"pos_y,omitempty"`
 	// 印章id
+	// example:
+	//
+	// bcd7ffd9-5caf-4342-bd1c-02257229ccd5
 	SealId *string `json:"seal_id,omitempty" xml:"seal_id,omitempty"`
 	// 是否需要添加签署日期，0-禁止 1-必须 2-不限制，默认0
+	// example:
+	//
+	// 0
 	SignDateBeanType *int64 `json:"sign_date_bean_type,omitempty" xml:"sign_date_bean_type,omitempty"`
 	// 签章日期字体大小,默认12
+	// example:
+	//
+	// 1
 	SignDateFontSize *int64 `json:"sign_date_font_size,omitempty" xml:"sign_date_font_size,omitempty"`
 	// 签章日期格式，yyyy年MM月dd日
+	// example:
+	//
+	// yyyy年MM月dd日
 	SignDateFormat *string `json:"sign_date_format,omitempty" xml:"sign_date_format,omitempty"`
 	// 页码信息，当signDateBeanType为1时，代表签署的印章必须展示签署日期，默认放在印章正下方，签署人可拖拽日期到当前页面的其他位置，如果发起方指定签署位置的同时，需要同时指定日期盖章位置，则需传入日期盖章页码（与印章页码相同），在传入X\Y坐标即可。
+	// example:
+	//
+	// 1
 	SignDatePosPage *int64 `json:"sign_date_pos_page,omitempty" xml:"sign_date_pos_page,omitempty"`
 	// 签章日期x坐标，默认0
+	// example:
+	//
+	// 0
 	SignDatePosX *string `json:"sign_date_pos_x,omitempty" xml:"sign_date_pos_x,omitempty"`
 	// 签章日期y坐标，默认0
+	// example:
+	//
+	// 0
 	SignDatePosY *string `json:"sign_date_pos_y,omitempty" xml:"sign_date_pos_y,omitempty"`
 	// 签署类型，1-单页签署，2-骑缝签署，默认1
+	// example:
+	//
+	// 1
 	SignType *int64 `json:"sign_type,omitempty" xml:"sign_type,omitempty"`
 	// 第三方业务流水号id，保证相同签署人、相同签约主体、相同签署顺序的任务，对应的第三方业务流水id唯一，默认空
+	// example:
+	//
+	// someordernumber
 	ThirdOrderNo *string `json:"third_order_no,omitempty" xml:"third_order_no,omitempty"`
 	// 签署区宽，默认印章宽度
+	// example:
+	//
+	// 100.0
 	Width *string `json:"width,omitempty" xml:"width,omitempty"`
 	// 是否自动执行签署，默认false，false-手动签署，true-自动签署
+	// example:
+	//
+	// true, false
 	AutoExecute *bool `json:"auto_execute,omitempty" xml:"auto_execute,omitempty"`
 	// 个人用户是否需要静默签署授权，默认false, false-不需要, true-需要
+	// example:
+	//
+	// flase
 	AgreeAutoSign *bool `json:"agree_auto_sign,omitempty" xml:"agree_auto_sign,omitempty"`
 }
 
@@ -8450,10 +11030,19 @@ func (s *OneStepSignField) SetAgreeAutoSign(v bool) *OneStepSignField {
 // 缴费账户信息
 type PaymentInfo struct {
 	// 收款账户-户名 不超过64字符
+	// example:
+	//
+	// XX
 	AccountName *string `json:"account_name,omitempty" xml:"account_name,omitempty" require:"true"`
 	// 收款账户-开户银行 不超过64字符
+	// example:
+	//
+	// xx银行
 	BankName *string `json:"bank_name,omitempty" xml:"bank_name,omitempty" require:"true"`
 	// 收款账户-收款账户银行账号 不超过64字符
+	// example:
+	//
+	// 622848XXX1232123
 	BankNum *string `json:"bank_num,omitempty" xml:"bank_num,omitempty" require:"true"`
 }
 
@@ -8483,22 +11072,49 @@ func (s *PaymentInfo) SetBankNum(v string) *PaymentInfo {
 // 电子合同存证初始化信息
 type ContractNotaryInitInfo struct {
 	// 本阶段存证内容哈希值
+	// example:
+	//
+	// content
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// 签署文件份数
+	// example:
+	//
+	// 3
 	FileNum *int64 `json:"file_num,omitempty" xml:"file_num,omitempty" require:"true"`
 	// 签署流程发起人ID
+	// example:
+	//
+	// account_id_of_initiator
 	Initiator *string `json:"initiator,omitempty" xml:"initiator,omitempty" require:"true"`
 	// 签署人ID（支持多个，不同ID间用“,”分隔开），由于流程中签署人可后续追加，最终以ContractNotaryFinishInfo中的singatories信息为准。
+	// example:
+	//
+	// account_Id_1,account_id_2
 	Signatories *string `json:"signatories,omitempty" xml:"signatories,omitempty"`
 	// 存证阶段发生时间，UNIX时间戳(毫秒)
+	// example:
+	//
+	// 1589198173000
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty" require:"true"`
 	// 存证凭据，仅在批量核验时需要填写
+	// example:
+	//
+	// 95a8201ad7362f9d224937cfb715b086ea1cf0d884f1c5b1f3ed092fddff1c92
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty"`
 	// 发起人名称
+	// example:
+	//
+	// 张三
 	IntiatorName *string `json:"intiator_name,omitempty" xml:"intiator_name,omitempty"`
 	// 签署人名称,多个逗号隔开
+	// example:
+	//
+	// 李四,王五
 	SignatorNames *string `json:"signator_names,omitempty" xml:"signator_names,omitempty"`
 	// 详细文件哈希
+	// example:
+	//
+	// 91a8201ad7362f9d224937cfb715b086ea1cf0d884f1c5b1f3ed092fddff1cqa
 	DetailInfoFileHash *string `json:"detail_info_file_hash,omitempty" xml:"detail_info_file_hash,omitempty"`
 }
 
@@ -8558,28 +11174,64 @@ func (s *ContractNotaryInitInfo) SetDetailInfoFileHash(v string) *ContractNotary
 // 可信存证身份识别信息
 type Identity struct {
 	// 经办人姓名，企业认证选填
+	// example:
+	//
+	// 小明
 	Agent *string `json:"agent,omitempty" xml:"agent,omitempty"`
 	// 经办人身份证，企业认证选填
+	// example:
+	//
+	// 123123123123
 	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty"`
 	// 用户名称
+	// example:
+	//
+	// 小王
 	CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty" require:"true"`
 	// 证件号
+	// example:
+	//
+	// 12332112312312
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty" require:"true"`
 	// 证件类型，个人只支持身份证IDENTITY_CARD，企业支持UNIFIED_SOCIAL_CREDIT_CODE（统一社会信用代码）和ENTERPRISE_REGISTERED_NUMBER（企业工商注册号）
+	// example:
+	//
+	// IDENTITY_CARD
 	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty" require:"true"`
 	// 法人姓名，企业认证必选
+	// example:
+	//
+	// 小李
 	LegalPerson *string `json:"legal_person,omitempty" xml:"legal_person,omitempty"`
 	// 法人身份证，企业认证必选
+	// example:
+	//
+	// 123123321123
 	LegalPersonId *string `json:"legal_person_id,omitempty" xml:"legal_person_id,omitempty"`
 	// 用户手机号码
+	// example:
+	//
+	// 1231231231
 	MobileNo *string `json:"mobile_no,omitempty" xml:"mobile_no,omitempty"`
 	// 扩展属性
+	// example:
+	//
+	// {"key":"value"}
 	Properties *string `json:"properties,omitempty" xml:"properties,omitempty"`
 	// 用户类型，PERSON或者ENTERPRISE
+	// example:
+	//
+	// PERSON
 	UserType *string `json:"user_type,omitempty" xml:"user_type,omitempty" require:"true"`
 	// 经办人证件类型，企业认证选填
+	// example:
+	//
+	// IDENTITY_CARD
 	AgentCertType *string `json:"agent_cert_type,omitempty" xml:"agent_cert_type,omitempty"`
 	// 法人证件类型，企业认证必选
+	// example:
+	//
+	// IDENTITY_CARD
 	LegalPersonCertType *string `json:"legal_person_cert_type,omitempty" xml:"legal_person_cert_type,omitempty"`
 }
 
@@ -8654,10 +11306,19 @@ func (s *Identity) SetLegalPersonCertType(v string) *Identity {
 // 调解沟通联系人
 type ContactInfo struct {
 	// 联系人-姓名
+	// example:
+	//
+	// 张三
 	ContactName *string `json:"contact_name,omitempty" xml:"contact_name,omitempty" require:"true"`
 	// 联系人-电话
+	// example:
+	//
+	// 18888xxxx66
 	ContactPhone *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty" require:"true"`
 	// 联系人-电子邮箱
+	// example:
+	//
+	// aaaaa@qq.com
 	ContactEmail *string `json:"contact_email,omitempty" xml:"contact_email,omitempty" require:"true"`
 }
 
@@ -8687,10 +11348,19 @@ func (s *ContactInfo) SetContactEmail(v string) *ContactInfo {
 // 存证证明的证书信息
 type CertificateInfo struct {
 	// 存证证明的证书内容的SHA256哈希值
+	// example:
+	//
+	// 6b7966f4a30a7fec43a6b5ca8e4610f63d320f03ee698945014c0bbc13c6beba
 	Hash *string `json:"hash,omitempty" xml:"hash,omitempty" require:"true"`
 	// 存证证明的证书文件名
+	// example:
+	//
+	// resource_name.pdf
 	ResourceName *string `json:"resource_name,omitempty" xml:"resource_name,omitempty" require:"true"`
 	// 存证证明的证书下载地址
+	// example:
+	//
+	// https://resource_download_adderss
 	ResourceUrl *string `json:"resource_url,omitempty" xml:"resource_url,omitempty" require:"true"`
 }
 
@@ -8720,6 +11390,9 @@ func (s *CertificateInfo) SetResourceUrl(v string) *CertificateInfo {
 // 完结的分期信息
 type BclFinishInstallment struct {
 	// 期次号
+	// example:
+	//
+	// 1
 	TermNo *int64 `json:"term_no,omitempty" xml:"term_no,omitempty" require:"true"`
 }
 
@@ -8741,21 +11414,39 @@ type BclNotaryInfo struct {
 	// 存证类型
 	// 1.文件：FILE
 	// 2.文本：TEXT
+	// example:
+	//
+	// FILE
 	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
 	// 存证内容
+	// example:
+	//
+	// asd2112123
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// 文件下载链接
 	// 存证类型为FILE时此参数必填；
+	// example:
+	//
+	// http://oss.com/asdas
 	FileUrl *string `json:"file_url,omitempty" xml:"file_url,omitempty"`
 	// 存证内容hash
+	// example:
+	//
+	// 12321312asdsqwewer12312sd
 	ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty" require:"true"`
 	// 存证哈希
+	// example:
+	//
+	// adsawqe12we12312werserqwe
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 存证阶段描述：
 	// 1.上传履约流水：UPLOAD_PROMISE_FLOW
 	// 2.上传物流信息：UPLOAD_LOGISTIC_INFO
 	// 3.合同签署后文件存证：SIGNED_CONTRACT_FILE
 	// 4.租赁订单履约中存证：BCL_ORDER_PROMISING
+	// example:
+	//
+	// UPLOAD_PROMISE_FLOW
 	Phase *string `json:"phase,omitempty" xml:"phase,omitempty" require:"true"`
 }
 
@@ -8800,16 +11491,28 @@ func (s *BclNotaryInfo) SetPhase(v string) *BclNotaryInfo {
 // 采购订单信息
 type ApplySupplierOrderProductOutput struct {
 	// 订单id
+	// example:
+	//
+	// 2020223123
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 链上采购单id
+	// example:
+	//
+	// 23042340234234
 	PurOrderId *string `json:"pur_order_id,omitempty" xml:"pur_order_id,omitempty" require:"true"`
 	// 待采购：READY_DELIVER
 	// 已采购：DELIVERED
 	// 已拒发：REJECTED
 	// 已退货：RETURNED
 	// 已取消：CANCELED
+	// example:
+	//
+	// 链上采购状态
 	PurOrderStatus *string `json:"pur_order_status,omitempty" xml:"pur_order_status,omitempty" require:"true"`
 	// 供应商id
+	// example:
+	//
+	// ABCDEFGH
 	SupplierId *string `json:"supplier_id,omitempty" xml:"supplier_id,omitempty"`
 }
 
@@ -8844,14 +11547,29 @@ func (s *ApplySupplierOrderProductOutput) SetSupplierId(v string) *ApplySupplier
 // 平台方企业信息
 type ContractPlatformOrganizationApplication struct {
 	// 证件号
+	// example:
+	//
+	// 12330100470104939U
 	IdNumber *string `json:"id_number,omitempty" xml:"id_number,omitempty" require:"true"`
 	// 证件类型
+	// example:
+	//
+	// CRED_ORG_USCC
 	IdType *string `json:"id_type,omitempty" xml:"id_type,omitempty" require:"true"`
 	// 企业法人名称
+	// example:
+	//
+	// 测试法人
 	OrgLegalName *string `json:"org_legal_name,omitempty" xml:"org_legal_name,omitempty"`
 	// 企业法人证件号
+	// example:
+	//
+	// 311111111111111111
 	OrgLegalIdNumber *string `json:"org_legal_id_number,omitempty" xml:"org_legal_id_number,omitempty"`
 	// 机构名称
+	// example:
+	//
+	// 测试企业
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 }
 
@@ -8891,14 +11609,29 @@ func (s *ContractPlatformOrganizationApplication) SetName(v string) *ContractPla
 // 签署区列表包含印章id数据
 type ContractSignFieldSealId struct {
 	// 文件file id
+	// example:
+	//
+	// 0178c086a740475caf516f37901352b3
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// 流程id
+	// example:
+	//
+	// 1b6b68e44d834f5982cf1959fd9782c3
 	FlowId *string `json:"flow_id,omitempty" xml:"flow_id,omitempty"`
 	// 印章id
+	// example:
+	//
+	// 8a8b26de-b15e-4791-ae89-e75d928155cc
 	SealId *string `json:"seal_id,omitempty" xml:"seal_id,omitempty"`
 	// 印章类型，支持多种类型时逗号分割，0-手绘印章，1-模版印章，为空不限制
+	// example:
+	//
+	// 0
 	SealType *string `json:"seal_type,omitempty" xml:"seal_type,omitempty"`
 	// 签署区Id
+	// example:
+	//
+	// 52adb35497b141e3893912b3a2ea4f42
 	SignfieldId *string `json:"signfield_id,omitempty" xml:"signfield_id,omitempty"`
 }
 
@@ -8942,14 +11675,29 @@ type AntSignTaskRequest struct {
 	// 待签署文件列表
 	AntSignFileRequestList []*AntSignFileRequest `json:"ant_sign_file_request_list,omitempty" xml:"ant_sign_file_request_list,omitempty" require:"true" type:"Repeated"`
 	// relatedBusiness	是否关联业务
+	// example:
+	//
+	// true, false 默认：false
 	RelatedBusiness *bool `json:"related_business,omitempty" xml:"related_business,omitempty"`
+	// 任务描述
+	// example:
+	//
 	// 任务描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// 业务扩展参数
+	// example:
+	//
+	// 业务扩展参数
 	ExtraParam *string `json:"extra_param,omitempty" xml:"extra_param,omitempty"`
 	// 子业务流水号（如果只有单任务，可以跟bizNo填相同的值）
+	// example:
+	//
+	// 子业务流水号
 	SubBizNo *string `json:"sub_biz_no,omitempty" xml:"sub_biz_no,omitempty" require:"true"`
 	// 业务配置参数，用于展示或隐藏签署功能 默认不传：false
+	// example:
+	//
+	// 默认不传
 	SignConfigParam *string `json:"sign_config_param,omitempty" xml:"sign_config_param,omitempty"`
 }
 
@@ -8999,6 +11747,9 @@ func (s *AntSignTaskRequest) SetSignConfigParam(v string) *AntSignTaskRequest {
 // 协商记录
 type ReplayDetailInfo struct {
 	// 回复人名称
+	// example:
+	//
+	// 刘*
 	ReplierName *string `json:"replier_name,omitempty" xml:"replier_name,omitempty" require:"true"`
 	// 回复人角色
 	// 用户：USER
@@ -9006,12 +11757,24 @@ type ReplayDetailInfo struct {
 	// 系统：SYSTEM
 	// 审核小二：AUDITOR
 	// 政府单位：GOVERNMENT
+	// example:
+	//
+	// USER
 	ReplierRole *string `json:"replier_role,omitempty" xml:"replier_role,omitempty" require:"true"`
 	// 回复时间
+	// example:
+	//
+	// 2020-02-14 14:23:12
 	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" require:"true"`
 	// 回复内容
+	// example:
+	//
+	// 已退款退货给您，物流单号为：12344444
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// 回复图片
+	// example:
+	//
+	// http://mdn.alipay.com/wsdk/img?fileid=A*ME4GQq2j-5oAAAAAAAAAAAAAAQAAAQ&t=83fed12ef006ebcd8df04dfe79faad6c&bi=openpunsh&ts=0&zoom=original
 	Images []*string `json:"images,omitempty" xml:"images,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -9051,32 +11814,74 @@ func (s *ReplayDetailInfo) SetImages(v []*string) *ReplayDetailInfo {
 // 文件模板中的输入项组件
 type ContractTemplateStructComponent struct {
 	// 填充字体,默认1，1-宋体，2-新宋体,4-黑体，5-楷体
+	// example:
+	//
+	// 1
 	Font *int64 `json:"font,omitempty" xml:"font,omitempty"`
 	// 填充字体大小,默认12
+	// example:
+	//
+	// 11
 	FontSize *string `json:"font_size,omitempty" xml:"font_size,omitempty"`
 	// 输入项组件高度
+	// example:
+	//
+	// 11.11
 	Height *string `json:"height,omitempty" xml:"height,omitempty"`
 	// 输入项组件id，使用时可用id填充，为空时表示添加，不为空时表示修改
+	// example:
+	//
+	// 45dd9420690b460c9e5ed55b40d7d0f8
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// 模板下输入项组件唯一标识，使用模板时也可用根据key值填充
+	// example:
+	//
+	// key001
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// 输入项组件显示名称
+	// example:
+	//
+	// 身份证号码
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
 	// 输入项组件type=2,type=3时填充格式校验规则;数字格式如：#,#00.0# 日期格式如： yyyy-MM-dd
+	// example:
+	//
+	// yyyy-MM-dd
 	Limit *string `json:"limit,omitempty" xml:"limit,omitempty"`
 	// 页码
+	// example:
+	//
+	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
 	// 是否必填，默认true
+	// example:
+	//
+	// true, false
 	Required *bool `json:"required,omitempty" xml:"required,omitempty"`
 	// 字体颜色，默认#000000黑色
+	// example:
+	//
+	// #000000
 	TextColor *string `json:"text_color,omitempty" xml:"text_color,omitempty"`
 	// 输入项组件类型，1-文本，2-数字,3-日期，6-签约区
+	// example:
+	//
+	//
 	Type *int64 `json:"type,omitempty" xml:"type,omitempty"`
 	// 输入项组件宽度
+	// example:
+	//
+	// 11.11
 	Width *string `json:"width,omitempty" xml:"width,omitempty"`
 	// x轴坐标，左下角为原点
+	// example:
+	//
+	// 11.11
 	X *string `json:"x,omitempty" xml:"x,omitempty"`
 	// y轴坐标，左下角为原点
+	// example:
+	//
+	// 11.11
 	Y *string `json:"y,omitempty" xml:"y,omitempty"`
 }
 
@@ -9161,18 +11966,39 @@ func (s *ContractTemplateStructComponent) SetY(v string) *ContractTemplateStruct
 // 可信时间信息结构
 type TsrResponse struct {
 	// 可信时间请求结果状态吗
+	// example:
+	//
+	// 0
 	Code *string `json:"code,omitempty" xml:"code,omitempty" require:"true"`
 	// hash后的信息
+	// example:
+	//
+	// AAAAA
 	HashedMessage *string `json:"hashed_message,omitempty" xml:"hashed_message,omitempty" require:"true"`
 	// 哈希算法
+	// example:
+	//
+	// 321
 	HashAlgorithm *string `json:"hash_algorithm,omitempty" xml:"hash_algorithm,omitempty" require:"true"`
 	// 请求失败时候的错误信息
+	// example:
+	//
+	// Request failed
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// 时间
+	// example:
+	//
+	// 123
 	Ts *string `json:"ts,omitempty" xml:"ts,omitempty" require:"true"`
 	// 精简后的时间戳完整编码（在校验时需要提交）
+	// example:
+	//
+	//
 	Ctsr *string `json:"ctsr,omitempty" xml:"ctsr,omitempty" require:"true"`
 	// 凭证序列号 （在校验的时需要先填写凭证编号）
+	//
+	// example:
+	//
 	//
 	Sn *string `json:"sn,omitempty" xml:"sn,omitempty" require:"true"`
 }
@@ -9223,10 +12049,19 @@ func (s *TsrResponse) SetSn(v string) *TsrResponse {
 // 融资租赁中IOT设备详情
 type LeaseIotItemInfo struct {
 	// 证据的时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	Date *string `json:"date,omitempty" xml:"date,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 证据的txHash
+	// example:
+	//
+	// 0xaaaaabbbbbcccc
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 证据的原始数据，默认为空或加密状态，除非调用方为授权用户（如出资方等
+	// example:
+	//
+	// ""
 	RawData *string `json:"raw_data,omitempty" xml:"raw_data,omitempty" require:"true"`
 }
 
@@ -9256,12 +12091,24 @@ func (s *LeaseIotItemInfo) SetRawData(v string) *LeaseIotItemInfo {
 // 见证流程文档确认数据
 type WitnessConfirmData struct {
 	// 文档fileKey
+	// example:
+	//
+	//
 	DocFileKey *string `json:"doc_file_key,omitempty" xml:"doc_file_key,omitempty"`
 	// 文档摘要算法，SHA256
+	// example:
+	//
+	// SHA256
 	HashAlgorithm *string `json:"hash_algorithm,omitempty" xml:"hash_algorithm,omitempty" require:"true"`
 	// 签署后文档摘要值
+	// example:
+	//
+	// 04181b49ee5d7eb0099a289ac8a45df6afb5aa2679c5284444698a9790099269
 	SignedHash *string `json:"signed_hash,omitempty" xml:"signed_hash,omitempty" require:"true"`
 	// 第三方文档id
+	// example:
+	//
+	// someId
 	ThirdDocId *string `json:"third_doc_id,omitempty" xml:"third_doc_id,omitempty" require:"true"`
 }
 
@@ -9308,10 +12155,19 @@ func (s ContractAccount) GoString() string {
 // 司法调解基础参数
 type JudicialMediationBaseParamInfo struct {
 	// 委托调解时长(天), 仅支持:30,60,90
+	// example:
+	//
+	// 30
 	MediationDayLimit *int64 `json:"mediation_day_limit,omitempty" xml:"mediation_day_limit,omitempty" require:"true"`
 	// 调解总标的金额
+	// example:
+	//
+	// 100.00
 	MediationTotalAmount *string `json:"mediation_total_amount,omitempty" xml:"mediation_total_amount,omitempty" require:"true"`
 	// 可接受最低调解回款金额
+	// example:
+	//
+	// 100.00
 	MinAmount *string `json:"min_amount,omitempty" xml:"min_amount,omitempty" require:"true"`
 }
 
@@ -19583,6 +22439,10 @@ type CreateContractOnestepflowRequest struct {
 	// 1-模板印章签名
 	// 多种类型时逗号分割，为空不限制
 	SealType *string `json:"seal_type,omitempty" xml:"seal_type,omitempty"`
+	// 是否走新AppId true-是 false-否
+	NewAppId *bool `json:"new_app_id,omitempty" xml:"new_app_id,omitempty"`
+	// 是否走新链路 true-是 false-否
+	NewPath *bool `json:"new_path,omitempty" xml:"new_path,omitempty"`
 }
 
 func (s CreateContractOnestepflowRequest) String() string {
@@ -19670,6 +22530,16 @@ func (s *CreateContractOnestepflowRequest) SetNeedFace(v bool) *CreateContractOn
 
 func (s *CreateContractOnestepflowRequest) SetSealType(v string) *CreateContractOnestepflowRequest {
 	s.SealType = &v
+	return s
+}
+
+func (s *CreateContractOnestepflowRequest) SetNewAppId(v bool) *CreateContractOnestepflowRequest {
+	s.NewAppId = &v
+	return s
+}
+
+func (s *CreateContractOnestepflowRequest) SetNewPath(v bool) *CreateContractOnestepflowRequest {
+	s.NewPath = &v
 	return s
 }
 
@@ -51567,10 +54437,11 @@ type Client struct {
 	MaxRequestsPerHost      *int
 }
 
-/**
- * Init client with Config
- * @param config config contains the necessary information to create a client
- */
+// Description:
+//
+// # Init client with Config
+//
+// @param config - config contains the necessary information to create a client
 func NewClient(config *Config) (*Client, error) {
 	client := new(Client)
 	err := client.Init(config)
@@ -51578,7 +54449,7 @@ func NewClient(config *Config) (*Client, error) {
 }
 
 func (client *Client) Init(config *Config) (_err error) {
-	if tea.BoolValue(util.IsUnset(tea.ToMap(config))) {
+	if tea.BoolValue(util.IsUnset(config)) {
 		_err = tea.NewSDKError(map[string]interface{}{
 			"code":    "ParameterMissing",
 			"message": "'config' can not be unset",
@@ -51607,16 +54478,23 @@ func (client *Client) Init(config *Config) (_err error) {
 	return nil
 }
 
-/**
- * Encapsulate the request and invoke the network
- * @param action api name
- * @param protocol http or https
- * @param method e.g. GET
- * @param pathname pathname of every api
- * @param request which contains request params
- * @param runtime which controls some details of call api, such as retry times
- * @return the response
- */
+// Description:
+//
+// # Encapsulate the request and invoke the network
+//
+// @param action - api name
+//
+// @param protocol - http or https
+//
+// @param method - e.g. GET
+//
+// @param pathname - pathname of every api
+//
+// @param request - which contains request params
+//
+// @param runtime - which controls some details of call api, such as retry times
+//
+// @return the response
 func (client *Client) DoRequest(version *string, action *string, protocol *string, method *string, pathname *string, request map[string]interface{}, headers map[string]*string, runtime *util.RuntimeOptions) (_result map[string]interface{}, _err error) {
 	_err = tea.Validate(runtime)
 	if _err != nil {
@@ -51667,7 +54545,7 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 				"req_msg_id":       antchainutil.GetNonce(),
 				"access_key":       client.AccessKeyId,
 				"base_sdk_version": tea.String("TeaSDK-2.0"),
-				"sdk_version":      tea.String("1.13.30"),
+				"sdk_version":      tea.String("1.13.32"),
 				"_prod_code":       tea.String("TWC"),
 				"_prod_channel":    tea.String("undefined"),
 			}
@@ -51725,10 +54603,11 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 	return _resp, _err
 }
 
-/**
- * Description: AI提问获取答案
- * Summary: 获取答案
- */
+// Description:
+//
+// Description: AI提问获取答案
+//
+// Summary: 获取答案
 func (client *Client) QueryAilegalAnswer(request *QueryAilegalAnswerRequest) (_result *QueryAilegalAnswerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -51741,10 +54620,11 @@ func (client *Client) QueryAilegalAnswer(request *QueryAilegalAnswerRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: AI提问获取答案
- * Summary: 获取答案
- */
+// Description:
+//
+// Description: AI提问获取答案
+//
+// Summary: 获取答案
 func (client *Client) QueryAilegalAnswerEx(request *QueryAilegalAnswerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAilegalAnswerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51759,10 +54639,11 @@ func (client *Client) QueryAilegalAnswerEx(request *QueryAilegalAnswerRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 问答反馈
- * Summary: 问答反馈
- */
+// Description:
+//
+// Description: 问答反馈
+//
+// Summary: 问答反馈
 func (client *Client) SubmitAilegalFeedback(request *SubmitAilegalFeedbackRequest) (_result *SubmitAilegalFeedbackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -51775,10 +54656,11 @@ func (client *Client) SubmitAilegalFeedback(request *SubmitAilegalFeedbackReques
 	return _result, _err
 }
 
-/**
- * Description: 问答反馈
- * Summary: 问答反馈
- */
+// Description:
+//
+// Description: 问答反馈
+//
+// Summary: 问答反馈
 func (client *Client) SubmitAilegalFeedbackEx(request *SubmitAilegalFeedbackRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitAilegalFeedbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51793,10 +54675,11 @@ func (client *Client) SubmitAilegalFeedbackEx(request *SubmitAilegalFeedbackRequ
 	return _result, _err
 }
 
-/**
- * Description: AI法律服务提问接口
- * Summary: 提出问题
- */
+// Description:
+//
+// Description: AI法律服务提问接口
+//
+// Summary: 提出问题
 func (client *Client) InitAilegalQuestion(request *InitAilegalQuestionRequest) (_result *InitAilegalQuestionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -51809,10 +54692,11 @@ func (client *Client) InitAilegalQuestion(request *InitAilegalQuestionRequest) (
 	return _result, _err
 }
 
-/**
- * Description: AI法律服务提问接口
- * Summary: 提出问题
- */
+// Description:
+//
+// Description: AI法律服务提问接口
+//
+// Summary: 提出问题
 func (client *Client) InitAilegalQuestionEx(request *InitAilegalQuestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitAilegalQuestionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51827,10 +54711,11 @@ func (client *Client) InitAilegalQuestionEx(request *InitAilegalQuestionRequest,
 	return _result, _err
 }
 
-/**
- * Description: 提供给第三方仲裁isv的仲裁申请状态变化回调接口
- * Summary: 仲裁状态信息变更回调接口
- */
+// Description:
+//
+// Description: 提供给第三方仲裁isv的仲裁申请状态变化回调接口
+//
+// Summary: 仲裁状态信息变更回调接口
 func (client *Client) CallbackArbitrationStatus(request *CallbackArbitrationStatusRequest) (_result *CallbackArbitrationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -51843,10 +54728,11 @@ func (client *Client) CallbackArbitrationStatus(request *CallbackArbitrationStat
 	return _result, _err
 }
 
-/**
- * Description: 提供给第三方仲裁isv的仲裁申请状态变化回调接口
- * Summary: 仲裁状态信息变更回调接口
- */
+// Description:
+//
+// Description: 提供给第三方仲裁isv的仲裁申请状态变化回调接口
+//
+// Summary: 仲裁状态信息变更回调接口
 func (client *Client) CallbackArbitrationStatusEx(request *CallbackArbitrationStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CallbackArbitrationStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51861,10 +54747,11 @@ func (client *Client) CallbackArbitrationStatusEx(request *CallbackArbitrationSt
 	return _result, _err
 }
 
-/**
- * Description: 仲裁签署状态信息变更回调接口
- * Summary: 仲裁签署状态信息变更回调接口
- */
+// Description:
+//
+// Description: 仲裁签署状态信息变更回调接口
+//
+// Summary: 仲裁签署状态信息变更回调接口
 func (client *Client) CallbackArbitrationSignstatus(request *CallbackArbitrationSignstatusRequest) (_result *CallbackArbitrationSignstatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -51877,10 +54764,11 @@ func (client *Client) CallbackArbitrationSignstatus(request *CallbackArbitration
 	return _result, _err
 }
 
-/**
- * Description: 仲裁签署状态信息变更回调接口
- * Summary: 仲裁签署状态信息变更回调接口
- */
+// Description:
+//
+// Description: 仲裁签署状态信息变更回调接口
+//
+// Summary: 仲裁签署状态信息变更回调接口
 func (client *Client) CallbackArbitrationSignstatusEx(request *CallbackArbitrationSignstatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CallbackArbitrationSignstatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51895,10 +54783,11 @@ func (client *Client) CallbackArbitrationSignstatusEx(request *CallbackArbitrati
 	return _result, _err
 }
 
-/**
- * Description: 租赁物流信息添加
- * Summary: 租赁物流信息添加
- */
+// Description:
+//
+// Description: 租赁物流信息添加
+//
+// Summary: 租赁物流信息添加
 func (client *Client) AddBclLogisticinfo(request *AddBclLogisticinfoRequest) (_result *AddBclLogisticinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -51911,10 +54800,11 @@ func (client *Client) AddBclLogisticinfo(request *AddBclLogisticinfoRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 租赁物流信息添加
- * Summary: 租赁物流信息添加
- */
+// Description:
+//
+// Description: 租赁物流信息添加
+//
+// Summary: 租赁物流信息添加
 func (client *Client) AddBclLogisticinfoEx(request *AddBclLogisticinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddBclLogisticinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51929,10 +54819,11 @@ func (client *Client) AddBclLogisticinfoEx(request *AddBclLogisticinfoRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 租赁订单发起
- * Summary: 租赁订单发起
- */
+// Description:
+//
+// Description: 租赁订单发起
+//
+// Summary: 租赁订单发起
 func (client *Client) SubmitBclOrder(request *SubmitBclOrderRequest) (_result *SubmitBclOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -51945,10 +54836,11 @@ func (client *Client) SubmitBclOrder(request *SubmitBclOrderRequest) (_result *S
 	return _result, _err
 }
 
-/**
- * Description: 租赁订单发起
- * Summary: 租赁订单发起
- */
+// Description:
+//
+// Description: 租赁订单发起
+//
+// Summary: 租赁订单发起
 func (client *Client) SubmitBclOrderEx(request *SubmitBclOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitBclOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51963,10 +54855,11 @@ func (client *Client) SubmitBclOrderEx(request *SubmitBclOrderRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 创建租赁订单
- * Summary: 创建租赁订单
- */
+// Description:
+//
+// Description: 创建租赁订单
+//
+// Summary: 创建租赁订单
 func (client *Client) CreateBclOrder(request *CreateBclOrderRequest) (_result *CreateBclOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -51979,10 +54872,11 @@ func (client *Client) CreateBclOrder(request *CreateBclOrderRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * Description: 创建租赁订单
- * Summary: 创建租赁订单
- */
+// Description:
+//
+// Description: 创建租赁订单
+//
+// Summary: 创建租赁订单
 func (client *Client) CreateBclOrderEx(request *CreateBclOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateBclOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51997,10 +54891,11 @@ func (client *Client) CreateBclOrderEx(request *CreateBclOrderRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 租赁订单查询
- * Summary: 租赁订单查询
- */
+// Description:
+//
+// Description: 租赁订单查询
+//
+// Summary: 租赁订单查询
 func (client *Client) QueryBclOrder(request *QueryBclOrderRequest) (_result *QueryBclOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52013,10 +54908,11 @@ func (client *Client) QueryBclOrder(request *QueryBclOrderRequest) (_result *Que
 	return _result, _err
 }
 
-/**
- * Description: 租赁订单查询
- * Summary: 租赁订单查询
- */
+// Description:
+//
+// Description: 租赁订单查询
+//
+// Summary: 租赁订单查询
 func (client *Client) QueryBclOrderEx(request *QueryBclOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryBclOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52031,10 +54927,11 @@ func (client *Client) QueryBclOrderEx(request *QueryBclOrderRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 履约信息上传接口
- * Summary: 履约信息上传接口
- */
+// Description:
+//
+// Description: 履约信息上传接口
+//
+// Summary: 履约信息上传接口
 func (client *Client) UploadBclPerformance(request *UploadBclPerformanceRequest) (_result *UploadBclPerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52047,10 +54944,11 @@ func (client *Client) UploadBclPerformance(request *UploadBclPerformanceRequest)
 	return _result, _err
 }
 
-/**
- * Description: 履约信息上传接口
- * Summary: 履约信息上传接口
- */
+// Description:
+//
+// Description: 履约信息上传接口
+//
+// Summary: 履约信息上传接口
 func (client *Client) UploadBclPerformanceEx(request *UploadBclPerformanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadBclPerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52065,10 +54963,11 @@ func (client *Client) UploadBclPerformanceEx(request *UploadBclPerformanceReques
 	return _result, _err
 }
 
-/**
- * Description: 商品导入
- * Summary: 商品导入
- */
+// Description:
+//
+// Description: 商品导入
+//
+// Summary: 商品导入
 func (client *Client) CreateBclProduct(request *CreateBclProductRequest) (_result *CreateBclProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52081,10 +54980,11 @@ func (client *Client) CreateBclProduct(request *CreateBclProductRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 商品导入
- * Summary: 商品导入
- */
+// Description:
+//
+// Description: 商品导入
+//
+// Summary: 商品导入
 func (client *Client) CreateBclProductEx(request *CreateBclProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateBclProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52099,10 +54999,11 @@ func (client *Client) CreateBclProductEx(request *CreateBclProductRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 商品查询
- * Summary: 商品查询
- */
+// Description:
+//
+// Description: 商品查询
+//
+// Summary: 商品查询
 func (client *Client) QueryBclProduct(request *QueryBclProductRequest) (_result *QueryBclProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52115,10 +55016,11 @@ func (client *Client) QueryBclProduct(request *QueryBclProductRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 商品查询
- * Summary: 商品查询
- */
+// Description:
+//
+// Description: 商品查询
+//
+// Summary: 商品查询
 func (client *Client) QueryBclProductEx(request *QueryBclProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryBclProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52133,10 +55035,11 @@ func (client *Client) QueryBclProductEx(request *QueryBclProductRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 合同资源量校验与资源扣减
- * Summary: 合同资源量校验与资源扣减
- */
+// Description:
+//
+// Description: 合同资源量校验与资源扣减
+//
+// Summary: 合同资源量校验与资源扣减
 func (client *Client) VerifyBclContractmetric(request *VerifyBclContractmetricRequest) (_result *VerifyBclContractmetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52149,10 +55052,11 @@ func (client *Client) VerifyBclContractmetric(request *VerifyBclContractmetricRe
 	return _result, _err
 }
 
-/**
- * Description: 合同资源量校验与资源扣减
- * Summary: 合同资源量校验与资源扣减
- */
+// Description:
+//
+// Description: 合同资源量校验与资源扣减
+//
+// Summary: 合同资源量校验与资源扣减
 func (client *Client) VerifyBclContractmetricEx(request *VerifyBclContractmetricRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyBclContractmetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52167,10 +55071,11 @@ func (client *Client) VerifyBclContractmetricEx(request *VerifyBclContractmetric
 	return _result, _err
 }
 
-/**
- * Description: 获取授权访问oss链接
- * Summary: 获取授权访问oss链接
- */
+// Description:
+//
+// Description: 获取授权访问oss链接
+//
+// Summary: 获取授权访问oss链接
 func (client *Client) GetBclUploadurl(request *GetBclUploadurlRequest) (_result *GetBclUploadurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52183,10 +55088,11 @@ func (client *Client) GetBclUploadurl(request *GetBclUploadurlRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 获取授权访问oss链接
- * Summary: 获取授权访问oss链接
- */
+// Description:
+//
+// Description: 获取授权访问oss链接
+//
+// Summary: 获取授权访问oss链接
 func (client *Client) GetBclUploadurlEx(request *GetBclUploadurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetBclUploadurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52201,10 +55107,11 @@ func (client *Client) GetBclUploadurlEx(request *GetBclUploadurlRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 变更BCL订单承诺履约还款方式。合同代扣类型的订单，可以调用该接口取消某一期的代扣(转换为主动还款)。
- * Summary: 变更BCL订单承诺履约还款方式
- */
+// Description:
+//
+// Description: 变更BCL订单承诺履约还款方式。合同代扣类型的订单，可以调用该接口取消某一期的代扣(转换为主动还款)。
+//
+// Summary: 变更BCL订单承诺履约还款方式
 func (client *Client) UpdateBclPromiserepayment(request *UpdateBclPromiserepaymentRequest) (_result *UpdateBclPromiserepaymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52217,10 +55124,11 @@ func (client *Client) UpdateBclPromiserepayment(request *UpdateBclPromiserepayme
 	return _result, _err
 }
 
-/**
- * Description: 变更BCL订单承诺履约还款方式。合同代扣类型的订单，可以调用该接口取消某一期的代扣(转换为主动还款)。
- * Summary: 变更BCL订单承诺履约还款方式
- */
+// Description:
+//
+// Description: 变更BCL订单承诺履约还款方式。合同代扣类型的订单，可以调用该接口取消某一期的代扣(转换为主动还款)。
+//
+// Summary: 变更BCL订单承诺履约还款方式
 func (client *Client) UpdateBclPromiserepaymentEx(request *UpdateBclPromiserepaymentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateBclPromiserepaymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52235,10 +55143,11 @@ func (client *Client) UpdateBclPromiserepaymentEx(request *UpdateBclPromiserepay
 	return _result, _err
 }
 
-/**
- * Description: 创建收款方
- * Summary: 创建收款方
- */
+// Description:
+//
+// Description: 创建收款方
+//
+// Summary: 创建收款方
 func (client *Client) CreateBclPayee(request *CreateBclPayeeRequest) (_result *CreateBclPayeeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52251,10 +55160,11 @@ func (client *Client) CreateBclPayee(request *CreateBclPayeeRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * Description: 创建收款方
- * Summary: 创建收款方
- */
+// Description:
+//
+// Description: 创建收款方
+//
+// Summary: 创建收款方
 func (client *Client) CreateBclPayeeEx(request *CreateBclPayeeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateBclPayeeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52269,10 +55179,11 @@ func (client *Client) CreateBclPayeeEx(request *CreateBclPayeeRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus订单融资申请接口
- * Summary: 租赁宝plus订单融资申请接口
- */
+// Description:
+//
+// Description: 租赁宝plus订单融资申请接口
+//
+// Summary: 租赁宝plus订单融资申请接口
 func (client *Client) ApplyBclFinancing(request *ApplyBclFinancingRequest) (_result *ApplyBclFinancingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52285,10 +55196,11 @@ func (client *Client) ApplyBclFinancing(request *ApplyBclFinancingRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus订单融资申请接口
- * Summary: 租赁宝plus订单融资申请接口
- */
+// Description:
+//
+// Description: 租赁宝plus订单融资申请接口
+//
+// Summary: 租赁宝plus订单融资申请接口
 func (client *Client) ApplyBclFinancingEx(request *ApplyBclFinancingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyBclFinancingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52303,10 +55215,11 @@ func (client *Client) ApplyBclFinancingEx(request *ApplyBclFinancingRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 商家发起入驻成功后，可以通过此接口查询入驻的结果
- * Summary: 查询商家入驻结果
- */
+// Description:
+//
+// Description: 商家发起入驻成功后，可以通过此接口查询入驻的结果
+//
+// Summary: 查询商家入驻结果
 func (client *Client) QueryBclMerchant(request *QueryBclMerchantRequest) (_result *QueryBclMerchantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52319,10 +55232,11 @@ func (client *Client) QueryBclMerchant(request *QueryBclMerchantRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 商家发起入驻成功后，可以通过此接口查询入驻的结果
- * Summary: 查询商家入驻结果
- */
+// Description:
+//
+// Description: 商家发起入驻成功后，可以通过此接口查询入驻的结果
+//
+// Summary: 查询商家入驻结果
 func (client *Client) QueryBclMerchantEx(request *QueryBclMerchantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryBclMerchantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52337,10 +55251,11 @@ func (client *Client) QueryBclMerchantEx(request *QueryBclMerchantRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 商家入驻租赁宝plus平台接口
- * Summary: 商家入驻租赁宝plus平台接口
- */
+// Description:
+//
+// Description: 商家入驻租赁宝plus平台接口
+//
+// Summary: 商家入驻租赁宝plus平台接口
 func (client *Client) RegisterBclMerchant(request *RegisterBclMerchantRequest) (_result *RegisterBclMerchantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52353,10 +55268,11 @@ func (client *Client) RegisterBclMerchant(request *RegisterBclMerchantRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 商家入驻租赁宝plus平台接口
- * Summary: 商家入驻租赁宝plus平台接口
- */
+// Description:
+//
+// Description: 商家入驻租赁宝plus平台接口
+//
+// Summary: 商家入驻租赁宝plus平台接口
 func (client *Client) RegisterBclMerchantEx(request *RegisterBclMerchantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RegisterBclMerchantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52371,10 +55287,11 @@ func (client *Client) RegisterBclMerchantEx(request *RegisterBclMerchantRequest,
 	return _result, _err
 }
 
-/**
- * Description: 当商家收到买家想解除代扣协议的消息后，可选择同意或拒绝用户解约操作；前置条件：商家已成功收到买家解除代扣协议的消息；
- * Summary: 解除代扣协议
- */
+// Description:
+//
+// Description: 当商家收到买家想解除代扣协议的消息后，可选择同意或拒绝用户解约操作；前置条件：商家已成功收到买家解除代扣协议的消息；
+//
+// Summary: 解除代扣协议
 func (client *Client) CancelBclWithhold(request *CancelBclWithholdRequest) (_result *CancelBclWithholdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52387,10 +55304,11 @@ func (client *Client) CancelBclWithhold(request *CancelBclWithholdRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 当商家收到买家想解除代扣协议的消息后，可选择同意或拒绝用户解约操作；前置条件：商家已成功收到买家解除代扣协议的消息；
- * Summary: 解除代扣协议
- */
+// Description:
+//
+// Description: 当商家收到买家想解除代扣协议的消息后，可选择同意或拒绝用户解约操作；前置条件：商家已成功收到买家解除代扣协议的消息；
+//
+// Summary: 解除代扣协议
 func (client *Client) CancelBclWithholdEx(request *CancelBclWithholdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelBclWithholdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52405,10 +55323,11 @@ func (client *Client) CancelBclWithholdEx(request *CancelBclWithholdRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 查询单条交易投诉详情接口
- * Summary: 查询单条交易投诉详情接口
- */
+// Description:
+//
+// Description: 查询单条交易投诉详情接口
+//
+// Summary: 查询单条交易投诉详情接口
 func (client *Client) QueryBclComplain(request *QueryBclComplainRequest) (_result *QueryBclComplainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52421,10 +55340,11 @@ func (client *Client) QueryBclComplain(request *QueryBclComplainRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 查询单条交易投诉详情接口
- * Summary: 查询单条交易投诉详情接口
- */
+// Description:
+//
+// Description: 查询单条交易投诉详情接口
+//
+// Summary: 查询单条交易投诉详情接口
 func (client *Client) QueryBclComplainEx(request *QueryBclComplainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryBclComplainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52439,10 +55359,11 @@ func (client *Client) QueryBclComplainEx(request *QueryBclComplainRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 商户上传处理图片
- * Summary: 商户上传处理图片
- */
+// Description:
+//
+// Description: 商户上传处理图片
+//
+// Summary: 商户上传处理图片
 func (client *Client) UploadBclComplainimage(request *UploadBclComplainimageRequest) (_result *UploadBclComplainimageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52455,10 +55376,11 @@ func (client *Client) UploadBclComplainimage(request *UploadBclComplainimageRequ
 	return _result, _err
 }
 
-/**
- * Description: 商户上传处理图片
- * Summary: 商户上传处理图片
- */
+// Description:
+//
+// Description: 商户上传处理图片
+//
+// Summary: 商户上传处理图片
 func (client *Client) UploadBclComplainimageEx(request *UploadBclComplainimageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadBclComplainimageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52473,10 +55395,11 @@ func (client *Client) UploadBclComplainimageEx(request *UploadBclComplainimageRe
 	return _result, _err
 }
 
-/**
- * Description: 商家处理交易投诉
- * Summary: 商家处理交易投诉
- */
+// Description:
+//
+// Description: 商家处理交易投诉
+//
+// Summary: 商家处理交易投诉
 func (client *Client) SubmitBclComplainfeedback(request *SubmitBclComplainfeedbackRequest) (_result *SubmitBclComplainfeedbackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52489,10 +55412,11 @@ func (client *Client) SubmitBclComplainfeedback(request *SubmitBclComplainfeedba
 	return _result, _err
 }
 
-/**
- * Description: 商家处理交易投诉
- * Summary: 商家处理交易投诉
- */
+// Description:
+//
+// Description: 商家处理交易投诉
+//
+// Summary: 商家处理交易投诉
 func (client *Client) SubmitBclComplainfeedbackEx(request *SubmitBclComplainfeedbackRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitBclComplainfeedbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52507,10 +55431,11 @@ func (client *Client) SubmitBclComplainfeedbackEx(request *SubmitBclComplainfeed
 	return _result, _err
 }
 
-/**
- * Description: 查询投诉单id列表
- * Summary: 查询投诉单id列表
- */
+// Description:
+//
+// Description: 查询投诉单id列表
+//
+// Summary: 查询投诉单id列表
 func (client *Client) QueryBclComplaineventids(request *QueryBclComplaineventidsRequest) (_result *QueryBclComplaineventidsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52523,10 +55448,11 @@ func (client *Client) QueryBclComplaineventids(request *QueryBclComplaineventids
 	return _result, _err
 }
 
-/**
- * Description: 查询投诉单id列表
- * Summary: 查询投诉单id列表
- */
+// Description:
+//
+// Description: 查询投诉单id列表
+//
+// Summary: 查询投诉单id列表
 func (client *Client) QueryBclComplaineventidsEx(request *QueryBclComplaineventidsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryBclComplaineventidsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52541,10 +55467,11 @@ func (client *Client) QueryBclComplaineventidsEx(request *QueryBclComplaineventi
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus文件上传接口
- * Summary: 租赁文件上传接口
- */
+// Description:
+//
+// Description: 租赁宝plus文件上传接口
+//
+// Summary: 租赁文件上传接口
 func (client *Client) UploadBclFile(request *UploadBclFileRequest) (_result *UploadBclFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52557,10 +55484,11 @@ func (client *Client) UploadBclFile(request *UploadBclFileRequest) (_result *Upl
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus文件上传接口
- * Summary: 租赁文件上传接口
- */
+// Description:
+//
+// Description: 租赁宝plus文件上传接口
+//
+// Summary: 租赁文件上传接口
 func (client *Client) UploadBclFileEx(request *UploadBclFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadBclFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52575,10 +55503,11 @@ func (client *Client) UploadBclFileEx(request *UploadBclFileRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 完成租赁单推进终态，本期要支持非自建代扣+新租赁宝代扣+老合同+老租赁宝代扣的租赁单完结
- * Summary: 完结租赁单
- */
+// Description:
+//
+// Description: 完成租赁单推进终态，本期要支持非自建代扣+新租赁宝代扣+老合同+老租赁宝代扣的租赁单完结
+//
+// Summary: 完结租赁单
 func (client *Client) FinishBclOrder(request *FinishBclOrderRequest) (_result *FinishBclOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52591,10 +55520,11 @@ func (client *Client) FinishBclOrder(request *FinishBclOrderRequest) (_result *F
 	return _result, _err
 }
 
-/**
- * Description: 完成租赁单推进终态，本期要支持非自建代扣+新租赁宝代扣+老合同+老租赁宝代扣的租赁单完结
- * Summary: 完结租赁单
- */
+// Description:
+//
+// Description: 完成租赁单推进终态，本期要支持非自建代扣+新租赁宝代扣+老合同+老租赁宝代扣的租赁单完结
+//
+// Summary: 完结租赁单
 func (client *Client) FinishBclOrderEx(request *FinishBclOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FinishBclOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52609,10 +55539,11 @@ func (client *Client) FinishBclOrderEx(request *FinishBclOrderRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus退款
- * Summary: 租赁宝plus退款
- */
+// Description:
+//
+// Description: 租赁宝plus退款
+//
+// Summary: 租赁宝plus退款
 func (client *Client) CreateBclRefund(request *CreateBclRefundRequest) (_result *CreateBclRefundResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52625,10 +55556,11 @@ func (client *Client) CreateBclRefund(request *CreateBclRefundRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus退款
- * Summary: 租赁宝plus退款
- */
+// Description:
+//
+// Description: 租赁宝plus退款
+//
+// Summary: 租赁宝plus退款
 func (client *Client) CreateBclRefundEx(request *CreateBclRefundRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateBclRefundResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52643,10 +55575,11 @@ func (client *Client) CreateBclRefundEx(request *CreateBclRefundRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus退款查询
- * Summary: 租赁宝plus退款查询
- */
+// Description:
+//
+// Description: 租赁宝plus退款查询
+//
+// Summary: 租赁宝plus退款查询
 func (client *Client) QueryBclRefund(request *QueryBclRefundRequest) (_result *QueryBclRefundResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52659,10 +55592,11 @@ func (client *Client) QueryBclRefund(request *QueryBclRefundRequest) (_result *Q
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus退款查询
- * Summary: 租赁宝plus退款查询
- */
+// Description:
+//
+// Description: 租赁宝plus退款查询
+//
+// Summary: 租赁宝plus退款查询
 func (client *Client) QueryBclRefundEx(request *QueryBclRefundRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryBclRefundResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52677,10 +55611,11 @@ func (client *Client) QueryBclRefundEx(request *QueryBclRefundRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus投保
- * Summary: 租赁宝plus投保
- */
+// Description:
+//
+// Description: 租赁宝plus投保
+//
+// Summary: 租赁宝plus投保
 func (client *Client) CreateBclInsurance(request *CreateBclInsuranceRequest) (_result *CreateBclInsuranceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52693,10 +55628,11 @@ func (client *Client) CreateBclInsurance(request *CreateBclInsuranceRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus投保
- * Summary: 租赁宝plus投保
- */
+// Description:
+//
+// Description: 租赁宝plus投保
+//
+// Summary: 租赁宝plus投保
 func (client *Client) CreateBclInsuranceEx(request *CreateBclInsuranceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateBclInsuranceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52711,10 +55647,11 @@ func (client *Client) CreateBclInsuranceEx(request *CreateBclInsuranceRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus退保
- * Summary: 租赁宝plus退保
- */
+// Description:
+//
+// Description: 租赁宝plus退保
+//
+// Summary: 租赁宝plus退保
 func (client *Client) CancelBclInsurance(request *CancelBclInsuranceRequest) (_result *CancelBclInsuranceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52727,10 +55664,11 @@ func (client *Client) CancelBclInsurance(request *CancelBclInsuranceRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus退保
- * Summary: 租赁宝plus退保
- */
+// Description:
+//
+// Description: 租赁宝plus退保
+//
+// Summary: 租赁宝plus退保
 func (client *Client) CancelBclInsuranceEx(request *CancelBclInsuranceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelBclInsuranceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52745,10 +55683,11 @@ func (client *Client) CancelBclInsuranceEx(request *CancelBclInsuranceRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus查询订单保险详情
- * Summary: 租赁宝plus查询订单保险详情
- */
+// Description:
+//
+// Description: 租赁宝plus查询订单保险详情
+//
+// Summary: 租赁宝plus查询订单保险详情
 func (client *Client) QueryBclInsurance(request *QueryBclInsuranceRequest) (_result *QueryBclInsuranceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52761,10 +55700,11 @@ func (client *Client) QueryBclInsurance(request *QueryBclInsuranceRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝plus查询订单保险详情
- * Summary: 租赁宝plus查询订单保险详情
- */
+// Description:
+//
+// Description: 租赁宝plus查询订单保险详情
+//
+// Summary: 租赁宝plus查询订单保险详情
 func (client *Client) QueryBclInsuranceEx(request *QueryBclInsuranceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryBclInsuranceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52779,10 +55719,11 @@ func (client *Client) QueryBclInsuranceEx(request *QueryBclInsuranceRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 调用本接口创建个人账号，后续有关该用户的所有操作都需使用该用户的accountId。如提供用户证件信息，则将根据提供的用户证件信息申请数字证书。
- * Summary: 创建电子合同签署个人帐户
- */
+// Description:
+//
+// Description: 调用本接口创建个人账号，后续有关该用户的所有操作都需使用该用户的accountId。如提供用户证件信息，则将根据提供的用户证件信息申请数字证书。
+//
+// Summary: 创建电子合同签署个人帐户
 func (client *Client) CreateContractAccount(request *CreateContractAccountRequest) (_result *CreateContractAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52795,10 +55736,11 @@ func (client *Client) CreateContractAccount(request *CreateContractAccountReques
 	return _result, _err
 }
 
-/**
- * Description: 调用本接口创建个人账号，后续有关该用户的所有操作都需使用该用户的accountId。如提供用户证件信息，则将根据提供的用户证件信息申请数字证书。
- * Summary: 创建电子合同签署个人帐户
- */
+// Description:
+//
+// Description: 调用本接口创建个人账号，后续有关该用户的所有操作都需使用该用户的accountId。如提供用户证件信息，则将根据提供的用户证件信息申请数字证书。
+//
+// Summary: 创建电子合同签署个人帐户
 func (client *Client) CreateContractAccountEx(request *CreateContractAccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52813,10 +55755,11 @@ func (client *Client) CreateContractAccountEx(request *CreateContractAccountRequ
 	return _result, _err
 }
 
-/**
- * Description: 通过模版参数，创建个人印章
- * Summary: 创建电子合同个人帐户印章
- */
+// Description:
+//
+// Description: 通过模版参数，创建个人印章
+//
+// Summary: 创建电子合同个人帐户印章
 func (client *Client) CreateContractAccountseal(request *CreateContractAccountsealRequest) (_result *CreateContractAccountsealResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52829,10 +55772,11 @@ func (client *Client) CreateContractAccountseal(request *CreateContractAccountse
 	return _result, _err
 }
 
-/**
- * Description: 通过模版参数，创建个人印章
- * Summary: 创建电子合同个人帐户印章
- */
+// Description:
+//
+// Description: 通过模版参数，创建个人印章
+//
+// Summary: 创建电子合同个人帐户印章
 func (client *Client) CreateContractAccountsealEx(request *CreateContractAccountsealRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractAccountsealResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52847,11 +55791,13 @@ func (client *Client) CreateContractAccountsealEx(request *CreateContractAccount
 	return _result, _err
 }
 
-/**
- * Description: 对接方调用本接口创建机构账号，后续有关该机构的所有操作都需使用该机构的orgId。如提供机构证件信息，则将根据提供的机构证件信息申请数字证书。
-创建机构账号前需要先创建一个个人账号并通过本接口传给服务器，该个人账号将作为该机构签署的经办人，代表企业完成实名认证和意愿认证，并完成签署操作。
- * Summary: 创建电子合同签署机构帐户
-*/
+// Description:
+//
+// Description: 对接方调用本接口创建机构账号，后续有关该机构的所有操作都需使用该机构的orgId。如提供机构证件信息，则将根据提供的机构证件信息申请数字证书。
+//
+// 创建机构账号前需要先创建一个个人账号并通过本接口传给服务器，该个人账号将作为该机构签署的经办人，代表企业完成实名认证和意愿认证，并完成签署操作。
+//
+// Summary: 创建电子合同签署机构帐户
 func (client *Client) CreateContractOrganization(request *CreateContractOrganizationRequest) (_result *CreateContractOrganizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52864,11 +55810,13 @@ func (client *Client) CreateContractOrganization(request *CreateContractOrganiza
 	return _result, _err
 }
 
-/**
- * Description: 对接方调用本接口创建机构账号，后续有关该机构的所有操作都需使用该机构的orgId。如提供机构证件信息，则将根据提供的机构证件信息申请数字证书。
-创建机构账号前需要先创建一个个人账号并通过本接口传给服务器，该个人账号将作为该机构签署的经办人，代表企业完成实名认证和意愿认证，并完成签署操作。
- * Summary: 创建电子合同签署机构帐户
-*/
+// Description:
+//
+// Description: 对接方调用本接口创建机构账号，后续有关该机构的所有操作都需使用该机构的orgId。如提供机构证件信息，则将根据提供的机构证件信息申请数字证书。
+//
+// 创建机构账号前需要先创建一个个人账号并通过本接口传给服务器，该个人账号将作为该机构签署的经办人，代表企业完成实名认证和意愿认证，并完成签署操作。
+//
+// Summary: 创建电子合同签署机构帐户
 func (client *Client) CreateContractOrganizationEx(request *CreateContractOrganizationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractOrganizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52883,10 +55831,11 @@ func (client *Client) CreateContractOrganizationEx(request *CreateContractOrgani
 	return _result, _err
 }
 
-/**
- * Description: 通过模版参数，创建机构印章
- * Summary: 创建电子合同机构帐户印章
- */
+// Description:
+//
+// Description: 通过模版参数，创建机构印章
+//
+// Summary: 创建电子合同机构帐户印章
 func (client *Client) CreateContractOrgseal(request *CreateContractOrgsealRequest) (_result *CreateContractOrgsealResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52899,10 +55848,11 @@ func (client *Client) CreateContractOrgseal(request *CreateContractOrgsealReques
 	return _result, _err
 }
 
-/**
- * Description: 通过模版参数，创建机构印章
- * Summary: 创建电子合同机构帐户印章
- */
+// Description:
+//
+// Description: 通过模版参数，创建机构印章
+//
+// Summary: 创建电子合同机构帐户印章
 func (client *Client) CreateContractOrgsealEx(request *CreateContractOrgsealRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractOrgsealResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52917,10 +55867,11 @@ func (client *Client) CreateContractOrgsealEx(request *CreateContractOrgsealRequ
 	return _result, _err
 }
 
-/**
- * Description: 静默签署授权
- * Summary: 静默签署授权
- */
+// Description:
+//
+// Description: 静默签署授权
+//
+// Summary: 静默签署授权
 func (client *Client) AuthContractSign(request *AuthContractSignRequest) (_result *AuthContractSignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52933,10 +55884,11 @@ func (client *Client) AuthContractSign(request *AuthContractSignRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 静默签署授权
- * Summary: 静默签署授权
- */
+// Description:
+//
+// Description: 静默签署授权
+//
+// Summary: 静默签署授权
 func (client *Client) AuthContractSignEx(request *AuthContractSignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AuthContractSignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52951,10 +55903,11 @@ func (client *Client) AuthContractSignEx(request *AuthContractSignRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 通过文件直传地址创建模板，创建模板后上传文件，上传方法请参考文件流上传方法
- * Summary: 通过文件上传方式创建电子合同签署模板
- */
+// Description:
+//
+// Description: 通过文件直传地址创建模板，创建模板后上传文件，上传方法请参考文件流上传方法
+//
+// Summary: 通过文件上传方式创建电子合同签署模板
 func (client *Client) CreateContractTemplate(request *CreateContractTemplateRequest) (_result *CreateContractTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -52967,10 +55920,11 @@ func (client *Client) CreateContractTemplate(request *CreateContractTemplateRequ
 	return _result, _err
 }
 
-/**
- * Description: 通过文件直传地址创建模板，创建模板后上传文件，上传方法请参考文件流上传方法
- * Summary: 通过文件上传方式创建电子合同签署模板
- */
+// Description:
+//
+// Description: 通过文件直传地址创建模板，创建模板后上传文件，上传方法请参考文件流上传方法
+//
+// Summary: 通过文件上传方式创建电子合同签署模板
 func (client *Client) CreateContractTemplateEx(request *CreateContractTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52985,10 +55939,11 @@ func (client *Client) CreateContractTemplateEx(request *CreateContractTemplateRe
 	return _result, _err
 }
 
-/**
- * Description: 创建签署流程
- * Summary: 创建电子合同签署流程
- */
+// Description:
+//
+// Description: 创建签署流程
+//
+// Summary: 创建电子合同签署流程
 func (client *Client) CreateContractFlow(request *CreateContractFlowRequest) (_result *CreateContractFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53001,10 +55956,11 @@ func (client *Client) CreateContractFlow(request *CreateContractFlowRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 创建签署流程
- * Summary: 创建电子合同签署流程
- */
+// Description:
+//
+// Description: 创建签署流程
+//
+// Summary: 创建电子合同签署流程
 func (client *Client) CreateContractFlowEx(request *CreateContractFlowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53019,10 +55975,11 @@ func (client *Client) CreateContractFlowEx(request *CreateContractFlowRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 向流程中添加待签署文档，文档必须先用文档管理接口创建，创建方式请参见文件管理接口文档。已经开启的流程不能再添加签署文档。
- * Summary: 向电子合同签署流程中添加待签署文档
- */
+// Description:
+//
+// Description: 向流程中添加待签署文档，文档必须先用文档管理接口创建，创建方式请参见文件管理接口文档。已经开启的流程不能再添加签署文档。
+//
+// Summary: 向电子合同签署流程中添加待签署文档
 func (client *Client) AddContractDocument(request *AddContractDocumentRequest) (_result *AddContractDocumentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53035,10 +55992,11 @@ func (client *Client) AddContractDocument(request *AddContractDocumentRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 向流程中添加待签署文档，文档必须先用文档管理接口创建，创建方式请参见文件管理接口文档。已经开启的流程不能再添加签署文档。
- * Summary: 向电子合同签署流程中添加待签署文档
- */
+// Description:
+//
+// Description: 向流程中添加待签署文档，文档必须先用文档管理接口创建，创建方式请参见文件管理接口文档。已经开启的流程不能再添加签署文档。
+//
+// Summary: 向电子合同签署流程中添加待签署文档
 func (client *Client) AddContractDocumentEx(request *AddContractDocumentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddContractDocumentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53053,10 +56011,11 @@ func (client *Client) AddContractDocumentEx(request *AddContractDocumentRequest,
 	return _result, _err
 }
 
-/**
- * Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。 签署区的添加必须在签署文档添加之后, 签署区信息内部包含签署人、签署文档信息。 签署区创建完成，流程开启后，系统将自动完成“用户自动盖章签署区”的盖章。用户可全程无感完成本次签署。创建签署方自动盖章签署区前，需确定已完成账号静默签署授权。签署方自动盖章的合同，需要由对接平台方自行校验真实身份和真实意愿
- * Summary: 添加电子合同签署方自动盖章签署区
- */
+// Description:
+//
+// Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。 签署区的添加必须在签署文档添加之后, 签署区信息内部包含签署人、签署文档信息。 签署区创建完成，流程开启后，系统将自动完成“用户自动盖章签署区”的盖章。用户可全程无感完成本次签署。创建签署方自动盖章签署区前，需确定已完成账号静默签署授权。签署方自动盖章的合同，需要由对接平台方自行校验真实身份和真实意愿
+//
+// Summary: 添加电子合同签署方自动盖章签署区
 func (client *Client) AddContractSignfield(request *AddContractSignfieldRequest) (_result *AddContractSignfieldResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53069,10 +56028,11 @@ func (client *Client) AddContractSignfield(request *AddContractSignfieldRequest)
 	return _result, _err
 }
 
-/**
- * Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。 签署区的添加必须在签署文档添加之后, 签署区信息内部包含签署人、签署文档信息。 签署区创建完成，流程开启后，系统将自动完成“用户自动盖章签署区”的盖章。用户可全程无感完成本次签署。创建签署方自动盖章签署区前，需确定已完成账号静默签署授权。签署方自动盖章的合同，需要由对接平台方自行校验真实身份和真实意愿
- * Summary: 添加电子合同签署方自动盖章签署区
- */
+// Description:
+//
+// Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。 签署区的添加必须在签署文档添加之后, 签署区信息内部包含签署人、签署文档信息。 签署区创建完成，流程开启后，系统将自动完成“用户自动盖章签署区”的盖章。用户可全程无感完成本次签署。创建签署方自动盖章签署区前，需确定已完成账号静默签署授权。签署方自动盖章的合同，需要由对接平台方自行校验真实身份和真实意愿
+//
+// Summary: 添加电子合同签署方自动盖章签署区
 func (client *Client) AddContractSignfieldEx(request *AddContractSignfieldRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddContractSignfieldResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53087,10 +56047,11 @@ func (client *Client) AddContractSignfieldEx(request *AddContractSignfieldReques
 	return _result, _err
 }
 
-/**
- * Description: 开启签署流程，开启后流程文档不可再添加或修改文档，签署任务会自动按照设置开始流转。流程开启后，归档前，可随时追加签署区（指定签署人的签署信息）
- * Summary: 电子合同签署流程开启
- */
+// Description:
+//
+// Description: 开启签署流程，开启后流程文档不可再添加或修改文档，签署任务会自动按照设置开始流转。流程开启后，归档前，可随时追加签署区（指定签署人的签署信息）
+//
+// Summary: 电子合同签署流程开启
 func (client *Client) StartContractFlow(request *StartContractFlowRequest) (_result *StartContractFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53103,10 +56064,11 @@ func (client *Client) StartContractFlow(request *StartContractFlowRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 开启签署流程，开启后流程文档不可再添加或修改文档，签署任务会自动按照设置开始流转。流程开启后，归档前，可随时追加签署区（指定签署人的签署信息）
- * Summary: 电子合同签署流程开启
- */
+// Description:
+//
+// Description: 开启签署流程，开启后流程文档不可再添加或修改文档，签署任务会自动按照设置开始流转。流程开启后，归档前，可随时追加签署区（指定签署人的签署信息）
+//
+// Summary: 电子合同签署流程开启
 func (client *Client) StartContractFlowEx(request *StartContractFlowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartContractFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53121,10 +56083,11 @@ func (client *Client) StartContractFlowEx(request *StartContractFlowRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 手动归档签署流程，归档后所有资源均不可修改。归档前签署流程中的所有签署人必须都签署完成。如创建流程时设置了自动归档，则无需调用本接口，签署完成后系统会自动调用
- * Summary: 电子合同签署流程归档
- */
+// Description:
+//
+// Description: 手动归档签署流程，归档后所有资源均不可修改。归档前签署流程中的所有签署人必须都签署完成。如创建流程时设置了自动归档，则无需调用本接口，签署完成后系统会自动调用
+//
+// Summary: 电子合同签署流程归档
 func (client *Client) SaveContractFlow(request *SaveContractFlowRequest) (_result *SaveContractFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53137,10 +56100,11 @@ func (client *Client) SaveContractFlow(request *SaveContractFlowRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 手动归档签署流程，归档后所有资源均不可修改。归档前签署流程中的所有签署人必须都签署完成。如创建流程时设置了自动归档，则无需调用本接口，签署完成后系统会自动调用
- * Summary: 电子合同签署流程归档
- */
+// Description:
+//
+// Description: 手动归档签署流程，归档后所有资源均不可修改。归档前签署流程中的所有签署人必须都签署完成。如创建流程时设置了自动归档，则无需调用本接口，签署完成后系统会自动调用
+//
+// Summary: 电子合同签署流程归档
 func (client *Client) SaveContractFlowEx(request *SaveContractFlowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SaveContractFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53155,10 +56119,11 @@ func (client *Client) SaveContractFlowEx(request *SaveContractFlowRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 流程归档后，查询和下载签署后的文件
- * Summary: 电子合同流程文档下载
- */
+// Description:
+//
+// Description: 流程归档后，查询和下载签署后的文件
+//
+// Summary: 电子合同流程文档下载
 func (client *Client) DownloadContractDocument(request *DownloadContractDocumentRequest) (_result *DownloadContractDocumentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53171,10 +56136,11 @@ func (client *Client) DownloadContractDocument(request *DownloadContractDocument
 	return _result, _err
 }
 
-/**
- * Description: 流程归档后，查询和下载签署后的文件
- * Summary: 电子合同流程文档下载
- */
+// Description:
+//
+// Description: 流程归档后，查询和下载签署后的文件
+//
+// Summary: 电子合同流程文档下载
 func (client *Client) DownloadContractDocumentEx(request *DownloadContractDocumentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DownloadContractDocumentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53189,10 +56155,11 @@ func (client *Client) DownloadContractDocumentEx(request *DownloadContractDocume
 	return _result, _err
 }
 
-/**
- * Description: 基于文件模板生成待签文件用于后续文件，该文件可用用于签署，也可作为附件
- * Summary: 通过电子合同模板添加文档
- */
+// Description:
+//
+// Description: 基于文件模板生成待签文件用于后续文件，该文件可用用于签署，也可作为附件
+//
+// Summary: 通过电子合同模板添加文档
 func (client *Client) AddContractFile(request *AddContractFileRequest) (_result *AddContractFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53205,10 +56172,11 @@ func (client *Client) AddContractFile(request *AddContractFileRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 基于文件模板生成待签文件用于后续文件，该文件可用用于签署，也可作为附件
- * Summary: 通过电子合同模板添加文档
- */
+// Description:
+//
+// Description: 基于文件模板生成待签文件用于后续文件，该文件可用用于签署，也可作为附件
+//
+// Summary: 通过电子合同模板添加文档
 func (client *Client) AddContractFileEx(request *AddContractFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddContractFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53223,10 +56191,11 @@ func (client *Client) AddContractFileEx(request *AddContractFileRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 电子合同平台方发起注册，提供企业信息、合同签署的经办人信息，注册成为电子合同平台方用户
- * Summary: 电子合同平台方注册
- */
+// Description:
+//
+// Description: 电子合同平台方发起注册，提供企业信息、合同签署的经办人信息，注册成为电子合同平台方用户
+//
+// Summary: 电子合同平台方发起注册，提供企业信息、合同签署的经办人信息，注册成为电子合同平台方用户
 func (client *Client) CreateContractPlatform(request *CreateContractPlatformRequest) (_result *CreateContractPlatformResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53239,10 +56208,11 @@ func (client *Client) CreateContractPlatform(request *CreateContractPlatformRequ
 	return _result, _err
 }
 
-/**
- * Description: 电子合同平台方发起注册，提供企业信息、合同签署的经办人信息，注册成为电子合同平台方用户
- * Summary: 电子合同平台方注册
- */
+// Description:
+//
+// Description: 电子合同平台方发起注册，提供企业信息、合同签署的经办人信息，注册成为电子合同平台方用户
+//
+// Summary: 电子合同平台方发起注册，提供企业信息、合同签署的经办人信息，注册成为电子合同平台方用户
 func (client *Client) CreateContractPlatformEx(request *CreateContractPlatformRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractPlatformResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53257,10 +56227,11 @@ func (client *Client) CreateContractPlatformEx(request *CreateContractPlatformRe
 	return _result, _err
 }
 
-/**
- * Description: 电子合同平台方提供用户信息，注册成为平台用户
- * Summary: 电子合同平台方的用户注册
- */
+// Description:
+//
+// Description: 电子合同平台方提供用户信息，注册成为平台用户
+//
+// Summary: 电子合同平台方的用户注册
 func (client *Client) CreateContractUser(request *CreateContractUserRequest) (_result *CreateContractUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53273,10 +56244,11 @@ func (client *Client) CreateContractUser(request *CreateContractUserRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 电子合同平台方提供用户信息，注册成为平台用户
- * Summary: 电子合同平台方的用户注册
- */
+// Description:
+//
+// Description: 电子合同平台方提供用户信息，注册成为平台用户
+//
+// Summary: 电子合同平台方的用户注册
 func (client *Client) CreateContractUserEx(request *CreateContractUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53291,10 +56263,11 @@ func (client *Client) CreateContractUserEx(request *CreateContractUserRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 电子合同平台方发起签署流程，用户在H5页面完成手动签署
- * Summary: 电子合同平台方发起手动签署流程
- */
+// Description:
+//
+// Description: 电子合同平台方发起签署流程，用户在H5页面完成手动签署
+//
+// Summary: 电子合同平台方发起手动签署流程
 func (client *Client) StartContractHandsign(request *StartContractHandsignRequest) (_result *StartContractHandsignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53307,10 +56280,11 @@ func (client *Client) StartContractHandsign(request *StartContractHandsignReques
 	return _result, _err
 }
 
-/**
- * Description: 电子合同平台方发起签署流程，用户在H5页面完成手动签署
- * Summary: 电子合同平台方发起手动签署流程
- */
+// Description:
+//
+// Description: 电子合同平台方发起签署流程，用户在H5页面完成手动签署
+//
+// Summary: 电子合同平台方发起手动签署流程
 func (client *Client) StartContractHandsignEx(request *StartContractHandsignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartContractHandsignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53325,10 +56299,11 @@ func (client *Client) StartContractHandsignEx(request *StartContractHandsignRequ
 	return _result, _err
 }
 
-/**
- * Description: 查询签署流程的详细信息，包括流程配置、签署状态等
- * Summary: 签署流程查询
- */
+// Description:
+//
+// Description: 查询签署流程的详细信息，包括流程配置、签署状态等
+//
+// Summary: 签署流程查询
 func (client *Client) QueryContractFlow(request *QueryContractFlowRequest) (_result *QueryContractFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53341,10 +56316,11 @@ func (client *Client) QueryContractFlow(request *QueryContractFlowRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 查询签署流程的详细信息，包括流程配置、签署状态等
- * Summary: 签署流程查询
- */
+// Description:
+//
+// Description: 查询签署流程的详细信息，包括流程配置、签署状态等
+//
+// Summary: 签署流程查询
 func (client *Client) QueryContractFlowEx(request *QueryContractFlowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53359,10 +56335,11 @@ func (client *Client) QueryContractFlowEx(request *QueryContractFlowRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 创建个人/机构图片印章
- * Summary: 创建个人/机构图片印章
- */
+// Description:
+//
+// Description: 创建个人/机构图片印章
+//
+// Summary: 创建个人/机构图片印章
 func (client *Client) CreateContractAccountsealimage(request *CreateContractAccountsealimageRequest) (_result *CreateContractAccountsealimageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53375,10 +56352,11 @@ func (client *Client) CreateContractAccountsealimage(request *CreateContractAcco
 	return _result, _err
 }
 
-/**
- * Description: 创建个人/机构图片印章
- * Summary: 创建个人/机构图片印章
- */
+// Description:
+//
+// Description: 创建个人/机构图片印章
+//
+// Summary: 创建个人/机构图片印章
 func (client *Client) CreateContractAccountsealimageEx(request *CreateContractAccountsealimageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractAccountsealimageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53393,10 +56371,11 @@ func (client *Client) CreateContractAccountsealimageEx(request *CreateContractAc
 	return _result, _err
 }
 
-/**
- * Description: 采用文件直传的方式完成用户文件的上传。对接方通过该接口获取文件上传的授权地址
- * Summary: 通过上传方式创建文件
- */
+// Description:
+//
+// Description: 采用文件直传的方式完成用户文件的上传。对接方通过该接口获取文件上传的授权地址
+//
+// Summary: 通过上传方式创建文件
 func (client *Client) GetContractFileuploadurl(request *GetContractFileuploadurlRequest) (_result *GetContractFileuploadurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53409,10 +56388,11 @@ func (client *Client) GetContractFileuploadurl(request *GetContractFileuploadurl
 	return _result, _err
 }
 
-/**
- * Description: 采用文件直传的方式完成用户文件的上传。对接方通过该接口获取文件上传的授权地址
- * Summary: 通过上传方式创建文件
- */
+// Description:
+//
+// Description: 采用文件直传的方式完成用户文件的上传。对接方通过该接口获取文件上传的授权地址
+//
+// Summary: 通过上传方式创建文件
 func (client *Client) GetContractFileuploadurlEx(request *GetContractFileuploadurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetContractFileuploadurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53427,11 +56407,13 @@ func (client *Client) GetContractFileuploadurlEx(request *GetContractFileuploadu
 	return _result, _err
 }
 
-/**
- * Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。 签署区的添加必须在签署文档添加之后, 签署区信息内部包含签署文档信息（平台自动签无需指定签署人信息，默认签署人是对接的企业）。
-签署区创建完成，流程开启后，系统将自动完成“对接平台自动盖章签署区”的盖章，对接平台可全程无感完成本次签署。
- * Summary: 添加平台自动盖章签署区
-*/
+// Description:
+//
+// Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。 签署区的添加必须在签署文档添加之后, 签署区信息内部包含签署文档信息（平台自动签无需指定签署人信息，默认签署人是对接的企业）。
+//
+// 签署区创建完成，流程开启后，系统将自动完成“对接平台自动盖章签署区”的盖章，对接平台可全程无感完成本次签署。
+//
+// Summary: 添加平台自动盖章签署区
 func (client *Client) AddContractPlatformsignfields(request *AddContractPlatformsignfieldsRequest) (_result *AddContractPlatformsignfieldsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53444,11 +56426,13 @@ func (client *Client) AddContractPlatformsignfields(request *AddContractPlatform
 	return _result, _err
 }
 
-/**
- * Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。 签署区的添加必须在签署文档添加之后, 签署区信息内部包含签署文档信息（平台自动签无需指定签署人信息，默认签署人是对接的企业）。
-签署区创建完成，流程开启后，系统将自动完成“对接平台自动盖章签署区”的盖章，对接平台可全程无感完成本次签署。
- * Summary: 添加平台自动盖章签署区
-*/
+// Description:
+//
+// Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。 签署区的添加必须在签署文档添加之后, 签署区信息内部包含签署文档信息（平台自动签无需指定签署人信息，默认签署人是对接的企业）。
+//
+// 签署区创建完成，流程开启后，系统将自动完成“对接平台自动盖章签署区”的盖章，对接平台可全程无感完成本次签署。
+//
+// Summary: 添加平台自动盖章签署区
 func (client *Client) AddContractPlatformsignfieldsEx(request *AddContractPlatformsignfieldsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddContractPlatformsignfieldsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53463,10 +56447,11 @@ func (client *Client) AddContractPlatformsignfieldsEx(request *AddContractPlatfo
 	return _result, _err
 }
 
-/**
- * Description: 查询文件详情，包括文件名称、大小、下载地址等
- * Summary: 查询文件详情
- */
+// Description:
+//
+// Description: 查询文件详情，包括文件名称、大小、下载地址等
+//
+// Summary: 查询文件详情
 func (client *Client) GetContractFile(request *GetContractFileRequest) (_result *GetContractFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53479,10 +56464,11 @@ func (client *Client) GetContractFile(request *GetContractFileRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 查询文件详情，包括文件名称、大小、下载地址等
- * Summary: 查询文件详情
- */
+// Description:
+//
+// Description: 查询文件详情，包括文件名称、大小、下载地址等
+//
+// Summary: 查询文件详情
 func (client *Client) GetContractFileEx(request *GetContractFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetContractFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53497,10 +56483,11 @@ func (client *Client) GetContractFileEx(request *GetContractFileRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 查询个人所有印章
- * Summary: 查询个人印章
- */
+// Description:
+//
+// Description: 查询个人所有印章
+//
+// Summary: 查询个人印章
 func (client *Client) QueryContractAccountseals(request *QueryContractAccountsealsRequest) (_result *QueryContractAccountsealsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53513,10 +56500,11 @@ func (client *Client) QueryContractAccountseals(request *QueryContractAccountsea
 	return _result, _err
 }
 
-/**
- * Description: 查询个人所有印章
- * Summary: 查询个人印章
- */
+// Description:
+//
+// Description: 查询个人所有印章
+//
+// Summary: 查询个人印章
 func (client *Client) QueryContractAccountsealsEx(request *QueryContractAccountsealsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractAccountsealsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53531,10 +56519,11 @@ func (client *Client) QueryContractAccountsealsEx(request *QueryContractAccounts
 	return _result, _err
 }
 
-/**
- * Description: 查询机构所有印章
- * Summary: 查询机构印章
- */
+// Description:
+//
+// Description: 查询机构所有印章
+//
+// Summary: 查询机构印章
 func (client *Client) QueryContractOrganizationseals(request *QueryContractOrganizationsealsRequest) (_result *QueryContractOrganizationsealsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53547,10 +56536,11 @@ func (client *Client) QueryContractOrganizationseals(request *QueryContractOrgan
 	return _result, _err
 }
 
-/**
- * Description: 查询机构所有印章
- * Summary: 查询机构印章
- */
+// Description:
+//
+// Description: 查询机构所有印章
+//
+// Summary: 查询机构印章
 func (client *Client) QueryContractOrganizationsealsEx(request *QueryContractOrganizationsealsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractOrganizationsealsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53565,10 +56555,11 @@ func (client *Client) QueryContractOrganizationsealsEx(request *QueryContractOrg
 	return _result, _err
 }
 
-/**
- * Description: 查询流程所有签署人列表。
- * Summary: 查询流程签署人列表
- */
+// Description:
+//
+// Description: 查询流程所有签署人列表。
+//
+// Summary: 查询流程签署人列表
 func (client *Client) QueryContractFlowsigner(request *QueryContractFlowsignerRequest) (_result *QueryContractFlowsignerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53581,10 +56572,11 @@ func (client *Client) QueryContractFlowsigner(request *QueryContractFlowsignerRe
 	return _result, _err
 }
 
-/**
- * Description: 查询流程所有签署人列表。
- * Summary: 查询流程签署人列表
- */
+// Description:
+//
+// Description: 查询流程所有签署人列表。
+//
+// Summary: 查询流程签署人列表
 func (client *Client) QueryContractFlowsignerEx(request *QueryContractFlowsignerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractFlowsignerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53599,10 +56591,11 @@ func (client *Client) QueryContractFlowsignerEx(request *QueryContractFlowsigner
 	return _result, _err
 }
 
-/**
- * Description: 查询流程签署区列表，可以查询指定指定id或者签署人所属的签署区
- * Summary: 查询签署区列表
- */
+// Description:
+//
+// Description: 查询流程签署区列表，可以查询指定指定id或者签署人所属的签署区
+//
+// Summary: 查询签署区列表
 func (client *Client) QueryContractSignfields(request *QueryContractSignfieldsRequest) (_result *QueryContractSignfieldsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53615,10 +56608,11 @@ func (client *Client) QueryContractSignfields(request *QueryContractSignfieldsRe
 	return _result, _err
 }
 
-/**
- * Description: 查询流程签署区列表，可以查询指定指定id或者签署人所属的签署区
- * Summary: 查询签署区列表
- */
+// Description:
+//
+// Description: 查询流程签署区列表，可以查询指定指定id或者签署人所属的签署区
+//
+// Summary: 查询签署区列表
 func (client *Client) QueryContractSignfieldsEx(request *QueryContractSignfieldsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractSignfieldsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53633,10 +56627,11 @@ func (client *Client) QueryContractSignfieldsEx(request *QueryContractSignfields
 	return _result, _err
 }
 
-/**
- * Description: 使用创建账号返回的账号id查询用户的账号。
- * Summary: 查询个人账号
- */
+// Description:
+//
+// Description: 使用创建账号返回的账号id查询用户的账号。
+//
+// Summary: 查询个人账号
 func (client *Client) QueryContractAccount(request *QueryContractAccountRequest) (_result *QueryContractAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53649,10 +56644,11 @@ func (client *Client) QueryContractAccount(request *QueryContractAccountRequest)
 	return _result, _err
 }
 
-/**
- * Description: 使用创建账号返回的账号id查询用户的账号。
- * Summary: 查询个人账号
- */
+// Description:
+//
+// Description: 使用创建账号返回的账号id查询用户的账号。
+//
+// Summary: 查询个人账号
 func (client *Client) QueryContractAccountEx(request *QueryContractAccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53667,10 +56663,11 @@ func (client *Client) QueryContractAccountEx(request *QueryContractAccountReques
 	return _result, _err
 }
 
-/**
- * Description: 使用创建账号返回的账号id查询机构账号。
- * Summary: 查询机构账号
- */
+// Description:
+//
+// Description: 使用创建账号返回的账号id查询机构账号。
+//
+// Summary: 查询机构账号
 func (client *Client) QueryContractOrganization(request *QueryContractOrganizationRequest) (_result *QueryContractOrganizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53683,10 +56680,11 @@ func (client *Client) QueryContractOrganization(request *QueryContractOrganizati
 	return _result, _err
 }
 
-/**
- * Description: 使用创建账号返回的账号id查询机构账号。
- * Summary: 查询机构账号
- */
+// Description:
+//
+// Description: 使用创建账号返回的账号id查询机构账号。
+//
+// Summary: 查询机构账号
 func (client *Client) QueryContractOrganizationEx(request *QueryContractOrganizationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractOrganizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53701,10 +56699,11 @@ func (client *Client) QueryContractOrganizationEx(request *QueryContractOrganiza
 	return _result, _err
 }
 
-/**
- * Description: 查询模板详情，包括文件模板基本信息和输入项组件信息
- * Summary: 查询模板详情详情
- */
+// Description:
+//
+// Description: 查询模板详情，包括文件模板基本信息和输入项组件信息
+//
+// Summary: 查询模板详情详情
 func (client *Client) QueryContractTemplate(request *QueryContractTemplateRequest) (_result *QueryContractTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53717,10 +56716,11 @@ func (client *Client) QueryContractTemplate(request *QueryContractTemplateReques
 	return _result, _err
 }
 
-/**
- * Description: 查询模板详情，包括文件模板基本信息和输入项组件信息
- * Summary: 查询模板详情详情
- */
+// Description:
+//
+// Description: 查询模板详情，包括文件模板基本信息和输入项组件信息
+//
+// Summary: 查询模板详情详情
 func (client *Client) QueryContractTemplateEx(request *QueryContractTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53735,10 +56735,11 @@ func (client *Client) QueryContractTemplateEx(request *QueryContractTemplateRequ
 	return _result, _err
 }
 
-/**
- * Description: 平台方制定签约模板和用户，发起手动签署流程，获得签署流程ID
- * Summary: 创建签署流程
- */
+// Description:
+//
+// Description: 平台方制定签约模板和用户，发起手动签署流程，获得签署流程ID
+//
+// Summary: 创建签署流程
 func (client *Client) CreateContractSignflow(request *CreateContractSignflowRequest) (_result *CreateContractSignflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53751,10 +56752,11 @@ func (client *Client) CreateContractSignflow(request *CreateContractSignflowRequ
 	return _result, _err
 }
 
-/**
- * Description: 平台方制定签约模板和用户，发起手动签署流程，获得签署流程ID
- * Summary: 创建签署流程
- */
+// Description:
+//
+// Description: 平台方制定签约模板和用户，发起手动签署流程，获得签署流程ID
+//
+// Summary: 创建签署流程
 func (client *Client) CreateContractSignflowEx(request *CreateContractSignflowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractSignflowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53769,10 +56771,11 @@ func (client *Client) CreateContractSignflowEx(request *CreateContractSignflowRe
 	return _result, _err
 }
 
-/**
- * Description: 商户签署直付通协议
- * Summary: 商户签署直付通协议
- */
+// Description:
+//
+// Description: 商户签署直付通协议
+//
+// Summary: 商户签署直付通协议
 func (client *Client) CreateContractRegisterzft(request *CreateContractRegisterzftRequest) (_result *CreateContractRegisterzftResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53785,10 +56788,11 @@ func (client *Client) CreateContractRegisterzft(request *CreateContractRegisterz
 	return _result, _err
 }
 
-/**
- * Description: 商户签署直付通协议
- * Summary: 商户签署直付通协议
- */
+// Description:
+//
+// Description: 商户签署直付通协议
+//
+// Summary: 商户签署直付通协议
 func (client *Client) CreateContractRegisterzftEx(request *CreateContractRegisterzftRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractRegisterzftResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53803,10 +56807,11 @@ func (client *Client) CreateContractRegisterzftEx(request *CreateContractRegiste
 	return _result, _err
 }
 
-/**
- * Description: 创建模板的同时，指定平台方签署信息，完成智能合同模板创建
- * Summary: 创建智能合同模板
- */
+// Description:
+//
+// Description: 创建模板的同时，指定平台方签署信息，完成智能合同模板创建
+//
+// Summary: 创建智能合同模板
 func (client *Client) CreateContractPlatformtemplate(request *CreateContractPlatformtemplateRequest) (_result *CreateContractPlatformtemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53819,10 +56824,11 @@ func (client *Client) CreateContractPlatformtemplate(request *CreateContractPlat
 	return _result, _err
 }
 
-/**
- * Description: 创建模板的同时，指定平台方签署信息，完成智能合同模板创建
- * Summary: 创建智能合同模板
- */
+// Description:
+//
+// Description: 创建模板的同时，指定平台方签署信息，完成智能合同模板创建
+//
+// Summary: 创建智能合同模板
 func (client *Client) CreateContractPlatformtemplateEx(request *CreateContractPlatformtemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractPlatformtemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53837,10 +56843,11 @@ func (client *Client) CreateContractPlatformtemplateEx(request *CreateContractPl
 	return _result, _err
 }
 
-/**
- * Description: 查询商户直付通入驻信息
- * Summary: 查询商户直付通入驻信息
- */
+// Description:
+//
+// Description: 查询商户直付通入驻信息
+//
+// Summary: 查询商户直付通入驻信息
 func (client *Client) QueryContractMerchantzft(request *QueryContractMerchantzftRequest) (_result *QueryContractMerchantzftResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53853,10 +56860,11 @@ func (client *Client) QueryContractMerchantzft(request *QueryContractMerchantzft
 	return _result, _err
 }
 
-/**
- * Description: 查询商户直付通入驻信息
- * Summary: 查询商户直付通入驻信息
- */
+// Description:
+//
+// Description: 查询商户直付通入驻信息
+//
+// Summary: 查询商户直付通入驻信息
 func (client *Client) QueryContractMerchantzftEx(request *QueryContractMerchantzftRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractMerchantzftResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53871,10 +56879,11 @@ func (client *Client) QueryContractMerchantzftEx(request *QueryContractMerchantz
 	return _result, _err
 }
 
-/**
- * Description: 列举本租户合同相关交易
- * Summary: 列举本租户合同相关交易
- */
+// Description:
+//
+// Description: 列举本租户合同相关交易
+//
+// Summary: 列举本租户合同相关交易
 func (client *Client) ListContractOuttradeid(request *ListContractOuttradeidRequest) (_result *ListContractOuttradeidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53887,10 +56896,11 @@ func (client *Client) ListContractOuttradeid(request *ListContractOuttradeidRequ
 	return _result, _err
 }
 
-/**
- * Description: 列举本租户合同相关交易
- * Summary: 列举本租户合同相关交易
- */
+// Description:
+//
+// Description: 列举本租户合同相关交易
+//
+// Summary: 列举本租户合同相关交易
 func (client *Client) ListContractOuttradeidEx(request *ListContractOuttradeidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListContractOuttradeidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53905,10 +56915,11 @@ func (client *Client) ListContractOuttradeidEx(request *ListContractOuttradeidRe
 	return _result, _err
 }
 
-/**
- * Description: 根据订单id查询订单代扣详情
- * Summary: 根据订单id查询订单代扣详情
- */
+// Description:
+//
+// Description: 根据订单id查询订单代扣详情
+//
+// Summary: 根据订单id查询订单代扣详情
 func (client *Client) QueryContractTradedetail(request *QueryContractTradedetailRequest) (_result *QueryContractTradedetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53921,10 +56932,11 @@ func (client *Client) QueryContractTradedetail(request *QueryContractTradedetail
 	return _result, _err
 }
 
-/**
- * Description: 根据订单id查询订单代扣详情
- * Summary: 根据订单id查询订单代扣详情
- */
+// Description:
+//
+// Description: 根据订单id查询订单代扣详情
+//
+// Summary: 根据订单id查询订单代扣详情
 func (client *Client) QueryContractTradedetailEx(request *QueryContractTradedetailRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractTradedetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53939,10 +56951,11 @@ func (client *Client) QueryContractTradedetailEx(request *QueryContractTradedeta
 	return _result, _err
 }
 
-/**
- * Description: 商户根据订单id退款
- * Summary: 商户根据订单id退款
- */
+// Description:
+//
+// Description: 商户根据订单id退款
+//
+// Summary: 商户根据订单id退款
 func (client *Client) CreateContractMerchantrefund(request *CreateContractMerchantrefundRequest) (_result *CreateContractMerchantrefundResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53955,10 +56968,11 @@ func (client *Client) CreateContractMerchantrefund(request *CreateContractMercha
 	return _result, _err
 }
 
-/**
- * Description: 商户根据订单id退款
- * Summary: 商户根据订单id退款
- */
+// Description:
+//
+// Description: 商户根据订单id退款
+//
+// Summary: 商户根据订单id退款
 func (client *Client) CreateContractMerchantrefundEx(request *CreateContractMerchantrefundRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractMerchantrefundResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53973,10 +56987,11 @@ func (client *Client) CreateContractMerchantrefundEx(request *CreateContractMerc
 	return _result, _err
 }
 
-/**
- * Description: 创建蚂蚁区块链账户
- * Summary: 创建蚂蚁区块链账户
- */
+// Description:
+//
+// Description: 创建蚂蚁区块链账户
+//
+// Summary: 创建蚂蚁区块链账户
 func (client *Client) CreateContractAdminaccount(request *CreateContractAdminaccountRequest) (_result *CreateContractAdminaccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -53989,10 +57004,11 @@ func (client *Client) CreateContractAdminaccount(request *CreateContractAdminacc
 	return _result, _err
 }
 
-/**
- * Description: 创建蚂蚁区块链账户
- * Summary: 创建蚂蚁区块链账户
- */
+// Description:
+//
+// Description: 创建蚂蚁区块链账户
+//
+// Summary: 创建蚂蚁区块链账户
 func (client *Client) CreateContractAdminaccountEx(request *CreateContractAdminaccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractAdminaccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54007,10 +57023,11 @@ func (client *Client) CreateContractAdminaccountEx(request *CreateContractAdmina
 	return _result, _err
 }
 
-/**
- * Description: 商户根据合同id列举所有的tradeId
- * Summary: 商户根据合同id列举所有的tradeId
- */
+// Description:
+//
+// Description: 商户根据合同id列举所有的tradeId
+//
+// Summary: 商户根据合同id列举所有的tradeId
 func (client *Client) ListContractTradeids(request *ListContractTradeidsRequest) (_result *ListContractTradeidsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54023,10 +57040,11 @@ func (client *Client) ListContractTradeids(request *ListContractTradeidsRequest)
 	return _result, _err
 }
 
-/**
- * Description: 商户根据合同id列举所有的tradeId
- * Summary: 商户根据合同id列举所有的tradeId
- */
+// Description:
+//
+// Description: 商户根据合同id列举所有的tradeId
+//
+// Summary: 商户根据合同id列举所有的tradeId
 func (client *Client) ListContractTradeidsEx(request *ListContractTradeidsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListContractTradeidsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54041,10 +57059,11 @@ func (client *Client) ListContractTradeidsEx(request *ListContractTradeidsReques
 	return _result, _err
 }
 
-/**
- * Description: 商户上传代扣规则
- * Summary: 商户上传代扣规则
- */
+// Description:
+//
+// Description: 商户上传代扣规则
+//
+// Summary: 商户上传代扣规则
 func (client *Client) CreateContractCommontrigger(request *CreateContractCommontriggerRequest) (_result *CreateContractCommontriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54057,10 +57076,11 @@ func (client *Client) CreateContractCommontrigger(request *CreateContractCommont
 	return _result, _err
 }
 
-/**
- * Description: 商户上传代扣规则
- * Summary: 商户上传代扣规则
- */
+// Description:
+//
+// Description: 商户上传代扣规则
+//
+// Summary: 商户上传代扣规则
 func (client *Client) CreateContractCommontriggerEx(request *CreateContractCommontriggerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractCommontriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54075,10 +57095,11 @@ func (client *Client) CreateContractCommontriggerEx(request *CreateContractCommo
 	return _result, _err
 }
 
-/**
- * Description: 商户入驻直付通
- * Summary: 商户入驻直付通
- */
+// Description:
+//
+// Description: 商户入驻直付通
+//
+// Summary: 商户入驻直付通
 func (client *Client) CreateContractMerchantindirectzft(request *CreateContractMerchantindirectzftRequest) (_result *CreateContractMerchantindirectzftResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54091,10 +57112,11 @@ func (client *Client) CreateContractMerchantindirectzft(request *CreateContractM
 	return _result, _err
 }
 
-/**
- * Description: 商户入驻直付通
- * Summary: 商户入驻直付通
- */
+// Description:
+//
+// Description: 商户入驻直付通
+//
+// Summary: 商户入驻直付通
 func (client *Client) CreateContractMerchantindirectzftEx(request *CreateContractMerchantindirectzftRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractMerchantindirectzftResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54109,10 +57131,11 @@ func (client *Client) CreateContractMerchantindirectzftEx(request *CreateContrac
 	return _result, _err
 }
 
-/**
- * Description: 根据订单id查询直付通商户入驻信息
- * Summary: 根据订单id查询直付通商户入驻信息
- */
+// Description:
+//
+// Description: 根据订单id查询直付通商户入驻信息
+//
+// Summary: 根据订单id查询直付通商户入驻信息
 func (client *Client) QueryContractMerchantindirectzft(request *QueryContractMerchantindirectzftRequest) (_result *QueryContractMerchantindirectzftResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54125,10 +57148,11 @@ func (client *Client) QueryContractMerchantindirectzft(request *QueryContractMer
 	return _result, _err
 }
 
-/**
- * Description: 根据订单id查询直付通商户入驻信息
- * Summary: 根据订单id查询直付通商户入驻信息
- */
+// Description:
+//
+// Description: 根据订单id查询直付通商户入驻信息
+//
+// Summary: 根据订单id查询直付通商户入驻信息
 func (client *Client) QueryContractMerchantindirectzftEx(request *QueryContractMerchantindirectzftRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractMerchantindirectzftResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54143,10 +57167,11 @@ func (client *Client) QueryContractMerchantindirectzftEx(request *QueryContractM
 	return _result, _err
 }
 
-/**
- * Description: 获取支付对账文件的url
- * Summary: 获取支付对账文件的url
- */
+// Description:
+//
+// Description: 获取支付对账文件的url
+//
+// Summary: 获取支付对账文件的url
 func (client *Client) QueryPayresultfileurl(request *QueryPayresultfileurlRequest) (_result *QueryPayresultfileurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54159,10 +57184,11 @@ func (client *Client) QueryPayresultfileurl(request *QueryPayresultfileurlReques
 	return _result, _err
 }
 
-/**
- * Description: 获取支付对账文件的url
- * Summary: 获取支付对账文件的url
- */
+// Description:
+//
+// Description: 获取支付对账文件的url
+//
+// Summary: 获取支付对账文件的url
 func (client *Client) QueryPayresultfileurlEx(request *QueryPayresultfileurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryPayresultfileurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54177,10 +57203,11 @@ func (client *Client) QueryPayresultfileurlEx(request *QueryPayresultfileurlRequ
 	return _result, _err
 }
 
-/**
- * Description: 智能合同图片上传
- * Summary: 智能合同图片上传
- */
+// Description:
+//
+// Description: 智能合同图片上传
+//
+// Summary: 智能合同图片上传
 func (client *Client) CreateContractMerchantimage(request *CreateContractMerchantimageRequest) (_result *CreateContractMerchantimageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54193,10 +57220,11 @@ func (client *Client) CreateContractMerchantimage(request *CreateContractMerchan
 	return _result, _err
 }
 
-/**
- * Description: 智能合同图片上传
- * Summary: 智能合同图片上传
- */
+// Description:
+//
+// Description: 智能合同图片上传
+//
+// Summary: 智能合同图片上传
 func (client *Client) CreateContractMerchantimageEx(request *CreateContractMerchantimageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractMerchantimageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54211,10 +57239,11 @@ func (client *Client) CreateContractMerchantimageEx(request *CreateContractMerch
 	return _result, _err
 }
 
-/**
- * Description: 取消智能合同剩余代扣条目
- * Summary: 取消智能合同剩余代扣条目
- */
+// Description:
+//
+// Description: 取消智能合同剩余代扣条目
+//
+// Summary: 取消智能合同剩余代扣条目
 func (client *Client) CancelContractPaytrade(request *CancelContractPaytradeRequest) (_result *CancelContractPaytradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54227,10 +57256,11 @@ func (client *Client) CancelContractPaytrade(request *CancelContractPaytradeRequ
 	return _result, _err
 }
 
-/**
- * Description: 取消智能合同剩余代扣条目
- * Summary: 取消智能合同剩余代扣条目
- */
+// Description:
+//
+// Description: 取消智能合同剩余代扣条目
+//
+// Summary: 取消智能合同剩余代扣条目
 func (client *Client) CancelContractPaytradeEx(request *CancelContractPaytradeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelContractPaytradeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54245,10 +57275,11 @@ func (client *Client) CancelContractPaytradeEx(request *CancelContractPaytradeRe
 	return _result, _err
 }
 
-/**
- * Description: 创建手动签署流程
- * Summary: 创建手动签署流程
- */
+// Description:
+//
+// Description: 创建手动签署流程
+//
+// Summary: 创建手动签署流程
 func (client *Client) CreateContractHandsignflow(request *CreateContractHandsignflowRequest) (_result *CreateContractHandsignflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54261,10 +57292,11 @@ func (client *Client) CreateContractHandsignflow(request *CreateContractHandsign
 	return _result, _err
 }
 
-/**
- * Description: 创建手动签署流程
- * Summary: 创建手动签署流程
- */
+// Description:
+//
+// Description: 创建手动签署流程
+//
+// Summary: 创建手动签署流程
 func (client *Client) CreateContractHandsignflowEx(request *CreateContractHandsignflowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractHandsignflowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54279,10 +57311,11 @@ func (client *Client) CreateContractHandsignflowEx(request *CreateContractHandsi
 	return _result, _err
 }
 
-/**
- * Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。
- * Summary: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。
- */
+// Description:
+//
+// Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。
+//
+// Summary: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。
 func (client *Client) CreateContractHandsignfield(request *CreateContractHandsignfieldRequest) (_result *CreateContractHandsignfieldResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54295,10 +57328,11 @@ func (client *Client) CreateContractHandsignfield(request *CreateContractHandsig
 	return _result, _err
 }
 
-/**
- * Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。
- * Summary: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。
- */
+// Description:
+//
+// Description: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。
+//
+// Summary: 向指定流程中创建签署区，每个签署区视为一个任务，系统会自动按照流程流转。
 func (client *Client) CreateContractHandsignfieldEx(request *CreateContractHandsignfieldRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractHandsignfieldResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54313,10 +57347,11 @@ func (client *Client) CreateContractHandsignfieldEx(request *CreateContractHands
 	return _result, _err
 }
 
-/**
- * Description: 流程开启后，获取指定签署人的签署链接地址，如仅传入签署人账号id，则获取的签署任务链接仅包含本人的签署任务；如同时签署人账号id+机构id，则获取的签署任务链接包含机构与个人的签署任务；organizeId传入0，则返回的任务链接包含签署人“本人+所有代签机构”的签署任务。
- * Summary: 获取签署地址
- */
+// Description:
+//
+// Description: 流程开启后，获取指定签署人的签署链接地址，如仅传入签署人账号id，则获取的签署任务链接仅包含本人的签署任务；如同时签署人账号id+机构id，则获取的签署任务链接包含机构与个人的签署任务；organizeId传入0，则返回的任务链接包含签署人“本人+所有代签机构”的签署任务。
+//
+// Summary: 获取签署地址
 func (client *Client) GetContractSignurl(request *GetContractSignurlRequest) (_result *GetContractSignurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54329,10 +57364,11 @@ func (client *Client) GetContractSignurl(request *GetContractSignurlRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 流程开启后，获取指定签署人的签署链接地址，如仅传入签署人账号id，则获取的签署任务链接仅包含本人的签署任务；如同时签署人账号id+机构id，则获取的签署任务链接包含机构与个人的签署任务；organizeId传入0，则返回的任务链接包含签署人“本人+所有代签机构”的签署任务。
- * Summary: 获取签署地址
- */
+// Description:
+//
+// Description: 流程开启后，获取指定签署人的签署链接地址，如仅传入签署人账号id，则获取的签署任务链接仅包含本人的签署任务；如同时签署人账号id+机构id，则获取的签署任务链接包含机构与个人的签署任务；organizeId传入0，则返回的任务链接包含签署人“本人+所有代签机构”的签署任务。
+//
+// Summary: 获取签署地址
 func (client *Client) GetContractSignurlEx(request *GetContractSignurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetContractSignurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54347,10 +57383,11 @@ func (client *Client) GetContractSignurlEx(request *GetContractSignurlRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 可信付代扣规则内容创建
- * Summary: 可信付代扣规则内容创建
- */
+// Description:
+//
+// Description: 可信付代扣规则内容创建
+//
+// Summary: 可信付代扣规则内容创建
 func (client *Client) CreateWithholdAgreement(request *CreateWithholdAgreementRequest) (_result *CreateWithholdAgreementResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54363,10 +57400,11 @@ func (client *Client) CreateWithholdAgreement(request *CreateWithholdAgreementRe
 	return _result, _err
 }
 
-/**
- * Description: 可信付代扣规则内容创建
- * Summary: 可信付代扣规则内容创建
- */
+// Description:
+//
+// Description: 可信付代扣规则内容创建
+//
+// Summary: 可信付代扣规则内容创建
 func (client *Client) CreateWithholdAgreementEx(request *CreateWithholdAgreementRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateWithholdAgreementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54381,10 +57419,11 @@ func (client *Client) CreateWithholdAgreementEx(request *CreateWithholdAgreement
 	return _result, _err
 }
 
-/**
- * Description: 查询消金代扣协议
- * Summary: 查询可信付代扣协议内容
- */
+// Description:
+//
+// Description: 查询消金代扣协议
+//
+// Summary: 查询可信付代扣协议内容
 func (client *Client) QueryWithholdAgreement(request *QueryWithholdAgreementRequest) (_result *QueryWithholdAgreementResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54397,10 +57436,11 @@ func (client *Client) QueryWithholdAgreement(request *QueryWithholdAgreementRequ
 	return _result, _err
 }
 
-/**
- * Description: 查询消金代扣协议
- * Summary: 查询可信付代扣协议内容
- */
+// Description:
+//
+// Description: 查询消金代扣协议
+//
+// Summary: 查询可信付代扣协议内容
 func (client *Client) QueryWithholdAgreementEx(request *QueryWithholdAgreementRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryWithholdAgreementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54415,10 +57455,11 @@ func (client *Client) QueryWithholdAgreementEx(request *QueryWithholdAgreementRe
 	return _result, _err
 }
 
-/**
- * Description: 查询可信付协议的入口
- * Summary: 查询可信付协议的入口
- */
+// Description:
+//
+// Description: 查询可信付协议的入口
+//
+// Summary: 查询可信付协议的入口
 func (client *Client) QueryWithholdAgreementurl(request *QueryWithholdAgreementurlRequest) (_result *QueryWithholdAgreementurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54431,10 +57472,11 @@ func (client *Client) QueryWithholdAgreementurl(request *QueryWithholdAgreementu
 	return _result, _err
 }
 
-/**
- * Description: 查询可信付协议的入口
- * Summary: 查询可信付协议的入口
- */
+// Description:
+//
+// Description: 查询可信付协议的入口
+//
+// Summary: 查询可信付协议的入口
 func (client *Client) QueryWithholdAgreementurlEx(request *QueryWithholdAgreementurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryWithholdAgreementurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54449,10 +57491,11 @@ func (client *Client) QueryWithholdAgreementurlEx(request *QueryWithholdAgreemen
 	return _result, _err
 }
 
-/**
- * Description: 后台录入商家的产品的逾期日
- * Summary: 后台录入商家的产品的逾期日
- */
+// Description:
+//
+// Description: 后台录入商家的产品的逾期日
+//
+// Summary: 后台录入商家的产品的逾期日
 func (client *Client) CreateWithholdOverduetime(request *CreateWithholdOverduetimeRequest) (_result *CreateWithholdOverduetimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54465,10 +57508,11 @@ func (client *Client) CreateWithholdOverduetime(request *CreateWithholdOverdueti
 	return _result, _err
 }
 
-/**
- * Description: 后台录入商家的产品的逾期日
- * Summary: 后台录入商家的产品的逾期日
- */
+// Description:
+//
+// Description: 后台录入商家的产品的逾期日
+//
+// Summary: 后台录入商家的产品的逾期日
 func (client *Client) CreateWithholdOverduetimeEx(request *CreateWithholdOverduetimeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateWithholdOverduetimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54483,10 +57527,11 @@ func (client *Client) CreateWithholdOverduetimeEx(request *CreateWithholdOverdue
 	return _result, _err
 }
 
-/**
- * Description: 可信付代扣的扣费请求
- * Summary: 发送代扣请求
- */
+// Description:
+//
+// Description: 可信付代扣的扣费请求
+//
+// Summary: 发送代扣请求
 func (client *Client) SendWithholdDeduct(request *SendWithholdDeductRequest) (_result *SendWithholdDeductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54499,10 +57544,11 @@ func (client *Client) SendWithholdDeduct(request *SendWithholdDeductRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 可信付代扣的扣费请求
- * Summary: 发送代扣请求
- */
+// Description:
+//
+// Description: 可信付代扣的扣费请求
+//
+// Summary: 发送代扣请求
 func (client *Client) SendWithholdDeductEx(request *SendWithholdDeductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendWithholdDeductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54517,10 +57563,11 @@ func (client *Client) SendWithholdDeductEx(request *SendWithholdDeductRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 可信付代扣结果查询
- * Summary: 可信付代扣结果查询
- */
+// Description:
+//
+// Description: 可信付代扣结果查询
+//
+// Summary: 可信付代扣结果查询
 func (client *Client) QueryWithholdPayresult(request *QueryWithholdPayresultRequest) (_result *QueryWithholdPayresultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54533,10 +57580,11 @@ func (client *Client) QueryWithholdPayresult(request *QueryWithholdPayresultRequ
 	return _result, _err
 }
 
-/**
- * Description: 可信付代扣结果查询
- * Summary: 可信付代扣结果查询
- */
+// Description:
+//
+// Description: 可信付代扣结果查询
+//
+// Summary: 可信付代扣结果查询
 func (client *Client) QueryWithholdPayresultEx(request *QueryWithholdPayresultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryWithholdPayresultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54551,10 +57599,11 @@ func (client *Client) QueryWithholdPayresultEx(request *QueryWithholdPayresultRe
 	return _result, _err
 }
 
-/**
- * Description: 可信付退款请求
- * Summary: 可信付退款请求
- */
+// Description:
+//
+// Description: 可信付退款请求
+//
+// Summary: 可信付退款请求
 func (client *Client) SendWithholdRefund(request *SendWithholdRefundRequest) (_result *SendWithholdRefundResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54567,10 +57616,11 @@ func (client *Client) SendWithholdRefund(request *SendWithholdRefundRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 可信付退款请求
- * Summary: 可信付退款请求
- */
+// Description:
+//
+// Description: 可信付退款请求
+//
+// Summary: 可信付退款请求
 func (client *Client) SendWithholdRefundEx(request *SendWithholdRefundRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendWithholdRefundResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54585,10 +57635,11 @@ func (client *Client) SendWithholdRefundEx(request *SendWithholdRefundRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 创建邀请任务，被邀请人收到通知后需要注册并完成实名认证方可开通电子签名服务。
- * Summary: 创建注册邀请任务
- */
+// Description:
+//
+// Description: 创建邀请任务，被邀请人收到通知后需要注册并完成实名认证方可开通电子签名服务。
+//
+// Summary: 创建注册邀请任务
 func (client *Client) SendContractInvitation(request *SendContractInvitationRequest) (_result *SendContractInvitationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54601,10 +57652,11 @@ func (client *Client) SendContractInvitation(request *SendContractInvitationRequ
 	return _result, _err
 }
 
-/**
- * Description: 创建邀请任务，被邀请人收到通知后需要注册并完成实名认证方可开通电子签名服务。
- * Summary: 创建注册邀请任务
- */
+// Description:
+//
+// Description: 创建邀请任务，被邀请人收到通知后需要注册并完成实名认证方可开通电子签名服务。
+//
+// Summary: 创建注册邀请任务
 func (client *Client) SendContractInvitationEx(request *SendContractInvitationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendContractInvitationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54619,10 +57671,11 @@ func (client *Client) SendContractInvitationEx(request *SendContractInvitationRe
 	return _result, _err
 }
 
-/**
- * Description: 查询代扣规则
- * Summary: 查询代扣规则
- */
+// Description:
+//
+// Description: 查询代扣规则
+//
+// Summary: 查询代扣规则
 func (client *Client) ListContractPayrule(request *ListContractPayruleRequest) (_result *ListContractPayruleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54635,10 +57688,11 @@ func (client *Client) ListContractPayrule(request *ListContractPayruleRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 查询代扣规则
- * Summary: 查询代扣规则
- */
+// Description:
+//
+// Description: 查询代扣规则
+//
+// Summary: 查询代扣规则
 func (client *Client) ListContractPayruleEx(request *ListContractPayruleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListContractPayruleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54653,10 +57707,11 @@ func (client *Client) ListContractPayruleEx(request *ListContractPayruleRequest,
 	return _result, _err
 }
 
-/**
- * Description: 获取可信付免签协议的二维码
- * Summary: 获取可信付免签协议的二维码
- */
+// Description:
+//
+// Description: 获取可信付免签协议的二维码
+//
+// Summary: 获取可信付免签协议的二维码
 func (client *Client) CreateWithholdQrcode(request *CreateWithholdQrcodeRequest) (_result *CreateWithholdQrcodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54669,10 +57724,11 @@ func (client *Client) CreateWithholdQrcode(request *CreateWithholdQrcodeRequest)
 	return _result, _err
 }
 
-/**
- * Description: 获取可信付免签协议的二维码
- * Summary: 获取可信付免签协议的二维码
- */
+// Description:
+//
+// Description: 获取可信付免签协议的二维码
+//
+// Summary: 获取可信付免签协议的二维码
 func (client *Client) CreateWithholdQrcodeEx(request *CreateWithholdQrcodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateWithholdQrcodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54687,10 +57743,11 @@ func (client *Client) CreateWithholdQrcodeEx(request *CreateWithholdQrcodeReques
 	return _result, _err
 }
 
-/**
- * Description: 取消某一期的代扣规则
- * Summary: 取消某一期的代扣规则
- */
+// Description:
+//
+// Description: 取消某一期的代扣规则
+//
+// Summary: 取消某一期的代扣规则
 func (client *Client) CancelContractPaysingletrade(request *CancelContractPaysingletradeRequest) (_result *CancelContractPaysingletradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54703,10 +57760,11 @@ func (client *Client) CancelContractPaysingletrade(request *CancelContractPaysin
 	return _result, _err
 }
 
-/**
- * Description: 取消某一期的代扣规则
- * Summary: 取消某一期的代扣规则
- */
+// Description:
+//
+// Description: 取消某一期的代扣规则
+//
+// Summary: 取消某一期的代扣规则
 func (client *Client) CancelContractPaysingletradeEx(request *CancelContractPaysingletradeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelContractPaysingletradeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54721,10 +57779,11 @@ func (client *Client) CancelContractPaysingletradeEx(request *CancelContractPays
 	return _result, _err
 }
 
-/**
- * Description: 使用区块链合同回调服务，需要申请加签时使用的key。该key每个平台方对应一个，不可变更，多次申请结果幂等。
- * Summary: 申请区块链合同回调加签key
- */
+// Description:
+//
+// Description: 使用区块链合同回调服务，需要申请加签时使用的key。该key每个平台方对应一个，不可变更，多次申请结果幂等。
+//
+// Summary: 申请区块链合同回调加签key
 func (client *Client) ApplyContractCallbackkey(request *ApplyContractCallbackkeyRequest) (_result *ApplyContractCallbackkeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54737,10 +57796,11 @@ func (client *Client) ApplyContractCallbackkey(request *ApplyContractCallbackkey
 	return _result, _err
 }
 
-/**
- * Description: 使用区块链合同回调服务，需要申请加签时使用的key。该key每个平台方对应一个，不可变更，多次申请结果幂等。
- * Summary: 申请区块链合同回调加签key
- */
+// Description:
+//
+// Description: 使用区块链合同回调服务，需要申请加签时使用的key。该key每个平台方对应一个，不可变更，多次申请结果幂等。
+//
+// Summary: 申请区块链合同回调加签key
 func (client *Client) ApplyContractCallbackkeyEx(request *ApplyContractCallbackkeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyContractCallbackkeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54755,10 +57815,11 @@ func (client *Client) ApplyContractCallbackkeyEx(request *ApplyContractCallbackk
 	return _result, _err
 }
 
-/**
- * Description: 快速创建签署流程，完成添加待签文档、流程基本信息、签署方，支持自动开启、自动归档。
- * Summary: 快速创建签署流程，完成添加待签文档、流程基本信息、签署方，支持自动开启、自动归档。
- */
+// Description:
+//
+// Description: 快速创建签署流程，完成添加待签文档、流程基本信息、签署方，支持自动开启、自动归档。
+//
+// Summary: 快速创建签署流程，完成添加待签文档、流程基本信息、签署方，支持自动开启、自动归档。
 func (client *Client) CreateContractOnestepflow(request *CreateContractOnestepflowRequest) (_result *CreateContractOnestepflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54771,10 +57832,11 @@ func (client *Client) CreateContractOnestepflow(request *CreateContractOnestepfl
 	return _result, _err
 }
 
-/**
- * Description: 快速创建签署流程，完成添加待签文档、流程基本信息、签署方，支持自动开启、自动归档。
- * Summary: 快速创建签署流程，完成添加待签文档、流程基本信息、签署方，支持自动开启、自动归档。
- */
+// Description:
+//
+// Description: 快速创建签署流程，完成添加待签文档、流程基本信息、签署方，支持自动开启、自动归档。
+//
+// Summary: 快速创建签署流程，完成添加待签文档、流程基本信息、签署方，支持自动开启、自动归档。
 func (client *Client) CreateContractOnestepflowEx(request *CreateContractOnestepflowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractOnestepflowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54789,10 +57851,11 @@ func (client *Client) CreateContractOnestepflowEx(request *CreateContractOnestep
 	return _result, _err
 }
 
-/**
- * Description: 通过流程ID查询合同存证信息
- * Summary: 查询合同存证信息
- */
+// Description:
+//
+// Description: 通过流程ID查询合同存证信息
+//
+// Summary: 查询合同存证信息
 func (client *Client) QueryContractNotary(request *QueryContractNotaryRequest) (_result *QueryContractNotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54805,10 +57868,11 @@ func (client *Client) QueryContractNotary(request *QueryContractNotaryRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 通过流程ID查询合同存证信息
- * Summary: 查询合同存证信息
- */
+// Description:
+//
+// Description: 通过流程ID查询合同存证信息
+//
+// Summary: 查询合同存证信息
 func (client *Client) QueryContractNotaryEx(request *QueryContractNotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractNotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54823,10 +57887,11 @@ func (client *Client) QueryContractNotaryEx(request *QueryContractNotaryRequest,
 	return _result, _err
 }
 
-/**
- * Description: 获取合同存证事务ID
- * Summary: 获取合同存证事务ID
- */
+// Description:
+//
+// Description: 获取合同存证事务ID
+//
+// Summary: 获取合同存证事务ID
 func (client *Client) CreateEcocontractTrans(request *CreateEcocontractTransRequest) (_result *CreateEcocontractTransResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54839,10 +57904,11 @@ func (client *Client) CreateEcocontractTrans(request *CreateEcocontractTransRequ
 	return _result, _err
 }
 
-/**
- * Description: 获取合同存证事务ID
- * Summary: 获取合同存证事务ID
- */
+// Description:
+//
+// Description: 获取合同存证事务ID
+//
+// Summary: 获取合同存证事务ID
 func (client *Client) CreateEcocontractTransEx(request *CreateEcocontractTransRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEcocontractTransResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54857,10 +57923,11 @@ func (client *Client) CreateEcocontractTransEx(request *CreateEcocontractTransRe
 	return _result, _err
 }
 
-/**
- * Description: 合同文本存证
- * Summary: 合同文本存证
- */
+// Description:
+//
+// Description: 合同文本存证
+//
+// Summary: 合同文本存证
 func (client *Client) CreateEcocontractText(request *CreateEcocontractTextRequest) (_result *CreateEcocontractTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54873,10 +57940,11 @@ func (client *Client) CreateEcocontractText(request *CreateEcocontractTextReques
 	return _result, _err
 }
 
-/**
- * Description: 合同文本存证
- * Summary: 合同文本存证
- */
+// Description:
+//
+// Description: 合同文本存证
+//
+// Summary: 合同文本存证
 func (client *Client) CreateEcocontractTextEx(request *CreateEcocontractTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEcocontractTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54891,10 +57959,11 @@ func (client *Client) CreateEcocontractTextEx(request *CreateEcocontractTextRequ
 	return _result, _err
 }
 
-/**
- * Description: 搜索关键字坐标，以关键字左下角为原点去查询坐标
- * Summary: 搜索关键字坐标
- */
+// Description:
+//
+// Description: 搜索关键字坐标，以关键字左下角为原点去查询坐标
+//
+// Summary: 搜索关键字坐标
 func (client *Client) QueryContractWordsposition(request *QueryContractWordspositionRequest) (_result *QueryContractWordspositionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54907,10 +57976,11 @@ func (client *Client) QueryContractWordsposition(request *QueryContractWordsposi
 	return _result, _err
 }
 
-/**
- * Description: 搜索关键字坐标，以关键字左下角为原点去查询坐标
- * Summary: 搜索关键字坐标
- */
+// Description:
+//
+// Description: 搜索关键字坐标，以关键字左下角为原点去查询坐标
+//
+// Summary: 搜索关键字坐标
 func (client *Client) QueryContractWordspositionEx(request *QueryContractWordspositionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractWordspositionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54925,10 +57995,11 @@ func (client *Client) QueryContractWordspositionEx(request *QueryContractWordspo
 	return _result, _err
 }
 
-/**
- * Description: 执行签署人删除逻辑
- * Summary: 删除签署人
- */
+// Description:
+//
+// Description: 执行签署人删除逻辑
+//
+// Summary: 删除签署人
 func (client *Client) DeleteContractSigner(request *DeleteContractSignerRequest) (_result *DeleteContractSignerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54941,10 +58012,11 @@ func (client *Client) DeleteContractSigner(request *DeleteContractSignerRequest)
 	return _result, _err
 }
 
-/**
- * Description: 执行签署人删除逻辑
- * Summary: 删除签署人
- */
+// Description:
+//
+// Description: 执行签署人删除逻辑
+//
+// Summary: 删除签署人
 func (client *Client) DeleteContractSignerEx(request *DeleteContractSignerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteContractSignerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54959,10 +58031,11 @@ func (client *Client) DeleteContractSignerEx(request *DeleteContractSignerReques
 	return _result, _err
 }
 
-/**
- * Description: 获取区块链合同存证证明
- * Summary: 获取区块链合同存证证明
- */
+// Description:
+//
+// Description: 获取区块链合同存证证明
+//
+// Summary: 获取区块链合同存证证明
 func (client *Client) GetContractCertificate(request *GetContractCertificateRequest) (_result *GetContractCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -54975,10 +58048,11 @@ func (client *Client) GetContractCertificate(request *GetContractCertificateRequ
 	return _result, _err
 }
 
-/**
- * Description: 获取区块链合同存证证明
- * Summary: 获取区块链合同存证证明
- */
+// Description:
+//
+// Description: 获取区块链合同存证证明
+//
+// Summary: 获取区块链合同存证证明
 func (client *Client) GetContractCertificateEx(request *GetContractCertificateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetContractCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54993,10 +58067,11 @@ func (client *Client) GetContractCertificateEx(request *GetContractCertificateRe
 	return _result, _err
 }
 
-/**
- * Description: 已归档的合同，支持根据合同流程签署区查询已使用的印章id
- * Summary: 根据合同流程签署区查询已使用的印章id
- */
+// Description:
+//
+// Description: 已归档的合同，支持根据合同流程签署区查询已使用的印章id
+//
+// Summary: 根据合同流程签署区查询已使用的印章id
 func (client *Client) QueryContractSignfieldsealid(request *QueryContractSignfieldsealidRequest) (_result *QueryContractSignfieldsealidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55009,10 +58084,11 @@ func (client *Client) QueryContractSignfieldsealid(request *QueryContractSignfie
 	return _result, _err
 }
 
-/**
- * Description: 已归档的合同，支持根据合同流程签署区查询已使用的印章id
- * Summary: 根据合同流程签署区查询已使用的印章id
- */
+// Description:
+//
+// Description: 已归档的合同，支持根据合同流程签署区查询已使用的印章id
+//
+// Summary: 根据合同流程签署区查询已使用的印章id
 func (client *Client) QueryContractSignfieldsealidEx(request *QueryContractSignfieldsealidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractSignfieldsealidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55027,10 +58103,11 @@ func (client *Client) QueryContractSignfieldsealidEx(request *QueryContractSignf
 	return _result, _err
 }
 
-/**
- * Description: 本接口功能默认不开启，如有需求请联系技术支持。添加手动签署区，并启动签署流程之后，触发通知，提醒签署方执行签署。通知方式以创建流程时的配置为准（目前仅支持短信）。
- * Summary: 通知签署方执行合同签署
- */
+// Description:
+//
+// Description: 本接口功能默认不开启，如有需求请联系技术支持。添加手动签署区，并启动签署流程之后，触发通知，提醒签署方执行签署。通知方式以创建流程时的配置为准（目前仅支持短信）。
+//
+// Summary: 通知签署方执行合同签署
 func (client *Client) NotifyContractSigner(request *NotifyContractSignerRequest) (_result *NotifyContractSignerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55043,10 +58120,11 @@ func (client *Client) NotifyContractSigner(request *NotifyContractSignerRequest)
 	return _result, _err
 }
 
-/**
- * Description: 本接口功能默认不开启，如有需求请联系技术支持。添加手动签署区，并启动签署流程之后，触发通知，提醒签署方执行签署。通知方式以创建流程时的配置为准（目前仅支持短信）。
- * Summary: 通知签署方执行合同签署
- */
+// Description:
+//
+// Description: 本接口功能默认不开启，如有需求请联系技术支持。添加手动签署区，并启动签署流程之后，触发通知，提醒签署方执行签署。通知方式以创建流程时的配置为准（目前仅支持短信）。
+//
+// Summary: 通知签署方执行合同签署
 func (client *Client) NotifyContractSignerEx(request *NotifyContractSignerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *NotifyContractSignerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55061,10 +58139,11 @@ func (client *Client) NotifyContractSignerEx(request *NotifyContractSignerReques
 	return _result, _err
 }
 
-/**
- * Description: 通过配置白名单，临时允许修改证件号/名称等所有字段以及经办人的信息，修改后从白名单中去除
- * Summary: 修改平台方注册信息
- */
+// Description:
+//
+// Description: 通过配置白名单，临时允许修改证件号/名称等所有字段以及经办人的信息，修改后从白名单中去除
+//
+// Summary: 修改平台方注册信息
 func (client *Client) UpdateContractPlatform(request *UpdateContractPlatformRequest) (_result *UpdateContractPlatformResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55077,10 +58156,11 @@ func (client *Client) UpdateContractPlatform(request *UpdateContractPlatformRequ
 	return _result, _err
 }
 
-/**
- * Description: 通过配置白名单，临时允许修改证件号/名称等所有字段以及经办人的信息，修改后从白名单中去除
- * Summary: 修改平台方注册信息
- */
+// Description:
+//
+// Description: 通过配置白名单，临时允许修改证件号/名称等所有字段以及经办人的信息，修改后从白名单中去除
+//
+// Summary: 修改平台方注册信息
 func (client *Client) UpdateContractPlatformEx(request *UpdateContractPlatformRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateContractPlatformResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55095,10 +58175,11 @@ func (client *Client) UpdateContractPlatformEx(request *UpdateContractPlatformRe
 	return _result, _err
 }
 
-/**
- * Description: 个人的注册信息中证件信息为空时允许修改姓名、证件等各项信息，如果不为空，则不允许修改
- * Summary: 修改用户注册信息
- */
+// Description:
+//
+// Description: 个人的注册信息中证件信息为空时允许修改姓名、证件等各项信息，如果不为空，则不允许修改
+//
+// Summary: 修改用户注册信息
 func (client *Client) UpdateContractUser(request *UpdateContractUserRequest) (_result *UpdateContractUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55111,10 +58192,11 @@ func (client *Client) UpdateContractUser(request *UpdateContractUserRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 个人的注册信息中证件信息为空时允许修改姓名、证件等各项信息，如果不为空，则不允许修改
- * Summary: 修改用户注册信息
- */
+// Description:
+//
+// Description: 个人的注册信息中证件信息为空时允许修改姓名、证件等各项信息，如果不为空，则不允许修改
+//
+// Summary: 修改用户注册信息
 func (client *Client) UpdateContractUserEx(request *UpdateContractUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateContractUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55129,10 +58211,11 @@ func (client *Client) UpdateContractUserEx(request *UpdateContractUserRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 机构的注册信息中证件信息为空时允许修改机构名、证件等各项信息，但不允许修改经办人信息，如果不为空，则无法修改
- * Summary: 修改机构用户注册信息
- */
+// Description:
+//
+// Description: 机构的注册信息中证件信息为空时允许修改机构名、证件等各项信息，但不允许修改经办人信息，如果不为空，则无法修改
+//
+// Summary: 修改机构用户注册信息
 func (client *Client) UpdateContractOrganization(request *UpdateContractOrganizationRequest) (_result *UpdateContractOrganizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55145,10 +58228,11 @@ func (client *Client) UpdateContractOrganization(request *UpdateContractOrganiza
 	return _result, _err
 }
 
-/**
- * Description: 机构的注册信息中证件信息为空时允许修改机构名、证件等各项信息，但不允许修改经办人信息，如果不为空，则无法修改
- * Summary: 修改机构用户注册信息
- */
+// Description:
+//
+// Description: 机构的注册信息中证件信息为空时允许修改机构名、证件等各项信息，但不允许修改经办人信息，如果不为空，则无法修改
+//
+// Summary: 修改机构用户注册信息
 func (client *Client) UpdateContractOrganizationEx(request *UpdateContractOrganizationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateContractOrganizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55163,10 +58247,11 @@ func (client *Client) UpdateContractOrganizationEx(request *UpdateContractOrgani
 	return _result, _err
 }
 
-/**
- * Description: 商户入驻直付通新接口，通过此接口创建的商户，签约模式默认走单独签约授权模式（即不同商户都需要进行单独的代扣签约授权）。
- * Summary: 商户入驻直付通新接口
- */
+// Description:
+//
+// Description: 商户入驻直付通新接口，通过此接口创建的商户，签约模式默认走单独签约授权模式（即不同商户都需要进行单独的代扣签约授权）。
+//
+// Summary: 商户入驻直付通新接口
 func (client *Client) ApplyContractMerchant(request *ApplyContractMerchantRequest) (_result *ApplyContractMerchantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55179,10 +58264,11 @@ func (client *Client) ApplyContractMerchant(request *ApplyContractMerchantReques
 	return _result, _err
 }
 
-/**
- * Description: 商户入驻直付通新接口，通过此接口创建的商户，签约模式默认走单独签约授权模式（即不同商户都需要进行单独的代扣签约授权）。
- * Summary: 商户入驻直付通新接口
- */
+// Description:
+//
+// Description: 商户入驻直付通新接口，通过此接口创建的商户，签约模式默认走单独签约授权模式（即不同商户都需要进行单独的代扣签约授权）。
+//
+// Summary: 商户入驻直付通新接口
 func (client *Client) ApplyContractMerchantEx(request *ApplyContractMerchantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyContractMerchantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55197,10 +58283,11 @@ func (client *Client) ApplyContractMerchantEx(request *ApplyContractMerchantRequ
 	return _result, _err
 }
 
-/**
- * Description: 直付通商户入驻确认（确认成功则表明入驻成功）
- * Summary: 直付通商户入驻确认
- */
+// Description:
+//
+// Description: 直付通商户入驻确认（确认成功则表明入驻成功）
+//
+// Summary: 直付通商户入驻确认
 func (client *Client) ConfirmContractMerchant(request *ConfirmContractMerchantRequest) (_result *ConfirmContractMerchantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55213,10 +58300,11 @@ func (client *Client) ConfirmContractMerchant(request *ConfirmContractMerchantRe
 	return _result, _err
 }
 
-/**
- * Description: 直付通商户入驻确认（确认成功则表明入驻成功）
- * Summary: 直付通商户入驻确认
- */
+// Description:
+//
+// Description: 直付通商户入驻确认（确认成功则表明入驻成功）
+//
+// Summary: 直付通商户入驻确认
 func (client *Client) ConfirmContractMerchantEx(request *ConfirmContractMerchantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ConfirmContractMerchantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55231,10 +58319,11 @@ func (client *Client) ConfirmContractMerchantEx(request *ConfirmContractMerchant
 	return _result, _err
 }
 
-/**
- * Description: 创建合同存证事务ID。私有云使用。
- * Summary: 创建合同存证事务ID。私有云使用。
- */
+// Description:
+//
+// Description: 创建合同存证事务ID。私有云使用。
+//
+// Summary: 创建合同存证事务ID。私有云使用。
 func (client *Client) CreatePrivatecontractTrans(request *CreatePrivatecontractTransRequest) (_result *CreatePrivatecontractTransResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55247,10 +58336,11 @@ func (client *Client) CreatePrivatecontractTrans(request *CreatePrivatecontractT
 	return _result, _err
 }
 
-/**
- * Description: 创建合同存证事务ID。私有云使用。
- * Summary: 创建合同存证事务ID。私有云使用。
- */
+// Description:
+//
+// Description: 创建合同存证事务ID。私有云使用。
+//
+// Summary: 创建合同存证事务ID。私有云使用。
 func (client *Client) CreatePrivatecontractTransEx(request *CreatePrivatecontractTransRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePrivatecontractTransResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55265,10 +58355,11 @@ func (client *Client) CreatePrivatecontractTransEx(request *CreatePrivatecontrac
 	return _result, _err
 }
 
-/**
- * Description: 合同文本存证。私有云使用。
- * Summary: 合同文本存证。私有云使用。
- */
+// Description:
+//
+// Description: 合同文本存证。私有云使用。
+//
+// Summary: 合同文本存证。私有云使用。
 func (client *Client) CreatePrivatecontractText(request *CreatePrivatecontractTextRequest) (_result *CreatePrivatecontractTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55281,10 +58372,11 @@ func (client *Client) CreatePrivatecontractText(request *CreatePrivatecontractTe
 	return _result, _err
 }
 
-/**
- * Description: 合同文本存证。私有云使用。
- * Summary: 合同文本存证。私有云使用。
- */
+// Description:
+//
+// Description: 合同文本存证。私有云使用。
+//
+// Summary: 合同文本存证。私有云使用。
 func (client *Client) CreatePrivatecontractTextEx(request *CreatePrivatecontractTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePrivatecontractTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55299,10 +58391,11 @@ func (client *Client) CreatePrivatecontractTextEx(request *CreatePrivatecontract
 	return _result, _err
 }
 
-/**
- * Description: 个人二要素校验
- * Summary: 个人二要素校验
- */
+// Description:
+//
+// Description: 个人二要素校验
+//
+// Summary: 个人二要素校验
 func (client *Client) VerifyPrivatepersonTwometa(request *VerifyPrivatepersonTwometaRequest) (_result *VerifyPrivatepersonTwometaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55315,10 +58408,11 @@ func (client *Client) VerifyPrivatepersonTwometa(request *VerifyPrivatepersonTwo
 	return _result, _err
 }
 
-/**
- * Description: 个人二要素校验
- * Summary: 个人二要素校验
- */
+// Description:
+//
+// Description: 个人二要素校验
+//
+// Summary: 个人二要素校验
 func (client *Client) VerifyPrivatepersonTwometaEx(request *VerifyPrivatepersonTwometaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyPrivatepersonTwometaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55333,10 +58427,11 @@ func (client *Client) VerifyPrivatepersonTwometaEx(request *VerifyPrivatepersonT
 	return _result, _err
 }
 
-/**
- * Description: 企业二要素校验
- * Summary: 企业二要素校验
- */
+// Description:
+//
+// Description: 企业二要素校验
+//
+// Summary: 企业二要素校验
 func (client *Client) VerifyPrivatecompanyTwometa(request *VerifyPrivatecompanyTwometaRequest) (_result *VerifyPrivatecompanyTwometaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55349,10 +58444,11 @@ func (client *Client) VerifyPrivatecompanyTwometa(request *VerifyPrivatecompanyT
 	return _result, _err
 }
 
-/**
- * Description: 企业二要素校验
- * Summary: 企业二要素校验
- */
+// Description:
+//
+// Description: 企业二要素校验
+//
+// Summary: 企业二要素校验
 func (client *Client) VerifyPrivatecompanyTwometaEx(request *VerifyPrivatecompanyTwometaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyPrivatecompanyTwometaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55367,10 +58463,11 @@ func (client *Client) VerifyPrivatecompanyTwometaEx(request *VerifyPrivatecompan
 	return _result, _err
 }
 
-/**
- * Description: 企业四要素校验
- * Summary: 企业四要素校验
- */
+// Description:
+//
+// Description: 企业四要素校验
+//
+// Summary: 企业四要素校验
 func (client *Client) VerifyPrivatecompanyFourmeta(request *VerifyPrivatecompanyFourmetaRequest) (_result *VerifyPrivatecompanyFourmetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55383,10 +58480,11 @@ func (client *Client) VerifyPrivatecompanyFourmeta(request *VerifyPrivatecompany
 	return _result, _err
 }
 
-/**
- * Description: 企业四要素校验
- * Summary: 企业四要素校验
- */
+// Description:
+//
+// Description: 企业四要素校验
+//
+// Summary: 企业四要素校验
 func (client *Client) VerifyPrivatecompanyFourmetaEx(request *VerifyPrivatecompanyFourmetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyPrivatecompanyFourmetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55401,10 +58499,11 @@ func (client *Client) VerifyPrivatecompanyFourmetaEx(request *VerifyPrivatecompa
 	return _result, _err
 }
 
-/**
- * Description: 开放给私有云的外部用户的注册接口.
- * Summary: 私有云的外部用户注册接口.
- */
+// Description:
+//
+// Description: 开放给私有云的外部用户的注册接口.
+//
+// Summary: 私有云的外部用户注册接口.
 func (client *Client) ApplyPrivatecontractCert(request *ApplyPrivatecontractCertRequest) (_result *ApplyPrivatecontractCertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55417,10 +58516,11 @@ func (client *Client) ApplyPrivatecontractCert(request *ApplyPrivatecontractCert
 	return _result, _err
 }
 
-/**
- * Description: 开放给私有云的外部用户的注册接口.
- * Summary: 私有云的外部用户注册接口.
- */
+// Description:
+//
+// Description: 开放给私有云的外部用户的注册接口.
+//
+// Summary: 私有云的外部用户注册接口.
 func (client *Client) ApplyPrivatecontractCertEx(request *ApplyPrivatecontractCertRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyPrivatecontractCertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55435,10 +58535,11 @@ func (client *Client) ApplyPrivatecontractCertEx(request *ApplyPrivatecontractCe
 	return _result, _err
 }
 
-/**
- * Description: 代扣计划状态查询接口，仅能查询到由新状态机执行的代扣计划，未切换到新状态机的老数据查询不到
- * Summary: 代扣计划状态查询
- */
+// Description:
+//
+// Description: 代扣计划状态查询接口，仅能查询到由新状态机执行的代扣计划，未切换到新状态机的老数据查询不到
+//
+// Summary: 代扣计划状态查询
 func (client *Client) QueryContractTradestatus(request *QueryContractTradestatusRequest) (_result *QueryContractTradestatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55451,10 +58552,11 @@ func (client *Client) QueryContractTradestatus(request *QueryContractTradestatus
 	return _result, _err
 }
 
-/**
- * Description: 代扣计划状态查询接口，仅能查询到由新状态机执行的代扣计划，未切换到新状态机的老数据查询不到
- * Summary: 代扣计划状态查询
- */
+// Description:
+//
+// Description: 代扣计划状态查询接口，仅能查询到由新状态机执行的代扣计划，未切换到新状态机的老数据查询不到
+//
+// Summary: 代扣计划状态查询
 func (client *Client) QueryContractTradestatusEx(request *QueryContractTradestatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractTradestatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55469,10 +58571,11 @@ func (client *Client) QueryContractTradestatusEx(request *QueryContractTradestat
 	return _result, _err
 }
 
-/**
- * Description: 代扣退款查询，仅支持新代扣状态机处理过的数据，老状态机处理的数据无法查到。
- * Summary: 代扣退款查询
- */
+// Description:
+//
+// Description: 代扣退款查询，仅支持新代扣状态机处理过的数据，老状态机处理的数据无法查到。
+//
+// Summary: 代扣退款查询
 func (client *Client) QueryContractRefund(request *QueryContractRefundRequest) (_result *QueryContractRefundResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55485,10 +58588,11 @@ func (client *Client) QueryContractRefund(request *QueryContractRefundRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 代扣退款查询，仅支持新代扣状态机处理过的数据，老状态机处理的数据无法查到。
- * Summary: 代扣退款查询
- */
+// Description:
+//
+// Description: 代扣退款查询，仅支持新代扣状态机处理过的数据，老状态机处理的数据无法查到。
+//
+// Summary: 代扣退款查询
 func (client *Client) QueryContractRefundEx(request *QueryContractRefundRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractRefundResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55503,10 +58607,11 @@ func (client *Client) QueryContractRefundEx(request *QueryContractRefundRequest,
 	return _result, _err
 }
 
-/**
- * Description: 私有云合同服务通过调用公有云合同服务，获取可公网访问的外部客户的签署地址
- * Summary: 私有云服务获取外部用户签署地址
- */
+// Description:
+//
+// Description: 私有云合同服务通过调用公有云合同服务，获取可公网访问的外部客户的签署地址
+//
+// Summary: 私有云服务获取外部用户签署地址
 func (client *Client) GetPrivatecontractSignurl(request *GetPrivatecontractSignurlRequest) (_result *GetPrivatecontractSignurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55519,10 +58624,11 @@ func (client *Client) GetPrivatecontractSignurl(request *GetPrivatecontractSignu
 	return _result, _err
 }
 
-/**
- * Description: 私有云合同服务通过调用公有云合同服务，获取可公网访问的外部客户的签署地址
- * Summary: 私有云服务获取外部用户签署地址
- */
+// Description:
+//
+// Description: 私有云合同服务通过调用公有云合同服务，获取可公网访问的外部客户的签署地址
+//
+// Summary: 私有云服务获取外部用户签署地址
 func (client *Client) GetPrivatecontractSignurlEx(request *GetPrivatecontractSignurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPrivatecontractSignurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55537,10 +58643,11 @@ func (client *Client) GetPrivatecontractSignurlEx(request *GetPrivatecontractSig
 	return _result, _err
 }
 
-/**
- * Description: 商户入驻直付通进度查询，替代twc.notary.contract.merchantindirectzft.query
- * Summary: 商户入驻直付通进度查询
- */
+// Description:
+//
+// Description: 商户入驻直付通进度查询，替代twc.notary.contract.merchantindirectzft.query
+//
+// Summary: 商户入驻直付通进度查询
 func (client *Client) QueryContractMerchantorder(request *QueryContractMerchantorderRequest) (_result *QueryContractMerchantorderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55553,10 +58660,11 @@ func (client *Client) QueryContractMerchantorder(request *QueryContractMerchanto
 	return _result, _err
 }
 
-/**
- * Description: 商户入驻直付通进度查询，替代twc.notary.contract.merchantindirectzft.query
- * Summary: 商户入驻直付通进度查询
- */
+// Description:
+//
+// Description: 商户入驻直付通进度查询，替代twc.notary.contract.merchantindirectzft.query
+//
+// Summary: 商户入驻直付通进度查询
 func (client *Client) QueryContractMerchantorderEx(request *QueryContractMerchantorderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractMerchantorderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55571,10 +58679,11 @@ func (client *Client) QueryContractMerchantorderEx(request *QueryContractMerchan
 	return _result, _err
 }
 
-/**
- * Description: 修改商户进件信息，单商户可能被多个用户代理，信息修改会生效到所有代理用户上。
- * Summary: 商户进件信息修改
- */
+// Description:
+//
+// Description: 修改商户进件信息，单商户可能被多个用户代理，信息修改会生效到所有代理用户上。
+//
+// Summary: 商户进件信息修改
 func (client *Client) UpdateContractMerchant(request *UpdateContractMerchantRequest) (_result *UpdateContractMerchantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55587,10 +58696,11 @@ func (client *Client) UpdateContractMerchant(request *UpdateContractMerchantRequ
 	return _result, _err
 }
 
-/**
- * Description: 修改商户进件信息，单商户可能被多个用户代理，信息修改会生效到所有代理用户上。
- * Summary: 商户进件信息修改
- */
+// Description:
+//
+// Description: 修改商户进件信息，单商户可能被多个用户代理，信息修改会生效到所有代理用户上。
+//
+// Summary: 商户进件信息修改
 func (client *Client) UpdateContractMerchantEx(request *UpdateContractMerchantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateContractMerchantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55605,10 +58715,11 @@ func (client *Client) UpdateContractMerchantEx(request *UpdateContractMerchantRe
 	return _result, _err
 }
 
-/**
- * Description: 一个二级商户可以挂接多个平台方用户，此接口可以对已进件的商户进行挂接操作。
- * Summary: 二级商户代理挂接接口
- */
+// Description:
+//
+// Description: 一个二级商户可以挂接多个平台方用户，此接口可以对已进件的商户进行挂接操作。
+//
+// Summary: 二级商户代理挂接接口
 func (client *Client) BindContractMerchant(request *BindContractMerchantRequest) (_result *BindContractMerchantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55621,10 +58732,11 @@ func (client *Client) BindContractMerchant(request *BindContractMerchantRequest)
 	return _result, _err
 }
 
-/**
- * Description: 一个二级商户可以挂接多个平台方用户，此接口可以对已进件的商户进行挂接操作。
- * Summary: 二级商户代理挂接接口
- */
+// Description:
+//
+// Description: 一个二级商户可以挂接多个平台方用户，此接口可以对已进件的商户进行挂接操作。
+//
+// Summary: 二级商户代理挂接接口
 func (client *Client) BindContractMerchantEx(request *BindContractMerchantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BindContractMerchantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55639,10 +58751,11 @@ func (client *Client) BindContractMerchantEx(request *BindContractMerchantReques
 	return _result, _err
 }
 
-/**
- * Description: 初始化私有化合同服务实例，生成服务验签的公/私钥，以及回调使用的公/私钥
- * Summary: 初始化新的私有化合同服务实例
- */
+// Description:
+//
+// Description: 初始化私有化合同服务实例，生成服务验签的公/私钥，以及回调使用的公/私钥
+//
+// Summary: 初始化新的私有化合同服务实例
 func (client *Client) InitPrivatecontractIntance(request *InitPrivatecontractIntanceRequest) (_result *InitPrivatecontractIntanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55655,10 +58768,11 @@ func (client *Client) InitPrivatecontractIntance(request *InitPrivatecontractInt
 	return _result, _err
 }
 
-/**
- * Description: 初始化私有化合同服务实例，生成服务验签的公/私钥，以及回调使用的公/私钥
- * Summary: 初始化新的私有化合同服务实例
- */
+// Description:
+//
+// Description: 初始化私有化合同服务实例，生成服务验签的公/私钥，以及回调使用的公/私钥
+//
+// Summary: 初始化新的私有化合同服务实例
 func (client *Client) InitPrivatecontractIntanceEx(request *InitPrivatecontractIntanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitPrivatecontractIntanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55673,10 +58787,11 @@ func (client *Client) InitPrivatecontractIntanceEx(request *InitPrivatecontractI
 	return _result, _err
 }
 
-/**
- * Description: 更新已有的私有化合同服务实例信息，如私有化服务地址
- * Summary: 更新私有化合同服务实例信息
- */
+// Description:
+//
+// Description: 更新已有的私有化合同服务实例信息，如私有化服务地址
+//
+// Summary: 更新私有化合同服务实例信息
 func (client *Client) UpdatePrivatecontractIntance(request *UpdatePrivatecontractIntanceRequest) (_result *UpdatePrivatecontractIntanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55689,10 +58804,11 @@ func (client *Client) UpdatePrivatecontractIntance(request *UpdatePrivatecontrac
 	return _result, _err
 }
 
-/**
- * Description: 更新已有的私有化合同服务实例信息，如私有化服务地址
- * Summary: 更新私有化合同服务实例信息
- */
+// Description:
+//
+// Description: 更新已有的私有化合同服务实例信息，如私有化服务地址
+//
+// Summary: 更新私有化合同服务实例信息
 func (client *Client) UpdatePrivatecontractIntanceEx(request *UpdatePrivatecontractIntanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePrivatecontractIntanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55707,10 +58823,11 @@ func (client *Client) UpdatePrivatecontractIntanceEx(request *UpdatePrivatecontr
 	return _result, _err
 }
 
-/**
- * Description: 开放给私有云的外部用户的证书更新接口.
- * Summary: 私有云用户证书更新接口.
- */
+// Description:
+//
+// Description: 开放给私有云的外部用户的证书更新接口.
+//
+// Summary: 私有云用户证书更新接口.
 func (client *Client) UpdatePrivatecontractCert(request *UpdatePrivatecontractCertRequest) (_result *UpdatePrivatecontractCertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55723,10 +58840,11 @@ func (client *Client) UpdatePrivatecontractCert(request *UpdatePrivatecontractCe
 	return _result, _err
 }
 
-/**
- * Description: 开放给私有云的外部用户的证书更新接口.
- * Summary: 私有云用户证书更新接口.
- */
+// Description:
+//
+// Description: 开放给私有云的外部用户的证书更新接口.
+//
+// Summary: 私有云用户证书更新接口.
 func (client *Client) UpdatePrivatecontractCertEx(request *UpdatePrivatecontractCertRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePrivatecontractCertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55741,10 +58859,11 @@ func (client *Client) UpdatePrivatecontractCertEx(request *UpdatePrivatecontract
 	return _result, _err
 }
 
-/**
- * Description: 修改商户进件申请信息状态数据，只允许超管租户操作
- * Summary: 商户进件申请信息重置
- */
+// Description:
+//
+// Description: 修改商户进件申请信息状态数据，只允许超管租户操作
+//
+// Summary: 商户进件申请信息重置
 func (client *Client) ResetContractMerchantapply(request *ResetContractMerchantapplyRequest) (_result *ResetContractMerchantapplyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55757,10 +58876,11 @@ func (client *Client) ResetContractMerchantapply(request *ResetContractMerchanta
 	return _result, _err
 }
 
-/**
- * Description: 修改商户进件申请信息状态数据，只允许超管租户操作
- * Summary: 商户进件申请信息重置
- */
+// Description:
+//
+// Description: 修改商户进件申请信息状态数据，只允许超管租户操作
+//
+// Summary: 商户进件申请信息重置
 func (client *Client) ResetContractMerchantapplyEx(request *ResetContractMerchantapplyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResetContractMerchantapplyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55775,10 +58895,11 @@ func (client *Client) ResetContractMerchantapplyEx(request *ResetContractMerchan
 	return _result, _err
 }
 
-/**
- * Description: 内部接口，校验私有化合同服务实例权限状态，可能为开通/释放/恢复/停服等
- * Summary: 校验私有化合同服务实例权限情况
- */
+// Description:
+//
+// Description: 内部接口，校验私有化合同服务实例权限状态，可能为开通/释放/恢复/停服等
+//
+// Summary: 校验私有化合同服务实例权限情况
 func (client *Client) CheckPrivatecontractProvision(request *CheckPrivatecontractProvisionRequest) (_result *CheckPrivatecontractProvisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55791,10 +58912,11 @@ func (client *Client) CheckPrivatecontractProvision(request *CheckPrivatecontrac
 	return _result, _err
 }
 
-/**
- * Description: 内部接口，校验私有化合同服务实例权限状态，可能为开通/释放/恢复/停服等
- * Summary: 校验私有化合同服务实例权限情况
- */
+// Description:
+//
+// Description: 内部接口，校验私有化合同服务实例权限状态，可能为开通/释放/恢复/停服等
+//
+// Summary: 校验私有化合同服务实例权限情况
 func (client *Client) CheckPrivatecontractProvisionEx(request *CheckPrivatecontractProvisionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckPrivatecontractProvisionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55809,10 +58931,11 @@ func (client *Client) CheckPrivatecontractProvisionEx(request *CheckPrivatecontr
 	return _result, _err
 }
 
-/**
- * Description: 私有化合同服务实例计量数据推送
- * Summary: 私有化合同服务实例计量数据推送
- */
+// Description:
+//
+// Description: 私有化合同服务实例计量数据推送
+//
+// Summary: 私有化合同服务实例计量数据推送
 func (client *Client) PushPrivatecontractGauge(request *PushPrivatecontractGaugeRequest) (_result *PushPrivatecontractGaugeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55825,10 +58948,11 @@ func (client *Client) PushPrivatecontractGauge(request *PushPrivatecontractGauge
 	return _result, _err
 }
 
-/**
- * Description: 私有化合同服务实例计量数据推送
- * Summary: 私有化合同服务实例计量数据推送
- */
+// Description:
+//
+// Description: 私有化合同服务实例计量数据推送
+//
+// Summary: 私有化合同服务实例计量数据推送
 func (client *Client) PushPrivatecontractGaugeEx(request *PushPrivatecontractGaugeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushPrivatecontractGaugeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55843,10 +58967,11 @@ func (client *Client) PushPrivatecontractGaugeEx(request *PushPrivatecontractGau
 	return _result, _err
 }
 
-/**
- * Description: 法院代扣链路，扣款前需要进行账户预校验，验证此接口是否可以进行付款
- * Summary: 法院代扣账户扣款预校验
- */
+// Description:
+//
+// Description: 法院代扣链路，扣款前需要进行账户预校验，验证此接口是否可以进行付款
+//
+// Summary: 法院代扣账户扣款预校验
 func (client *Client) CheckContractCourtdeduct(request *CheckContractCourtdeductRequest) (_result *CheckContractCourtdeductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55859,10 +58984,11 @@ func (client *Client) CheckContractCourtdeduct(request *CheckContractCourtdeduct
 	return _result, _err
 }
 
-/**
- * Description: 法院代扣链路，扣款前需要进行账户预校验，验证此接口是否可以进行付款
- * Summary: 法院代扣账户扣款预校验
- */
+// Description:
+//
+// Description: 法院代扣链路，扣款前需要进行账户预校验，验证此接口是否可以进行付款
+//
+// Summary: 法院代扣账户扣款预校验
 func (client *Client) CheckContractCourtdeductEx(request *CheckContractCourtdeductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckContractCourtdeductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55877,10 +59003,11 @@ func (client *Client) CheckContractCourtdeductEx(request *CheckContractCourtdedu
 	return _result, _err
 }
 
-/**
- * Description: 法院代扣计划创建
- * Summary: 法院代扣计划创建
- */
+// Description:
+//
+// Description: 法院代扣计划创建
+//
+// Summary: 法院代扣计划创建
 func (client *Client) CreateContractCourtdeduct(request *CreateContractCourtdeductRequest) (_result *CreateContractCourtdeductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55893,10 +59020,11 @@ func (client *Client) CreateContractCourtdeduct(request *CreateContractCourtdedu
 	return _result, _err
 }
 
-/**
- * Description: 法院代扣计划创建
- * Summary: 法院代扣计划创建
- */
+// Description:
+//
+// Description: 法院代扣计划创建
+//
+// Summary: 法院代扣计划创建
 func (client *Client) CreateContractCourtdeductEx(request *CreateContractCourtdeductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractCourtdeductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55911,10 +59039,11 @@ func (client *Client) CreateContractCourtdeductEx(request *CreateContractCourtde
 	return _result, _err
 }
 
-/**
- * Description: 法院代扣执行扣款
- * Summary: 法院代扣执行扣款
- */
+// Description:
+//
+// Description: 法院代扣执行扣款
+//
+// Summary: 法院代扣执行扣款
 func (client *Client) ExecContractCourtdeduct(request *ExecContractCourtdeductRequest) (_result *ExecContractCourtdeductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55927,10 +59056,11 @@ func (client *Client) ExecContractCourtdeduct(request *ExecContractCourtdeductRe
 	return _result, _err
 }
 
-/**
- * Description: 法院代扣执行扣款
- * Summary: 法院代扣执行扣款
- */
+// Description:
+//
+// Description: 法院代扣执行扣款
+//
+// Summary: 法院代扣执行扣款
 func (client *Client) ExecContractCourtdeductEx(request *ExecContractCourtdeductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecContractCourtdeductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55945,10 +59075,11 @@ func (client *Client) ExecContractCourtdeductEx(request *ExecContractCourtdeduct
 	return _result, _err
 }
 
-/**
- * Description: 文本签名
- * Summary: 文本签接口
- */
+// Description:
+//
+// Description: 文本签名
+//
+// Summary: 文本签接口
 func (client *Client) GetContractTextsign(request *GetContractTextsignRequest) (_result *GetContractTextsignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55961,10 +59092,11 @@ func (client *Client) GetContractTextsign(request *GetContractTextsignRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 文本签名
- * Summary: 文本签接口
- */
+// Description:
+//
+// Description: 文本签名
+//
+// Summary: 文本签接口
 func (client *Client) GetContractTextsignEx(request *GetContractTextsignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetContractTextsignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55979,10 +59111,11 @@ func (client *Client) GetContractTextsignEx(request *GetContractTextsignRequest,
 	return _result, _err
 }
 
-/**
- * Description: 文本验签
- * Summary: 文本验签接口
- */
+// Description:
+//
+// Description: 文本验签
+//
+// Summary: 文本验签接口
 func (client *Client) VerifyContractTextsign(request *VerifyContractTextsignRequest) (_result *VerifyContractTextsignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -55995,10 +59128,11 @@ func (client *Client) VerifyContractTextsign(request *VerifyContractTextsignRequ
 	return _result, _err
 }
 
-/**
- * Description: 文本验签
- * Summary: 文本验签接口
- */
+// Description:
+//
+// Description: 文本验签
+//
+// Summary: 文本验签接口
 func (client *Client) VerifyContractTextsignEx(request *VerifyContractTextsignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyContractTextsignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56013,10 +59147,11 @@ func (client *Client) VerifyContractTextsignEx(request *VerifyContractTextsignRe
 	return _result, _err
 }
 
-/**
- * Description: 文件签验签
- * Summary: 文件签验签
- */
+// Description:
+//
+// Description: 文件签验签
+//
+// Summary: 文件签验签
 func (client *Client) VerifyContractDocsign(request *VerifyContractDocsignRequest) (_result *VerifyContractDocsignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56029,10 +59164,11 @@ func (client *Client) VerifyContractDocsign(request *VerifyContractDocsignReques
 	return _result, _err
 }
 
-/**
- * Description: 文件签验签
- * Summary: 文件签验签
- */
+// Description:
+//
+// Description: 文件签验签
+//
+// Summary: 文件签验签
 func (client *Client) VerifyContractDocsignEx(request *VerifyContractDocsignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyContractDocsignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56047,10 +59183,11 @@ func (client *Client) VerifyContractDocsignEx(request *VerifyContractDocsignRequ
 	return _result, _err
 }
 
-/**
- * Description: 删除签署区
- * Summary: 删除签署区
- */
+// Description:
+//
+// Description: 删除签署区
+//
+// Summary: 删除签署区
 func (client *Client) DeleteContractSignfield(request *DeleteContractSignfieldRequest) (_result *DeleteContractSignfieldResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56063,10 +59200,11 @@ func (client *Client) DeleteContractSignfield(request *DeleteContractSignfieldRe
 	return _result, _err
 }
 
-/**
- * Description: 删除签署区
- * Summary: 删除签署区
- */
+// Description:
+//
+// Description: 删除签署区
+//
+// Summary: 删除签署区
 func (client *Client) DeleteContractSignfieldEx(request *DeleteContractSignfieldRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteContractSignfieldResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56081,10 +59219,11 @@ func (client *Client) DeleteContractSignfieldEx(request *DeleteContractSignfield
 	return _result, _err
 }
 
-/**
- * Description: 创建平台方用户接口twc.notary.contract.user.create加密版
- * Summary: 创建平台方用户加密版
- */
+// Description:
+//
+// Description: 创建平台方用户接口twc.notary.contract.user.create加密版
+//
+// Summary: 创建平台方用户加密版
 func (client *Client) CreateContractEncrypteduser(request *CreateContractEncrypteduserRequest) (_result *CreateContractEncrypteduserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56097,10 +59236,11 @@ func (client *Client) CreateContractEncrypteduser(request *CreateContractEncrypt
 	return _result, _err
 }
 
-/**
- * Description: 创建平台方用户接口twc.notary.contract.user.create加密版
- * Summary: 创建平台方用户加密版
- */
+// Description:
+//
+// Description: 创建平台方用户接口twc.notary.contract.user.create加密版
+//
+// Summary: 创建平台方用户加密版
 func (client *Client) CreateContractEncrypteduserEx(request *CreateContractEncrypteduserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractEncrypteduserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56115,10 +59255,11 @@ func (client *Client) CreateContractEncrypteduserEx(request *CreateContractEncry
 	return _result, _err
 }
 
-/**
- * Description: 用户需要同时设置解密密钥与通信秘钥才可使用文件解密服务；
- * Summary: 用户密钥设置接口
- */
+// Description:
+//
+// Description: 用户需要同时设置解密密钥与通信秘钥才可使用文件解密服务；
+//
+// Summary: 用户密钥设置接口
 func (client *Client) SetContractTenantkey(request *SetContractTenantkeyRequest) (_result *SetContractTenantkeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56131,10 +59272,11 @@ func (client *Client) SetContractTenantkey(request *SetContractTenantkeyRequest)
 	return _result, _err
 }
 
-/**
- * Description: 用户需要同时设置解密密钥与通信秘钥才可使用文件解密服务；
- * Summary: 用户密钥设置接口
- */
+// Description:
+//
+// Description: 用户需要同时设置解密密钥与通信秘钥才可使用文件解密服务；
+//
+// Summary: 用户密钥设置接口
 func (client *Client) SetContractTenantkeyEx(request *SetContractTenantkeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetContractTenantkeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56149,10 +59291,11 @@ func (client *Client) SetContractTenantkeyEx(request *SetContractTenantkeyReques
 	return _result, _err
 }
 
-/**
- * Description: 获取加密文件上传链接
- * Summary: 获取加密文件上传链接
- */
+// Description:
+//
+// Description: 获取加密文件上传链接
+//
+// Summary: 获取加密文件上传链接
 func (client *Client) GetContractEncryptedfileuploadurl(request *GetContractEncryptedfileuploadurlRequest) (_result *GetContractEncryptedfileuploadurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56165,10 +59308,11 @@ func (client *Client) GetContractEncryptedfileuploadurl(request *GetContractEncr
 	return _result, _err
 }
 
-/**
- * Description: 获取加密文件上传链接
- * Summary: 获取加密文件上传链接
- */
+// Description:
+//
+// Description: 获取加密文件上传链接
+//
+// Summary: 获取加密文件上传链接
 func (client *Client) GetContractEncryptedfileuploadurlEx(request *GetContractEncryptedfileuploadurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetContractEncryptedfileuploadurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56183,10 +59327,11 @@ func (client *Client) GetContractEncryptedfileuploadurlEx(request *GetContractEn
 	return _result, _err
 }
 
-/**
- * Description: 创建异步任务
- * Summary: 创建任务接口
- */
+// Description:
+//
+// Description: 创建异步任务
+//
+// Summary: 创建任务接口
 func (client *Client) CreateContractTask(request *CreateContractTaskRequest) (_result *CreateContractTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56199,10 +59344,11 @@ func (client *Client) CreateContractTask(request *CreateContractTaskRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 创建异步任务
- * Summary: 创建任务接口
- */
+// Description:
+//
+// Description: 创建异步任务
+//
+// Summary: 创建任务接口
 func (client *Client) CreateContractTaskEx(request *CreateContractTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56217,10 +59363,11 @@ func (client *Client) CreateContractTaskEx(request *CreateContractTaskRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 任务查询接口
- * Summary: 任务查询
- */
+// Description:
+//
+// Description: 任务查询接口
+//
+// Summary: 任务查询
 func (client *Client) QueryContractTask(request *QueryContractTaskRequest) (_result *QueryContractTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56233,10 +59380,11 @@ func (client *Client) QueryContractTask(request *QueryContractTaskRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 任务查询接口
- * Summary: 任务查询
- */
+// Description:
+//
+// Description: 任务查询接口
+//
+// Summary: 任务查询
 func (client *Client) QueryContractTaskEx(request *QueryContractTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56251,10 +59399,11 @@ func (client *Client) QueryContractTaskEx(request *QueryContractTaskRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 合同代扣触发接口，每笔订单仅一天仅允许触发一次
- * Summary: 合同代扣触发接口
- */
+// Description:
+//
+// Description: 合同代扣触发接口，每笔订单仅一天仅允许触发一次
+//
+// Summary: 合同代扣触发接口
 func (client *Client) ExecContractPay(request *ExecContractPayRequest) (_result *ExecContractPayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56267,10 +59416,11 @@ func (client *Client) ExecContractPay(request *ExecContractPayRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 合同代扣触发接口，每笔订单仅一天仅允许触发一次
- * Summary: 合同代扣触发接口
- */
+// Description:
+//
+// Description: 合同代扣触发接口，每笔订单仅一天仅允许触发一次
+//
+// Summary: 合同代扣触发接口
 func (client *Client) ExecContractPayEx(request *ExecContractPayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecContractPayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56285,10 +59435,11 @@ func (client *Client) ExecContractPayEx(request *ExecContractPayRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 强制帮用户接触代扣协议，未执行成功的代扣会被取消，已执行成功的代扣不变。
- * Summary: 代扣强制解约
- */
+// Description:
+//
+// Description: 强制帮用户接触代扣协议，未执行成功的代扣会被取消，已执行成功的代扣不变。
+//
+// Summary: 代扣强制解约
 func (client *Client) UnbindContractPay(request *UnbindContractPayRequest) (_result *UnbindContractPayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56301,10 +59452,11 @@ func (client *Client) UnbindContractPay(request *UnbindContractPayRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 强制帮用户接触代扣协议，未执行成功的代扣会被取消，已执行成功的代扣不变。
- * Summary: 代扣强制解约
- */
+// Description:
+//
+// Description: 强制帮用户接触代扣协议，未执行成功的代扣会被取消，已执行成功的代扣不变。
+//
+// Summary: 代扣强制解约
 func (client *Client) UnbindContractPayEx(request *UnbindContractPayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnbindContractPayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56319,10 +59471,11 @@ func (client *Client) UnbindContractPayEx(request *UnbindContractPayRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 商户每次收到客户投诉回调通知，商户端均需要通过此接口来查询投诉数据。
- * Summary: 投诉数据查询
- */
+// Description:
+//
+// Description: 商户每次收到客户投诉回调通知，商户端均需要通过此接口来查询投诉数据。
+//
+// Summary: 投诉数据查询
 func (client *Client) QueryContractComplain(request *QueryContractComplainRequest) (_result *QueryContractComplainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56335,10 +59488,11 @@ func (client *Client) QueryContractComplain(request *QueryContractComplainReques
 	return _result, _err
 }
 
-/**
- * Description: 商户每次收到客户投诉回调通知，商户端均需要通过此接口来查询投诉数据。
- * Summary: 投诉数据查询
- */
+// Description:
+//
+// Description: 商户每次收到客户投诉回调通知，商户端均需要通过此接口来查询投诉数据。
+//
+// Summary: 投诉数据查询
 func (client *Client) QueryContractComplainEx(request *QueryContractComplainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractComplainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56353,10 +59507,11 @@ func (client *Client) QueryContractComplainEx(request *QueryContractComplainRequ
 	return _result, _err
 }
 
-/**
- * Description: 商家收到用户投诉后，可通过此接口进行投诉反馈。注意，只有当投诉单状态为MERCHANT_PROCESSING时，才允许商家进行投诉反馈。
- * Summary: 投诉反馈
- */
+// Description:
+//
+// Description: 商家收到用户投诉后，可通过此接口进行投诉反馈。注意，只有当投诉单状态为MERCHANT_PROCESSING时，才允许商家进行投诉反馈。
+//
+// Summary: 投诉反馈
 func (client *Client) SendContractComplainfeedback(request *SendContractComplainfeedbackRequest) (_result *SendContractComplainfeedbackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56369,10 +59524,11 @@ func (client *Client) SendContractComplainfeedback(request *SendContractComplain
 	return _result, _err
 }
 
-/**
- * Description: 商家收到用户投诉后，可通过此接口进行投诉反馈。注意，只有当投诉单状态为MERCHANT_PROCESSING时，才允许商家进行投诉反馈。
- * Summary: 投诉反馈
- */
+// Description:
+//
+// Description: 商家收到用户投诉后，可通过此接口进行投诉反馈。注意，只有当投诉单状态为MERCHANT_PROCESSING时，才允许商家进行投诉反馈。
+//
+// Summary: 投诉反馈
 func (client *Client) SendContractComplainfeedbackEx(request *SendContractComplainfeedbackRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendContractComplainfeedbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56387,10 +59543,11 @@ func (client *Client) SendContractComplainfeedbackEx(request *SendContractCompla
 	return _result, _err
 }
 
-/**
- * Description: 商户上传处理图片
- * Summary: 商户上传处理图片
- */
+// Description:
+//
+// Description: 商户上传处理图片
+//
+// Summary: 商户上传处理图片
 func (client *Client) UploadContractComplainimage(request *UploadContractComplainimageRequest) (_result *UploadContractComplainimageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56403,10 +59560,11 @@ func (client *Client) UploadContractComplainimage(request *UploadContractComplai
 	return _result, _err
 }
 
-/**
- * Description: 商户上传处理图片
- * Summary: 商户上传处理图片
- */
+// Description:
+//
+// Description: 商户上传处理图片
+//
+// Summary: 商户上传处理图片
 func (client *Client) UploadContractComplainimageEx(request *UploadContractComplainimageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadContractComplainimageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56421,10 +59579,11 @@ func (client *Client) UploadContractComplainimageEx(request *UploadContractCompl
 	return _result, _err
 }
 
-/**
- * Description: 根据起止日期查询体验宝投诉工单
- * Summary: 根据起止日期查询体验宝投诉工单
- */
+// Description:
+//
+// Description: 根据起止日期查询体验宝投诉工单
+//
+// Summary: 根据起止日期查询体验宝投诉工单
 func (client *Client) QueryContractComplaineventids(request *QueryContractComplaineventidsRequest) (_result *QueryContractComplaineventidsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56437,10 +59596,11 @@ func (client *Client) QueryContractComplaineventids(request *QueryContractCompla
 	return _result, _err
 }
 
-/**
- * Description: 根据起止日期查询体验宝投诉工单
- * Summary: 根据起止日期查询体验宝投诉工单
- */
+// Description:
+//
+// Description: 根据起止日期查询体验宝投诉工单
+//
+// Summary: 根据起止日期查询体验宝投诉工单
 func (client *Client) QueryContractComplaineventidsEx(request *QueryContractComplaineventidsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractComplaineventidsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56455,10 +59615,11 @@ func (client *Client) QueryContractComplaineventidsEx(request *QueryContractComp
 	return _result, _err
 }
 
-/**
- * Description: 对ato等系统提供区块链合同签署流程撤销能力
- * Summary: 区块链合同签署流程撤销
- */
+// Description:
+//
+// Description: 对ato等系统提供区块链合同签署流程撤销能力
+//
+// Summary: 区块链合同签署流程撤销
 func (client *Client) CancelContractFlow(request *CancelContractFlowRequest) (_result *CancelContractFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56471,10 +59632,11 @@ func (client *Client) CancelContractFlow(request *CancelContractFlowRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 对ato等系统提供区块链合同签署流程撤销能力
- * Summary: 区块链合同签署流程撤销
- */
+// Description:
+//
+// Description: 对ato等系统提供区块链合同签署流程撤销能力
+//
+// Summary: 区块链合同签署流程撤销
 func (client *Client) CancelContractFlowEx(request *CancelContractFlowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelContractFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56489,10 +59651,11 @@ func (client *Client) CancelContractFlowEx(request *CancelContractFlowRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 转化短链接
- * Summary: 转化短链接
- */
+// Description:
+//
+// Description: 转化短链接
+//
+// Summary: 转化短链接
 func (client *Client) TransferGeneralShortenurl(request *TransferGeneralShortenurlRequest) (_result *TransferGeneralShortenurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56505,10 +59668,11 @@ func (client *Client) TransferGeneralShortenurl(request *TransferGeneralShortenu
 	return _result, _err
 }
 
-/**
- * Description: 转化短链接
- * Summary: 转化短链接
- */
+// Description:
+//
+// Description: 转化短链接
+//
+// Summary: 转化短链接
 func (client *Client) TransferGeneralShortenurlEx(request *TransferGeneralShortenurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TransferGeneralShortenurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56523,10 +59687,11 @@ func (client *Client) TransferGeneralShortenurlEx(request *TransferGeneralShorte
 	return _result, _err
 }
 
-/**
- * Description: 触发合同提交归档
- * Summary: 合同提交归档
- */
+// Description:
+//
+// Description: 触发合同提交归档
+//
+// Summary: 合同提交归档
 func (client *Client) SubmitContractArchive(request *SubmitContractArchiveRequest) (_result *SubmitContractArchiveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56539,10 +59704,11 @@ func (client *Client) SubmitContractArchive(request *SubmitContractArchiveReques
 	return _result, _err
 }
 
-/**
- * Description: 触发合同提交归档
- * Summary: 合同提交归档
- */
+// Description:
+//
+// Description: 触发合同提交归档
+//
+// Summary: 合同提交归档
 func (client *Client) SubmitContractArchiveEx(request *SubmitContractArchiveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitContractArchiveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56557,10 +59723,11 @@ func (client *Client) SubmitContractArchiveEx(request *SubmitContractArchiveRequ
 	return _result, _err
 }
 
-/**
- * Description: 区块链合同代扣订单列表
- * Summary: 代扣订单列表
- */
+// Description:
+//
+// Description: 区块链合同代扣订单列表
+//
+// Summary: 代扣订单列表
 func (client *Client) ListContractDeductorder(request *ListContractDeductorderRequest) (_result *ListContractDeductorderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56573,10 +59740,11 @@ func (client *Client) ListContractDeductorder(request *ListContractDeductorderRe
 	return _result, _err
 }
 
-/**
- * Description: 区块链合同代扣订单列表
- * Summary: 代扣订单列表
- */
+// Description:
+//
+// Description: 区块链合同代扣订单列表
+//
+// Summary: 代扣订单列表
 func (client *Client) ListContractDeductorderEx(request *ListContractDeductorderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListContractDeductorderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56591,10 +59759,11 @@ func (client *Client) ListContractDeductorderEx(request *ListContractDeductorder
 	return _result, _err
 }
 
-/**
- * Description: 代扣订单详情
- * Summary: 代扣订单详情
- */
+// Description:
+//
+// Description: 代扣订单详情
+//
+// Summary: 代扣订单详情
 func (client *Client) QueryContractDeductdetail(request *QueryContractDeductdetailRequest) (_result *QueryContractDeductdetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56607,10 +59776,11 @@ func (client *Client) QueryContractDeductdetail(request *QueryContractDeductdeta
 	return _result, _err
 }
 
-/**
- * Description: 代扣订单详情
- * Summary: 代扣订单详情
- */
+// Description:
+//
+// Description: 代扣订单详情
+//
+// Summary: 代扣订单详情
 func (client *Client) QueryContractDeductdetailEx(request *QueryContractDeductdetailRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractDeductdetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56625,10 +59795,11 @@ func (client *Client) QueryContractDeductdetailEx(request *QueryContractDeductde
 	return _result, _err
 }
 
-/**
- * Description: 根据支付宝商家订单号查询交易单
- * Summary: 根据交易号查询订单
- */
+// Description:
+//
+// Description: 根据支付宝商家订单号查询交易单
+//
+// Summary: 根据交易号查询订单
 func (client *Client) QueryContractDedcutpayinfo(request *QueryContractDedcutpayinfoRequest) (_result *QueryContractDedcutpayinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56641,10 +59812,11 @@ func (client *Client) QueryContractDedcutpayinfo(request *QueryContractDedcutpay
 	return _result, _err
 }
 
-/**
- * Description: 根据支付宝商家订单号查询交易单
- * Summary: 根据交易号查询订单
- */
+// Description:
+//
+// Description: 根据支付宝商家订单号查询交易单
+//
+// Summary: 根据交易号查询订单
 func (client *Client) QueryContractDedcutpayinfoEx(request *QueryContractDedcutpayinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractDedcutpayinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56659,10 +59831,11 @@ func (client *Client) QueryContractDedcutpayinfoEx(request *QueryContractDedcutp
 	return _result, _err
 }
 
-/**
- * Description: 72h代扣解约代扣协议，未执行成功的代扣会被取消，已执行成功的代扣不变。
- * Summary: 72h代扣解约-twc解约
- */
+// Description:
+//
+// Description: 72h代扣解约代扣协议，未执行成功的代扣会被取消，已执行成功的代扣不变。
+//
+// Summary: 72h代扣解约-twc解约
 func (client *Client) UnbindContractZfbagreement(request *UnbindContractZfbagreementRequest) (_result *UnbindContractZfbagreementResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56675,10 +59848,11 @@ func (client *Client) UnbindContractZfbagreement(request *UnbindContractZfbagree
 	return _result, _err
 }
 
-/**
- * Description: 72h代扣解约代扣协议，未执行成功的代扣会被取消，已执行成功的代扣不变。
- * Summary: 72h代扣解约-twc解约
- */
+// Description:
+//
+// Description: 72h代扣解约代扣协议，未执行成功的代扣会被取消，已执行成功的代扣不变。
+//
+// Summary: 72h代扣解约-twc解约
 func (client *Client) UnbindContractZfbagreementEx(request *UnbindContractZfbagreementRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnbindContractZfbagreementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56693,10 +59867,11 @@ func (client *Client) UnbindContractZfbagreementEx(request *UnbindContractZfbagr
 	return _result, _err
 }
 
-/**
- * Description: 完成手动签署流程
- * Summary: 完成手动签署流程
- */
+// Description:
+//
+// Description: 完成手动签署流程
+//
+// Summary: 完成手动签署流程
 func (client *Client) FinishContractFlow(request *FinishContractFlowRequest) (_result *FinishContractFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56709,10 +59884,11 @@ func (client *Client) FinishContractFlow(request *FinishContractFlowRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 完成手动签署流程
- * Summary: 完成手动签署流程
- */
+// Description:
+//
+// Description: 完成手动签署流程
+//
+// Summary: 完成手动签署流程
 func (client *Client) FinishContractFlowEx(request *FinishContractFlowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FinishContractFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56727,10 +59903,11 @@ func (client *Client) FinishContractFlowEx(request *FinishContractFlowRequest, h
 	return _result, _err
 }
 
-/**
- * Description: e签宝合规改造外部账号信息查询
- * Summary: e签宝合规改造外部账号信息查询
- */
+// Description:
+//
+// Description: e签宝合规改造外部账号信息查询
+//
+// Summary: e签宝合规改造外部账号信息查询
 func (client *Client) QueryContractEsignaccount(request *QueryContractEsignaccountRequest) (_result *QueryContractEsignaccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56743,10 +59920,11 @@ func (client *Client) QueryContractEsignaccount(request *QueryContractEsignaccou
 	return _result, _err
 }
 
-/**
- * Description: e签宝合规改造外部账号信息查询
- * Summary: e签宝合规改造外部账号信息查询
- */
+// Description:
+//
+// Description: e签宝合规改造外部账号信息查询
+//
+// Summary: e签宝合规改造外部账号信息查询
 func (client *Client) QueryContractEsignaccountEx(request *QueryContractEsignaccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractEsignaccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56761,10 +59939,11 @@ func (client *Client) QueryContractEsignaccountEx(request *QueryContractEsignacc
 	return _result, _err
 }
 
-/**
- * Description: 区块链合同查询授权有效期
- * Summary: 区块链合同查询授权有效期
- */
+// Description:
+//
+// Description: 区块链合同查询授权有效期
+//
+// Summary: 区块链合同查询授权有效期
 func (client *Client) QueryContractSignauth(request *QueryContractSignauthRequest) (_result *QueryContractSignauthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56777,10 +59956,11 @@ func (client *Client) QueryContractSignauth(request *QueryContractSignauthReques
 	return _result, _err
 }
 
-/**
- * Description: 区块链合同查询授权有效期
- * Summary: 区块链合同查询授权有效期
- */
+// Description:
+//
+// Description: 区块链合同查询授权有效期
+//
+// Summary: 区块链合同查询授权有效期
 func (client *Client) QueryContractSignauthEx(request *QueryContractSignauthRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractSignauthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56795,10 +59975,11 @@ func (client *Client) QueryContractSignauthEx(request *QueryContractSignauthRequ
 	return _result, _err
 }
 
-/**
- * Description: 区块链合同手动提交签署区
- * Summary: 区块链合同手动提交签署区
- */
+// Description:
+//
+// Description: 区块链合同手动提交签署区
+//
+// Summary: 区块链合同手动提交签署区
 func (client *Client) CreateContractEhandsignfield(request *CreateContractEhandsignfieldRequest) (_result *CreateContractEhandsignfieldResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56811,10 +59992,11 @@ func (client *Client) CreateContractEhandsignfield(request *CreateContractEhands
 	return _result, _err
 }
 
-/**
- * Description: 区块链合同手动提交签署区
- * Summary: 区块链合同手动提交签署区
- */
+// Description:
+//
+// Description: 区块链合同手动提交签署区
+//
+// Summary: 区块链合同手动提交签署区
 func (client *Client) CreateContractEhandsignfieldEx(request *CreateContractEhandsignfieldRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractEhandsignfieldResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56829,10 +60011,11 @@ func (client *Client) CreateContractEhandsignfieldEx(request *CreateContractEhan
 	return _result, _err
 }
 
-/**
- * Description: 区块链合同-获取签署链接
- * Summary: 区块链合同-获取签署链接
- */
+// Description:
+//
+// Description: 区块链合同-获取签署链接
+//
+// Summary: 区块链合同-获取签署链接
 func (client *Client) GetContractEsignurl(request *GetContractEsignurlRequest) (_result *GetContractEsignurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56845,10 +60028,11 @@ func (client *Client) GetContractEsignurl(request *GetContractEsignurlRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 区块链合同-获取签署链接
- * Summary: 区块链合同-获取签署链接
- */
+// Description:
+//
+// Description: 区块链合同-获取签署链接
+//
+// Summary: 区块链合同-获取签署链接
 func (client *Client) GetContractEsignurlEx(request *GetContractEsignurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetContractEsignurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56863,10 +60047,11 @@ func (client *Client) GetContractEsignurlEx(request *GetContractEsignurlRequest,
 	return _result, _err
 }
 
-/**
- * Description: 用户使用mp4内容，集成方通过该openAPI进行使用上报。
- * Summary: 集成方通过该接口进行使用mp4上报
- */
+// Description:
+//
+// Description: 用户使用mp4内容，集成方通过该openAPI进行使用上报。
+//
+// Summary: 集成方通过该接口进行使用mp4上报
 func (client *Client) PushDigitalcontentUsage(request *PushDigitalcontentUsageRequest) (_result *PushDigitalcontentUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56879,10 +60064,11 @@ func (client *Client) PushDigitalcontentUsage(request *PushDigitalcontentUsageRe
 	return _result, _err
 }
 
-/**
- * Description: 用户使用mp4内容，集成方通过该openAPI进行使用上报。
- * Summary: 集成方通过该接口进行使用mp4上报
- */
+// Description:
+//
+// Description: 用户使用mp4内容，集成方通过该openAPI进行使用上报。
+//
+// Summary: 集成方通过该接口进行使用mp4上报
 func (client *Client) PushDigitalcontentUsageEx(request *PushDigitalcontentUsageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushDigitalcontentUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56897,10 +60083,11 @@ func (client *Client) PushDigitalcontentUsageEx(request *PushDigitalcontentUsage
 	return _result, _err
 }
 
-/**
- * Description: 用户使用apk内容，集成方通过该openAPI申请该使用的订单id。
- * Summary: 集成方通过该接口申请apk订单id
- */
+// Description:
+//
+// Description: 用户使用apk内容，集成方通过该openAPI申请该使用的订单id。
+//
+// Summary: 集成方通过该接口申请apk订单id
 func (client *Client) ApplyDigitalcontentOrder(request *ApplyDigitalcontentOrderRequest) (_result *ApplyDigitalcontentOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56913,10 +60100,11 @@ func (client *Client) ApplyDigitalcontentOrder(request *ApplyDigitalcontentOrder
 	return _result, _err
 }
 
-/**
- * Description: 用户使用apk内容，集成方通过该openAPI申请该使用的订单id。
- * Summary: 集成方通过该接口申请apk订单id
- */
+// Description:
+//
+// Description: 用户使用apk内容，集成方通过该openAPI申请该使用的订单id。
+//
+// Summary: 集成方通过该接口申请apk订单id
 func (client *Client) ApplyDigitalcontentOrderEx(request *ApplyDigitalcontentOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyDigitalcontentOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56931,10 +60119,11 @@ func (client *Client) ApplyDigitalcontentOrderEx(request *ApplyDigitalcontentOrd
 	return _result, _err
 }
 
-/**
- * Description: 用户使用apk内容支付后，集成方通过订单id和支付id反馈支付结果，并申请交互token。
- * Summary: 集成方反馈apk订单支付结果
- */
+// Description:
+//
+// Description: 用户使用apk内容支付后，集成方通过订单id和支付id反馈支付结果，并申请交互token。
+//
+// Summary: 集成方反馈apk订单支付结果
 func (client *Client) SubmitDigitalcontentOrder(request *SubmitDigitalcontentOrderRequest) (_result *SubmitDigitalcontentOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56947,10 +60136,11 @@ func (client *Client) SubmitDigitalcontentOrder(request *SubmitDigitalcontentOrd
 	return _result, _err
 }
 
-/**
- * Description: 用户使用apk内容支付后，集成方通过订单id和支付id反馈支付结果，并申请交互token。
- * Summary: 集成方反馈apk订单支付结果
- */
+// Description:
+//
+// Description: 用户使用apk内容支付后，集成方通过订单id和支付id反馈支付结果，并申请交互token。
+//
+// Summary: 集成方反馈apk订单支付结果
 func (client *Client) SubmitDigitalcontentOrderEx(request *SubmitDigitalcontentOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitDigitalcontentOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56965,10 +60155,11 @@ func (client *Client) SubmitDigitalcontentOrderEx(request *SubmitDigitalcontentO
 	return _result, _err
 }
 
-/**
- * Description: baas-notary向notarycore同步生成的事务数据，仅做数据同步使用
- * Summary: 向notarycore同步事务数据
- */
+// Description:
+//
+// Description: baas-notary向notarycore同步生成的事务数据，仅做数据同步使用
+//
+// Summary: 向notarycore同步事务数据
 func (client *Client) SyncInnerTrans(request *SyncInnerTransRequest) (_result *SyncInnerTransResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -56981,10 +60172,11 @@ func (client *Client) SyncInnerTrans(request *SyncInnerTransRequest) (_result *S
 	return _result, _err
 }
 
-/**
- * Description: baas-notary向notarycore同步生成的事务数据，仅做数据同步使用
- * Summary: 向notarycore同步事务数据
- */
+// Description:
+//
+// Description: baas-notary向notarycore同步生成的事务数据，仅做数据同步使用
+//
+// Summary: 向notarycore同步事务数据
 func (client *Client) SyncInnerTransEx(request *SyncInnerTransRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncInnerTransResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56999,10 +60191,11 @@ func (client *Client) SyncInnerTransEx(request *SyncInnerTransRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 从baas-notary向notarycore同步存证数据
- * Summary: 向notarycore同步存证数据
- */
+// Description:
+//
+// Description: 从baas-notary向notarycore同步存证数据
+//
+// Summary: 向notarycore同步存证数据
 func (client *Client) SyncInnerNotary(request *SyncInnerNotaryRequest) (_result *SyncInnerNotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57015,10 +60208,11 @@ func (client *Client) SyncInnerNotary(request *SyncInnerNotaryRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 从baas-notary向notarycore同步存证数据
- * Summary: 向notarycore同步存证数据
- */
+// Description:
+//
+// Description: 从baas-notary向notarycore同步存证数据
+//
+// Summary: 向notarycore同步存证数据
 func (client *Client) SyncInnerNotaryEx(request *SyncInnerNotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncInnerNotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57033,10 +60227,11 @@ func (client *Client) SyncInnerNotaryEx(request *SyncInnerNotaryRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 从baas-notary向notarycore同步自租户信息
- * Summary: 向notarycore同步子租户数据
- */
+// Description:
+//
+// Description: 从baas-notary向notarycore同步自租户信息
+//
+// Summary: 向notarycore同步子租户数据
 func (client *Client) SyncInnerTwcopen(request *SyncInnerTwcopenRequest) (_result *SyncInnerTwcopenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57049,10 +60244,11 @@ func (client *Client) SyncInnerTwcopen(request *SyncInnerTwcopenRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 从baas-notary向notarycore同步自租户信息
- * Summary: 向notarycore同步子租户数据
- */
+// Description:
+//
+// Description: 从baas-notary向notarycore同步自租户信息
+//
+// Summary: 向notarycore同步子租户数据
 func (client *Client) SyncInnerTwcopenEx(request *SyncInnerTwcopenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncInnerTwcopenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57067,10 +60263,11 @@ func (client *Client) SyncInnerTwcopenEx(request *SyncInnerTwcopenRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 从baas-notary向notarycore同步租户权限数据
- * Summary: 向notarycore同步租户数据
- */
+// Description:
+//
+// Description: 从baas-notary向notarycore同步租户权限数据
+//
+// Summary: 向notarycore同步租户数据
 func (client *Client) SyncInnerProvision(request *SyncInnerProvisionRequest) (_result *SyncInnerProvisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57083,10 +60280,11 @@ func (client *Client) SyncInnerProvision(request *SyncInnerProvisionRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 从baas-notary向notarycore同步租户权限数据
- * Summary: 向notarycore同步租户数据
- */
+// Description:
+//
+// Description: 从baas-notary向notarycore同步租户权限数据
+//
+// Summary: 向notarycore同步租户数据
 func (client *Client) SyncInnerProvisionEx(request *SyncInnerProvisionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncInnerProvisionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57101,10 +60299,11 @@ func (client *Client) SyncInnerProvisionEx(request *SyncInnerProvisionRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 从baas-notary向notarycore同步tsr数据
- * Summary: 向notarycore同步tsr数据
- */
+// Description:
+//
+// Description: 从baas-notary向notarycore同步tsr数据
+//
+// Summary: 向notarycore同步tsr数据
 func (client *Client) SyncInnerTsr(request *SyncInnerTsrRequest) (_result *SyncInnerTsrResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57117,10 +60316,11 @@ func (client *Client) SyncInnerTsr(request *SyncInnerTsrRequest) (_result *SyncI
 	return _result, _err
 }
 
-/**
- * Description: 从baas-notary向notarycore同步tsr数据
- * Summary: 向notarycore同步tsr数据
- */
+// Description:
+//
+// Description: 从baas-notary向notarycore同步tsr数据
+//
+// Summary: 向notarycore同步tsr数据
 func (client *Client) SyncInnerTsrEx(request *SyncInnerTsrRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncInnerTsrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57135,10 +60335,11 @@ func (client *Client) SyncInnerTsrEx(request *SyncInnerTsrRequest, headers map[s
 	return _result, _err
 }
 
-/**
- * Description: 转化短链接(废弃)
- * Summary: 转化短链接(废弃)
- */
+// Description:
+//
+// Description: 转化短链接(废弃)
+//
+// Summary: 转化短链接(废弃)
 func (client *Client) TransferInnerShorturl(request *TransferInnerShorturlRequest) (_result *TransferInnerShorturlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57151,10 +60352,11 @@ func (client *Client) TransferInnerShorturl(request *TransferInnerShorturlReques
 	return _result, _err
 }
 
-/**
- * Description: 转化短链接(废弃)
- * Summary: 转化短链接(废弃)
- */
+// Description:
+//
+// Description: 转化短链接(废弃)
+//
+// Summary: 转化短链接(废弃)
 func (client *Client) TransferInnerShorturlEx(request *TransferInnerShorturlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TransferInnerShorturlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57169,10 +60371,11 @@ func (client *Client) TransferInnerShorturlEx(request *TransferInnerShorturlRequ
 	return _result, _err
 }
 
-/**
- * Description: 宠物比对能力图片资源合格性校验
- * Summary: 宠物合格性校验
- */
+// Description:
+//
+// Description: 宠物比对能力图片资源合格性校验
+//
+// Summary: 宠物合格性校验
 func (client *Client) VerifyLeasePetrecognition(request *VerifyLeasePetrecognitionRequest) (_result *VerifyLeasePetrecognitionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57185,10 +60388,11 @@ func (client *Client) VerifyLeasePetrecognition(request *VerifyLeasePetrecogniti
 	return _result, _err
 }
 
-/**
- * Description: 宠物比对能力图片资源合格性校验
- * Summary: 宠物合格性校验
- */
+// Description:
+//
+// Description: 宠物比对能力图片资源合格性校验
+//
+// Summary: 宠物合格性校验
 func (client *Client) VerifyLeasePetrecognitionEx(request *VerifyLeasePetrecognitionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyLeasePetrecognitionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57203,10 +60407,11 @@ func (client *Client) VerifyLeasePetrecognitionEx(request *VerifyLeasePetrecogni
 	return _result, _err
 }
 
-/**
- * Description: 宠物比对能力建档注册功能
- * Summary: 宠物建档注册
- */
+// Description:
+//
+// Description: 宠物比对能力建档注册功能
+//
+// Summary: 宠物建档注册
 func (client *Client) RegisterLeasePetrecognition(request *RegisterLeasePetrecognitionRequest) (_result *RegisterLeasePetrecognitionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57219,10 +60424,11 @@ func (client *Client) RegisterLeasePetrecognition(request *RegisterLeasePetrecog
 	return _result, _err
 }
 
-/**
- * Description: 宠物比对能力建档注册功能
- * Summary: 宠物建档注册
- */
+// Description:
+//
+// Description: 宠物比对能力建档注册功能
+//
+// Summary: 宠物建档注册
 func (client *Client) RegisterLeasePetrecognitionEx(request *RegisterLeasePetrecognitionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RegisterLeasePetrecognitionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57237,10 +60443,11 @@ func (client *Client) RegisterLeasePetrecognitionEx(request *RegisterLeasePetrec
 	return _result, _err
 }
 
-/**
- * Description: 宠物比对能力建档比对
- * Summary: 宠物建档比对
- */
+// Description:
+//
+// Description: 宠物比对能力建档比对
+//
+// Summary: 宠物建档比对
 func (client *Client) OperateLeasePetcomparepetid(request *OperateLeasePetcomparepetidRequest) (_result *OperateLeasePetcomparepetidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57253,10 +60460,11 @@ func (client *Client) OperateLeasePetcomparepetid(request *OperateLeasePetcompar
 	return _result, _err
 }
 
-/**
- * Description: 宠物比对能力建档比对
- * Summary: 宠物建档比对
- */
+// Description:
+//
+// Description: 宠物比对能力建档比对
+//
+// Summary: 宠物建档比对
 func (client *Client) OperateLeasePetcomparepetidEx(request *OperateLeasePetcomparepetidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateLeasePetcomparepetidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57271,10 +60479,11 @@ func (client *Client) OperateLeasePetcomparepetidEx(request *OperateLeasePetcomp
 	return _result, _err
 }
 
-/**
- * Description: 宠物比对能力图片资源直接比对
- * Summary: 宠物资源直接比对
- */
+// Description:
+//
+// Description: 宠物比对能力图片资源直接比对
+//
+// Summary: 宠物资源直接比对
 func (client *Client) OperateLeasePetcomparepets(request *OperateLeasePetcomparepetsRequest) (_result *OperateLeasePetcomparepetsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57287,10 +60496,11 @@ func (client *Client) OperateLeasePetcomparepets(request *OperateLeasePetcompare
 	return _result, _err
 }
 
-/**
- * Description: 宠物比对能力图片资源直接比对
- * Summary: 宠物资源直接比对
- */
+// Description:
+//
+// Description: 宠物比对能力图片资源直接比对
+//
+// Summary: 宠物资源直接比对
 func (client *Client) OperateLeasePetcomparepetsEx(request *OperateLeasePetcomparepetsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateLeasePetcomparepetsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57305,10 +60515,11 @@ func (client *Client) OperateLeasePetcomparepetsEx(request *OperateLeasePetcompa
 	return _result, _err
 }
 
-/**
- * Description: 法务电子签发起签署
- * Summary: 法务电子签发起签署
- */
+// Description:
+//
+// Description: 法务电子签发起签署
+//
+// Summary: 法务电子签发起签署
 func (client *Client) ApplyInnerAntesign(request *ApplyInnerAntesignRequest) (_result *ApplyInnerAntesignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57321,10 +60532,11 @@ func (client *Client) ApplyInnerAntesign(request *ApplyInnerAntesignRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 法务电子签发起签署
- * Summary: 法务电子签发起签署
- */
+// Description:
+//
+// Description: 法务电子签发起签署
+//
+// Summary: 法务电子签发起签署
 func (client *Client) ApplyInnerAntesignEx(request *ApplyInnerAntesignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyInnerAntesignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57339,10 +60551,11 @@ func (client *Client) ApplyInnerAntesignEx(request *ApplyInnerAntesignRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 法务电子签查询签署状态
- * Summary: 法务电子签查询签署状态
- */
+// Description:
+//
+// Description: 法务电子签查询签署状态
+//
+// Summary: 法务电子签查询签署状态
 func (client *Client) QueryInnerAntesign(request *QueryInnerAntesignRequest) (_result *QueryInnerAntesignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57355,10 +60568,11 @@ func (client *Client) QueryInnerAntesign(request *QueryInnerAntesignRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 法务电子签查询签署状态
- * Summary: 法务电子签查询签署状态
- */
+// Description:
+//
+// Description: 法务电子签查询签署状态
+//
+// Summary: 法务电子签查询签署状态
 func (client *Client) QueryInnerAntesignEx(request *QueryInnerAntesignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryInnerAntesignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57373,10 +60587,11 @@ func (client *Client) QueryInnerAntesignEx(request *QueryInnerAntesignRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 法务电子签根据公司名称统代生成印章
- * Summary: 法务电子签根据公司名称统代生成印章
- */
+// Description:
+//
+// Description: 法务电子签根据公司名称统代生成印章
+//
+// Summary: 法务电子签根据公司名称统代生成印章
 func (client *Client) CreateInnerAntesign(request *CreateInnerAntesignRequest) (_result *CreateInnerAntesignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57389,10 +60604,11 @@ func (client *Client) CreateInnerAntesign(request *CreateInnerAntesignRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 法务电子签根据公司名称统代生成印章
- * Summary: 法务电子签根据公司名称统代生成印章
- */
+// Description:
+//
+// Description: 法务电子签根据公司名称统代生成印章
+//
+// Summary: 法务电子签根据公司名称统代生成印章
 func (client *Client) CreateInnerAntesignEx(request *CreateInnerAntesignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInnerAntesignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57407,10 +60623,11 @@ func (client *Client) CreateInnerAntesignEx(request *CreateInnerAntesignRequest,
 	return _result, _err
 }
 
-/**
- * Description: 输入企业名+证件号，发起企业二要素认证请求。
- * Summary: 企业二要素认证
- */
+// Description:
+//
+// Description: 输入企业名+证件号，发起企业二要素认证请求。
+//
+// Summary: 企业二要素认证
 func (client *Client) CheckEpidentityTwometa(request *CheckEpidentityTwometaRequest) (_result *CheckEpidentityTwometaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57423,10 +60640,11 @@ func (client *Client) CheckEpidentityTwometa(request *CheckEpidentityTwometaRequ
 	return _result, _err
 }
 
-/**
- * Description: 输入企业名+证件号，发起企业二要素认证请求。
- * Summary: 企业二要素认证
- */
+// Description:
+//
+// Description: 输入企业名+证件号，发起企业二要素认证请求。
+//
+// Summary: 企业二要素认证
 func (client *Client) CheckEpidentityTwometaEx(request *CheckEpidentityTwometaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckEpidentityTwometaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57441,10 +60659,11 @@ func (client *Client) CheckEpidentityTwometaEx(request *CheckEpidentityTwometaRe
 	return _result, _err
 }
 
-/**
- * Description: 输入企业名+证件号+企业法人姓名，发起企业三要素认证请求。
- * Summary: 企业三要素认证
- */
+// Description:
+//
+// Description: 输入企业名+证件号+企业法人姓名，发起企业三要素认证请求。
+//
+// Summary: 企业三要素认证
 func (client *Client) CheckEpidentityThreemeta(request *CheckEpidentityThreemetaRequest) (_result *CheckEpidentityThreemetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57457,10 +60676,11 @@ func (client *Client) CheckEpidentityThreemeta(request *CheckEpidentityThreemeta
 	return _result, _err
 }
 
-/**
- * Description: 输入企业名+证件号+企业法人姓名，发起企业三要素认证请求。
- * Summary: 企业三要素认证
- */
+// Description:
+//
+// Description: 输入企业名+证件号+企业法人姓名，发起企业三要素认证请求。
+//
+// Summary: 企业三要素认证
 func (client *Client) CheckEpidentityThreemetaEx(request *CheckEpidentityThreemetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckEpidentityThreemetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57475,10 +60695,11 @@ func (client *Client) CheckEpidentityThreemetaEx(request *CheckEpidentityThreeme
 	return _result, _err
 }
 
-/**
- * Description: 输入企业名+证件号+企业法人姓+法人证件号，发起企业四要素认证请求。
- * Summary: 企业四要素认证
- */
+// Description:
+//
+// Description: 输入企业名+证件号+企业法人姓+法人证件号，发起企业四要素认证请求。
+//
+// Summary: 企业四要素认证
 func (client *Client) CheckEpidentityFourmeta(request *CheckEpidentityFourmetaRequest) (_result *CheckEpidentityFourmetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57491,10 +60712,11 @@ func (client *Client) CheckEpidentityFourmeta(request *CheckEpidentityFourmetaRe
 	return _result, _err
 }
 
-/**
- * Description: 输入企业名+证件号+企业法人姓+法人证件号，发起企业四要素认证请求。
- * Summary: 企业四要素认证
- */
+// Description:
+//
+// Description: 输入企业名+证件号+企业法人姓+法人证件号，发起企业四要素认证请求。
+//
+// Summary: 企业四要素认证
 func (client *Client) CheckEpidentityFourmetaEx(request *CheckEpidentityFourmetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckEpidentityFourmetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57509,10 +60731,11 @@ func (client *Client) CheckEpidentityFourmetaEx(request *CheckEpidentityFourmeta
 	return _result, _err
 }
 
-/**
- * Description: 查询公证订单的有效性
- * Summary: 查询公证订单的有效性
- */
+// Description:
+//
+// Description: 查询公证订单的有效性
+//
+// Summary: 查询公证订单的有效性
 func (client *Client) CheckNotarizationOrder(request *CheckNotarizationOrderRequest) (_result *CheckNotarizationOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57525,10 +60748,11 @@ func (client *Client) CheckNotarizationOrder(request *CheckNotarizationOrderRequ
 	return _result, _err
 }
 
-/**
- * Description: 查询公证订单的有效性
- * Summary: 查询公证订单的有效性
- */
+// Description:
+//
+// Description: 查询公证订单的有效性
+//
+// Summary: 查询公证订单的有效性
 func (client *Client) CheckNotarizationOrderEx(request *CheckNotarizationOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckNotarizationOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57543,10 +60767,11 @@ func (client *Client) CheckNotarizationOrderEx(request *CheckNotarizationOrderRe
 	return _result, _err
 }
 
-/**
- * Description: 更新公证订单状态
- * Summary: 更新公证订单状态
- */
+// Description:
+//
+// Description: 更新公证订单状态
+//
+// Summary: 更新公证订单状态
 func (client *Client) UpdateNotarizationOrder(request *UpdateNotarizationOrderRequest) (_result *UpdateNotarizationOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57559,10 +60784,11 @@ func (client *Client) UpdateNotarizationOrder(request *UpdateNotarizationOrderRe
 	return _result, _err
 }
 
-/**
- * Description: 更新公证订单状态
- * Summary: 更新公证订单状态
- */
+// Description:
+//
+// Description: 更新公证订单状态
+//
+// Summary: 更新公证订单状态
 func (client *Client) UpdateNotarizationOrderEx(request *UpdateNotarizationOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateNotarizationOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57577,10 +60803,11 @@ func (client *Client) UpdateNotarizationOrderEx(request *UpdateNotarizationOrder
 	return _result, _err
 }
 
-/**
- * Description: 设置订单属性
- * Summary: 设置订单属性
- */
+// Description:
+//
+// Description: 设置订单属性
+//
+// Summary: 设置订单属性
 func (client *Client) SetNotarizationOrder(request *SetNotarizationOrderRequest) (_result *SetNotarizationOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57593,10 +60820,11 @@ func (client *Client) SetNotarizationOrder(request *SetNotarizationOrderRequest)
 	return _result, _err
 }
 
-/**
- * Description: 设置订单属性
- * Summary: 设置订单属性
- */
+// Description:
+//
+// Description: 设置订单属性
+//
+// Summary: 设置订单属性
 func (client *Client) SetNotarizationOrderEx(request *SetNotarizationOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetNotarizationOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57611,10 +60839,11 @@ func (client *Client) SetNotarizationOrderEx(request *SetNotarizationOrderReques
 	return _result, _err
 }
 
-/**
- * Description: 实人认证初始化
- * Summary: 实人认证初始化
- */
+// Description:
+//
+// Description: 实人认证初始化
+//
+// Summary: 实人认证初始化
 func (client *Client) InitIdentificationFaceauth(request *InitIdentificationFaceauthRequest) (_result *InitIdentificationFaceauthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57627,10 +60856,11 @@ func (client *Client) InitIdentificationFaceauth(request *InitIdentificationFace
 	return _result, _err
 }
 
-/**
- * Description: 实人认证初始化
- * Summary: 实人认证初始化
- */
+// Description:
+//
+// Description: 实人认证初始化
+//
+// Summary: 实人认证初始化
 func (client *Client) InitIdentificationFaceauthEx(request *InitIdentificationFaceauthRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitIdentificationFaceauthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57645,10 +60875,11 @@ func (client *Client) InitIdentificationFaceauthEx(request *InitIdentificationFa
 	return _result, _err
 }
 
-/**
- * Description: 发起实人认证
- * Summary: 发起实人认证
- */
+// Description:
+//
+// Description: 发起实人认证
+//
+// Summary: 发起实人认证
 func (client *Client) CertifyIdentificationFaceauth(request *CertifyIdentificationFaceauthRequest) (_result *CertifyIdentificationFaceauthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57661,10 +60892,11 @@ func (client *Client) CertifyIdentificationFaceauth(request *CertifyIdentificati
 	return _result, _err
 }
 
-/**
- * Description: 发起实人认证
- * Summary: 发起实人认证
- */
+// Description:
+//
+// Description: 发起实人认证
+//
+// Summary: 发起实人认证
 func (client *Client) CertifyIdentificationFaceauthEx(request *CertifyIdentificationFaceauthRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CertifyIdentificationFaceauthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57679,10 +60911,11 @@ func (client *Client) CertifyIdentificationFaceauthEx(request *CertifyIdentifica
 	return _result, _err
 }
 
-/**
- * Description: 查询实人认证结果
- * Summary: 查询实人认证结果
- */
+// Description:
+//
+// Description: 查询实人认证结果
+//
+// Summary: 查询实人认证结果
 func (client *Client) QueryIdentificationFaceauth(request *QueryIdentificationFaceauthRequest) (_result *QueryIdentificationFaceauthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57695,10 +60928,11 @@ func (client *Client) QueryIdentificationFaceauth(request *QueryIdentificationFa
 	return _result, _err
 }
 
-/**
- * Description: 查询实人认证结果
- * Summary: 查询实人认证结果
- */
+// Description:
+//
+// Description: 查询实人认证结果
+//
+// Summary: 查询实人认证结果
 func (client *Client) QueryIdentificationFaceauthEx(request *QueryIdentificationFaceauthRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIdentificationFaceauthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57713,10 +60947,11 @@ func (client *Client) QueryIdentificationFaceauthEx(request *QueryIdentification
 	return _result, _err
 }
 
-/**
- * Description: 企业法人认证查询结果接口
- * Summary: 企业法人认证查询
- */
+// Description:
+//
+// Description: 企业法人认证查询结果接口
+//
+// Summary: 企业法人认证查询
 func (client *Client) QueryEnterpriseFaceauth(request *QueryEnterpriseFaceauthRequest) (_result *QueryEnterpriseFaceauthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57729,10 +60964,11 @@ func (client *Client) QueryEnterpriseFaceauth(request *QueryEnterpriseFaceauthRe
 	return _result, _err
 }
 
-/**
- * Description: 企业法人认证查询结果接口
- * Summary: 企业法人认证查询
- */
+// Description:
+//
+// Description: 企业法人认证查询结果接口
+//
+// Summary: 企业法人认证查询
 func (client *Client) QueryEnterpriseFaceauthEx(request *QueryEnterpriseFaceauthRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryEnterpriseFaceauthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57747,10 +60983,11 @@ func (client *Client) QueryEnterpriseFaceauthEx(request *QueryEnterpriseFaceauth
 	return _result, _err
 }
 
-/**
- * Description: 企业法人认证初始化接口
- * Summary: 企业法人认证初始化
- */
+// Description:
+//
+// Description: 企业法人认证初始化接口
+//
+// Summary: 企业法人认证初始化
 func (client *Client) InitEnterpriseFaceauth(request *InitEnterpriseFaceauthRequest) (_result *InitEnterpriseFaceauthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57763,10 +61000,11 @@ func (client *Client) InitEnterpriseFaceauth(request *InitEnterpriseFaceauthRequ
 	return _result, _err
 }
 
-/**
- * Description: 企业法人认证初始化接口
- * Summary: 企业法人认证初始化
- */
+// Description:
+//
+// Description: 企业法人认证初始化接口
+//
+// Summary: 企业法人认证初始化
 func (client *Client) InitEnterpriseFaceauthEx(request *InitEnterpriseFaceauthRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitEnterpriseFaceauthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57781,10 +61019,11 @@ func (client *Client) InitEnterpriseFaceauthEx(request *InitEnterpriseFaceauthRe
 	return _result, _err
 }
 
-/**
- * Description: 企业法人认证开始接口
- * Summary: 企业法人认证开始
- */
+// Description:
+//
+// Description: 企业法人认证开始接口
+//
+// Summary: 企业法人认证开始
 func (client *Client) CertifyEnterpriseFaceauth(request *CertifyEnterpriseFaceauthRequest) (_result *CertifyEnterpriseFaceauthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57797,10 +61036,11 @@ func (client *Client) CertifyEnterpriseFaceauth(request *CertifyEnterpriseFaceau
 	return _result, _err
 }
 
-/**
- * Description: 企业法人认证开始接口
- * Summary: 企业法人认证开始
- */
+// Description:
+//
+// Description: 企业法人认证开始接口
+//
+// Summary: 企业法人认证开始
 func (client *Client) CertifyEnterpriseFaceauthEx(request *CertifyEnterpriseFaceauthRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CertifyEnterpriseFaceauthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57815,10 +61055,11 @@ func (client *Client) CertifyEnterpriseFaceauthEx(request *CertifyEnterpriseFace
 	return _result, _err
 }
 
-/**
- * Description: 创建租赁订单
- * Summary: 租赁订单创建
- */
+// Description:
+//
+// Description: 创建租赁订单
+//
+// Summary: 租赁订单创建
 func (client *Client) CreateLeaseOrder(request *CreateLeaseOrderRequest) (_result *CreateLeaseOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57831,10 +61072,11 @@ func (client *Client) CreateLeaseOrder(request *CreateLeaseOrderRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 创建租赁订单
- * Summary: 租赁订单创建
- */
+// Description:
+//
+// Description: 创建租赁订单
+//
+// Summary: 租赁订单创建
 func (client *Client) CreateLeaseOrderEx(request *CreateLeaseOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57849,10 +61091,11 @@ func (client *Client) CreateLeaseOrderEx(request *CreateLeaseOrderRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 电子公证或存证证明场景中，用户通过回传相关信息创建收费订单。
- * Summary: 公证场景创建收费订单
- */
+// Description:
+//
+// Description: 电子公证或存证证明场景中，用户通过回传相关信息创建收费订单。
+//
+// Summary: 公证场景创建收费订单
 func (client *Client) CreateNotarizationBill(request *CreateNotarizationBillRequest) (_result *CreateNotarizationBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57865,10 +61108,11 @@ func (client *Client) CreateNotarizationBill(request *CreateNotarizationBillRequ
 	return _result, _err
 }
 
-/**
- * Description: 电子公证或存证证明场景中，用户通过回传相关信息创建收费订单。
- * Summary: 公证场景创建收费订单
- */
+// Description:
+//
+// Description: 电子公证或存证证明场景中，用户通过回传相关信息创建收费订单。
+//
+// Summary: 公证场景创建收费订单
 func (client *Client) CreateNotarizationBillEx(request *CreateNotarizationBillRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateNotarizationBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57883,10 +61127,11 @@ func (client *Client) CreateNotarizationBillEx(request *CreateNotarizationBillRe
 	return _result, _err
 }
 
-/**
- * Description: 提供必要的存证信息，初始化一个存证证明的订单，提交公证处审核，并返回订单号
- * Summary: 初始化存证证明订单
- */
+// Description:
+//
+// Description: 提供必要的存证信息，初始化一个存证证明的订单，提交公证处审核，并返回订单号
+//
+// Summary: 初始化存证证明订单
 func (client *Client) InitCertification(request *InitCertificationRequest) (_result *InitCertificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57899,10 +61144,11 @@ func (client *Client) InitCertification(request *InitCertificationRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 提供必要的存证信息，初始化一个存证证明的订单，提交公证处审核，并返回订单号
- * Summary: 初始化存证证明订单
- */
+// Description:
+//
+// Description: 提供必要的存证信息，初始化一个存证证明的订单，提交公证处审核，并返回订单号
+//
+// Summary: 初始化存证证明订单
 func (client *Client) InitCertificationEx(request *InitCertificationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitCertificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57917,10 +61163,11 @@ func (client *Client) InitCertificationEx(request *InitCertificationRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 输入申请ID，查询存证证明申请状态，成功后返回下载地址等信息
- * Summary: 查询存证证明申请状态
- */
+// Description:
+//
+// Description: 输入申请ID，查询存证证明申请状态，成功后返回下载地址等信息
+//
+// Summary: 查询存证证明申请状态
 func (client *Client) QueryCertification(request *QueryCertificationRequest) (_result *QueryCertificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57933,10 +61180,11 @@ func (client *Client) QueryCertification(request *QueryCertificationRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 输入申请ID，查询存证证明申请状态，成功后返回下载地址等信息
- * Summary: 查询存证证明申请状态
- */
+// Description:
+//
+// Description: 输入申请ID，查询存证证明申请状态，成功后返回下载地址等信息
+//
+// Summary: 查询存证证明申请状态
 func (client *Client) QueryCertificationEx(request *QueryCertificationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryCertificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57951,10 +61199,11 @@ func (client *Client) QueryCertificationEx(request *QueryCertificationRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 可以根据存证过程中获得当可信时间戳凭证，获取国家授时中心颁发的PDF格式可信时间证书
- * Summary: 可信时间凭证服务 - 获取时间凭证证书
- */
+// Description:
+//
+// Description: 可以根据存证过程中获得当可信时间戳凭证，获取国家授时中心颁发的PDF格式可信时间证书
+//
+// Summary: 可信时间凭证服务 - 获取时间凭证证书
 func (client *Client) GetTsrCertificate(request *GetTsrCertificateRequest) (_result *GetTsrCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -57967,10 +61216,11 @@ func (client *Client) GetTsrCertificate(request *GetTsrCertificateRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 可以根据存证过程中获得当可信时间戳凭证，获取国家授时中心颁发的PDF格式可信时间证书
- * Summary: 可信时间凭证服务 - 获取时间凭证证书
- */
+// Description:
+//
+// Description: 可以根据存证过程中获得当可信时间戳凭证，获取国家授时中心颁发的PDF格式可信时间证书
+//
+// Summary: 可信时间凭证服务 - 获取时间凭证证书
 func (client *Client) GetTsrCertificateEx(request *GetTsrCertificateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTsrCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57985,10 +61235,11 @@ func (client *Client) GetTsrCertificateEx(request *GetTsrCertificateRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 发起实人认证，这是改造后的接口
- * Summary: 实人认证创建
- */
+// Description:
+//
+// Description: 发起实人认证，这是改造后的接口
+//
+// Summary: 实人认证创建
 func (client *Client) CreateIdentificationRealperson(request *CreateIdentificationRealpersonRequest) (_result *CreateIdentificationRealpersonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58001,10 +61252,11 @@ func (client *Client) CreateIdentificationRealperson(request *CreateIdentificati
 	return _result, _err
 }
 
-/**
- * Description: 发起实人认证，这是改造后的接口
- * Summary: 实人认证创建
- */
+// Description:
+//
+// Description: 发起实人认证，这是改造后的接口
+//
+// Summary: 实人认证创建
 func (client *Client) CreateIdentificationRealpersonEx(request *CreateIdentificationRealpersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIdentificationRealpersonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58019,10 +61271,11 @@ func (client *Client) CreateIdentificationRealpersonEx(request *CreateIdentifica
 	return _result, _err
 }
 
-/**
- * Description: 查询实人认证结果
- * Summary: 查询实人认证结果
- */
+// Description:
+//
+// Description: 查询实人认证结果
+//
+// Summary: 查询实人认证结果
 func (client *Client) QueryIdentificationRealperson(request *QueryIdentificationRealpersonRequest) (_result *QueryIdentificationRealpersonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58035,10 +61288,11 @@ func (client *Client) QueryIdentificationRealperson(request *QueryIdentification
 	return _result, _err
 }
 
-/**
- * Description: 查询实人认证结果
- * Summary: 查询实人认证结果
- */
+// Description:
+//
+// Description: 查询实人认证结果
+//
+// Summary: 查询实人认证结果
 func (client *Client) QueryIdentificationRealpersonEx(request *QueryIdentificationRealpersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIdentificationRealpersonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58053,10 +61307,11 @@ func (client *Client) QueryIdentificationRealpersonEx(request *QueryIdentificati
 	return _result, _err
 }
 
-/**
- * Description: 新增/修改履行记录，依据contractCode与contractFulfillmentCode判断唯一性
- * Summary: 联合执行履行记录新增/修改接口
- */
+// Description:
+//
+// Description: 新增/修改履行记录，依据contractCode与contractFulfillmentCode判断唯一性
+//
+// Summary: 联合执行履行记录新增/修改接口
 func (client *Client) SaveJointconstraintRecord(request *SaveJointconstraintRecordRequest) (_result *SaveJointconstraintRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58069,10 +61324,11 @@ func (client *Client) SaveJointconstraintRecord(request *SaveJointconstraintReco
 	return _result, _err
 }
 
-/**
- * Description: 新增/修改履行记录，依据contractCode与contractFulfillmentCode判断唯一性
- * Summary: 联合执行履行记录新增/修改接口
- */
+// Description:
+//
+// Description: 新增/修改履行记录，依据contractCode与contractFulfillmentCode判断唯一性
+//
+// Summary: 联合执行履行记录新增/修改接口
 func (client *Client) SaveJointconstraintRecordEx(request *SaveJointconstraintRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SaveJointconstraintRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58087,10 +61343,11 @@ func (client *Client) SaveJointconstraintRecordEx(request *SaveJointconstraintRe
 	return _result, _err
 }
 
-/**
- * Description: 删除履行记录
- * Summary: 履行记录删除接口
- */
+// Description:
+//
+// Description: 删除履行记录
+//
+// Summary: 履行记录删除接口
 func (client *Client) DeleteJointconstraintRecord(request *DeleteJointconstraintRecordRequest) (_result *DeleteJointconstraintRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58103,10 +61360,11 @@ func (client *Client) DeleteJointconstraintRecord(request *DeleteJointconstraint
 	return _result, _err
 }
 
-/**
- * Description: 删除履行记录
- * Summary: 履行记录删除接口
- */
+// Description:
+//
+// Description: 删除履行记录
+//
+// Summary: 履行记录删除接口
 func (client *Client) DeleteJointconstraintRecordEx(request *DeleteJointconstraintRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteJointconstraintRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58121,10 +61379,11 @@ func (client *Client) DeleteJointconstraintRecordEx(request *DeleteJointconstrai
 	return _result, _err
 }
 
-/**
- * Description: 查询违约记录
- * Summary: 违约记录查询接口
- */
+// Description:
+//
+// Description: 查询违约记录
+//
+// Summary: 违约记录查询接口
 func (client *Client) QueryJointconstraintBreachrecord(request *QueryJointconstraintBreachrecordRequest) (_result *QueryJointconstraintBreachrecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58137,10 +61396,11 @@ func (client *Client) QueryJointconstraintBreachrecord(request *QueryJointconstr
 	return _result, _err
 }
 
-/**
- * Description: 查询违约记录
- * Summary: 违约记录查询接口
- */
+// Description:
+//
+// Description: 查询违约记录
+//
+// Summary: 违约记录查询接口
 func (client *Client) QueryJointconstraintBreachrecordEx(request *QueryJointconstraintBreachrecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryJointconstraintBreachrecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58155,10 +61415,11 @@ func (client *Client) QueryJointconstraintBreachrecordEx(request *QueryJointcons
 	return _result, _err
 }
 
-/**
- * Description: 提供给第三方调解申请提交
- * Summary: 调解申请
- */
+// Description:
+//
+// Description: 提供给第三方调解申请提交
+//
+// Summary: 调解申请
 func (client *Client) ApplyJusticeMediation(request *ApplyJusticeMediationRequest) (_result *ApplyJusticeMediationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58171,10 +61432,11 @@ func (client *Client) ApplyJusticeMediation(request *ApplyJusticeMediationReques
 	return _result, _err
 }
 
-/**
- * Description: 提供给第三方调解申请提交
- * Summary: 调解申请
- */
+// Description:
+//
+// Description: 提供给第三方调解申请提交
+//
+// Summary: 调解申请
 func (client *Client) ApplyJusticeMediationEx(request *ApplyJusticeMediationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyJusticeMediationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58189,10 +61451,11 @@ func (client *Client) ApplyJusticeMediationEx(request *ApplyJusticeMediationRequ
 	return _result, _err
 }
 
-/**
- * Description: 调解申请进度查询
- * Summary: 调解申请进度查询
- */
+// Description:
+//
+// Description: 调解申请进度查询
+//
+// Summary: 调解申请进度查询
 func (client *Client) QueryJusticeMediation(request *QueryJusticeMediationRequest) (_result *QueryJusticeMediationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58205,10 +61468,11 @@ func (client *Client) QueryJusticeMediation(request *QueryJusticeMediationReques
 	return _result, _err
 }
 
-/**
- * Description: 调解申请进度查询
- * Summary: 调解申请进度查询
- */
+// Description:
+//
+// Description: 调解申请进度查询
+//
+// Summary: 调解申请进度查询
 func (client *Client) QueryJusticeMediationEx(request *QueryJusticeMediationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryJusticeMediationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58223,10 +61487,11 @@ func (client *Client) QueryJusticeMediationEx(request *QueryJusticeMediationRequ
 	return _result, _err
 }
 
-/**
- * Description: 汇裁证据要素查询接口
- * Summary: 汇裁证据要素查询接口
- */
+// Description:
+//
+// Description: 汇裁证据要素查询接口
+//
+// Summary: 汇裁证据要素查询接口
 func (client *Client) QueryJusticeCaseinfo(request *QueryJusticeCaseinfoRequest) (_result *QueryJusticeCaseinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58239,10 +61504,11 @@ func (client *Client) QueryJusticeCaseinfo(request *QueryJusticeCaseinfoRequest)
 	return _result, _err
 }
 
-/**
- * Description: 汇裁证据要素查询接口
- * Summary: 汇裁证据要素查询接口
- */
+// Description:
+//
+// Description: 汇裁证据要素查询接口
+//
+// Summary: 汇裁证据要素查询接口
 func (client *Client) QueryJusticeCaseinfoEx(request *QueryJusticeCaseinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryJusticeCaseinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58257,10 +61523,11 @@ func (client *Client) QueryJusticeCaseinfoEx(request *QueryJusticeCaseinfoReques
 	return _result, _err
 }
 
-/**
- * Description: 获取oss文件上传路径，返回业务方oss文件上传链接和fileKey
- * Summary: 获取OSS文件上传路径
- */
+// Description:
+//
+// Description: 获取oss文件上传路径，返回业务方oss文件上传链接和fileKey
+//
+// Summary: 获取OSS文件上传路径
 func (client *Client) GetJusticeUploadfilepath(request *GetJusticeUploadfilepathRequest) (_result *GetJusticeUploadfilepathResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58273,10 +61540,11 @@ func (client *Client) GetJusticeUploadfilepath(request *GetJusticeUploadfilepath
 	return _result, _err
 }
 
-/**
- * Description: 获取oss文件上传路径，返回业务方oss文件上传链接和fileKey
- * Summary: 获取OSS文件上传路径
- */
+// Description:
+//
+// Description: 获取oss文件上传路径，返回业务方oss文件上传链接和fileKey
+//
+// Summary: 获取OSS文件上传路径
 func (client *Client) GetJusticeUploadfilepathEx(request *GetJusticeUploadfilepathRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJusticeUploadfilepathResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58291,10 +61559,11 @@ func (client *Client) GetJusticeUploadfilepathEx(request *GetJusticeUploadfilepa
 	return _result, _err
 }
 
-/**
- * Description: 纠纷处理平台提供回调接口供业务平台自动插入案件模型中，业务方需要调用回写接口创建案件。
- * Summary: 自动进件案件回写
- */
+// Description:
+//
+// Description: 纠纷处理平台提供回调接口供业务平台自动插入案件模型中，业务方需要调用回写接口创建案件。
+//
+// Summary: 自动进件案件回写
 func (client *Client) CreateJusticeCasewriteback(request *CreateJusticeCasewritebackRequest) (_result *CreateJusticeCasewritebackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58307,10 +61576,11 @@ func (client *Client) CreateJusticeCasewriteback(request *CreateJusticeCasewrite
 	return _result, _err
 }
 
-/**
- * Description: 纠纷处理平台提供回调接口供业务平台自动插入案件模型中，业务方需要调用回写接口创建案件。
- * Summary: 自动进件案件回写
- */
+// Description:
+//
+// Description: 纠纷处理平台提供回调接口供业务平台自动插入案件模型中，业务方需要调用回写接口创建案件。
+//
+// Summary: 自动进件案件回写
 func (client *Client) CreateJusticeCasewritebackEx(request *CreateJusticeCasewritebackRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJusticeCasewritebackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58325,10 +61595,11 @@ func (client *Client) CreateJusticeCasewritebackEx(request *CreateJusticeCasewri
 	return _result, _err
 }
 
-/**
- * Description: 案件基础信息查询
- * Summary: 案件基础信息查询
- */
+// Description:
+//
+// Description: 案件基础信息查询
+//
+// Summary: 案件基础信息查询
 func (client *Client) QueryJusticeBasecase(request *QueryJusticeBasecaseRequest) (_result *QueryJusticeBasecaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58341,10 +61612,11 @@ func (client *Client) QueryJusticeBasecase(request *QueryJusticeBasecaseRequest)
 	return _result, _err
 }
 
-/**
- * Description: 案件基础信息查询
- * Summary: 案件基础信息查询
- */
+// Description:
+//
+// Description: 案件基础信息查询
+//
+// Summary: 案件基础信息查询
 func (client *Client) QueryJusticeBasecaseEx(request *QueryJusticeBasecaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryJusticeBasecaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58359,10 +61631,11 @@ func (client *Client) QueryJusticeBasecaseEx(request *QueryJusticeBasecaseReques
 	return _result, _err
 }
 
-/**
- * Description: 案件材料下载
- * Summary: 案件材料下载
- */
+// Description:
+//
+// Description: 案件材料下载
+//
+// Summary: 案件材料下载
 func (client *Client) DownloadJusticeCasefile(request *DownloadJusticeCasefileRequest) (_result *DownloadJusticeCasefileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58375,10 +61648,11 @@ func (client *Client) DownloadJusticeCasefile(request *DownloadJusticeCasefileRe
 	return _result, _err
 }
 
-/**
- * Description: 案件材料下载
- * Summary: 案件材料下载
- */
+// Description:
+//
+// Description: 案件材料下载
+//
+// Summary: 案件材料下载
 func (client *Client) DownloadJusticeCasefileEx(request *DownloadJusticeCasefileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DownloadJusticeCasefileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58393,10 +61667,11 @@ func (client *Client) DownloadJusticeCasefileEx(request *DownloadJusticeCasefile
 	return _result, _err
 }
 
-/**
- * Description: 开通纠纷平台使用权限
- * Summary: 开通纠纷平台使用权限
- */
+// Description:
+//
+// Description: 开通纠纷平台使用权限
+//
+// Summary: 开通纠纷平台使用权限
 func (client *Client) OpenInternalJudicial(request *OpenInternalJudicialRequest) (_result *OpenInternalJudicialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58409,10 +61684,11 @@ func (client *Client) OpenInternalJudicial(request *OpenInternalJudicialRequest)
 	return _result, _err
 }
 
-/**
- * Description: 开通纠纷平台使用权限
- * Summary: 开通纠纷平台使用权限
- */
+// Description:
+//
+// Description: 开通纠纷平台使用权限
+//
+// Summary: 开通纠纷平台使用权限
 func (client *Client) OpenInternalJudicialEx(request *OpenInternalJudicialRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OpenInternalJudicialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58427,10 +61703,11 @@ func (client *Client) OpenInternalJudicialEx(request *OpenInternalJudicialReques
 	return _result, _err
 }
 
-/**
- * Description: 案件当事人信息保存
- * Summary: 案件当事人信息保存
- */
+// Description:
+//
+// Description: 案件当事人信息保存
+//
+// Summary: 案件当事人信息保存
 func (client *Client) SaveJusticeParty(request *SaveJusticePartyRequest) (_result *SaveJusticePartyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58443,10 +61720,11 @@ func (client *Client) SaveJusticeParty(request *SaveJusticePartyRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 案件当事人信息保存
- * Summary: 案件当事人信息保存
- */
+// Description:
+//
+// Description: 案件当事人信息保存
+//
+// Summary: 案件当事人信息保存
 func (client *Client) SaveJusticePartyEx(request *SaveJusticePartyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SaveJusticePartyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58461,10 +61739,11 @@ func (client *Client) SaveJusticePartyEx(request *SaveJusticePartyRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 普通案件创建
- * Summary: 普通案件创建
- */
+// Description:
+//
+// Description: 普通案件创建
+//
+// Summary: 普通案件创建
 func (client *Client) CreateJusticeNormalcase(request *CreateJusticeNormalcaseRequest) (_result *CreateJusticeNormalcaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58477,10 +61756,11 @@ func (client *Client) CreateJusticeNormalcase(request *CreateJusticeNormalcaseRe
 	return _result, _err
 }
 
-/**
- * Description: 普通案件创建
- * Summary: 普通案件创建
- */
+// Description:
+//
+// Description: 普通案件创建
+//
+// Summary: 普通案件创建
 func (client *Client) CreateJusticeNormalcaseEx(request *CreateJusticeNormalcaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJusticeNormalcaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58495,10 +61775,11 @@ func (client *Client) CreateJusticeNormalcaseEx(request *CreateJusticeNormalcase
 	return _result, _err
 }
 
-/**
- * Description: 链上案件创建
- * Summary: 链上案件创建
- */
+// Description:
+//
+// Description: 链上案件创建
+//
+// Summary: 链上案件创建
 func (client *Client) CreateJusticeChaincase(request *CreateJusticeChaincaseRequest) (_result *CreateJusticeChaincaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58511,10 +61792,11 @@ func (client *Client) CreateJusticeChaincase(request *CreateJusticeChaincaseRequ
 	return _result, _err
 }
 
-/**
- * Description: 链上案件创建
- * Summary: 链上案件创建
- */
+// Description:
+//
+// Description: 链上案件创建
+//
+// Summary: 链上案件创建
 func (client *Client) CreateJusticeChaincaseEx(request *CreateJusticeChaincaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJusticeChaincaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58529,10 +61811,11 @@ func (client *Client) CreateJusticeChaincaseEx(request *CreateJusticeChaincaseRe
 	return _result, _err
 }
 
-/**
- * Description: 案件维权发起
- * Summary: 案件维权发起
- */
+// Description:
+//
+// Description: 案件维权发起
+//
+// Summary: 案件维权发起
 func (client *Client) StartJusticeCase(request *StartJusticeCaseRequest) (_result *StartJusticeCaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58545,10 +61828,11 @@ func (client *Client) StartJusticeCase(request *StartJusticeCaseRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 案件维权发起
- * Summary: 案件维权发起
- */
+// Description:
+//
+// Description: 案件维权发起
+//
+// Summary: 案件维权发起
 func (client *Client) StartJusticeCaseEx(request *StartJusticeCaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartJusticeCaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58563,10 +61847,11 @@ func (client *Client) StartJusticeCaseEx(request *StartJusticeCaseRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 案件查询
- * Summary: 案件查询
- */
+// Description:
+//
+// Description: 案件查询
+//
+// Summary: 案件查询
 func (client *Client) QueryJusticeCase(request *QueryJusticeCaseRequest) (_result *QueryJusticeCaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58579,10 +61864,11 @@ func (client *Client) QueryJusticeCase(request *QueryJusticeCaseRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 案件查询
- * Summary: 案件查询
- */
+// Description:
+//
+// Description: 案件查询
+//
+// Summary: 案件查询
 func (client *Client) QueryJusticeCaseEx(request *QueryJusticeCaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryJusticeCaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58597,10 +61883,11 @@ func (client *Client) QueryJusticeCaseEx(request *QueryJusticeCaseRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 案件事件响应
- * Summary: 案件事件响应
- */
+// Description:
+//
+// Description: 案件事件响应
+//
+// Summary: 案件事件响应
 func (client *Client) OperateJusticeEvent(request *OperateJusticeEventRequest) (_result *OperateJusticeEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58613,10 +61900,11 @@ func (client *Client) OperateJusticeEvent(request *OperateJusticeEventRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 案件事件响应
- * Summary: 案件事件响应
- */
+// Description:
+//
+// Description: 案件事件响应
+//
+// Summary: 案件事件响应
 func (client *Client) OperateJusticeEventEx(request *OperateJusticeEventRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateJusticeEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58631,10 +61919,11 @@ func (client *Client) OperateJusticeEventEx(request *OperateJusticeEventRequest,
 	return _result, _err
 }
 
-/**
- * Description: 司法解纷平台API服务，创建案件要素模板接口
- * Summary: 创建案件要素模板
- */
+// Description:
+//
+// Description: 司法解纷平台API服务，创建案件要素模板接口
+//
+// Summary: 创建案件要素模板
 func (client *Client) CreateJusticeCasetemplate(request *CreateJusticeCasetemplateRequest) (_result *CreateJusticeCasetemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58647,10 +61936,11 @@ func (client *Client) CreateJusticeCasetemplate(request *CreateJusticeCasetempla
 	return _result, _err
 }
 
-/**
- * Description: 司法解纷平台API服务，创建案件要素模板接口
- * Summary: 创建案件要素模板
- */
+// Description:
+//
+// Description: 司法解纷平台API服务，创建案件要素模板接口
+//
+// Summary: 创建案件要素模板
 func (client *Client) CreateJusticeCasetemplateEx(request *CreateJusticeCasetemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJusticeCasetemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58665,10 +61955,11 @@ func (client *Client) CreateJusticeCasetemplateEx(request *CreateJusticeCasetemp
 	return _result, _err
 }
 
-/**
- * Description: 司法解纷平台API服务，创建维权要素模板接口
- * Summary: 创建维权要素模板
- */
+// Description:
+//
+// Description: 司法解纷平台API服务，创建维权要素模板接口
+//
+// Summary: 创建维权要素模板
 func (client *Client) CreateJusticeRightprotecttemplate(request *CreateJusticeRightprotecttemplateRequest) (_result *CreateJusticeRightprotecttemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58681,10 +61972,11 @@ func (client *Client) CreateJusticeRightprotecttemplate(request *CreateJusticeRi
 	return _result, _err
 }
 
-/**
- * Description: 司法解纷平台API服务，创建维权要素模板接口
- * Summary: 创建维权要素模板
- */
+// Description:
+//
+// Description: 司法解纷平台API服务，创建维权要素模板接口
+//
+// Summary: 创建维权要素模板
 func (client *Client) CreateJusticeRightprotecttemplateEx(request *CreateJusticeRightprotecttemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJusticeRightprotecttemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58699,10 +61991,11 @@ func (client *Client) CreateJusticeRightprotecttemplateEx(request *CreateJustice
 	return _result, _err
 }
 
-/**
- * Description: 获取司法文件上传链接
- * Summary: 获取司法文件上传链接
- */
+// Description:
+//
+// Description: 获取司法文件上传链接
+//
+// Summary: 获取司法文件上传链接
 func (client *Client) GetJusticeFileuploadurl(request *GetJusticeFileuploadurlRequest) (_result *GetJusticeFileuploadurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58715,10 +62008,11 @@ func (client *Client) GetJusticeFileuploadurl(request *GetJusticeFileuploadurlRe
 	return _result, _err
 }
 
-/**
- * Description: 获取司法文件上传链接
- * Summary: 获取司法文件上传链接
- */
+// Description:
+//
+// Description: 获取司法文件上传链接
+//
+// Summary: 获取司法文件上传链接
 func (client *Client) GetJusticeFileuploadurlEx(request *GetJusticeFileuploadurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJusticeFileuploadurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58733,10 +62027,11 @@ func (client *Client) GetJusticeFileuploadurlEx(request *GetJusticeFileuploadurl
 	return _result, _err
 }
 
-/**
- * Description: 司法解纷平台API服务，创建文书要素模板接口
- * Summary: 创建文书要素模板
- */
+// Description:
+//
+// Description: 司法解纷平台API服务，创建文书要素模板接口
+//
+// Summary: 创建文书要素模板
 func (client *Client) CreateJusticeDocumenttemplate(request *CreateJusticeDocumenttemplateRequest) (_result *CreateJusticeDocumenttemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58749,10 +62044,11 @@ func (client *Client) CreateJusticeDocumenttemplate(request *CreateJusticeDocume
 	return _result, _err
 }
 
-/**
- * Description: 司法解纷平台API服务，创建文书要素模板接口
- * Summary: 创建文书要素模板
- */
+// Description:
+//
+// Description: 司法解纷平台API服务，创建文书要素模板接口
+//
+// Summary: 创建文书要素模板
 func (client *Client) CreateJusticeDocumenttemplateEx(request *CreateJusticeDocumenttemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJusticeDocumenttemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58767,10 +62063,11 @@ func (client *Client) CreateJusticeDocumenttemplateEx(request *CreateJusticeDocu
 	return _result, _err
 }
 
-/**
- * Description: 仲裁-通用版本进件要素信息查询
- * Summary: 仲裁-通用版本进件要素信息查询
- */
+// Description:
+//
+// Description: 仲裁-通用版本进件要素信息查询
+//
+// Summary: 仲裁-通用版本进件要素信息查询
 func (client *Client) QueryJusticeCommoncaseinfo(request *QueryJusticeCommoncaseinfoRequest) (_result *QueryJusticeCommoncaseinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58783,10 +62080,11 @@ func (client *Client) QueryJusticeCommoncaseinfo(request *QueryJusticeCommoncase
 	return _result, _err
 }
 
-/**
- * Description: 仲裁-通用版本进件要素信息查询
- * Summary: 仲裁-通用版本进件要素信息查询
- */
+// Description:
+//
+// Description: 仲裁-通用版本进件要素信息查询
+//
+// Summary: 仲裁-通用版本进件要素信息查询
 func (client *Client) QueryJusticeCommoncaseinfoEx(request *QueryJusticeCommoncaseinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryJusticeCommoncaseinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58801,10 +62099,11 @@ func (client *Client) QueryJusticeCommoncaseinfoEx(request *QueryJusticeCommonca
 	return _result, _err
 }
 
-/**
- * Description: 1级商户为2级商户进件
- * Summary: 代理二级商户进件
- */
+// Description:
+//
+// Description: 1级商户为2级商户进件
+//
+// Summary: 代理二级商户进件
 func (client *Client) CreateJusticeAgentcase(request *CreateJusticeAgentcaseRequest) (_result *CreateJusticeAgentcaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58817,10 +62116,11 @@ func (client *Client) CreateJusticeAgentcase(request *CreateJusticeAgentcaseRequ
 	return _result, _err
 }
 
-/**
- * Description: 1级商户为2级商户进件
- * Summary: 代理二级商户进件
- */
+// Description:
+//
+// Description: 1级商户为2级商户进件
+//
+// Summary: 代理二级商户进件
 func (client *Client) CreateJusticeAgentcaseEx(request *CreateJusticeAgentcaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJusticeAgentcaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58835,10 +62135,11 @@ func (client *Client) CreateJusticeAgentcaseEx(request *CreateJusticeAgentcaseRe
 	return _result, _err
 }
 
-/**
- * Description: isv机构-案件要素查询
- * Summary: isv机构-案件要素查询
- */
+// Description:
+//
+// Description: isv机构-案件要素查询
+//
+// Summary: isv机构-案件要素查询
 func (client *Client) QueryJusticeRights(request *QueryJusticeRightsRequest) (_result *QueryJusticeRightsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58851,10 +62152,11 @@ func (client *Client) QueryJusticeRights(request *QueryJusticeRightsRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: isv机构-案件要素查询
- * Summary: isv机构-案件要素查询
- */
+// Description:
+//
+// Description: isv机构-案件要素查询
+//
+// Summary: isv机构-案件要素查询
 func (client *Client) QueryJusticeRightsEx(request *QueryJusticeRightsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryJusticeRightsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58869,10 +62171,11 @@ func (client *Client) QueryJusticeRightsEx(request *QueryJusticeRightsRequest, h
 	return _result, _err
 }
 
-/**
- * Description: isv机构-维权状态更新
- * Summary: isv机构-维权状态更新
- */
+// Description:
+//
+// Description: isv机构-维权状态更新
+//
+// Summary: isv机构-维权状态更新
 func (client *Client) UpdateJusticeRights(request *UpdateJusticeRightsRequest) (_result *UpdateJusticeRightsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58885,10 +62188,11 @@ func (client *Client) UpdateJusticeRights(request *UpdateJusticeRightsRequest) (
 	return _result, _err
 }
 
-/**
- * Description: isv机构-维权状态更新
- * Summary: isv机构-维权状态更新
- */
+// Description:
+//
+// Description: isv机构-维权状态更新
+//
+// Summary: isv机构-维权状态更新
 func (client *Client) UpdateJusticeRightsEx(request *UpdateJusticeRightsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateJusticeRightsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58903,10 +62207,11 @@ func (client *Client) UpdateJusticeRightsEx(request *UpdateJusticeRightsRequest,
 	return _result, _err
 }
 
-/**
- * Description: isv机构-案件缴费通知接口
- * Summary: isv机构-案件缴费通知接口
- */
+// Description:
+//
+// Description: isv机构-案件缴费通知接口
+//
+// Summary: isv机构-案件缴费通知接口
 func (client *Client) NotifyJusticeRightspayment(request *NotifyJusticeRightspaymentRequest) (_result *NotifyJusticeRightspaymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58919,10 +62224,11 @@ func (client *Client) NotifyJusticeRightspayment(request *NotifyJusticeRightspay
 	return _result, _err
 }
 
-/**
- * Description: isv机构-案件缴费通知接口
- * Summary: isv机构-案件缴费通知接口
- */
+// Description:
+//
+// Description: isv机构-案件缴费通知接口
+//
+// Summary: isv机构-案件缴费通知接口
 func (client *Client) NotifyJusticeRightspaymentEx(request *NotifyJusticeRightspaymentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *NotifyJusticeRightspaymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58937,10 +62243,11 @@ func (client *Client) NotifyJusticeRightspaymentEx(request *NotifyJusticeRightsp
 	return _result, _err
 }
 
-/**
- * Description: 融资服务平台上传商品类别信息
- * Summary: 融资服务平台上传商品类别信息
- */
+// Description:
+//
+// Description: 融资服务平台上传商品类别信息
+//
+// Summary: 融资服务平台上传商品类别信息
 func (client *Client) CreateLeaseProductinfo(request *CreateLeaseProductinfoRequest) (_result *CreateLeaseProductinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58953,10 +62260,11 @@ func (client *Client) CreateLeaseProductinfo(request *CreateLeaseProductinfoRequ
 	return _result, _err
 }
 
-/**
- * Description: 融资服务平台上传商品类别信息
- * Summary: 融资服务平台上传商品类别信息
- */
+// Description:
+//
+// Description: 融资服务平台上传商品类别信息
+//
+// Summary: 融资服务平台上传商品类别信息
 func (client *Client) CreateLeaseProductinfoEx(request *CreateLeaseProductinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseProductinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58971,10 +62279,11 @@ func (client *Client) CreateLeaseProductinfoEx(request *CreateLeaseProductinfoRe
 	return _result, _err
 }
 
-/**
- * Description: 升级融资租赁合约
- * Summary: 升级融资租赁合约
- */
+// Description:
+//
+// Description: 升级融资租赁合约
+//
+// Summary: 升级融资租赁合约
 func (client *Client) UpdateLeaseContract(request *UpdateLeaseContractRequest) (_result *UpdateLeaseContractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -58987,10 +62296,11 @@ func (client *Client) UpdateLeaseContract(request *UpdateLeaseContractRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 升级融资租赁合约
- * Summary: 升级融资租赁合约
- */
+// Description:
+//
+// Description: 升级融资租赁合约
+//
+// Summary: 升级融资租赁合约
 func (client *Client) UpdateLeaseContractEx(request *UpdateLeaseContractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLeaseContractResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59005,10 +62315,11 @@ func (client *Client) UpdateLeaseContractEx(request *UpdateLeaseContractRequest,
 	return _result, _err
 }
 
-/**
- * Description: 租赁平台isv模式代理商户入驻
- * Summary: 租赁平台isv模式代理商户入驻
- */
+// Description:
+//
+// Description: 租赁平台isv模式代理商户入驻
+//
+// Summary: 租赁平台isv模式代理商户入驻
 func (client *Client) CreateLeaseAssetagentregister(request *CreateLeaseAssetagentregisterRequest) (_result *CreateLeaseAssetagentregisterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59021,10 +62332,11 @@ func (client *Client) CreateLeaseAssetagentregister(request *CreateLeaseAssetage
 	return _result, _err
 }
 
-/**
- * Description: 租赁平台isv模式代理商户入驻
- * Summary: 租赁平台isv模式代理商户入驻
- */
+// Description:
+//
+// Description: 租赁平台isv模式代理商户入驻
+//
+// Summary: 租赁平台isv模式代理商户入驻
 func (client *Client) CreateLeaseAssetagentregisterEx(request *CreateLeaseAssetagentregisterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseAssetagentregisterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59039,10 +62351,11 @@ func (client *Client) CreateLeaseAssetagentregisterEx(request *CreateLeaseAsseta
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁商品信息查询接口
- * Summary: 融资租赁商品信息查询接口
- */
+// Description:
+//
+// Description: 融资租赁商品信息查询接口
+//
+// Summary: 融资租赁商品信息查询接口
 func (client *Client) QueryLeaseProductinfo(request *QueryLeaseProductinfoRequest) (_result *QueryLeaseProductinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59055,10 +62368,11 @@ func (client *Client) QueryLeaseProductinfo(request *QueryLeaseProductinfoReques
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁商品信息查询接口
- * Summary: 融资租赁商品信息查询接口
- */
+// Description:
+//
+// Description: 融资租赁商品信息查询接口
+//
+// Summary: 融资租赁商品信息查询接口
 func (client *Client) QueryLeaseProductinfoEx(request *QueryLeaseProductinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseProductinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59073,10 +62387,11 @@ func (client *Client) QueryLeaseProductinfoEx(request *QueryLeaseProductinfoRequ
 	return _result, _err
 }
 
-/**
- * Description: 同步采购平台订单状态
- * Summary: 同步采购平台订单状态
- */
+// Description:
+//
+// Description: 同步采购平台订单状态
+//
+// Summary: 同步采购平台订单状态
 func (client *Client) SyncLeaseSupplierorderstatus(request *SyncLeaseSupplierorderstatusRequest) (_result *SyncLeaseSupplierorderstatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59089,10 +62404,11 @@ func (client *Client) SyncLeaseSupplierorderstatus(request *SyncLeaseSupplierord
 	return _result, _err
 }
 
-/**
- * Description: 同步采购平台订单状态
- * Summary: 同步采购平台订单状态
- */
+// Description:
+//
+// Description: 同步采购平台订单状态
+//
+// Summary: 同步采购平台订单状态
 func (client *Client) SyncLeaseSupplierorderstatusEx(request *SyncLeaseSupplierorderstatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncLeaseSupplierorderstatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59107,10 +62423,11 @@ func (client *Client) SyncLeaseSupplierorderstatusEx(request *SyncLeaseSuppliero
 	return _result, _err
 }
 
-/**
- * Description: 采购供应商初始化
- * Summary: 采购供应商初始化
- */
+// Description:
+//
+// Description: 采购供应商初始化
+//
+// Summary: 采购供应商初始化
 func (client *Client) InitLeaseSupplier(request *InitLeaseSupplierRequest) (_result *InitLeaseSupplierResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59123,10 +62440,11 @@ func (client *Client) InitLeaseSupplier(request *InitLeaseSupplierRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 采购供应商初始化
- * Summary: 采购供应商初始化
- */
+// Description:
+//
+// Description: 采购供应商初始化
+//
+// Summary: 采购供应商初始化
 func (client *Client) InitLeaseSupplierEx(request *InitLeaseSupplierRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitLeaseSupplierResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59141,10 +62459,11 @@ func (client *Client) InitLeaseSupplierEx(request *InitLeaseSupplierRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 租赁订单接收采购平台的采购状态信息，完成采购流程
- * Summary: 租赁订单接收采购状态信息，完成采购流程
- */
+// Description:
+//
+// Description: 租赁订单接收采购平台的采购状态信息，完成采购流程
+//
+// Summary: 租赁订单接收采购状态信息，完成采购流程
 func (client *Client) FinishLeaseSupplierstatus(request *FinishLeaseSupplierstatusRequest) (_result *FinishLeaseSupplierstatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59157,10 +62476,11 @@ func (client *Client) FinishLeaseSupplierstatus(request *FinishLeaseSupplierstat
 	return _result, _err
 }
 
-/**
- * Description: 租赁订单接收采购平台的采购状态信息，完成采购流程
- * Summary: 租赁订单接收采购状态信息，完成采购流程
- */
+// Description:
+//
+// Description: 租赁订单接收采购平台的采购状态信息，完成采购流程
+//
+// Summary: 租赁订单接收采购状态信息，完成采购流程
 func (client *Client) FinishLeaseSupplierstatusEx(request *FinishLeaseSupplierstatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FinishLeaseSupplierstatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59175,10 +62495,11 @@ func (client *Client) FinishLeaseSupplierstatusEx(request *FinishLeaseSupplierst
 	return _result, _err
 }
 
-/**
- * Description: 采购商品初始化
- * Summary: 采购商品初始化
- */
+// Description:
+//
+// Description: 采购商品初始化
+//
+// Summary: 采购商品初始化
 func (client *Client) CreateLeaseSupplierproduct(request *CreateLeaseSupplierproductRequest) (_result *CreateLeaseSupplierproductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59191,10 +62512,11 @@ func (client *Client) CreateLeaseSupplierproduct(request *CreateLeaseSupplierpro
 	return _result, _err
 }
 
-/**
- * Description: 采购商品初始化
- * Summary: 采购商品初始化
- */
+// Description:
+//
+// Description: 采购商品初始化
+//
+// Summary: 采购商品初始化
 func (client *Client) CreateLeaseSupplierproductEx(request *CreateLeaseSupplierproductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseSupplierproductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59209,10 +62531,11 @@ func (client *Client) CreateLeaseSupplierproductEx(request *CreateLeaseSupplierp
 	return _result, _err
 }
 
-/**
- * Description: 链上采购申请
- * Summary: 链上采购申请
- */
+// Description:
+//
+// Description: 链上采购申请
+//
+// Summary: 链上采购申请
 func (client *Client) ApplyLeaseSupplierorder(request *ApplyLeaseSupplierorderRequest) (_result *ApplyLeaseSupplierorderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59225,10 +62548,11 @@ func (client *Client) ApplyLeaseSupplierorder(request *ApplyLeaseSupplierorderRe
 	return _result, _err
 }
 
-/**
- * Description: 链上采购申请
- * Summary: 链上采购申请
- */
+// Description:
+//
+// Description: 链上采购申请
+//
+// Summary: 链上采购申请
 func (client *Client) ApplyLeaseSupplierorderEx(request *ApplyLeaseSupplierorderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyLeaseSupplierorderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59243,10 +62567,11 @@ func (client *Client) ApplyLeaseSupplierorderEx(request *ApplyLeaseSupplierorder
 	return _result, _err
 }
 
-/**
- * Description: 创建融资租赁提前还款人脸认证信息
- * Summary: 创建融资租赁提前还款人脸认证信息
- */
+// Description:
+//
+// Description: 创建融资租赁提前还款人脸认证信息
+//
+// Summary: 创建融资租赁提前还款人脸认证信息
 func (client *Client) CreateLeaseFinancecertify(request *CreateLeaseFinancecertifyRequest) (_result *CreateLeaseFinancecertifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59259,10 +62584,11 @@ func (client *Client) CreateLeaseFinancecertify(request *CreateLeaseFinancecerti
 	return _result, _err
 }
 
-/**
- * Description: 创建融资租赁提前还款人脸认证信息
- * Summary: 创建融资租赁提前还款人脸认证信息
- */
+// Description:
+//
+// Description: 创建融资租赁提前还款人脸认证信息
+//
+// Summary: 创建融资租赁提前还款人脸认证信息
 func (client *Client) CreateLeaseFinancecertifyEx(request *CreateLeaseFinancecertifyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseFinancecertifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59277,10 +62603,11 @@ func (client *Client) CreateLeaseFinancecertifyEx(request *CreateLeaseFinancecer
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁提前还款人脸识别核验
- * Summary: 融资租赁提前还款人脸识别核验
- */
+// Description:
+//
+// Description: 融资租赁提前还款人脸识别核验
+//
+// Summary: 融资租赁提前还款人脸识别核验
 func (client *Client) QueryLeaseFinancecertify(request *QueryLeaseFinancecertifyRequest) (_result *QueryLeaseFinancecertifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59293,10 +62620,11 @@ func (client *Client) QueryLeaseFinancecertify(request *QueryLeaseFinancecertify
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁提前还款人脸识别核验
- * Summary: 融资租赁提前还款人脸识别核验
- */
+// Description:
+//
+// Description: 融资租赁提前还款人脸识别核验
+//
+// Summary: 融资租赁提前还款人脸识别核验
 func (client *Client) QueryLeaseFinancecertifyEx(request *QueryLeaseFinancecertifyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseFinancecertifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59311,10 +62639,11 @@ func (client *Client) QueryLeaseFinancecertifyEx(request *QueryLeaseFinancecerti
 	return _result, _err
 }
 
-/**
- * Description: 查询融资租赁合约内核验结果
- * Summary: 查询融资租赁合约内核验结果
- */
+// Description:
+//
+// Description: 查询融资租赁合约内核验结果
+//
+// Summary: 查询融资租赁合约内核验结果
 func (client *Client) QueryLeaseFinancecertifyincontract(request *QueryLeaseFinancecertifyincontractRequest) (_result *QueryLeaseFinancecertifyincontractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59327,10 +62656,11 @@ func (client *Client) QueryLeaseFinancecertifyincontract(request *QueryLeaseFina
 	return _result, _err
 }
 
-/**
- * Description: 查询融资租赁合约内核验结果
- * Summary: 查询融资租赁合约内核验结果
- */
+// Description:
+//
+// Description: 查询融资租赁合约内核验结果
+//
+// Summary: 查询融资租赁合约内核验结果
 func (client *Client) QueryLeaseFinancecertifyincontractEx(request *QueryLeaseFinancecertifyincontractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseFinancecertifyincontractResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59345,10 +62675,11 @@ func (client *Client) QueryLeaseFinancecertifyincontractEx(request *QueryLeaseFi
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁用户信息查询
- * Summary: 融资租赁用户信息查询
- */
+// Description:
+//
+// Description: 融资租赁用户信息查询
+//
+// Summary: 融资租赁用户信息查询
 func (client *Client) QueryLeaseUser(request *QueryLeaseUserRequest) (_result *QueryLeaseUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59361,10 +62692,11 @@ func (client *Client) QueryLeaseUser(request *QueryLeaseUserRequest) (_result *Q
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁用户信息查询
- * Summary: 融资租赁用户信息查询
- */
+// Description:
+//
+// Description: 融资租赁用户信息查询
+//
+// Summary: 融资租赁用户信息查询
 func (client *Client) QueryLeaseUserEx(request *QueryLeaseUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59379,10 +62711,11 @@ func (client *Client) QueryLeaseUserEx(request *QueryLeaseUserRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁订单详情查询
- * Summary: 融资租赁订单详情查询
- */
+// Description:
+//
+// Description: 融资租赁订单详情查询
+//
+// Summary: 融资租赁订单详情查询
 func (client *Client) QueryLeaseOrderdetailinfo(request *QueryLeaseOrderdetailinfoRequest) (_result *QueryLeaseOrderdetailinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59395,10 +62728,11 @@ func (client *Client) QueryLeaseOrderdetailinfo(request *QueryLeaseOrderdetailin
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁订单详情查询
- * Summary: 融资租赁订单详情查询
- */
+// Description:
+//
+// Description: 融资租赁订单详情查询
+//
+// Summary: 融资租赁订单详情查询
 func (client *Client) QueryLeaseOrderdetailinfoEx(request *QueryLeaseOrderdetailinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseOrderdetailinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59413,10 +62747,11 @@ func (client *Client) QueryLeaseOrderdetailinfoEx(request *QueryLeaseOrderdetail
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁租赁机构承诺查询
- * Summary: 融资租赁租赁机构承诺查询
- */
+// Description:
+//
+// Description: 融资租赁租赁机构承诺查询
+//
+// Summary: 融资租赁租赁机构承诺查询
 func (client *Client) QueryLeaseLeasepromise(request *QueryLeaseLeasepromiseRequest) (_result *QueryLeaseLeasepromiseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59429,10 +62764,11 @@ func (client *Client) QueryLeaseLeasepromise(request *QueryLeaseLeasepromiseRequ
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁租赁机构承诺查询
- * Summary: 融资租赁租赁机构承诺查询
- */
+// Description:
+//
+// Description: 融资租赁租赁机构承诺查询
+//
+// Summary: 融资租赁租赁机构承诺查询
 func (client *Client) QueryLeaseLeasepromiseEx(request *QueryLeaseLeasepromiseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseLeasepromiseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59447,10 +62783,11 @@ func (client *Client) QueryLeaseLeasepromiseEx(request *QueryLeaseLeasepromiseRe
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁资方承诺查询
- * Summary: 融资租赁资方承诺查询
- */
+// Description:
+//
+// Description: 融资租赁资方承诺查询
+//
+// Summary: 融资租赁资方承诺查询
 func (client *Client) QueryLeaseCreditpromise(request *QueryLeaseCreditpromiseRequest) (_result *QueryLeaseCreditpromiseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59463,10 +62800,11 @@ func (client *Client) QueryLeaseCreditpromise(request *QueryLeaseCreditpromiseRe
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁资方承诺查询
- * Summary: 融资租赁资方承诺查询
- */
+// Description:
+//
+// Description: 融资租赁资方承诺查询
+//
+// Summary: 融资租赁资方承诺查询
 func (client *Client) QueryLeaseCreditpromiseEx(request *QueryLeaseCreditpromiseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseCreditpromiseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59481,10 +62819,11 @@ func (client *Client) QueryLeaseCreditpromiseEx(request *QueryLeaseCreditpromise
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁订单清分信息查询
- * Summary: 融资租赁订单清分信息查询
- */
+// Description:
+//
+// Description: 融资租赁订单清分信息查询
+//
+// Summary: 融资租赁订单清分信息查询
 func (client *Client) QueryLeaseClearing(request *QueryLeaseClearingRequest) (_result *QueryLeaseClearingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59497,10 +62836,11 @@ func (client *Client) QueryLeaseClearing(request *QueryLeaseClearingRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁订单清分信息查询
- * Summary: 融资租赁订单清分信息查询
- */
+// Description:
+//
+// Description: 融资租赁订单清分信息查询
+//
+// Summary: 融资租赁订单清分信息查询
 func (client *Client) QueryLeaseClearingEx(request *QueryLeaseClearingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseClearingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59515,10 +62855,11 @@ func (client *Client) QueryLeaseClearingEx(request *QueryLeaseClearingRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁用户侧还款信息
- * Summary: 融资租赁用户侧还款信息
- */
+// Description:
+//
+// Description: 融资租赁用户侧还款信息
+//
+// Summary: 融资租赁用户侧还款信息
 func (client *Client) QueryLeaseRentalinfo(request *QueryLeaseRentalinfoRequest) (_result *QueryLeaseRentalinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59531,10 +62872,11 @@ func (client *Client) QueryLeaseRentalinfo(request *QueryLeaseRentalinfoRequest)
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁用户侧还款信息
- * Summary: 融资租赁用户侧还款信息
- */
+// Description:
+//
+// Description: 融资租赁用户侧还款信息
+//
+// Summary: 融资租赁用户侧还款信息
 func (client *Client) QueryLeaseRentalinfoEx(request *QueryLeaseRentalinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseRentalinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59549,10 +62891,11 @@ func (client *Client) QueryLeaseRentalinfoEx(request *QueryLeaseRentalinfoReques
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁资方还款信息查询
- * Summary: 融资租赁资方还款信息查询
- */
+// Description:
+//
+// Description: 融资租赁资方还款信息查询
+//
+// Summary: 融资租赁资方还款信息查询
 func (client *Client) QueryLeaseRepayment(request *QueryLeaseRepaymentRequest) (_result *QueryLeaseRepaymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59565,10 +62908,11 @@ func (client *Client) QueryLeaseRepayment(request *QueryLeaseRepaymentRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁资方还款信息查询
- * Summary: 融资租赁资方还款信息查询
- */
+// Description:
+//
+// Description: 融资租赁资方还款信息查询
+//
+// Summary: 融资租赁资方还款信息查询
 func (client *Client) QueryLeaseRepaymentEx(request *QueryLeaseRepaymentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseRepaymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59583,10 +62927,11 @@ func (client *Client) QueryLeaseRepaymentEx(request *QueryLeaseRepaymentRequest,
 	return _result, _err
 }
 
-/**
- * Description: 查询订单商品信息
- * Summary: 查询订单商品信息
- */
+// Description:
+//
+// Description: 查询订单商品信息
+//
+// Summary: 查询订单商品信息
 func (client *Client) QueryLeaseOrderproduct(request *QueryLeaseOrderproductRequest) (_result *QueryLeaseOrderproductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59599,10 +62944,11 @@ func (client *Client) QueryLeaseOrderproduct(request *QueryLeaseOrderproductRequ
 	return _result, _err
 }
 
-/**
- * Description: 查询订单商品信息
- * Summary: 查询订单商品信息
- */
+// Description:
+//
+// Description: 查询订单商品信息
+//
+// Summary: 查询订单商品信息
 func (client *Client) QueryLeaseOrderproductEx(request *QueryLeaseOrderproductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseOrderproductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59617,10 +62963,11 @@ func (client *Client) QueryLeaseOrderproductEx(request *QueryLeaseOrderproductRe
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁查询资金方信息
- * Summary: 融资租赁查询资金方信息
- */
+// Description:
+//
+// Description: 融资租赁查询资金方信息
+//
+// Summary: 融资租赁查询资金方信息
 func (client *Client) QueryLeaseFinancecredit(request *QueryLeaseFinancecreditRequest) (_result *QueryLeaseFinancecreditResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59633,10 +62980,11 @@ func (client *Client) QueryLeaseFinancecredit(request *QueryLeaseFinancecreditRe
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁查询资金方信息
- * Summary: 融资租赁查询资金方信息
- */
+// Description:
+//
+// Description: 融资租赁查询资金方信息
+//
+// Summary: 融资租赁查询资金方信息
 func (client *Client) QueryLeaseFinancecreditEx(request *QueryLeaseFinancecreditRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseFinancecreditResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59651,10 +62999,11 @@ func (client *Client) QueryLeaseFinancecreditEx(request *QueryLeaseFinancecredit
 	return _result, _err
 }
 
-/**
- * Description: 根据资产包id分页查询再融资订单id
- * Summary: 分页查询再融资订单id
- */
+// Description:
+//
+// Description: 根据资产包id分页查询再融资订单id
+//
+// Summary: 分页查询再融资订单id
 func (client *Client) QueryRefinanceOrderid(request *QueryRefinanceOrderidRequest) (_result *QueryRefinanceOrderidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59667,10 +63016,11 @@ func (client *Client) QueryRefinanceOrderid(request *QueryRefinanceOrderidReques
 	return _result, _err
 }
 
-/**
- * Description: 根据资产包id分页查询再融资订单id
- * Summary: 分页查询再融资订单id
- */
+// Description:
+//
+// Description: 根据资产包id分页查询再融资订单id
+//
+// Summary: 分页查询再融资订单id
 func (client *Client) QueryRefinanceOrderidEx(request *QueryRefinanceOrderidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryRefinanceOrderidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59685,10 +63035,11 @@ func (client *Client) QueryRefinanceOrderidEx(request *QueryRefinanceOrderidRequ
 	return _result, _err
 }
 
-/**
- * Description: 资产明细查询
- * Summary: 资产明细
- */
+// Description:
+//
+// Description: 资产明细查询
+//
+// Summary: 资产明细
 func (client *Client) QueryRefinanceOrder(request *QueryRefinanceOrderRequest) (_result *QueryRefinanceOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59701,10 +63052,11 @@ func (client *Client) QueryRefinanceOrder(request *QueryRefinanceOrderRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 资产明细查询
- * Summary: 资产明细
- */
+// Description:
+//
+// Description: 资产明细查询
+//
+// Summary: 资产明细
 func (client *Client) QueryRefinanceOrderEx(request *QueryRefinanceOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryRefinanceOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59719,10 +63071,11 @@ func (client *Client) QueryRefinanceOrderEx(request *QueryRefinanceOrderRequest,
 	return _result, _err
 }
 
-/**
- * Description: 再融资的商品信息查询
- * Summary: 再融资的商品信息查询
- */
+// Description:
+//
+// Description: 再融资的商品信息查询
+//
+// Summary: 再融资的商品信息查询
 func (client *Client) QueryRefinanceProduct(request *QueryRefinanceProductRequest) (_result *QueryRefinanceProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59735,10 +63088,11 @@ func (client *Client) QueryRefinanceProduct(request *QueryRefinanceProductReques
 	return _result, _err
 }
 
-/**
- * Description: 再融资的商品信息查询
- * Summary: 再融资的商品信息查询
- */
+// Description:
+//
+// Description: 再融资的商品信息查询
+//
+// Summary: 再融资的商品信息查询
 func (client *Client) QueryRefinanceProductEx(request *QueryRefinanceProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryRefinanceProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59753,10 +63107,11 @@ func (client *Client) QueryRefinanceProductEx(request *QueryRefinanceProductRequ
 	return _result, _err
 }
 
-/**
- * Description: 资产包的受让/驳回资产包
- * Summary: 资产包的受让/驳回资产包
- */
+// Description:
+//
+// Description: 资产包的受让/驳回资产包
+//
+// Summary: 资产包的受让/驳回资产包
 func (client *Client) VerifyRefinancePackage(request *VerifyRefinancePackageRequest) (_result *VerifyRefinancePackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59769,10 +63124,11 @@ func (client *Client) VerifyRefinancePackage(request *VerifyRefinancePackageRequ
 	return _result, _err
 }
 
-/**
- * Description: 资产包的受让/驳回资产包
- * Summary: 资产包的受让/驳回资产包
- */
+// Description:
+//
+// Description: 资产包的受让/驳回资产包
+//
+// Summary: 资产包的受让/驳回资产包
 func (client *Client) VerifyRefinancePackageEx(request *VerifyRefinancePackageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyRefinancePackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59787,10 +63143,11 @@ func (client *Client) VerifyRefinancePackageEx(request *VerifyRefinancePackageRe
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁查询清分信息
- * Summary: 融资租赁查询清分信息
- */
+// Description:
+//
+// Description: 融资租赁查询清分信息
+//
+// Summary: 融资租赁查询清分信息
 func (client *Client) QueryLeaseOrderclearing(request *QueryLeaseOrderclearingRequest) (_result *QueryLeaseOrderclearingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59803,10 +63160,11 @@ func (client *Client) QueryLeaseOrderclearing(request *QueryLeaseOrderclearingRe
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁查询清分信息
- * Summary: 融资租赁查询清分信息
- */
+// Description:
+//
+// Description: 融资租赁查询清分信息
+//
+// Summary: 融资租赁查询清分信息
 func (client *Client) QueryLeaseOrderclearingEx(request *QueryLeaseOrderclearingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseOrderclearingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59821,10 +63179,11 @@ func (client *Client) QueryLeaseOrderclearingEx(request *QueryLeaseOrderclearing
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁提前还款详情查询
- * Summary: 融资租赁提前还款详情查询
- */
+// Description:
+//
+// Description: 融资租赁提前还款详情查询
+//
+// Summary: 融资租赁提前还款详情查询
 func (client *Client) QueryLeaseRepaymentstatus(request *QueryLeaseRepaymentstatusRequest) (_result *QueryLeaseRepaymentstatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59837,10 +63196,11 @@ func (client *Client) QueryLeaseRepaymentstatus(request *QueryLeaseRepaymentstat
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁提前还款详情查询
- * Summary: 融资租赁提前还款详情查询
- */
+// Description:
+//
+// Description: 融资租赁提前还款详情查询
+//
+// Summary: 融资租赁提前还款详情查询
 func (client *Client) QueryLeaseRepaymentstatusEx(request *QueryLeaseRepaymentstatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseRepaymentstatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59855,10 +63215,11 @@ func (client *Client) QueryLeaseRepaymentstatusEx(request *QueryLeaseRepaymentst
 	return _result, _err
 }
 
-/**
- * Description: 续租过程中，当前资方希望查询用户历史的履约表现
- * Summary: 核验链上用户的履约情况
- */
+// Description:
+//
+// Description: 续租过程中，当前资方希望查询用户历史的履约表现
+//
+// Summary: 核验链上用户的履约情况
 func (client *Client) QueryLeaseUserperformance(request *QueryLeaseUserperformanceRequest) (_result *QueryLeaseUserperformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59871,10 +63232,11 @@ func (client *Client) QueryLeaseUserperformance(request *QueryLeaseUserperforman
 	return _result, _err
 }
 
-/**
- * Description: 续租过程中，当前资方希望查询用户历史的履约表现
- * Summary: 核验链上用户的履约情况
- */
+// Description:
+//
+// Description: 续租过程中，当前资方希望查询用户历史的履约表现
+//
+// Summary: 核验链上用户的履约情况
 func (client *Client) QueryLeaseUserperformanceEx(request *QueryLeaseUserperformanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseUserperformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59889,10 +63251,11 @@ func (client *Client) QueryLeaseUserperformanceEx(request *QueryLeaseUserperform
 	return _result, _err
 }
 
-/**
- * Description: 履约流水核验查询
- * Summary: 履约流水核验查询
- */
+// Description:
+//
+// Description: 履约流水核验查询
+//
+// Summary: 履约流水核验查询
 func (client *Client) QueryLeaseRentalverify(request *QueryLeaseRentalverifyRequest) (_result *QueryLeaseRentalverifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59905,10 +63268,11 @@ func (client *Client) QueryLeaseRentalverify(request *QueryLeaseRentalverifyRequ
 	return _result, _err
 }
 
-/**
- * Description: 履约流水核验查询
- * Summary: 履约流水核验查询
- */
+// Description:
+//
+// Description: 履约流水核验查询
+//
+// Summary: 履约流水核验查询
 func (client *Client) QueryLeaseRentalverifyEx(request *QueryLeaseRentalverifyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseRentalverifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59923,10 +63287,11 @@ func (client *Client) QueryLeaseRentalverifyEx(request *QueryLeaseRentalverifyRe
 	return _result, _err
 }
 
-/**
- * Description: 分期查询用户归还记录 资方还款 清分信息
- * Summary: 分期查询用户归还记录 资方还款 清分信息
- */
+// Description:
+//
+// Description: 分期查询用户归还记录 资方还款 清分信息
+//
+// Summary: 分期查询用户归还记录 资方还款 清分信息
 func (client *Client) QueryLeaseInstallment(request *QueryLeaseInstallmentRequest) (_result *QueryLeaseInstallmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59939,10 +63304,11 @@ func (client *Client) QueryLeaseInstallment(request *QueryLeaseInstallmentReques
 	return _result, _err
 }
 
-/**
- * Description: 分期查询用户归还记录 资方还款 清分信息
- * Summary: 分期查询用户归还记录 资方还款 清分信息
- */
+// Description:
+//
+// Description: 分期查询用户归还记录 资方还款 清分信息
+//
+// Summary: 分期查询用户归还记录 资方还款 清分信息
 func (client *Client) QueryLeaseInstallmentEx(request *QueryLeaseInstallmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseInstallmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59957,10 +63323,11 @@ func (client *Client) QueryLeaseInstallmentEx(request *QueryLeaseInstallmentRequ
 	return _result, _err
 }
 
-/**
- * Description: 租赁保险退保接口
- * Summary: 租赁保险退保
- */
+// Description:
+//
+// Description: 租赁保险退保接口
+//
+// Summary: 租赁保险退保
 func (client *Client) CancelLeaseInsurance(request *CancelLeaseInsuranceRequest) (_result *CancelLeaseInsuranceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -59973,10 +63340,11 @@ func (client *Client) CancelLeaseInsurance(request *CancelLeaseInsuranceRequest)
 	return _result, _err
 }
 
-/**
- * Description: 租赁保险退保接口
- * Summary: 租赁保险退保
- */
+// Description:
+//
+// Description: 租赁保险退保接口
+//
+// Summary: 租赁保险退保
 func (client *Client) CancelLeaseInsuranceEx(request *CancelLeaseInsuranceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelLeaseInsuranceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59991,10 +63359,11 @@ func (client *Client) CancelLeaseInsuranceEx(request *CancelLeaseInsuranceReques
 	return _result, _err
 }
 
-/**
- * Description: 二级资方调用，通过此接口将资产包中的无效或者有效资产推送至租赁平台
- * Summary: 再融资资产推送
- */
+// Description:
+//
+// Description: 二级资方调用，通过此接口将资产包中的无效或者有效资产推送至租赁平台
+//
+// Summary: 再融资资产推送
 func (client *Client) PushRefinanceInvalidorder(request *PushRefinanceInvalidorderRequest) (_result *PushRefinanceInvalidorderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60007,10 +63376,11 @@ func (client *Client) PushRefinanceInvalidorder(request *PushRefinanceInvalidord
 	return _result, _err
 }
 
-/**
- * Description: 二级资方调用，通过此接口将资产包中的无效或者有效资产推送至租赁平台
- * Summary: 再融资资产推送
- */
+// Description:
+//
+// Description: 二级资方调用，通过此接口将资产包中的无效或者有效资产推送至租赁平台
+//
+// Summary: 再融资资产推送
 func (client *Client) PushRefinanceInvalidorderEx(request *PushRefinanceInvalidorderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushRefinanceInvalidorderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60025,10 +63395,11 @@ func (client *Client) PushRefinanceInvalidorderEx(request *PushRefinanceInvalido
 	return _result, _err
 }
 
-/**
- * Description: 蚂蚁链租赁的风控
- * Summary: 蚂蚁链租赁的风控
- */
+// Description:
+//
+// Description: 蚂蚁链租赁的风控
+//
+// Summary: 蚂蚁链租赁的风控
 func (client *Client) CreateLeaseRisk(request *CreateLeaseRiskRequest) (_result *CreateLeaseRiskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60041,10 +63412,11 @@ func (client *Client) CreateLeaseRisk(request *CreateLeaseRiskRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 蚂蚁链租赁的风控
- * Summary: 蚂蚁链租赁的风控
- */
+// Description:
+//
+// Description: 蚂蚁链租赁的风控
+//
+// Summary: 蚂蚁链租赁的风控
 func (client *Client) CreateLeaseRiskEx(request *CreateLeaseRiskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseRiskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60059,10 +63431,11 @@ func (client *Client) CreateLeaseRiskEx(request *CreateLeaseRiskRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 融资平台上传租赁物购买贷款订单信息，此接口为异步接口，上链结果需调用查询接口来查
- * Summary: 上传租赁物购买贷款订单信息（异步）
- */
+// Description:
+//
+// Description: 融资平台上传租赁物购买贷款订单信息，此接口为异步接口，上链结果需调用查询接口来查
+//
+// Summary: 上传租赁物购买贷款订单信息（异步）
 func (client *Client) CreateLeaseAsyncverifyinfo(request *CreateLeaseAsyncverifyinfoRequest) (_result *CreateLeaseAsyncverifyinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60075,10 +63448,11 @@ func (client *Client) CreateLeaseAsyncverifyinfo(request *CreateLeaseAsyncverify
 	return _result, _err
 }
 
-/**
- * Description: 融资平台上传租赁物购买贷款订单信息，此接口为异步接口，上链结果需调用查询接口来查
- * Summary: 上传租赁物购买贷款订单信息（异步）
- */
+// Description:
+//
+// Description: 融资平台上传租赁物购买贷款订单信息，此接口为异步接口，上链结果需调用查询接口来查
+//
+// Summary: 上传租赁物购买贷款订单信息（异步）
 func (client *Client) CreateLeaseAsyncverifyinfoEx(request *CreateLeaseAsyncverifyinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseAsyncverifyinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60093,10 +63467,11 @@ func (client *Client) CreateLeaseAsyncverifyinfoEx(request *CreateLeaseAsyncveri
 	return _result, _err
 }
 
-/**
- * Description: 融资方上传承诺信息，此接口异步上合约，合约调用结果需调用查询接口
- * Summary: 融资方上传承诺信息(异步)
- */
+// Description:
+//
+// Description: 融资方上传承诺信息，此接口异步上合约，合约调用结果需调用查询接口
+//
+// Summary: 融资方上传承诺信息(异步)
 func (client *Client) CreateLeaseAsynccreditpromise(request *CreateLeaseAsynccreditpromiseRequest) (_result *CreateLeaseAsynccreditpromiseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60109,10 +63484,11 @@ func (client *Client) CreateLeaseAsynccreditpromise(request *CreateLeaseAsynccre
 	return _result, _err
 }
 
-/**
- * Description: 融资方上传承诺信息，此接口异步上合约，合约调用结果需调用查询接口
- * Summary: 融资方上传承诺信息(异步)
- */
+// Description:
+//
+// Description: 融资方上传承诺信息，此接口异步上合约，合约调用结果需调用查询接口
+//
+// Summary: 融资方上传承诺信息(异步)
 func (client *Client) CreateLeaseAsynccreditpromiseEx(request *CreateLeaseAsynccreditpromiseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseAsynccreditpromiseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60127,10 +63503,11 @@ func (client *Client) CreateLeaseAsynccreditpromiseEx(request *CreateLeaseAsyncc
 	return _result, _err
 }
 
-/**
- * Description: 清分服务机构上传资金清算记录，分期上传。异步上链，上链结果需要调用查询接口。
- * Summary: 清分服务机构上传资金清算记录，分期
- */
+// Description:
+//
+// Description: 清分服务机构上传资金清算记录，分期上传。异步上链，上链结果需要调用查询接口。
+//
+// Summary: 清分服务机构上传资金清算记录，分期
 func (client *Client) CreateLeaseAsyncclearing(request *CreateLeaseAsyncclearingRequest) (_result *CreateLeaseAsyncclearingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60143,10 +63520,11 @@ func (client *Client) CreateLeaseAsyncclearing(request *CreateLeaseAsyncclearing
 	return _result, _err
 }
 
-/**
- * Description: 清分服务机构上传资金清算记录，分期上传。异步上链，上链结果需要调用查询接口。
- * Summary: 清分服务机构上传资金清算记录，分期
- */
+// Description:
+//
+// Description: 清分服务机构上传资金清算记录，分期上传。异步上链，上链结果需要调用查询接口。
+//
+// Summary: 清分服务机构上传资金清算记录，分期
 func (client *Client) CreateLeaseAsyncclearingEx(request *CreateLeaseAsyncclearingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseAsyncclearingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60161,10 +63539,11 @@ func (client *Client) CreateLeaseAsyncclearingEx(request *CreateLeaseAsynccleari
 	return _result, _err
 }
 
-/**
- * Description: 融资金融机构上传还款信息 每期。异步上链，上链结果需要调用查询接口
- * Summary: 融资金融机构上传还款信息 每期
- */
+// Description:
+//
+// Description: 融资金融机构上传还款信息 每期。异步上链，上链结果需要调用查询接口
+//
+// Summary: 融资金融机构上传还款信息 每期
 func (client *Client) CreateLeaseAsyncrepayment(request *CreateLeaseAsyncrepaymentRequest) (_result *CreateLeaseAsyncrepaymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60177,10 +63556,11 @@ func (client *Client) CreateLeaseAsyncrepayment(request *CreateLeaseAsyncrepayme
 	return _result, _err
 }
 
-/**
- * Description: 融资金融机构上传还款信息 每期。异步上链，上链结果需要调用查询接口
- * Summary: 融资金融机构上传还款信息 每期
- */
+// Description:
+//
+// Description: 融资金融机构上传还款信息 每期。异步上链，上链结果需要调用查询接口
+//
+// Summary: 融资金融机构上传还款信息 每期
 func (client *Client) CreateLeaseAsyncrepaymentEx(request *CreateLeaseAsyncrepaymentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseAsyncrepaymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60195,10 +63575,11 @@ func (client *Client) CreateLeaseAsyncrepaymentEx(request *CreateLeaseAsyncrepay
 	return _result, _err
 }
 
-/**
- * Description: 融资平台审核订单信息，异步上链，上链结果可调用查询接口
- * Summary: 融资平台审核订单信息
- */
+// Description:
+//
+// Description: 融资平台审核订单信息，异步上链，上链结果可调用查询接口
+//
+// Summary: 融资平台审核订单信息
 func (client *Client) CreateLeaseAsyncaudit(request *CreateLeaseAsyncauditRequest) (_result *CreateLeaseAsyncauditResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60211,10 +63592,11 @@ func (client *Client) CreateLeaseAsyncaudit(request *CreateLeaseAsyncauditReques
 	return _result, _err
 }
 
-/**
- * Description: 融资平台审核订单信息，异步上链，上链结果可调用查询接口
- * Summary: 融资平台审核订单信息
- */
+// Description:
+//
+// Description: 融资平台审核订单信息，异步上链，上链结果可调用查询接口
+//
+// Summary: 融资平台审核订单信息
 func (client *Client) CreateLeaseAsyncauditEx(request *CreateLeaseAsyncauditRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseAsyncauditResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60229,10 +63611,11 @@ func (client *Client) CreateLeaseAsyncauditEx(request *CreateLeaseAsyncauditRequ
 	return _result, _err
 }
 
-/**
- * Description: 租赁平台上传付款通知信息，异步上链，上链结果可调用查询接口
- * Summary: 租赁平台上传付款通知信息
- */
+// Description:
+//
+// Description: 租赁平台上传付款通知信息，异步上链，上链结果可调用查询接口
+//
+// Summary: 租赁平台上传付款通知信息
 func (client *Client) CreateLeaseAsyncpaymentfile(request *CreateLeaseAsyncpaymentfileRequest) (_result *CreateLeaseAsyncpaymentfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60245,10 +63628,11 @@ func (client *Client) CreateLeaseAsyncpaymentfile(request *CreateLeaseAsyncpayme
 	return _result, _err
 }
 
-/**
- * Description: 租赁平台上传付款通知信息，异步上链，上链结果可调用查询接口
- * Summary: 租赁平台上传付款通知信息
- */
+// Description:
+//
+// Description: 租赁平台上传付款通知信息，异步上链，上链结果可调用查询接口
+//
+// Summary: 租赁平台上传付款通知信息
 func (client *Client) CreateLeaseAsyncpaymentfileEx(request *CreateLeaseAsyncpaymentfileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseAsyncpaymentfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60263,10 +63647,11 @@ func (client *Client) CreateLeaseAsyncpaymentfileEx(request *CreateLeaseAsyncpay
 	return _result, _err
 }
 
-/**
- * Description: 查询用户等加密信息，返回加密后的结果，用户自己进行解密。此接口为异步查询接口，建议间隔一段时间后再次查询获取结果
- * Summary: 查询用户等加密信息
- */
+// Description:
+//
+// Description: 查询用户等加密信息，返回加密后的结果，用户自己进行解密。此接口为异步查询接口，建议间隔一段时间后再次查询获取结果
+//
+// Summary: 查询用户等加密信息
 func (client *Client) QueryLeaseAsyncencryptedinfo(request *QueryLeaseAsyncencryptedinfoRequest) (_result *QueryLeaseAsyncencryptedinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60279,10 +63664,11 @@ func (client *Client) QueryLeaseAsyncencryptedinfo(request *QueryLeaseAsyncencry
 	return _result, _err
 }
 
-/**
- * Description: 查询用户等加密信息，返回加密后的结果，用户自己进行解密。此接口为异步查询接口，建议间隔一段时间后再次查询获取结果
- * Summary: 查询用户等加密信息
- */
+// Description:
+//
+// Description: 查询用户等加密信息，返回加密后的结果，用户自己进行解密。此接口为异步查询接口，建议间隔一段时间后再次查询获取结果
+//
+// Summary: 查询用户等加密信息
 func (client *Client) QueryLeaseAsyncencryptedinfoEx(request *QueryLeaseAsyncencryptedinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseAsyncencryptedinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60297,10 +63683,11 @@ func (client *Client) QueryLeaseAsyncencryptedinfoEx(request *QueryLeaseAsyncenc
 	return _result, _err
 }
 
-/**
- * Description: 租赁异步调用上链结果回查
- * Summary: 租赁异步调用上链结果回查
- */
+// Description:
+//
+// Description: 租赁异步调用上链结果回查
+//
+// Summary: 租赁异步调用上链结果回查
 func (client *Client) QueryLeaseAsynccall(request *QueryLeaseAsynccallRequest) (_result *QueryLeaseAsynccallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60313,10 +63700,11 @@ func (client *Client) QueryLeaseAsynccall(request *QueryLeaseAsynccallRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 租赁异步调用上链结果回查
- * Summary: 租赁异步调用上链结果回查
- */
+// Description:
+//
+// Description: 租赁异步调用上链结果回查
+//
+// Summary: 租赁异步调用上链结果回查
 func (client *Client) QueryLeaseAsynccallEx(request *QueryLeaseAsynccallRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseAsynccallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60331,10 +63719,11 @@ func (client *Client) QueryLeaseAsynccallEx(request *QueryLeaseAsynccallRequest,
 	return _result, _err
 }
 
-/**
- * Description: 创建签署见证流程
- * Summary: 创建见证流程
- */
+// Description:
+//
+// Description: 创建签署见证流程
+//
+// Summary: 创建见证流程
 func (client *Client) CreateWitnessFlow(request *CreateWitnessFlowRequest) (_result *CreateWitnessFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60347,10 +63736,11 @@ func (client *Client) CreateWitnessFlow(request *CreateWitnessFlowRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 创建签署见证流程
- * Summary: 创建见证流程
- */
+// Description:
+//
+// Description: 创建签署见证流程
+//
+// Summary: 创建见证流程
 func (client *Client) CreateWitnessFlowEx(request *CreateWitnessFlowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateWitnessFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60365,10 +63755,11 @@ func (client *Client) CreateWitnessFlowEx(request *CreateWitnessFlowRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 保存见证流程快照数据
- * Summary: 保存见证流程快照数据
- */
+// Description:
+//
+// Description: 保存见证流程快照数据
+//
+// Summary: 保存见证流程快照数据
 func (client *Client) SaveWitnessSnapshot(request *SaveWitnessSnapshotRequest) (_result *SaveWitnessSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60381,10 +63772,11 @@ func (client *Client) SaveWitnessSnapshot(request *SaveWitnessSnapshotRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 保存见证流程快照数据
- * Summary: 保存见证流程快照数据
- */
+// Description:
+//
+// Description: 保存见证流程快照数据
+//
+// Summary: 保存见证流程快照数据
 func (client *Client) SaveWitnessSnapshotEx(request *SaveWitnessSnapshotRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SaveWitnessSnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60399,10 +63791,11 @@ func (client *Client) SaveWitnessSnapshotEx(request *SaveWitnessSnapshotRequest,
 	return _result, _err
 }
 
-/**
- * Description: 见证流程签署权限校验
- * Summary: 见证流程签署权限校验
- */
+// Description:
+//
+// Description: 见证流程签署权限校验
+//
+// Summary: 见证流程签署权限校验
 func (client *Client) CheckWitnessSignaccess(request *CheckWitnessSignaccessRequest) (_result *CheckWitnessSignaccessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60415,10 +63808,11 @@ func (client *Client) CheckWitnessSignaccess(request *CheckWitnessSignaccessRequ
 	return _result, _err
 }
 
-/**
- * Description: 见证流程签署权限校验
- * Summary: 见证流程签署权限校验
- */
+// Description:
+//
+// Description: 见证流程签署权限校验
+//
+// Summary: 见证流程签署权限校验
 func (client *Client) CheckWitnessSignaccessEx(request *CheckWitnessSignaccessRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckWitnessSignaccessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60433,10 +63827,11 @@ func (client *Client) CheckWitnessSignaccessEx(request *CheckWitnessSignaccessRe
 	return _result, _err
 }
 
-/**
- * Description: 见证流程签署
- * Summary: 见证流程签署
- */
+// Description:
+//
+// Description: 见证流程签署
+//
+// Summary: 见证流程签署
 func (client *Client) AuthWitnessFlow(request *AuthWitnessFlowRequest) (_result *AuthWitnessFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60449,10 +63844,11 @@ func (client *Client) AuthWitnessFlow(request *AuthWitnessFlowRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 见证流程签署
- * Summary: 见证流程签署
- */
+// Description:
+//
+// Description: 见证流程签署
+//
+// Summary: 见证流程签署
 func (client *Client) AuthWitnessFlowEx(request *AuthWitnessFlowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AuthWitnessFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60467,10 +63863,11 @@ func (client *Client) AuthWitnessFlowEx(request *AuthWitnessFlowRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 见证流程签署确认
- * Summary: 见证流程签署确认
- */
+// Description:
+//
+// Description: 见证流程签署确认
+//
+// Summary: 见证流程签署确认
 func (client *Client) ConfirmWitnessFlow(request *ConfirmWitnessFlowRequest) (_result *ConfirmWitnessFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60483,10 +63880,11 @@ func (client *Client) ConfirmWitnessFlow(request *ConfirmWitnessFlowRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 见证流程签署确认
- * Summary: 见证流程签署确认
- */
+// Description:
+//
+// Description: 见证流程签署确认
+//
+// Summary: 见证流程签署确认
 func (client *Client) ConfirmWitnessFlowEx(request *ConfirmWitnessFlowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ConfirmWitnessFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60501,10 +63899,11 @@ func (client *Client) ConfirmWitnessFlowEx(request *ConfirmWitnessFlowRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 获取存证事务ID
- * Summary: 获取存证事务ID
- */
+// Description:
+//
+// Description: 获取存证事务ID
+//
+// Summary: 获取存证事务ID
 func (client *Client) CreateTrans(request *CreateTransRequest) (_result *CreateTransResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60517,10 +63916,11 @@ func (client *Client) CreateTrans(request *CreateTransRequest) (_result *CreateT
 	return _result, _err
 }
 
-/**
- * Description: 获取存证事务ID
- * Summary: 获取存证事务ID
- */
+// Description:
+//
+// Description: 获取存证事务ID
+//
+// Summary: 获取存证事务ID
 func (client *Client) CreateTransEx(request *CreateTransRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTransResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60535,10 +63935,11 @@ func (client *Client) CreateTransEx(request *CreateTransRequest, headers map[str
 	return _result, _err
 }
 
-/**
- * Description: 通过存证事务Token，获取事务中所有的存证信息
- * Summary: 获取事务中所有的存证信息
- */
+// Description:
+//
+// Description: 通过存证事务Token，获取事务中所有的存证信息
+//
+// Summary: 获取事务中所有的存证信息
 func (client *Client) GetTrans(request *GetTransRequest) (_result *GetTransResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60551,10 +63952,11 @@ func (client *Client) GetTrans(request *GetTransRequest) (_result *GetTransRespo
 	return _result, _err
 }
 
-/**
- * Description: 通过存证事务Token，获取事务中所有的存证信息
- * Summary: 获取事务中所有的存证信息
- */
+// Description:
+//
+// Description: 通过存证事务Token，获取事务中所有的存证信息
+//
+// Summary: 获取事务中所有的存证信息
 func (client *Client) GetTransEx(request *GetTransRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTransResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60569,10 +63971,11 @@ func (client *Client) GetTransEx(request *GetTransRequest, headers map[string]*s
 	return _result, _err
 }
 
-/**
- * Description: 发起文本存证，将文本内容存证上链
- * Summary: 文本存证，将文本内容存证上链
- */
+// Description:
+//
+// Description: 发起文本存证，将文本内容存证上链
+//
+// Summary: 文本存证，将文本内容存证上链
 func (client *Client) CreateText(request *CreateTextRequest) (_result *CreateTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60585,10 +63988,11 @@ func (client *Client) CreateText(request *CreateTextRequest) (_result *CreateTex
 	return _result, _err
 }
 
-/**
- * Description: 发起文本存证，将文本内容存证上链
- * Summary: 文本存证，将文本内容存证上链
- */
+// Description:
+//
+// Description: 发起文本存证，将文本内容存证上链
+//
+// Summary: 文本存证，将文本内容存证上链
 func (client *Client) CreateTextEx(request *CreateTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60603,10 +64007,11 @@ func (client *Client) CreateTextEx(request *CreateTextRequest, headers map[strin
 	return _result, _err
 }
 
-/**
- * Description: 用户通过交易哈希获取自己上传的文本存证内容
- * Summary: 获取文本存证内容
- */
+// Description:
+//
+// Description: 用户通过交易哈希获取自己上传的文本存证内容
+//
+// Summary: 获取文本存证内容
 func (client *Client) GetText(request *GetTextRequest) (_result *GetTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60619,10 +64024,11 @@ func (client *Client) GetText(request *GetTextRequest) (_result *GetTextResponse
 	return _result, _err
 }
 
-/**
- * Description: 用户通过交易哈希获取自己上传的文本存证内容
- * Summary: 获取文本存证内容
- */
+// Description:
+//
+// Description: 用户通过交易哈希获取自己上传的文本存证内容
+//
+// Summary: 获取文本存证内容
 func (client *Client) GetTextEx(request *GetTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60637,10 +64043,11 @@ func (client *Client) GetTextEx(request *GetTextRequest, headers map[string]*str
 	return _result, _err
 }
 
-/**
- * Description: 发起文件存证，将文件内容存证上链
- * Summary: 文件内容存证上链
- */
+// Description:
+//
+// Description: 发起文件存证，将文件内容存证上链
+//
+// Summary: 文件内容存证上链
 func (client *Client) CreateFile(request *CreateFileRequest) (_result *CreateFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60653,10 +64060,11 @@ func (client *Client) CreateFile(request *CreateFileRequest) (_result *CreateFil
 	return _result, _err
 }
 
-/**
- * Description: 发起文件存证，将文件内容存证上链
- * Summary: 文件内容存证上链
- */
+// Description:
+//
+// Description: 发起文件存证，将文件内容存证上链
+//
+// Summary: 文件内容存证上链
 func (client *Client) CreateFileEx(request *CreateFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60671,10 +64079,11 @@ func (client *Client) CreateFileEx(request *CreateFileRequest, headers map[strin
 	return _result, _err
 }
 
-/**
- * Description: 用户通过交易哈希获取自己上传的文件存证oss下载地址
- * Summary: 获取文件存证oss下载地址
- */
+// Description:
+//
+// Description: 用户通过交易哈希获取自己上传的文件存证oss下载地址
+//
+// Summary: 获取文件存证oss下载地址
 func (client *Client) GetFile(request *GetFileRequest) (_result *GetFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60687,10 +64096,11 @@ func (client *Client) GetFile(request *GetFileRequest) (_result *GetFileResponse
 	return _result, _err
 }
 
-/**
- * Description: 用户通过交易哈希获取自己上传的文件存证oss下载地址
- * Summary: 获取文件存证oss下载地址
- */
+// Description:
+//
+// Description: 用户通过交易哈希获取自己上传的文件存证oss下载地址
+//
+// Summary: 获取文件存证oss下载地址
 func (client *Client) GetFileEx(request *GetFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60705,10 +64115,11 @@ func (client *Client) GetFileEx(request *GetFileRequest, headers map[string]*str
 	return _result, _err
 }
 
-/**
- * Description: 发起原文存证，将原文内容存证上链
- * Summary: 原文内容存证
- */
+// Description:
+//
+// Description: 发起原文存证，将原文内容存证上链
+//
+// Summary: 原文内容存证
 func (client *Client) CreateSource(request *CreateSourceRequest) (_result *CreateSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60721,10 +64132,11 @@ func (client *Client) CreateSource(request *CreateSourceRequest) (_result *Creat
 	return _result, _err
 }
 
-/**
- * Description: 发起原文存证，将原文内容存证上链
- * Summary: 原文内容存证
- */
+// Description:
+//
+// Description: 发起原文存证，将原文内容存证上链
+//
+// Summary: 原文内容存证
 func (client *Client) CreateSourceEx(request *CreateSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60739,10 +64151,11 @@ func (client *Client) CreateSourceEx(request *CreateSourceRequest, headers map[s
 	return _result, _err
 }
 
-/**
- * Description: 用户通过交易哈希获取自己上传的原文存证oss下载地址
- * Summary: 获取原文存证oss下载地址
- */
+// Description:
+//
+// Description: 用户通过交易哈希获取自己上传的原文存证oss下载地址
+//
+// Summary: 获取原文存证oss下载地址
 func (client *Client) GetSource(request *GetSourceRequest) (_result *GetSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60755,10 +64168,11 @@ func (client *Client) GetSource(request *GetSourceRequest) (_result *GetSourceRe
 	return _result, _err
 }
 
-/**
- * Description: 用户通过交易哈希获取自己上传的原文存证oss下载地址
- * Summary: 获取原文存证oss下载地址
- */
+// Description:
+//
+// Description: 用户通过交易哈希获取自己上传的原文存证oss下载地址
+//
+// Summary: 获取原文存证oss下载地址
 func (client *Client) GetSourceEx(request *GetSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60773,10 +64187,11 @@ func (client *Client) GetSourceEx(request *GetSourceRequest, headers map[string]
 	return _result, _err
 }
 
-/**
- * Description: 创建存证后，使用存证凭据核验存证状态。
- * Summary: 存证内容核验
- */
+// Description:
+//
+// Description: 创建存证后，使用存证凭据核验存证状态。
+//
+// Summary: 存证内容核验
 func (client *Client) CheckStatus(request *CheckStatusRequest) (_result *CheckStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60789,10 +64204,11 @@ func (client *Client) CheckStatus(request *CheckStatusRequest) (_result *CheckSt
 	return _result, _err
 }
 
-/**
- * Description: 创建存证后，使用存证凭据核验存证状态。
- * Summary: 存证内容核验
- */
+// Description:
+//
+// Description: 创建存证后，使用存证凭据核验存证状态。
+//
+// Summary: 存证内容核验
 func (client *Client) CheckStatusEx(request *CheckStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60807,10 +64223,11 @@ func (client *Client) CheckStatusEx(request *CheckStatusRequest, headers map[str
 	return _result, _err
 }
 
-/**
- * Description: 融资服务平台部署合约
- * Summary: 融资服务平台部署合约
- */
+// Description:
+//
+// Description: 融资服务平台部署合约
+//
+// Summary: 融资服务平台部署合约
 func (client *Client) DeployLeaseContract(request *DeployLeaseContractRequest) (_result *DeployLeaseContractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60823,10 +64240,11 @@ func (client *Client) DeployLeaseContract(request *DeployLeaseContractRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 融资服务平台部署合约
- * Summary: 融资服务平台部署合约
- */
+// Description:
+//
+// Description: 融资服务平台部署合约
+//
+// Summary: 融资服务平台部署合约
 func (client *Client) DeployLeaseContractEx(request *DeployLeaseContractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeployLeaseContractResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60841,10 +64259,11 @@ func (client *Client) DeployLeaseContractEx(request *DeployLeaseContractRequest,
 	return _result, _err
 }
 
-/**
- * Description: 租赁服务平台授权融资服务平台
- * Summary: 租赁服务平台授权融资服务平台
- */
+// Description:
+//
+// Description: 租赁服务平台授权融资服务平台
+//
+// Summary: 租赁服务平台授权融资服务平台
 func (client *Client) AuthLeaseContract(request *AuthLeaseContractRequest) (_result *AuthLeaseContractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60857,10 +64276,11 @@ func (client *Client) AuthLeaseContract(request *AuthLeaseContractRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 租赁服务平台授权融资服务平台
- * Summary: 租赁服务平台授权融资服务平台
- */
+// Description:
+//
+// Description: 租赁服务平台授权融资服务平台
+//
+// Summary: 租赁服务平台授权融资服务平台
 func (client *Client) AuthLeaseContractEx(request *AuthLeaseContractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AuthLeaseContractResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60875,10 +64295,11 @@ func (client *Client) AuthLeaseContractEx(request *AuthLeaseContractRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 租赁服务平台上传用户信息
- * Summary: 租赁服务平台上传用户信息
- */
+// Description:
+//
+// Description: 租赁服务平台上传用户信息
+//
+// Summary: 租赁服务平台上传用户信息
 func (client *Client) CreateLeaseUserinfo(request *CreateLeaseUserinfoRequest) (_result *CreateLeaseUserinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60891,10 +64312,11 @@ func (client *Client) CreateLeaseUserinfo(request *CreateLeaseUserinfoRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 租赁服务平台上传用户信息
- * Summary: 租赁服务平台上传用户信息
- */
+// Description:
+//
+// Description: 租赁服务平台上传用户信息
+//
+// Summary: 租赁服务平台上传用户信息
 func (client *Client) CreateLeaseUserinfoEx(request *CreateLeaseUserinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseUserinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60909,10 +64331,11 @@ func (client *Client) CreateLeaseUserinfoEx(request *CreateLeaseUserinfoRequest,
 	return _result, _err
 }
 
-/**
- * Description: 租赁服务平台上传订单产品/服务信息
- * Summary: 租赁服务平台上传订单产品/服务信息
- */
+// Description:
+//
+// Description: 租赁服务平台上传订单产品/服务信息
+//
+// Summary: 租赁服务平台上传订单产品/服务信息
 func (client *Client) CreateLeaseOrderinfo(request *CreateLeaseOrderinfoRequest) (_result *CreateLeaseOrderinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60925,10 +64348,11 @@ func (client *Client) CreateLeaseOrderinfo(request *CreateLeaseOrderinfoRequest)
 	return _result, _err
 }
 
-/**
- * Description: 租赁服务平台上传订单产品/服务信息
- * Summary: 租赁服务平台上传订单产品/服务信息
- */
+// Description:
+//
+// Description: 租赁服务平台上传订单产品/服务信息
+//
+// Summary: 租赁服务平台上传订单产品/服务信息
 func (client *Client) CreateLeaseOrderinfoEx(request *CreateLeaseOrderinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseOrderinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60943,10 +64367,11 @@ func (client *Client) CreateLeaseOrderinfoEx(request *CreateLeaseOrderinfoReques
 	return _result, _err
 }
 
-/**
- * Description: 租赁服务平台上传承诺信息
- * Summary: 租赁服务平台上传承诺信息
- */
+// Description:
+//
+// Description: 租赁服务平台上传承诺信息
+//
+// Summary: 租赁服务平台上传承诺信息
 func (client *Client) CreateLeasePromise(request *CreateLeasePromiseRequest) (_result *CreateLeasePromiseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60959,10 +64384,11 @@ func (client *Client) CreateLeasePromise(request *CreateLeasePromiseRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 租赁服务平台上传承诺信息
- * Summary: 租赁服务平台上传承诺信息
- */
+// Description:
+//
+// Description: 租赁服务平台上传承诺信息
+//
+// Summary: 租赁服务平台上传承诺信息
 func (client *Client) CreateLeasePromiseEx(request *CreateLeasePromiseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeasePromiseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60977,10 +64403,11 @@ func (client *Client) CreateLeasePromiseEx(request *CreateLeasePromiseRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 融资平台上传租赁物购买贷款订单信息
- * Summary: 融资平台上传租赁物购买贷款订单信息
- */
+// Description:
+//
+// Description: 融资平台上传租赁物购买贷款订单信息
+//
+// Summary: 融资平台上传租赁物购买贷款订单信息
 func (client *Client) CreateLeaseVerifyinfo(request *CreateLeaseVerifyinfoRequest) (_result *CreateLeaseVerifyinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -60993,10 +64420,11 @@ func (client *Client) CreateLeaseVerifyinfo(request *CreateLeaseVerifyinfoReques
 	return _result, _err
 }
 
-/**
- * Description: 融资平台上传租赁物购买贷款订单信息
- * Summary: 融资平台上传租赁物购买贷款订单信息
- */
+// Description:
+//
+// Description: 融资平台上传租赁物购买贷款订单信息
+//
+// Summary: 融资平台上传租赁物购买贷款订单信息
 func (client *Client) CreateLeaseVerifyinfoEx(request *CreateLeaseVerifyinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseVerifyinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61011,10 +64439,11 @@ func (client *Client) CreateLeaseVerifyinfoEx(request *CreateLeaseVerifyinfoRequ
 	return _result, _err
 }
 
-/**
- * Description: 融资方上传承诺信息
- * Summary: 融资方上传承诺信息
- */
+// Description:
+//
+// Description: 融资方上传承诺信息
+//
+// Summary: 融资方上传承诺信息
 func (client *Client) CreateLeaseCreditpromise(request *CreateLeaseCreditpromiseRequest) (_result *CreateLeaseCreditpromiseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61027,10 +64456,11 @@ func (client *Client) CreateLeaseCreditpromise(request *CreateLeaseCreditpromise
 	return _result, _err
 }
 
-/**
- * Description: 融资方上传承诺信息
- * Summary: 融资方上传承诺信息
- */
+// Description:
+//
+// Description: 融资方上传承诺信息
+//
+// Summary: 融资方上传承诺信息
 func (client *Client) CreateLeaseCreditpromiseEx(request *CreateLeaseCreditpromiseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseCreditpromiseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61045,10 +64475,11 @@ func (client *Client) CreateLeaseCreditpromiseEx(request *CreateLeaseCreditpromi
 	return _result, _err
 }
 
-/**
- * Description: 租赁平台上传支用/还款信息
- * Summary: 租赁平台上传支用/还款信息
- */
+// Description:
+//
+// Description: 租赁平台上传支用/还款信息
+//
+// Summary: 租赁平台上传支用/还款信息
 func (client *Client) CreateLeaseDisburseinfo(request *CreateLeaseDisburseinfoRequest) (_result *CreateLeaseDisburseinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61061,10 +64492,11 @@ func (client *Client) CreateLeaseDisburseinfo(request *CreateLeaseDisburseinfoRe
 	return _result, _err
 }
 
-/**
- * Description: 租赁平台上传支用/还款信息
- * Summary: 租赁平台上传支用/还款信息
- */
+// Description:
+//
+// Description: 租赁平台上传支用/还款信息
+//
+// Summary: 租赁平台上传支用/还款信息
 func (client *Client) CreateLeaseDisburseinfoEx(request *CreateLeaseDisburseinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseDisburseinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61079,10 +64511,11 @@ func (client *Client) CreateLeaseDisburseinfoEx(request *CreateLeaseDisburseinfo
 	return _result, _err
 }
 
-/**
- * Description:  查询订单详细信息
- * Summary:  查询订单详细信息
- */
+// Description:
+//
+// Description:  查询订单详细信息
+//
+// Summary:  查询订单详细信息
 func (client *Client) QueryLeaseOrderinfo(request *QueryLeaseOrderinfoRequest) (_result *QueryLeaseOrderinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61095,10 +64528,11 @@ func (client *Client) QueryLeaseOrderinfo(request *QueryLeaseOrderinfoRequest) (
 	return _result, _err
 }
 
-/**
- * Description:  查询订单详细信息
- * Summary:  查询订单详细信息
- */
+// Description:
+//
+// Description:  查询订单详细信息
+//
+// Summary:  查询订单详细信息
 func (client *Client) QueryLeaseOrderinfoEx(request *QueryLeaseOrderinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseOrderinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61113,10 +64547,11 @@ func (client *Client) QueryLeaseOrderinfoEx(request *QueryLeaseOrderinfoRequest,
 	return _result, _err
 }
 
-/**
- * Description: 创建金融行业标准文本存证
- * Summary: 创建金融行业文本存证
- */
+// Description:
+//
+// Description: 创建金融行业标准文本存证
+//
+// Summary: 创建金融行业文本存证
 func (client *Client) CreateFinanceTextnotary(request *CreateFinanceTextnotaryRequest) (_result *CreateFinanceTextnotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61129,10 +64564,11 @@ func (client *Client) CreateFinanceTextnotary(request *CreateFinanceTextnotaryRe
 	return _result, _err
 }
 
-/**
- * Description: 创建金融行业标准文本存证
- * Summary: 创建金融行业文本存证
- */
+// Description:
+//
+// Description: 创建金融行业标准文本存证
+//
+// Summary: 创建金融行业文本存证
 func (client *Client) CreateFinanceTextnotaryEx(request *CreateFinanceTextnotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFinanceTextnotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61147,10 +64583,11 @@ func (client *Client) CreateFinanceTextnotaryEx(request *CreateFinanceTextnotary
 	return _result, _err
 }
 
-/**
- * Description: 获取金融行业文本存证接口描述
- * Summary: 获取金融行业文本存证
- */
+// Description:
+//
+// Description: 获取金融行业文本存证接口描述
+//
+// Summary: 获取金融行业文本存证
 func (client *Client) GetFinanceTextnotary(request *GetFinanceTextnotaryRequest) (_result *GetFinanceTextnotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61163,10 +64600,11 @@ func (client *Client) GetFinanceTextnotary(request *GetFinanceTextnotaryRequest)
 	return _result, _err
 }
 
-/**
- * Description: 获取金融行业文本存证接口描述
- * Summary: 获取金融行业文本存证
- */
+// Description:
+//
+// Description: 获取金融行业文本存证接口描述
+//
+// Summary: 获取金融行业文本存证
 func (client *Client) GetFinanceTextnotaryEx(request *GetFinanceTextnotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFinanceTextnotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61181,10 +64619,11 @@ func (client *Client) GetFinanceTextnotaryEx(request *GetFinanceTextnotaryReques
 	return _result, _err
 }
 
-/**
- * Description: 创建金融行业文件存证接口描述
- * Summary: 创建金融行业文件存证
- */
+// Description:
+//
+// Description: 创建金融行业文件存证接口描述
+//
+// Summary: 创建金融行业文件存证
 func (client *Client) CreateFinanceFilenotary(request *CreateFinanceFilenotaryRequest) (_result *CreateFinanceFilenotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61197,10 +64636,11 @@ func (client *Client) CreateFinanceFilenotary(request *CreateFinanceFilenotaryRe
 	return _result, _err
 }
 
-/**
- * Description: 创建金融行业文件存证接口描述
- * Summary: 创建金融行业文件存证
- */
+// Description:
+//
+// Description: 创建金融行业文件存证接口描述
+//
+// Summary: 创建金融行业文件存证
 func (client *Client) CreateFinanceFilenotaryEx(request *CreateFinanceFilenotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFinanceFilenotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61215,10 +64655,11 @@ func (client *Client) CreateFinanceFilenotaryEx(request *CreateFinanceFilenotary
 	return _result, _err
 }
 
-/**
- * Description: 获取金融行业文件存证接口描述
- * Summary: 获取金融行业文件存证
- */
+// Description:
+//
+// Description: 获取金融行业文件存证接口描述
+//
+// Summary: 获取金融行业文件存证
 func (client *Client) GetFinanceFilenotary(request *GetFinanceFilenotaryRequest) (_result *GetFinanceFilenotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61231,10 +64672,11 @@ func (client *Client) GetFinanceFilenotary(request *GetFinanceFilenotaryRequest)
 	return _result, _err
 }
 
-/**
- * Description: 获取金融行业文件存证接口描述
- * Summary: 获取金融行业文件存证
- */
+// Description:
+//
+// Description: 获取金融行业文件存证接口描述
+//
+// Summary: 获取金融行业文件存证
 func (client *Client) GetFinanceFilenotaryEx(request *GetFinanceFilenotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFinanceFilenotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61249,10 +64691,11 @@ func (client *Client) GetFinanceFilenotaryEx(request *GetFinanceFilenotaryReques
 	return _result, _err
 }
 
-/**
- * Description: 统一存证核验接口
- * Summary: 统一存证核验接口（已下架）
- */
+// Description:
+//
+// Description: 统一存证核验接口
+//
+// Summary: 统一存证核验接口（已下架）
 func (client *Client) CheckIndustryNotary(request *CheckIndustryNotaryRequest) (_result *CheckIndustryNotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61265,10 +64708,11 @@ func (client *Client) CheckIndustryNotary(request *CheckIndustryNotaryRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 统一存证核验接口
- * Summary: 统一存证核验接口（已下架）
- */
+// Description:
+//
+// Description: 统一存证核验接口
+//
+// Summary: 统一存证核验接口（已下架）
 func (client *Client) CheckIndustryNotaryEx(request *CheckIndustryNotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckIndustryNotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61283,10 +64727,11 @@ func (client *Client) CheckIndustryNotaryEx(request *CheckIndustryNotaryRequest,
 	return _result, _err
 }
 
-/**
- * Description: 违约案件信息提交服务
- * Summary: 违约案件信息提交服务
- */
+// Description:
+//
+// Description: 违约案件信息提交服务
+//
+// Summary: 违约案件信息提交服务
 func (client *Client) CreateSueBreakpromiseinfo(request *CreateSueBreakpromiseinfoRequest) (_result *CreateSueBreakpromiseinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61299,10 +64744,11 @@ func (client *Client) CreateSueBreakpromiseinfo(request *CreateSueBreakpromisein
 	return _result, _err
 }
 
-/**
- * Description: 违约案件信息提交服务
- * Summary: 违约案件信息提交服务
- */
+// Description:
+//
+// Description: 违约案件信息提交服务
+//
+// Summary: 违约案件信息提交服务
 func (client *Client) CreateSueBreakpromiseinfoEx(request *CreateSueBreakpromiseinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSueBreakpromiseinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61317,10 +64763,11 @@ func (client *Client) CreateSueBreakpromiseinfoEx(request *CreateSueBreakpromise
 	return _result, _err
 }
 
-/**
- * Description: 违约案件信息修改服务
- * Summary: 违约案件信息修改服务
- */
+// Description:
+//
+// Description: 违约案件信息修改服务
+//
+// Summary: 违约案件信息修改服务
 func (client *Client) UpdateSueBreakpromiseinfo(request *UpdateSueBreakpromiseinfoRequest) (_result *UpdateSueBreakpromiseinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61333,10 +64780,11 @@ func (client *Client) UpdateSueBreakpromiseinfo(request *UpdateSueBreakpromisein
 	return _result, _err
 }
 
-/**
- * Description: 违约案件信息修改服务
- * Summary: 违约案件信息修改服务
- */
+// Description:
+//
+// Description: 违约案件信息修改服务
+//
+// Summary: 违约案件信息修改服务
 func (client *Client) UpdateSueBreakpromiseinfoEx(request *UpdateSueBreakpromiseinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSueBreakpromiseinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61351,10 +64799,11 @@ func (client *Client) UpdateSueBreakpromiseinfoEx(request *UpdateSueBreakpromise
 	return _result, _err
 }
 
-/**
- * Description: 违约案件信息删除服务
- * Summary: 违约案件信息删除服务
- */
+// Description:
+//
+// Description: 违约案件信息删除服务
+//
+// Summary: 违约案件信息删除服务
 func (client *Client) DeleteSueBreakpromiseinfo(request *DeleteSueBreakpromiseinfoRequest) (_result *DeleteSueBreakpromiseinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61367,10 +64816,11 @@ func (client *Client) DeleteSueBreakpromiseinfo(request *DeleteSueBreakpromisein
 	return _result, _err
 }
 
-/**
- * Description: 违约案件信息删除服务
- * Summary: 违约案件信息删除服务
- */
+// Description:
+//
+// Description: 违约案件信息删除服务
+//
+// Summary: 违约案件信息删除服务
 func (client *Client) DeleteSueBreakpromiseinfoEx(request *DeleteSueBreakpromiseinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSueBreakpromiseinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61385,10 +64835,11 @@ func (client *Client) DeleteSueBreakpromiseinfoEx(request *DeleteSueBreakpromise
 	return _result, _err
 }
 
-/**
- * Description: 查询惩戒信息
- * Summary: 查询惩戒信息
- */
+// Description:
+//
+// Description: 查询惩戒信息
+//
+// Summary: 查询惩戒信息
 func (client *Client) QuerySueUserinfo(request *QuerySueUserinfoRequest) (_result *QuerySueUserinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61401,10 +64852,11 @@ func (client *Client) QuerySueUserinfo(request *QuerySueUserinfoRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 查询惩戒信息
- * Summary: 查询惩戒信息
- */
+// Description:
+//
+// Description: 查询惩戒信息
+//
+// Summary: 查询惩戒信息
 func (client *Client) QuerySueUserinfoEx(request *QuerySueUserinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QuerySueUserinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61419,10 +64871,11 @@ func (client *Client) QuerySueUserinfoEx(request *QuerySueUserinfoRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 升级用户管理合约
- * Summary: 升级用户管理合约
- */
+// Description:
+//
+// Description: 升级用户管理合约
+//
+// Summary: 升级用户管理合约
 func (client *Client) UpdateSueExeplarycontract(request *UpdateSueExeplarycontractRequest) (_result *UpdateSueExeplarycontractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61435,10 +64888,11 @@ func (client *Client) UpdateSueExeplarycontract(request *UpdateSueExeplarycontra
 	return _result, _err
 }
 
-/**
- * Description: 升级用户管理合约
- * Summary: 升级用户管理合约
- */
+// Description:
+//
+// Description: 升级用户管理合约
+//
+// Summary: 升级用户管理合约
 func (client *Client) UpdateSueExeplarycontractEx(request *UpdateSueExeplarycontractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSueExeplarycontractResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61453,10 +64907,11 @@ func (client *Client) UpdateSueExeplarycontractEx(request *UpdateSueExeplarycont
 	return _result, _err
 }
 
-/**
- * Description: 回退用户管理合约
- * Summary: 回退用户管理合约
- */
+// Description:
+//
+// Description: 回退用户管理合约
+//
+// Summary: 回退用户管理合约
 func (client *Client) UpdateSueExemplaryrevert(request *UpdateSueExemplaryrevertRequest) (_result *UpdateSueExemplaryrevertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61469,10 +64924,11 @@ func (client *Client) UpdateSueExemplaryrevert(request *UpdateSueExemplaryrevert
 	return _result, _err
 }
 
-/**
- * Description: 回退用户管理合约
- * Summary: 回退用户管理合约
- */
+// Description:
+//
+// Description: 回退用户管理合约
+//
+// Summary: 回退用户管理合约
 func (client *Client) UpdateSueExemplaryrevertEx(request *UpdateSueExemplaryrevertRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSueExemplaryrevertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61487,10 +64943,11 @@ func (client *Client) UpdateSueExemplaryrevertEx(request *UpdateSueExemplaryreve
 	return _result, _err
 }
 
-/**
- * Description: 融资平台审核订单信息
- * Summary: 融资平台审核订单信息
- */
+// Description:
+//
+// Description: 融资平台审核订单信息
+//
+// Summary: 融资平台审核订单信息
 func (client *Client) CreateLeaseAudit(request *CreateLeaseAuditRequest) (_result *CreateLeaseAuditResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61503,10 +64960,11 @@ func (client *Client) CreateLeaseAudit(request *CreateLeaseAuditRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 融资平台审核订单信息
- * Summary: 融资平台审核订单信息
- */
+// Description:
+//
+// Description: 融资平台审核订单信息
+//
+// Summary: 融资平台审核订单信息
 func (client *Client) CreateLeaseAuditEx(request *CreateLeaseAuditRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseAuditResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61521,10 +64979,11 @@ func (client *Client) CreateLeaseAuditEx(request *CreateLeaseAuditRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 租赁平台上传付款通知信息
- * Summary: 租赁平台上传付款通知信息
- */
+// Description:
+//
+// Description: 租赁平台上传付款通知信息
+//
+// Summary: 租赁平台上传付款通知信息
 func (client *Client) CreateLeasePaymentfile(request *CreateLeasePaymentfileRequest) (_result *CreateLeasePaymentfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61537,10 +64996,11 @@ func (client *Client) CreateLeasePaymentfile(request *CreateLeasePaymentfileRequ
 	return _result, _err
 }
 
-/**
- * Description: 租赁平台上传付款通知信息
- * Summary: 租赁平台上传付款通知信息
- */
+// Description:
+//
+// Description: 租赁平台上传付款通知信息
+//
+// Summary: 租赁平台上传付款通知信息
 func (client *Client) CreateLeasePaymentfileEx(request *CreateLeasePaymentfileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeasePaymentfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61555,10 +65015,11 @@ func (client *Client) CreateLeasePaymentfileEx(request *CreateLeasePaymentfileRe
 	return _result, _err
 }
 
-/**
- * Description: 租赁系统上传租金归还记录 分期调用
- * Summary: 租赁系统上传租金归还记录 分期调用
- */
+// Description:
+//
+// Description: 租赁系统上传租金归还记录 分期调用
+//
+// Summary: 租赁系统上传租金归还记录 分期调用
 func (client *Client) CreateLeaseRental(request *CreateLeaseRentalRequest) (_result *CreateLeaseRentalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61571,10 +65032,11 @@ func (client *Client) CreateLeaseRental(request *CreateLeaseRentalRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 租赁系统上传租金归还记录 分期调用
- * Summary: 租赁系统上传租金归还记录 分期调用
- */
+// Description:
+//
+// Description: 租赁系统上传租金归还记录 分期调用
+//
+// Summary: 租赁系统上传租金归还记录 分期调用
 func (client *Client) CreateLeaseRentalEx(request *CreateLeaseRentalRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseRentalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61589,10 +65051,11 @@ func (client *Client) CreateLeaseRentalEx(request *CreateLeaseRentalRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 清分服务机构上传资金清算记录，分期
- * Summary: 清分服务机构上传资金清算记录，分期
- */
+// Description:
+//
+// Description: 清分服务机构上传资金清算记录，分期
+//
+// Summary: 清分服务机构上传资金清算记录，分期
 func (client *Client) CreateLeaseClearing(request *CreateLeaseClearingRequest) (_result *CreateLeaseClearingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61605,10 +65068,11 @@ func (client *Client) CreateLeaseClearing(request *CreateLeaseClearingRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 清分服务机构上传资金清算记录，分期
- * Summary: 清分服务机构上传资金清算记录，分期
- */
+// Description:
+//
+// Description: 清分服务机构上传资金清算记录，分期
+//
+// Summary: 清分服务机构上传资金清算记录，分期
 func (client *Client) CreateLeaseClearingEx(request *CreateLeaseClearingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseClearingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61623,10 +65087,11 @@ func (client *Client) CreateLeaseClearingEx(request *CreateLeaseClearingRequest,
 	return _result, _err
 }
 
-/**
- * Description: 融资金融机构上传还款信息 每期
- * Summary: 融资金融机构上传还款信息 每期
- */
+// Description:
+//
+// Description: 融资金融机构上传还款信息 每期
+//
+// Summary: 融资金融机构上传还款信息 每期
 func (client *Client) CreateLeaseRepayment(request *CreateLeaseRepaymentRequest) (_result *CreateLeaseRepaymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61639,10 +65104,11 @@ func (client *Client) CreateLeaseRepayment(request *CreateLeaseRepaymentRequest)
 	return _result, _err
 }
 
-/**
- * Description: 融资金融机构上传还款信息 每期
- * Summary: 融资金融机构上传还款信息 每期
- */
+// Description:
+//
+// Description: 融资金融机构上传还款信息 每期
+//
+// Summary: 融资金融机构上传还款信息 每期
 func (client *Client) CreateLeaseRepaymentEx(request *CreateLeaseRepaymentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseRepaymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61657,10 +65123,11 @@ func (client *Client) CreateLeaseRepaymentEx(request *CreateLeaseRepaymentReques
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁通知系统注册
- * Summary: 融资租赁通知系统注册
- */
+// Description:
+//
+// Description: 融资租赁通知系统注册
+//
+// Summary: 融资租赁通知系统注册
 func (client *Client) CreateLeaseNotifyregister(request *CreateLeaseNotifyregisterRequest) (_result *CreateLeaseNotifyregisterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61673,10 +65140,11 @@ func (client *Client) CreateLeaseNotifyregister(request *CreateLeaseNotifyregist
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁通知系统注册
- * Summary: 融资租赁通知系统注册
- */
+// Description:
+//
+// Description: 融资租赁通知系统注册
+//
+// Summary: 融资租赁通知系统注册
 func (client *Client) CreateLeaseNotifyregisterEx(request *CreateLeaseNotifyregisterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseNotifyregisterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61691,10 +65159,11 @@ func (client *Client) CreateLeaseNotifyregisterEx(request *CreateLeaseNotifyregi
 	return _result, _err
 }
 
-/**
- * Description: 根据imeiID查询iot设备的详情
- * Summary: 根据imeiID查询iot设备的详情
- */
+// Description:
+//
+// Description: 根据imeiID查询iot设备的详情
+//
+// Summary: 根据imeiID查询iot设备的详情
 func (client *Client) QueryLeaseIotinfo(request *QueryLeaseIotinfoRequest) (_result *QueryLeaseIotinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61707,10 +65176,11 @@ func (client *Client) QueryLeaseIotinfo(request *QueryLeaseIotinfoRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 根据imeiID查询iot设备的详情
- * Summary: 根据imeiID查询iot设备的详情
- */
+// Description:
+//
+// Description: 根据imeiID查询iot设备的详情
+//
+// Summary: 根据imeiID查询iot设备的详情
 func (client *Client) QueryLeaseIotinfoEx(request *QueryLeaseIotinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseIotinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61725,10 +65195,11 @@ func (client *Client) QueryLeaseIotinfoEx(request *QueryLeaseIotinfoRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 创建法院通用文本存证
- * Summary: 法院通用文本存证创建接口
- */
+// Description:
+//
+// Description: 创建法院通用文本存证
+//
+// Summary: 法院通用文本存证创建接口
 func (client *Client) CreateCourtTextnotary(request *CreateCourtTextnotaryRequest) (_result *CreateCourtTextnotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61741,10 +65212,11 @@ func (client *Client) CreateCourtTextnotary(request *CreateCourtTextnotaryReques
 	return _result, _err
 }
 
-/**
- * Description: 创建法院通用文本存证
- * Summary: 法院通用文本存证创建接口
- */
+// Description:
+//
+// Description: 创建法院通用文本存证
+//
+// Summary: 法院通用文本存证创建接口
 func (client *Client) CreateCourtTextnotaryEx(request *CreateCourtTextnotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCourtTextnotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61759,10 +65231,11 @@ func (client *Client) CreateCourtTextnotaryEx(request *CreateCourtTextnotaryRequ
 	return _result, _err
 }
 
-/**
- * Description: 获取法院通用文本存证
- * Summary: 法院通用文本存证获取接口
- */
+// Description:
+//
+// Description: 获取法院通用文本存证
+//
+// Summary: 法院通用文本存证获取接口
 func (client *Client) GetCourtTextnotary(request *GetCourtTextnotaryRequest) (_result *GetCourtTextnotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61775,10 +65248,11 @@ func (client *Client) GetCourtTextnotary(request *GetCourtTextnotaryRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 获取法院通用文本存证
- * Summary: 法院通用文本存证获取接口
- */
+// Description:
+//
+// Description: 获取法院通用文本存证
+//
+// Summary: 法院通用文本存证获取接口
 func (client *Client) GetCourtTextnotaryEx(request *GetCourtTextnotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCourtTextnotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61793,10 +65267,11 @@ func (client *Client) GetCourtTextnotaryEx(request *GetCourtTextnotaryRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 创建法院通用文件存证接口
- * Summary: 法院通用文件存证创建接口
- */
+// Description:
+//
+// Description: 创建法院通用文件存证接口
+//
+// Summary: 法院通用文件存证创建接口
 func (client *Client) CreateCourtFilenotary(request *CreateCourtFilenotaryRequest) (_result *CreateCourtFilenotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61809,10 +65284,11 @@ func (client *Client) CreateCourtFilenotary(request *CreateCourtFilenotaryReques
 	return _result, _err
 }
 
-/**
- * Description: 创建法院通用文件存证接口
- * Summary: 法院通用文件存证创建接口
- */
+// Description:
+//
+// Description: 创建法院通用文件存证接口
+//
+// Summary: 法院通用文件存证创建接口
 func (client *Client) CreateCourtFilenotaryEx(request *CreateCourtFilenotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCourtFilenotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61827,10 +65303,11 @@ func (client *Client) CreateCourtFilenotaryEx(request *CreateCourtFilenotaryRequ
 	return _result, _err
 }
 
-/**
- * Description: 获取法院通用文件存证
- * Summary: 法院通用文件存证获取接口
- */
+// Description:
+//
+// Description: 获取法院通用文件存证
+//
+// Summary: 法院通用文件存证获取接口
 func (client *Client) GetCourtFilenotary(request *GetCourtFilenotaryRequest) (_result *GetCourtFilenotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61843,10 +65320,11 @@ func (client *Client) GetCourtFilenotary(request *GetCourtFilenotaryRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 获取法院通用文件存证
- * Summary: 法院通用文件存证获取接口
- */
+// Description:
+//
+// Description: 获取法院通用文件存证
+//
+// Summary: 法院通用文件存证获取接口
 func (client *Client) GetCourtFilenotaryEx(request *GetCourtFilenotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCourtFilenotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61861,10 +65339,11 @@ func (client *Client) GetCourtFilenotaryEx(request *GetCourtFilenotaryRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁定制化统一入口
- * Summary: 融资租赁定制化统一入口
- */
+// Description:
+//
+// Description: 融资租赁定制化统一入口
+//
+// Summary: 融资租赁定制化统一入口
 func (client *Client) CreateLeaseRoute(request *CreateLeaseRouteRequest) (_result *CreateLeaseRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61877,10 +65356,11 @@ func (client *Client) CreateLeaseRoute(request *CreateLeaseRouteRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁定制化统一入口
- * Summary: 融资租赁定制化统一入口
- */
+// Description:
+//
+// Description: 融资租赁定制化统一入口
+//
+// Summary: 融资租赁定制化统一入口
 func (client *Client) CreateLeaseRouteEx(request *CreateLeaseRouteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61895,10 +65375,11 @@ func (client *Client) CreateLeaseRouteEx(request *CreateLeaseRouteRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 查询用户等加密信息，返回加密后的结果，用户自己进行解密
- * Summary: 查询用户等加密信息
- */
+// Description:
+//
+// Description: 查询用户等加密信息，返回加密后的结果，用户自己进行解密
+//
+// Summary: 查询用户等加密信息
 func (client *Client) QueryLeaseEncryptedinfo(request *QueryLeaseEncryptedinfoRequest) (_result *QueryLeaseEncryptedinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61911,10 +65392,11 @@ func (client *Client) QueryLeaseEncryptedinfo(request *QueryLeaseEncryptedinfoRe
 	return _result, _err
 }
 
-/**
- * Description: 查询用户等加密信息，返回加密后的结果，用户自己进行解密
- * Summary: 查询用户等加密信息
- */
+// Description:
+//
+// Description: 查询用户等加密信息，返回加密后的结果，用户自己进行解密
+//
+// Summary: 查询用户等加密信息
 func (client *Client) QueryLeaseEncryptedinfoEx(request *QueryLeaseEncryptedinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseEncryptedinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61929,10 +65411,11 @@ func (client *Client) QueryLeaseEncryptedinfoEx(request *QueryLeaseEncryptedinfo
 	return _result, _err
 }
 
-/**
- * Description: 电子合同文本存证
- * Summary: 电子合同文本存证
- */
+// Description:
+//
+// Description: 电子合同文本存证
+//
+// Summary: 电子合同文本存证
 func (client *Client) CreateContractText(request *CreateContractTextRequest) (_result *CreateContractTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61945,10 +65428,11 @@ func (client *Client) CreateContractText(request *CreateContractTextRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 电子合同文本存证
- * Summary: 电子合同文本存证
- */
+// Description:
+//
+// Description: 电子合同文本存证
+//
+// Summary: 电子合同文本存证
 func (client *Client) CreateContractTextEx(request *CreateContractTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateContractTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61963,10 +65447,11 @@ func (client *Client) CreateContractTextEx(request *CreateContractTextRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 全流程存证后，批量提交全流程核验信息，申请出证报告授权码。成功后可生成全流程上链报告
- * Summary: 申请电子合同存证报告
- */
+// Description:
+//
+// Description: 全流程存证后，批量提交全流程核验信息，申请出证报告授权码。成功后可生成全流程上链报告
+//
+// Summary: 申请电子合同存证报告
 func (client *Client) ApplyContractReport(request *ApplyContractReportRequest) (_result *ApplyContractReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -61979,10 +65464,11 @@ func (client *Client) ApplyContractReport(request *ApplyContractReportRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 全流程存证后，批量提交全流程核验信息，申请出证报告授权码。成功后可生成全流程上链报告
- * Summary: 申请电子合同存证报告
- */
+// Description:
+//
+// Description: 全流程存证后，批量提交全流程核验信息，申请出证报告授权码。成功后可生成全流程上链报告
+//
+// Summary: 申请电子合同存证报告
 func (client *Client) ApplyContractReportEx(request *ApplyContractReportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyContractReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61997,10 +65483,11 @@ func (client *Client) ApplyContractReportEx(request *ApplyContractReportRequest,
 	return _result, _err
 }
 
-/**
- * Description: 下载合同存证某个环节的内容，得到存证信息对象最终上链的JSON序列化形式，该内容可用于统一核验
- * Summary: 下载合同存证
- */
+// Description:
+//
+// Description: 下载合同存证某个环节的内容，得到存证信息对象最终上链的JSON序列化形式，该内容可用于统一核验
+//
+// Summary: 下载合同存证
 func (client *Client) GetContractText(request *GetContractTextRequest) (_result *GetContractTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62013,10 +65500,11 @@ func (client *Client) GetContractText(request *GetContractTextRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 下载合同存证某个环节的内容，得到存证信息对象最终上链的JSON序列化形式，该内容可用于统一核验
- * Summary: 下载合同存证
- */
+// Description:
+//
+// Description: 下载合同存证某个环节的内容，得到存证信息对象最终上链的JSON序列化形式，该内容可用于统一核验
+//
+// Summary: 下载合同存证
 func (client *Client) GetContractTextEx(request *GetContractTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetContractTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62031,10 +65519,11 @@ func (client *Client) GetContractTextEx(request *GetContractTextRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 获取存证事务ID内部接口
- * Summary: 获取存证事务ID内部接口
- */
+// Description:
+//
+// Description: 获取存证事务ID内部接口
+//
+// Summary: 获取存证事务ID内部接口
 func (client *Client) CreateInternalTrans(request *CreateInternalTransRequest) (_result *CreateInternalTransResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62047,10 +65536,11 @@ func (client *Client) CreateInternalTrans(request *CreateInternalTransRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 获取存证事务ID内部接口
- * Summary: 获取存证事务ID内部接口
- */
+// Description:
+//
+// Description: 获取存证事务ID内部接口
+//
+// Summary: 获取存证事务ID内部接口
 func (client *Client) CreateInternalTransEx(request *CreateInternalTransRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInternalTransResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62065,10 +65555,11 @@ func (client *Client) CreateInternalTransEx(request *CreateInternalTransRequest,
 	return _result, _err
 }
 
-/**
- * Description: 文本存证内部接口，将文本内容存证上链
- * Summary: 文本存证内部接口，将文本内容存证上链
- */
+// Description:
+//
+// Description: 文本存证内部接口，将文本内容存证上链
+//
+// Summary: 文本存证内部接口，将文本内容存证上链
 func (client *Client) CreateInternalText(request *CreateInternalTextRequest) (_result *CreateInternalTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62081,10 +65572,11 @@ func (client *Client) CreateInternalText(request *CreateInternalTextRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 文本存证内部接口，将文本内容存证上链
- * Summary: 文本存证内部接口，将文本内容存证上链
- */
+// Description:
+//
+// Description: 文本存证内部接口，将文本内容存证上链
+//
+// Summary: 文本存证内部接口，将文本内容存证上链
 func (client *Client) CreateInternalTextEx(request *CreateInternalTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInternalTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62099,10 +65591,11 @@ func (client *Client) CreateInternalTextEx(request *CreateInternalTextRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 发起文本存证，将文本内容存证上链，租赁业务专用。
- * Summary: 租赁业务文本存证，将文本内容存证上链
- */
+// Description:
+//
+// Description: 发起文本存证，将文本内容存证上链，租赁业务专用。
+//
+// Summary: 租赁业务文本存证，将文本内容存证上链
 func (client *Client) CreateLeaseText(request *CreateLeaseTextRequest) (_result *CreateLeaseTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62115,10 +65608,11 @@ func (client *Client) CreateLeaseText(request *CreateLeaseTextRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 发起文本存证，将文本内容存证上链，租赁业务专用。
- * Summary: 租赁业务文本存证，将文本内容存证上链
- */
+// Description:
+//
+// Description: 发起文本存证，将文本内容存证上链，租赁业务专用。
+//
+// Summary: 租赁业务文本存证，将文本内容存证上链
 func (client *Client) CreateLeaseTextEx(request *CreateLeaseTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62133,10 +65627,11 @@ func (client *Client) CreateLeaseTextEx(request *CreateLeaseTextRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 发起文件存证，将文件内容存证上链，租赁业务专用。
- * Summary: 租赁业务文件内容存证上链
- */
+// Description:
+//
+// Description: 发起文件存证，将文件内容存证上链，租赁业务专用。
+//
+// Summary: 租赁业务文件内容存证上链
 func (client *Client) CreateLeaseFile(request *CreateLeaseFileRequest) (_result *CreateLeaseFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62149,10 +65644,11 @@ func (client *Client) CreateLeaseFile(request *CreateLeaseFileRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 发起文件存证，将文件内容存证上链，租赁业务专用。
- * Summary: 租赁业务文件内容存证上链
- */
+// Description:
+//
+// Description: 发起文件存证，将文件内容存证上链，租赁业务专用。
+//
+// Summary: 租赁业务文件内容存证上链
 func (client *Client) CreateLeaseFileEx(request *CreateLeaseFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62167,10 +65663,11 @@ func (client *Client) CreateLeaseFileEx(request *CreateLeaseFileRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 使用接口查询订单存证的信息，需要在完成订单回传后才可返回。获取到txhash后，用户可使用 获取文本存证、存证核验 等存证服务功能。
- * Summary: 租赁业务获取订单存证列表
- */
+// Description:
+//
+// Description: 使用接口查询订单存证的信息，需要在完成订单回传后才可返回。获取到txhash后，用户可使用 获取文本存证、存证核验 等存证服务功能。
+//
+// Summary: 租赁业务获取订单存证列表
 func (client *Client) ListLeaseNotary(request *ListLeaseNotaryRequest) (_result *ListLeaseNotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62183,10 +65680,11 @@ func (client *Client) ListLeaseNotary(request *ListLeaseNotaryRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 使用接口查询订单存证的信息，需要在完成订单回传后才可返回。获取到txhash后，用户可使用 获取文本存证、存证核验 等存证服务功能。
- * Summary: 租赁业务获取订单存证列表
- */
+// Description:
+//
+// Description: 使用接口查询订单存证的信息，需要在完成订单回传后才可返回。获取到txhash后，用户可使用 获取文本存证、存证核验 等存证服务功能。
+//
+// Summary: 租赁业务获取订单存证列表
 func (client *Client) ListLeaseNotaryEx(request *ListLeaseNotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLeaseNotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62201,10 +65699,11 @@ func (client *Client) ListLeaseNotaryEx(request *ListLeaseNotaryRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 查询融资租赁application
- * Summary: 查询融资租赁application
- */
+// Description:
+//
+// Description: 查询融资租赁application
+//
+// Summary: 查询融资租赁application
 func (client *Client) QueryLeaseApplication(request *QueryLeaseApplicationRequest) (_result *QueryLeaseApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62217,10 +65716,11 @@ func (client *Client) QueryLeaseApplication(request *QueryLeaseApplicationReques
 	return _result, _err
 }
 
-/**
- * Description: 查询融资租赁application
- * Summary: 查询融资租赁application
- */
+// Description:
+//
+// Description: 查询融资租赁application
+//
+// Summary: 查询融资租赁application
 func (client *Client) QueryLeaseApplicationEx(request *QueryLeaseApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62235,10 +65735,11 @@ func (client *Client) QueryLeaseApplicationEx(request *QueryLeaseApplicationRequ
 	return _result, _err
 }
 
-/**
- * Description: 查询融资租赁application的定义详情
- * Summary: 查询application的定义详情
- */
+// Description:
+//
+// Description: 查询融资租赁application的定义详情
+//
+// Summary: 查询application的定义详情
 func (client *Client) QueryLeaseApplicationdetailinfo(request *QueryLeaseApplicationdetailinfoRequest) (_result *QueryLeaseApplicationdetailinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62251,10 +65752,11 @@ func (client *Client) QueryLeaseApplicationdetailinfo(request *QueryLeaseApplica
 	return _result, _err
 }
 
-/**
- * Description: 查询融资租赁application的定义详情
- * Summary: 查询application的定义详情
- */
+// Description:
+//
+// Description: 查询融资租赁application的定义详情
+//
+// Summary: 查询application的定义详情
 func (client *Client) QueryLeaseApplicationdetailinfoEx(request *QueryLeaseApplicationdetailinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseApplicationdetailinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62269,10 +65771,11 @@ func (client *Client) QueryLeaseApplicationdetailinfoEx(request *QueryLeaseAppli
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁资方重置订单状态
- * Summary: 融资租赁资方重置订单状态
- */
+// Description:
+//
+// Description: 融资租赁资方重置订单状态
+//
+// Summary: 融资租赁资方重置订单状态
 func (client *Client) SetLeaseRepaymentstatus(request *SetLeaseRepaymentstatusRequest) (_result *SetLeaseRepaymentstatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62285,10 +65788,11 @@ func (client *Client) SetLeaseRepaymentstatus(request *SetLeaseRepaymentstatusRe
 	return _result, _err
 }
 
-/**
- * Description: 融资租赁资方重置订单状态
- * Summary: 融资租赁资方重置订单状态
- */
+// Description:
+//
+// Description: 融资租赁资方重置订单状态
+//
+// Summary: 融资租赁资方重置订单状态
 func (client *Client) SetLeaseRepaymentstatusEx(request *SetLeaseRepaymentstatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetLeaseRepaymentstatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62303,10 +65807,11 @@ func (client *Client) SetLeaseRepaymentstatusEx(request *SetLeaseRepaymentstatus
 	return _result, _err
 }
 
-/**
- * Description: 供应商上传采购等相关信息
- * Summary: 供应商上传采购等相关信息
- */
+// Description:
+//
+// Description: 供应商上传采购等相关信息
+//
+// Summary: 供应商上传采购等相关信息
 func (client *Client) CreateLeaseSupplierinfo(request *CreateLeaseSupplierinfoRequest) (_result *CreateLeaseSupplierinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62319,10 +65824,11 @@ func (client *Client) CreateLeaseSupplierinfo(request *CreateLeaseSupplierinfoRe
 	return _result, _err
 }
 
-/**
- * Description: 供应商上传采购等相关信息
- * Summary: 供应商上传采购等相关信息
- */
+// Description:
+//
+// Description: 供应商上传采购等相关信息
+//
+// Summary: 供应商上传采购等相关信息
 func (client *Client) CreateLeaseSupplierinfoEx(request *CreateLeaseSupplierinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseSupplierinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62337,10 +65843,11 @@ func (client *Client) CreateLeaseSupplierinfoEx(request *CreateLeaseSupplierinfo
 	return _result, _err
 }
 
-/**
- * Description: mytf的tapp部署
- * Summary: mytf的tapp部署
- */
+// Description:
+//
+// Description: mytf的tapp部署
+//
+// Summary: mytf的tapp部署
 func (client *Client) DeployMytfTapp(request *DeployMytfTappRequest) (_result *DeployMytfTappResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62353,10 +65860,11 @@ func (client *Client) DeployMytfTapp(request *DeployMytfTappRequest) (_result *D
 	return _result, _err
 }
 
-/**
- * Description: mytf的tapp部署
- * Summary: mytf的tapp部署
- */
+// Description:
+//
+// Description: mytf的tapp部署
+//
+// Summary: mytf的tapp部署
 func (client *Client) DeployMytfTappEx(request *DeployMytfTappRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeployMytfTappResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62371,10 +65879,11 @@ func (client *Client) DeployMytfTappEx(request *DeployMytfTappRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 供应商更新物流状态、签收记录等信息
- * Summary: 供应商更新物流状态、签收记录等信息
- */
+// Description:
+//
+// Description: 供应商更新物流状态、签收记录等信息
+//
+// Summary: 供应商更新物流状态、签收记录等信息
 func (client *Client) CreateLeaseSupplierdynamicinfo(request *CreateLeaseSupplierdynamicinfoRequest) (_result *CreateLeaseSupplierdynamicinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62387,10 +65896,11 @@ func (client *Client) CreateLeaseSupplierdynamicinfo(request *CreateLeaseSupplie
 	return _result, _err
 }
 
-/**
- * Description: 供应商更新物流状态、签收记录等信息
- * Summary: 供应商更新物流状态、签收记录等信息
- */
+// Description:
+//
+// Description: 供应商更新物流状态、签收记录等信息
+//
+// Summary: 供应商更新物流状态、签收记录等信息
 func (client *Client) CreateLeaseSupplierdynamicinfoEx(request *CreateLeaseSupplierdynamicinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseSupplierdynamicinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62405,10 +65915,11 @@ func (client *Client) CreateLeaseSupplierdynamicinfoEx(request *CreateLeaseSuppl
 	return _result, _err
 }
 
-/**
- * Description: 创建租赁订单相关信息，融资租赁的前置条件
- * Summary: 创建租赁订单相关信息，融资租赁的前置条件
- */
+// Description:
+//
+// Description: 创建租赁订单相关信息，融资租赁的前置条件
+//
+// Summary: 创建租赁订单相关信息，融资租赁的前置条件
 func (client *Client) CreateLeaseBiz(request *CreateLeaseBizRequest) (_result *CreateLeaseBizResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62421,10 +65932,11 @@ func (client *Client) CreateLeaseBiz(request *CreateLeaseBizRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * Description: 创建租赁订单相关信息，融资租赁的前置条件
- * Summary: 创建租赁订单相关信息，融资租赁的前置条件
- */
+// Description:
+//
+// Description: 创建租赁订单相关信息，融资租赁的前置条件
+//
+// Summary: 创建租赁订单相关信息，融资租赁的前置条件
 func (client *Client) CreateLeaseBizEx(request *CreateLeaseBizRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseBizResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62439,10 +65951,11 @@ func (client *Client) CreateLeaseBizEx(request *CreateLeaseBizRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 查询核验结果
- * Summary: 查询核验结果
- */
+// Description:
+//
+// Description: 查询核验结果
+//
+// Summary: 查询核验结果
 func (client *Client) QueryLeaseProof(request *QueryLeaseProofRequest) (_result *QueryLeaseProofResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62455,10 +65968,11 @@ func (client *Client) QueryLeaseProof(request *QueryLeaseProofRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 查询核验结果
- * Summary: 查询核验结果
- */
+// Description:
+//
+// Description: 查询核验结果
+//
+// Summary: 查询核验结果
 func (client *Client) QueryLeaseProofEx(request *QueryLeaseProofRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseProofResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62473,10 +65987,11 @@ func (client *Client) QueryLeaseProofEx(request *QueryLeaseProofRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 发起文件存证，将文件内容存证上链，可存证10M以内的文件
- * Summary: 大文件内容存证接口
- */
+// Description:
+//
+// Description: 发起文件存证，将文件内容存证上链，可存证10M以内的文件
+//
+// Summary: 大文件内容存证接口
 func (client *Client) CreateLargefile(request *CreateLargefileRequest) (_result *CreateLargefileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62489,10 +66004,11 @@ func (client *Client) CreateLargefile(request *CreateLargefileRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 发起文件存证，将文件内容存证上链，可存证10M以内的文件
- * Summary: 大文件内容存证接口
- */
+// Description:
+//
+// Description: 发起文件存证，将文件内容存证上链，可存证10M以内的文件
+//
+// Summary: 大文件内容存证接口
 func (client *Client) CreateLargefileEx(request *CreateLargefileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLargefileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62507,10 +66023,11 @@ func (client *Client) CreateLargefileEx(request *CreateLargefileRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 租赁平台查询接口
- * Summary: 租赁平台查询接口
- */
+// Description:
+//
+// Description: 租赁平台查询接口
+//
+// Summary: 租赁平台查询接口
 func (client *Client) QueryLeaseBiz(request *QueryLeaseBizRequest) (_result *QueryLeaseBizResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62523,10 +66040,11 @@ func (client *Client) QueryLeaseBiz(request *QueryLeaseBizRequest) (_result *Que
 	return _result, _err
 }
 
-/**
- * Description: 租赁平台查询接口
- * Summary: 租赁平台查询接口
- */
+// Description:
+//
+// Description: 租赁平台查询接口
+//
+// Summary: 租赁平台查询接口
 func (client *Client) QueryLeaseBizEx(request *QueryLeaseBizRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseBizResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62541,10 +66059,11 @@ func (client *Client) QueryLeaseBizEx(request *QueryLeaseBizRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝哈希存证
- * Summary: 租赁宝哈希存证
- */
+// Description:
+//
+// Description: 租赁宝哈希存证
+//
+// Summary: 租赁宝哈希存证
 func (client *Client) CreateLeaseBiznotary(request *CreateLeaseBiznotaryRequest) (_result *CreateLeaseBiznotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62557,10 +66076,11 @@ func (client *Client) CreateLeaseBiznotary(request *CreateLeaseBiznotaryRequest)
 	return _result, _err
 }
 
-/**
- * Description: 租赁宝哈希存证
- * Summary: 租赁宝哈希存证
- */
+// Description:
+//
+// Description: 租赁宝哈希存证
+//
+// Summary: 租赁宝哈希存证
 func (client *Client) CreateLeaseBiznotaryEx(request *CreateLeaseBiznotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseBiznotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62575,10 +66095,11 @@ func (client *Client) CreateLeaseBiznotaryEx(request *CreateLeaseBiznotaryReques
 	return _result, _err
 }
 
-/**
- * Description: 合同内部文本存证
- * Summary: 合同内部文本存证
- */
+// Description:
+//
+// Description: 合同内部文本存证
+//
+// Summary: 合同内部文本存证
 func (client *Client) CreateInternalContract(request *CreateInternalContractRequest) (_result *CreateInternalContractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62591,10 +66112,11 @@ func (client *Client) CreateInternalContract(request *CreateInternalContractRequ
 	return _result, _err
 }
 
-/**
- * Description: 合同内部文本存证
- * Summary: 合同内部文本存证
- */
+// Description:
+//
+// Description: 合同内部文本存证
+//
+// Summary: 合同内部文本存证
 func (client *Client) CreateInternalContractEx(request *CreateInternalContractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInternalContractResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62609,10 +66131,11 @@ func (client *Client) CreateInternalContractEx(request *CreateInternalContractRe
 	return _result, _err
 }
 
-/**
- * Description: 资方上传网商直付通代扣协议核验结果
- * Summary: 资方上传网商直付通代扣协议核验结果
- */
+// Description:
+//
+// Description: 资方上传网商直付通代扣协议核验结果
+//
+// Summary: 资方上传网商直付通代扣协议核验结果
 func (client *Client) CreateLeaseZftagreementsign(request *CreateLeaseZftagreementsignRequest) (_result *CreateLeaseZftagreementsignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62625,10 +66148,11 @@ func (client *Client) CreateLeaseZftagreementsign(request *CreateLeaseZftagreeme
 	return _result, _err
 }
 
-/**
- * Description: 资方上传网商直付通代扣协议核验结果
- * Summary: 资方上传网商直付通代扣协议核验结果
- */
+// Description:
+//
+// Description: 资方上传网商直付通代扣协议核验结果
+//
+// Summary: 资方上传网商直付通代扣协议核验结果
 func (client *Client) CreateLeaseZftagreementsignEx(request *CreateLeaseZftagreementsignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseZftagreementsignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62643,10 +66167,11 @@ func (client *Client) CreateLeaseZftagreementsignEx(request *CreateLeaseZftagree
 	return _result, _err
 }
 
-/**
- * Description: 资方上传网商直付通代扣协议解约相关信息
- * Summary: 资方上传网商直付通代扣协议解约相关信息
- */
+// Description:
+//
+// Description: 资方上传网商直付通代扣协议解约相关信息
+//
+// Summary: 资方上传网商直付通代扣协议解约相关信息
 func (client *Client) CreateLeaseZftagreementunsign(request *CreateLeaseZftagreementunsignRequest) (_result *CreateLeaseZftagreementunsignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62659,10 +66184,11 @@ func (client *Client) CreateLeaseZftagreementunsign(request *CreateLeaseZftagree
 	return _result, _err
 }
 
-/**
- * Description: 资方上传网商直付通代扣协议解约相关信息
- * Summary: 资方上传网商直付通代扣协议解约相关信息
- */
+// Description:
+//
+// Description: 资方上传网商直付通代扣协议解约相关信息
+//
+// Summary: 资方上传网商直付通代扣协议解约相关信息
 func (client *Client) CreateLeaseZftagreementunsignEx(request *CreateLeaseZftagreementunsignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseZftagreementunsignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62677,10 +66203,11 @@ func (client *Client) CreateLeaseZftagreementunsignEx(request *CreateLeaseZftagr
 	return _result, _err
 }
 
-/**
- * Description: 获取蚂蚁链版存证证明
- * Summary: 获取蚂蚁链版存证证明
- */
+// Description:
+//
+// Description: 获取蚂蚁链版存证证明
+//
+// Summary: 获取蚂蚁链版存证证明
 func (client *Client) GetCertificateDetail(request *GetCertificateDetailRequest) (_result *GetCertificateDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62693,10 +66220,11 @@ func (client *Client) GetCertificateDetail(request *GetCertificateDetailRequest)
 	return _result, _err
 }
 
-/**
- * Description: 获取蚂蚁链版存证证明
- * Summary: 获取蚂蚁链版存证证明
- */
+// Description:
+//
+// Description: 获取蚂蚁链版存证证明
+//
+// Summary: 获取蚂蚁链版存证证明
 func (client *Client) GetCertificateDetailEx(request *GetCertificateDetailRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCertificateDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62711,10 +66239,11 @@ func (client *Client) GetCertificateDetailEx(request *GetCertificateDetailReques
 	return _result, _err
 }
 
-/**
- * Description: 用户通过交易哈希获取自己上传的文本存证内容
- * Summary: 获取文本存证内容
- */
+// Description:
+//
+// Description: 用户通过交易哈希获取自己上传的文本存证内容
+//
+// Summary: 获取文本存证内容
 func (client *Client) GetInternalText(request *GetInternalTextRequest) (_result *GetInternalTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62727,10 +66256,11 @@ func (client *Client) GetInternalText(request *GetInternalTextRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 用户通过交易哈希获取自己上传的文本存证内容
- * Summary: 获取文本存证内容
- */
+// Description:
+//
+// Description: 用户通过交易哈希获取自己上传的文本存证内容
+//
+// Summary: 获取文本存证内容
 func (client *Client) GetInternalTextEx(request *GetInternalTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInternalTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62745,10 +66275,11 @@ func (client *Client) GetInternalTextEx(request *GetInternalTextRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 三方服务获取开通权限，标记开通状态。
- * Summary: 三方服务获取开通权限，标记开通状态。
- */
+// Description:
+//
+// Description: 三方服务获取开通权限，标记开通状态。
+//
+// Summary: 三方服务获取开通权限，标记开通状态。
 func (client *Client) OpenInternalTwc(request *OpenInternalTwcRequest) (_result *OpenInternalTwcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62761,10 +66292,11 @@ func (client *Client) OpenInternalTwc(request *OpenInternalTwcRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 三方服务获取开通权限，标记开通状态。
- * Summary: 三方服务获取开通权限，标记开通状态。
- */
+// Description:
+//
+// Description: 三方服务获取开通权限，标记开通状态。
+//
+// Summary: 三方服务获取开通权限，标记开通状态。
 func (client *Client) OpenInternalTwcEx(request *OpenInternalTwcRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OpenInternalTwcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62779,10 +66311,11 @@ func (client *Client) OpenInternalTwcEx(request *OpenInternalTwcRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 指定节点获取存证事务Id
- * Summary: 指定节点获取存证事务id
- */
+// Description:
+//
+// Description: 指定节点获取存证事务Id
+//
+// Summary: 指定节点获取存证事务id
 func (client *Client) CreateSpecifyTrans(request *CreateSpecifyTransRequest) (_result *CreateSpecifyTransResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62795,10 +66328,11 @@ func (client *Client) CreateSpecifyTrans(request *CreateSpecifyTransRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 指定节点获取存证事务Id
- * Summary: 指定节点获取存证事务id
- */
+// Description:
+//
+// Description: 指定节点获取存证事务Id
+//
+// Summary: 指定节点获取存证事务id
 func (client *Client) CreateSpecifyTransEx(request *CreateSpecifyTransRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSpecifyTransResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62813,10 +66347,11 @@ func (client *Client) CreateSpecifyTransEx(request *CreateSpecifyTransRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 指定节点文本存证
- * Summary: 指定节点文本存证
- */
+// Description:
+//
+// Description: 指定节点文本存证
+//
+// Summary: 指定节点文本存证
 func (client *Client) CreateSpecifyText(request *CreateSpecifyTextRequest) (_result *CreateSpecifyTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62829,10 +66364,11 @@ func (client *Client) CreateSpecifyText(request *CreateSpecifyTextRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 指定节点文本存证
- * Summary: 指定节点文本存证
- */
+// Description:
+//
+// Description: 指定节点文本存证
+//
+// Summary: 指定节点文本存证
 func (client *Client) CreateSpecifyTextEx(request *CreateSpecifyTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSpecifyTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62847,10 +66383,11 @@ func (client *Client) CreateSpecifyTextEx(request *CreateSpecifyTextRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 文件存证大租户内部接口
- * Summary: 文件存证内部接口
- */
+// Description:
+//
+// Description: 文件存证大租户内部接口
+//
+// Summary: 文件存证内部接口
 func (client *Client) CreateInternalFile(request *CreateInternalFileRequest) (_result *CreateInternalFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62863,10 +66400,11 @@ func (client *Client) CreateInternalFile(request *CreateInternalFileRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 文件存证大租户内部接口
- * Summary: 文件存证内部接口
- */
+// Description:
+//
+// Description: 文件存证大租户内部接口
+//
+// Summary: 文件存证内部接口
 func (client *Client) CreateInternalFileEx(request *CreateInternalFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInternalFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62881,10 +66419,11 @@ func (client *Client) CreateInternalFileEx(request *CreateInternalFileRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 获取文件存证内容内部接口
- * Summary: 获取文件存证内容内部接口
- */
+// Description:
+//
+// Description: 获取文件存证内容内部接口
+//
+// Summary: 获取文件存证内容内部接口
 func (client *Client) GetInternalFile(request *GetInternalFileRequest) (_result *GetInternalFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62897,10 +66436,11 @@ func (client *Client) GetInternalFile(request *GetInternalFileRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 获取文件存证内容内部接口
- * Summary: 获取文件存证内容内部接口
- */
+// Description:
+//
+// Description: 获取文件存证内容内部接口
+//
+// Summary: 获取文件存证内容内部接口
 func (client *Client) GetInternalFileEx(request *GetInternalFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInternalFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62915,10 +66455,11 @@ func (client *Client) GetInternalFileEx(request *GetInternalFileRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 数据流转文本存证
- * Summary: 数据流转文本存证
- */
+// Description:
+//
+// Description: 数据流转文本存证
+//
+// Summary: 数据流转文本存证
 func (client *Client) CreateDataflowText(request *CreateDataflowTextRequest) (_result *CreateDataflowTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62931,10 +66472,11 @@ func (client *Client) CreateDataflowText(request *CreateDataflowTextRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 数据流转文本存证
- * Summary: 数据流转文本存证
- */
+// Description:
+//
+// Description: 数据流转文本存证
+//
+// Summary: 数据流转文本存证
 func (client *Client) CreateDataflowTextEx(request *CreateDataflowTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDataflowTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62949,10 +66491,11 @@ func (client *Client) CreateDataflowTextEx(request *CreateDataflowTextRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 查询数据流转文本存证内容
- * Summary: 查询数据流转文本存证内容
- */
+// Description:
+//
+// Description: 查询数据流转文本存证内容
+//
+// Summary: 查询数据流转文本存证内容
 func (client *Client) GetDataflowText(request *GetDataflowTextRequest) (_result *GetDataflowTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62965,10 +66508,11 @@ func (client *Client) GetDataflowText(request *GetDataflowTextRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 查询数据流转文本存证内容
- * Summary: 查询数据流转文本存证内容
- */
+// Description:
+//
+// Description: 查询数据流转文本存证内容
+//
+// Summary: 查询数据流转文本存证内容
 func (client *Client) GetDataflowTextEx(request *GetDataflowTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDataflowTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62983,10 +66527,11 @@ func (client *Client) GetDataflowTextEx(request *GetDataflowTextRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 数据流转存证创建存证事务
- * Summary: 数据流转存证创建存证事务
- */
+// Description:
+//
+// Description: 数据流转存证创建存证事务
+//
+// Summary: 数据流转存证创建存证事务
 func (client *Client) CreateDataflowTrans(request *CreateDataflowTransRequest) (_result *CreateDataflowTransResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -62999,10 +66544,11 @@ func (client *Client) CreateDataflowTrans(request *CreateDataflowTransRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 数据流转存证创建存证事务
- * Summary: 数据流转存证创建存证事务
- */
+// Description:
+//
+// Description: 数据流转存证创建存证事务
+//
+// Summary: 数据流转存证创建存证事务
 func (client *Client) CreateDataflowTransEx(request *CreateDataflowTransRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDataflowTransResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63017,10 +66563,11 @@ func (client *Client) CreateDataflowTransEx(request *CreateDataflowTransRequest,
 	return _result, _err
 }
 
-/**
- * Description: 数据流转存证需要通过存证合约进行授权和流转的管理，存证方可以通过本接口发起管理合约的部署。
- * Summary: 发起管理合约部署
- */
+// Description:
+//
+// Description: 数据流转存证需要通过存证合约进行授权和流转的管理，存证方可以通过本接口发起管理合约的部署。
+//
+// Summary: 发起管理合约部署
 func (client *Client) DeployDataflowContract(request *DeployDataflowContractRequest) (_result *DeployDataflowContractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63033,10 +66580,11 @@ func (client *Client) DeployDataflowContract(request *DeployDataflowContractRequ
 	return _result, _err
 }
 
-/**
- * Description: 数据流转存证需要通过存证合约进行授权和流转的管理，存证方可以通过本接口发起管理合约的部署。
- * Summary: 发起管理合约部署
- */
+// Description:
+//
+// Description: 数据流转存证需要通过存证合约进行授权和流转的管理，存证方可以通过本接口发起管理合约的部署。
+//
+// Summary: 发起管理合约部署
 func (client *Client) DeployDataflowContractEx(request *DeployDataflowContractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeployDataflowContractResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63051,10 +66599,11 @@ func (client *Client) DeployDataflowContractEx(request *DeployDataflowContractRe
 	return _result, _err
 }
 
-/**
- * Description: 存证方对证据的使用方进行各类型的权限授予，允许使用方调用存证合约中的对应方法。
- * Summary: 发起授权
- */
+// Description:
+//
+// Description: 存证方对证据的使用方进行各类型的权限授予，允许使用方调用存证合约中的对应方法。
+//
+// Summary: 发起授权
 func (client *Client) CreateDataflowAuthorize(request *CreateDataflowAuthorizeRequest) (_result *CreateDataflowAuthorizeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63067,10 +66616,11 @@ func (client *Client) CreateDataflowAuthorize(request *CreateDataflowAuthorizeRe
 	return _result, _err
 }
 
-/**
- * Description: 存证方对证据的使用方进行各类型的权限授予，允许使用方调用存证合约中的对应方法。
- * Summary: 发起授权
- */
+// Description:
+//
+// Description: 存证方对证据的使用方进行各类型的权限授予，允许使用方调用存证合约中的对应方法。
+//
+// Summary: 发起授权
 func (client *Client) CreateDataflowAuthorizeEx(request *CreateDataflowAuthorizeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDataflowAuthorizeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63085,10 +66635,11 @@ func (client *Client) CreateDataflowAuthorizeEx(request *CreateDataflowAuthorize
 	return _result, _err
 }
 
-/**
- * Description: 存证方对撤销已经发起的权限授予。
- * Summary: 撤销授权
- */
+// Description:
+//
+// Description: 存证方对撤销已经发起的权限授予。
+//
+// Summary: 撤销授权
 func (client *Client) CancelDataflowAuthorize(request *CancelDataflowAuthorizeRequest) (_result *CancelDataflowAuthorizeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63101,10 +66652,11 @@ func (client *Client) CancelDataflowAuthorize(request *CancelDataflowAuthorizeRe
 	return _result, _err
 }
 
-/**
- * Description: 存证方对撤销已经发起的权限授予。
- * Summary: 撤销授权
- */
+// Description:
+//
+// Description: 存证方对撤销已经发起的权限授予。
+//
+// Summary: 撤销授权
 func (client *Client) CancelDataflowAuthorizeEx(request *CancelDataflowAuthorizeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelDataflowAuthorizeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63119,10 +66671,11 @@ func (client *Client) CancelDataflowAuthorizeEx(request *CancelDataflowAuthorize
 	return _result, _err
 }
 
-/**
- * Description: 查询存证管理合约的部署/授权/撤销授权/密钥上传等操作的执行结果。
- * Summary: 查询对存证合约的各类操作执行结果
- */
+// Description:
+//
+// Description: 查询存证管理合约的部署/授权/撤销授权/密钥上传等操作的执行结果。
+//
+// Summary: 查询对存证合约的各类操作执行结果
 func (client *Client) QueryDataflowAction(request *QueryDataflowActionRequest) (_result *QueryDataflowActionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63135,10 +66688,11 @@ func (client *Client) QueryDataflowAction(request *QueryDataflowActionRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 查询存证管理合约的部署/授权/撤销授权/密钥上传等操作的执行结果。
- * Summary: 查询对存证合约的各类操作执行结果
- */
+// Description:
+//
+// Description: 查询存证管理合约的部署/授权/撤销授权/密钥上传等操作的执行结果。
+//
+// Summary: 查询对存证合约的各类操作执行结果
 func (client *Client) QueryDataflowActionEx(request *QueryDataflowActionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDataflowActionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63153,10 +66707,11 @@ func (client *Client) QueryDataflowActionEx(request *QueryDataflowActionRequest,
 	return _result, _err
 }
 
-/**
- * Description: 存证的使用方，在获得密钥上传（PUBKEY_UPLOAD）授权后，使用本接口上传信封密钥，后续查询存证时，会使用此信封密钥对存证原文加密，将密文返回，保障数据安全。
- * Summary: 发起信封密钥上传
- */
+// Description:
+//
+// Description: 存证的使用方，在获得密钥上传（PUBKEY_UPLOAD）授权后，使用本接口上传信封密钥，后续查询存证时，会使用此信封密钥对存证原文加密，将密文返回，保障数据安全。
+//
+// Summary: 发起信封密钥上传
 func (client *Client) UploadDataflowPubkey(request *UploadDataflowPubkeyRequest) (_result *UploadDataflowPubkeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63169,10 +66724,11 @@ func (client *Client) UploadDataflowPubkey(request *UploadDataflowPubkeyRequest)
 	return _result, _err
 }
 
-/**
- * Description: 存证的使用方，在获得密钥上传（PUBKEY_UPLOAD）授权后，使用本接口上传信封密钥，后续查询存证时，会使用此信封密钥对存证原文加密，将密文返回，保障数据安全。
- * Summary: 发起信封密钥上传
- */
+// Description:
+//
+// Description: 存证的使用方，在获得密钥上传（PUBKEY_UPLOAD）授权后，使用本接口上传信封密钥，后续查询存证时，会使用此信封密钥对存证原文加密，将密文返回，保障数据安全。
+//
+// Summary: 发起信封密钥上传
 func (client *Client) UploadDataflowPubkeyEx(request *UploadDataflowPubkeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadDataflowPubkeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63187,10 +66743,11 @@ func (client *Client) UploadDataflowPubkeyEx(request *UploadDataflowPubkeyReques
 	return _result, _err
 }
 
-/**
- * Description: 数据流转存证创建链上账户
- * Summary: 数据流转存证创建链上账户
- */
+// Description:
+//
+// Description: 数据流转存证创建链上账户
+//
+// Summary: 数据流转存证创建链上账户
 func (client *Client) CreateDataflowAccount(request *CreateDataflowAccountRequest) (_result *CreateDataflowAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63203,10 +66760,11 @@ func (client *Client) CreateDataflowAccount(request *CreateDataflowAccountReques
 	return _result, _err
 }
 
-/**
- * Description: 数据流转存证创建链上账户
- * Summary: 数据流转存证创建链上账户
- */
+// Description:
+//
+// Description: 数据流转存证创建链上账户
+//
+// Summary: 数据流转存证创建链上账户
 func (client *Client) CreateDataflowAccountEx(request *CreateDataflowAccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDataflowAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63221,10 +66779,11 @@ func (client *Client) CreateDataflowAccountEx(request *CreateDataflowAccountRequ
 	return _result, _err
 }
 
-/**
- * Description: 发起一体化文件存证
- * Summary: 发起一体化文件存证
- */
+// Description:
+//
+// Description: 发起一体化文件存证
+//
+// Summary: 发起一体化文件存证
 func (client *Client) CreateFileIntegration(request *CreateFileIntegrationRequest) (_result *CreateFileIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63237,10 +66796,11 @@ func (client *Client) CreateFileIntegration(request *CreateFileIntegrationReques
 	return _result, _err
 }
 
-/**
- * Description: 发起一体化文件存证
- * Summary: 发起一体化文件存证
- */
+// Description:
+//
+// Description: 发起一体化文件存证
+//
+// Summary: 发起一体化文件存证
 func (client *Client) CreateFileIntegrationEx(request *CreateFileIntegrationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFileIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63255,10 +66815,11 @@ func (client *Client) CreateFileIntegrationEx(request *CreateFileIntegrationRequ
 	return _result, _err
 }
 
-/**
- * Description: 完成一体化文件存证
- * Summary: 完成一体化文件存证
- */
+// Description:
+//
+// Description: 完成一体化文件存证
+//
+// Summary: 完成一体化文件存证
 func (client *Client) FinishFileIntegration(request *FinishFileIntegrationRequest) (_result *FinishFileIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63271,10 +66832,11 @@ func (client *Client) FinishFileIntegration(request *FinishFileIntegrationReques
 	return _result, _err
 }
 
-/**
- * Description: 完成一体化文件存证
- * Summary: 完成一体化文件存证
- */
+// Description:
+//
+// Description: 完成一体化文件存证
+//
+// Summary: 完成一体化文件存证
 func (client *Client) FinishFileIntegrationEx(request *FinishFileIntegrationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FinishFileIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63289,10 +66851,11 @@ func (client *Client) FinishFileIntegrationEx(request *FinishFileIntegrationRequ
 	return _result, _err
 }
 
-/**
- * Description: 查询一体化文件存证
- * Summary: 查询一体化文件存证
- */
+// Description:
+//
+// Description: 查询一体化文件存证
+//
+// Summary: 查询一体化文件存证
 func (client *Client) GetFileIntegration(request *GetFileIntegrationRequest) (_result *GetFileIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63305,10 +66868,11 @@ func (client *Client) GetFileIntegration(request *GetFileIntegrationRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 查询一体化文件存证
- * Summary: 查询一体化文件存证
- */
+// Description:
+//
+// Description: 查询一体化文件存证
+//
+// Summary: 查询一体化文件存证
 func (client *Client) GetFileIntegrationEx(request *GetFileIntegrationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFileIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63323,10 +66887,11 @@ func (client *Client) GetFileIntegrationEx(request *GetFileIntegrationRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 一体化文件存证-发起授权
- * Summary: 一体化文件存证-发起授权
- */
+// Description:
+//
+// Description: 一体化文件存证-发起授权
+//
+// Summary: 一体化文件存证-发起授权
 func (client *Client) AuthFileIntegration(request *AuthFileIntegrationRequest) (_result *AuthFileIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63339,10 +66904,11 @@ func (client *Client) AuthFileIntegration(request *AuthFileIntegrationRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 一体化文件存证-发起授权
- * Summary: 一体化文件存证-发起授权
- */
+// Description:
+//
+// Description: 一体化文件存证-发起授权
+//
+// Summary: 一体化文件存证-发起授权
 func (client *Client) AuthFileIntegrationEx(request *AuthFileIntegrationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AuthFileIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63357,10 +66923,11 @@ func (client *Client) AuthFileIntegrationEx(request *AuthFileIntegrationRequest,
 	return _result, _err
 }
 
-/**
- * Description: 一体化文件存证-取消授权
- * Summary: 一体化文件存证-取消授权
- */
+// Description:
+//
+// Description: 一体化文件存证-取消授权
+//
+// Summary: 一体化文件存证-取消授权
 func (client *Client) CancelFileIntegration(request *CancelFileIntegrationRequest) (_result *CancelFileIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63373,10 +66940,11 @@ func (client *Client) CancelFileIntegration(request *CancelFileIntegrationReques
 	return _result, _err
 }
 
-/**
- * Description: 一体化文件存证-取消授权
- * Summary: 一体化文件存证-取消授权
- */
+// Description:
+//
+// Description: 一体化文件存证-取消授权
+//
+// Summary: 一体化文件存证-取消授权
 func (client *Client) CancelFileIntegrationEx(request *CancelFileIntegrationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelFileIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63391,10 +66959,11 @@ func (client *Client) CancelFileIntegrationEx(request *CancelFileIntegrationRequ
 	return _result, _err
 }
 
-/**
- * Description: 创建存证流程实例
- * Summary: 创建存证流程实例
- */
+// Description:
+//
+// Description: 创建存证流程实例
+//
+// Summary: 创建存证流程实例
 func (client *Client) CreateFlowInstance(request *CreateFlowInstanceRequest) (_result *CreateFlowInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63407,10 +66976,11 @@ func (client *Client) CreateFlowInstance(request *CreateFlowInstanceRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 创建存证流程实例
- * Summary: 创建存证流程实例
- */
+// Description:
+//
+// Description: 创建存证流程实例
+//
+// Summary: 创建存证流程实例
 func (client *Client) CreateFlowInstanceEx(request *CreateFlowInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFlowInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63425,10 +66995,11 @@ func (client *Client) CreateFlowInstanceEx(request *CreateFlowInstanceRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 存证流程实例完结
- * Summary: 存证流程实例完结
- */
+// Description:
+//
+// Description: 存证流程实例完结
+//
+// Summary: 存证流程实例完结
 func (client *Client) FinishFlowInstance(request *FinishFlowInstanceRequest) (_result *FinishFlowInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63441,10 +67012,11 @@ func (client *Client) FinishFlowInstance(request *FinishFlowInstanceRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 存证流程实例完结
- * Summary: 存证流程实例完结
- */
+// Description:
+//
+// Description: 存证流程实例完结
+//
+// Summary: 存证流程实例完结
 func (client *Client) FinishFlowInstanceEx(request *FinishFlowInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FinishFlowInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63459,10 +67031,11 @@ func (client *Client) FinishFlowInstanceEx(request *FinishFlowInstanceRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 创建阶段存证
- * Summary: 创建阶段存证
- */
+// Description:
+//
+// Description: 创建阶段存证
+//
+// Summary: 创建阶段存证
 func (client *Client) InitFlowPhase(request *InitFlowPhaseRequest) (_result *InitFlowPhaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63475,10 +67048,11 @@ func (client *Client) InitFlowPhase(request *InitFlowPhaseRequest) (_result *Ini
 	return _result, _err
 }
 
-/**
- * Description: 创建阶段存证
- * Summary: 创建阶段存证
- */
+// Description:
+//
+// Description: 创建阶段存证
+//
+// Summary: 创建阶段存证
 func (client *Client) InitFlowPhaseEx(request *InitFlowPhaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitFlowPhaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63493,10 +67067,11 @@ func (client *Client) InitFlowPhaseEx(request *InitFlowPhaseRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 查询阶段存证结果
- * Summary: 查询阶段存证结果
- */
+// Description:
+//
+// Description: 查询阶段存证结果
+//
+// Summary: 查询阶段存证结果
 func (client *Client) QueryFlowPhase(request *QueryFlowPhaseRequest) (_result *QueryFlowPhaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63509,10 +67084,11 @@ func (client *Client) QueryFlowPhase(request *QueryFlowPhaseRequest) (_result *Q
 	return _result, _err
 }
 
-/**
- * Description: 查询阶段存证结果
- * Summary: 查询阶段存证结果
- */
+// Description:
+//
+// Description: 查询阶段存证结果
+//
+// Summary: 查询阶段存证结果
 func (client *Client) QueryFlowPhaseEx(request *QueryFlowPhaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryFlowPhaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63527,10 +67103,11 @@ func (client *Client) QueryFlowPhaseEx(request *QueryFlowPhaseRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 阶段存证数据详情
- * Summary: 阶段存证数据详情
- */
+// Description:
+//
+// Description: 阶段存证数据详情
+//
+// Summary: 阶段存证数据详情
 func (client *Client) DetailFlowPhase(request *DetailFlowPhaseRequest) (_result *DetailFlowPhaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63543,10 +67120,11 @@ func (client *Client) DetailFlowPhase(request *DetailFlowPhaseRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 阶段存证数据详情
- * Summary: 阶段存证数据详情
- */
+// Description:
+//
+// Description: 阶段存证数据详情
+//
+// Summary: 阶段存证数据详情
 func (client *Client) DetailFlowPhaseEx(request *DetailFlowPhaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DetailFlowPhaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63561,10 +67139,11 @@ func (client *Client) DetailFlowPhaseEx(request *DetailFlowPhaseRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 一键创建全流程存证实例和阶段存证
- * Summary: 一键创建全流程存证实例和阶段存证
- */
+// Description:
+//
+// Description: 一键创建全流程存证实例和阶段存证
+//
+// Summary: 一键创建全流程存证实例和阶段存证
 func (client *Client) CreateFlowOnestepnotary(request *CreateFlowOnestepnotaryRequest) (_result *CreateFlowOnestepnotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63577,10 +67156,11 @@ func (client *Client) CreateFlowOnestepnotary(request *CreateFlowOnestepnotaryRe
 	return _result, _err
 }
 
-/**
- * Description: 一键创建全流程存证实例和阶段存证
- * Summary: 一键创建全流程存证实例和阶段存证
- */
+// Description:
+//
+// Description: 一键创建全流程存证实例和阶段存证
+//
+// Summary: 一键创建全流程存证实例和阶段存证
 func (client *Client) CreateFlowOnestepnotaryEx(request *CreateFlowOnestepnotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFlowOnestepnotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63595,10 +67175,11 @@ func (client *Client) CreateFlowOnestepnotaryEx(request *CreateFlowOnestepnotary
 	return _result, _err
 }
 
-/**
- * Description: 查询一键创建全流程存证进度状态
- * Summary: 查询一键创建全流程存证进度状态
- */
+// Description:
+//
+// Description: 查询一键创建全流程存证进度状态
+//
+// Summary: 查询一键创建全流程存证进度状态
 func (client *Client) QueryFlowOnestepnotary(request *QueryFlowOnestepnotaryRequest) (_result *QueryFlowOnestepnotaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63611,10 +67192,11 @@ func (client *Client) QueryFlowOnestepnotary(request *QueryFlowOnestepnotaryRequ
 	return _result, _err
 }
 
-/**
- * Description: 查询一键创建全流程存证进度状态
- * Summary: 查询一键创建全流程存证进度状态
- */
+// Description:
+//
+// Description: 查询一键创建全流程存证进度状态
+//
+// Summary: 查询一键创建全流程存证进度状态
 func (client *Client) QueryFlowOnestepnotaryEx(request *QueryFlowOnestepnotaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryFlowOnestepnotaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63629,10 +67211,11 @@ func (client *Client) QueryFlowOnestepnotaryEx(request *QueryFlowOnestepnotaryRe
 	return _result, _err
 }
 
-/**
- * Description: 存证全流程证明申请
- * Summary: 存证全流程证明申请
- */
+// Description:
+//
+// Description: 存证全流程证明申请
+//
+// Summary: 存证全流程证明申请
 func (client *Client) ApplyFlowCertificate(request *ApplyFlowCertificateRequest) (_result *ApplyFlowCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63645,10 +67228,11 @@ func (client *Client) ApplyFlowCertificate(request *ApplyFlowCertificateRequest)
 	return _result, _err
 }
 
-/**
- * Description: 存证全流程证明申请
- * Summary: 存证全流程证明申请
- */
+// Description:
+//
+// Description: 存证全流程证明申请
+//
+// Summary: 存证全流程证明申请
 func (client *Client) ApplyFlowCertificateEx(request *ApplyFlowCertificateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyFlowCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63663,10 +67247,11 @@ func (client *Client) ApplyFlowCertificateEx(request *ApplyFlowCertificateReques
 	return _result, _err
 }
 
-/**
- * Description: 存证全流程证明出证进度查询
- * Summary: 存证全流程证明出证进度查询
- */
+// Description:
+//
+// Description: 存证全流程证明出证进度查询
+//
+// Summary: 存证全流程证明出证进度查询
 func (client *Client) QueryFlowCertificate(request *QueryFlowCertificateRequest) (_result *QueryFlowCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63679,10 +67264,11 @@ func (client *Client) QueryFlowCertificate(request *QueryFlowCertificateRequest)
 	return _result, _err
 }
 
-/**
- * Description: 存证全流程证明出证进度查询
- * Summary: 存证全流程证明出证进度查询
- */
+// Description:
+//
+// Description: 存证全流程证明出证进度查询
+//
+// Summary: 存证全流程证明出证进度查询
 func (client *Client) QueryFlowCertificateEx(request *QueryFlowCertificateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryFlowCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63697,10 +67283,11 @@ func (client *Client) QueryFlowCertificateEx(request *QueryFlowCertificateReques
 	return _result, _err
 }
 
-/**
- * Description: 数字票根全流程出证申请
- * Summary: 数字票根全流程出证申请
- */
+// Description:
+//
+// Description: 数字票根全流程出证申请
+//
+// Summary: 数字票根全流程出证申请
 func (client *Client) ApplyStubCertificate(request *ApplyStubCertificateRequest) (_result *ApplyStubCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63713,10 +67300,11 @@ func (client *Client) ApplyStubCertificate(request *ApplyStubCertificateRequest)
 	return _result, _err
 }
 
-/**
- * Description: 数字票根全流程出证申请
- * Summary: 数字票根全流程出证申请
- */
+// Description:
+//
+// Description: 数字票根全流程出证申请
+//
+// Summary: 数字票根全流程出证申请
 func (client *Client) ApplyStubCertificateEx(request *ApplyStubCertificateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyStubCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63731,10 +67319,11 @@ func (client *Client) ApplyStubCertificateEx(request *ApplyStubCertificateReques
 	return _result, _err
 }
 
-/**
- * Description: 数字票根全流程证明出证进度查询
- * Summary: 数字票根全流程证明出证进度查询
- */
+// Description:
+//
+// Description: 数字票根全流程证明出证进度查询
+//
+// Summary: 数字票根全流程证明出证进度查询
 func (client *Client) QueryStubCertificate(request *QueryStubCertificateRequest) (_result *QueryStubCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63747,10 +67336,11 @@ func (client *Client) QueryStubCertificate(request *QueryStubCertificateRequest)
 	return _result, _err
 }
 
-/**
- * Description: 数字票根全流程证明出证进度查询
- * Summary: 数字票根全流程证明出证进度查询
- */
+// Description:
+//
+// Description: 数字票根全流程证明出证进度查询
+//
+// Summary: 数字票根全流程证明出证进度查询
 func (client *Client) QueryStubCertificateEx(request *QueryStubCertificateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryStubCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63765,10 +67355,11 @@ func (client *Client) QueryStubCertificateEx(request *QueryStubCertificateReques
 	return _result, _err
 }
 
-/**
- * Description: 数字票根全流程存证进度查询
- * Summary: 数字票根全流程存证进度查询
- */
+// Description:
+//
+// Description: 数字票根全流程存证进度查询
+//
+// Summary: 数字票根全流程存证进度查询
 func (client *Client) QueryStub(request *QueryStubRequest) (_result *QueryStubResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63781,10 +67372,11 @@ func (client *Client) QueryStub(request *QueryStubRequest) (_result *QueryStubRe
 	return _result, _err
 }
 
-/**
- * Description: 数字票根全流程存证进度查询
- * Summary: 数字票根全流程存证进度查询
- */
+// Description:
+//
+// Description: 数字票根全流程存证进度查询
+//
+// Summary: 数字票根全流程存证进度查询
 func (client *Client) QueryStubEx(request *QueryStubRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryStubResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63799,10 +67391,11 @@ func (client *Client) QueryStubEx(request *QueryStubRequest, headers map[string]
 	return _result, _err
 }
 
-/**
- * Description: 数字票根全流程存证创建
- * Summary: 数字票根全流程存证创建
- */
+// Description:
+//
+// Description: 数字票根全流程存证创建
+//
+// Summary: 数字票根全流程存证创建
 func (client *Client) CreateStub(request *CreateStubRequest) (_result *CreateStubResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63815,10 +67408,11 @@ func (client *Client) CreateStub(request *CreateStubRequest) (_result *CreateStu
 	return _result, _err
 }
 
-/**
- * Description: 数字票根全流程存证创建
- * Summary: 数字票根全流程存证创建
- */
+// Description:
+//
+// Description: 数字票根全流程存证创建
+//
+// Summary: 数字票根全流程存证创建
 func (client *Client) CreateStubEx(request *CreateStubRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateStubResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63833,10 +67427,11 @@ func (client *Client) CreateStubEx(request *CreateStubRequest, headers map[strin
 	return _result, _err
 }
 
-/**
- * Description: 查询数字票根是否存在
- * Summary: 查询数字票根是否存在
- */
+// Description:
+//
+// Description: 查询数字票根是否存在
+//
+// Summary: 查询数字票根是否存在
 func (client *Client) ExistStub(request *ExistStubRequest) (_result *ExistStubResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63849,10 +67444,11 @@ func (client *Client) ExistStub(request *ExistStubRequest) (_result *ExistStubRe
 	return _result, _err
 }
 
-/**
- * Description: 查询数字票根是否存在
- * Summary: 查询数字票根是否存在
- */
+// Description:
+//
+// Description: 查询数字票根是否存在
+//
+// Summary: 查询数字票根是否存在
 func (client *Client) ExistStubEx(request *ExistStubRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExistStubResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63867,10 +67463,11 @@ func (client *Client) ExistStubEx(request *ExistStubRequest, headers map[string]
 	return _result, _err
 }
 
-/**
- * Description: 数字票根-清分接口
- * Summary: 数字票根-清分接口
- */
+// Description:
+//
+// Description: 数字票根-清分接口
+//
+// Summary: 数字票根-清分接口
 func (client *Client) CreateStubClearing(request *CreateStubClearingRequest) (_result *CreateStubClearingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63883,10 +67480,11 @@ func (client *Client) CreateStubClearing(request *CreateStubClearingRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 数字票根-清分接口
- * Summary: 数字票根-清分接口
- */
+// Description:
+//
+// Description: 数字票根-清分接口
+//
+// Summary: 数字票根-清分接口
 func (client *Client) CreateStubClearingEx(request *CreateStubClearingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateStubClearingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63901,10 +67499,11 @@ func (client *Client) CreateStubClearingEx(request *CreateStubClearingRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 申请全流程证据包，包括链上证据包和链下证据包
- * Summary: 申请全流程证据包
- */
+// Description:
+//
+// Description: 申请全流程证据包，包括链上证据包和链下证据包
+//
+// Summary: 申请全流程证据包
 func (client *Client) ApplyFlowEvidence(request *ApplyFlowEvidenceRequest) (_result *ApplyFlowEvidenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63917,10 +67516,11 @@ func (client *Client) ApplyFlowEvidence(request *ApplyFlowEvidenceRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 申请全流程证据包，包括链上证据包和链下证据包
- * Summary: 申请全流程证据包
- */
+// Description:
+//
+// Description: 申请全流程证据包，包括链上证据包和链下证据包
+//
+// Summary: 申请全流程证据包
 func (client *Client) ApplyFlowEvidenceEx(request *ApplyFlowEvidenceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyFlowEvidenceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63935,10 +67535,11 @@ func (client *Client) ApplyFlowEvidenceEx(request *ApplyFlowEvidenceRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 全流程证据包生成进度查询
- * Summary: 全流程证据包生成进度查询
- */
+// Description:
+//
+// Description: 全流程证据包生成进度查询
+//
+// Summary: 全流程证据包生成进度查询
 func (client *Client) QueryFlowEvidence(request *QueryFlowEvidenceRequest) (_result *QueryFlowEvidenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63951,10 +67552,11 @@ func (client *Client) QueryFlowEvidence(request *QueryFlowEvidenceRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 全流程证据包生成进度查询
- * Summary: 全流程证据包生成进度查询
- */
+// Description:
+//
+// Description: 全流程证据包生成进度查询
+//
+// Summary: 全流程证据包生成进度查询
 func (client *Client) QueryFlowEvidenceEx(request *QueryFlowEvidenceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryFlowEvidenceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63969,10 +67571,11 @@ func (client *Client) QueryFlowEvidenceEx(request *QueryFlowEvidenceRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 全流程证据授权码申请
- * Summary: 全流程证据授权码申请
- */
+// Description:
+//
+// Description: 全流程证据授权码申请
+//
+// Summary: 全流程证据授权码申请
 func (client *Client) ApplyFlowAuth(request *ApplyFlowAuthRequest) (_result *ApplyFlowAuthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -63985,10 +67588,11 @@ func (client *Client) ApplyFlowAuth(request *ApplyFlowAuthRequest) (_result *App
 	return _result, _err
 }
 
-/**
- * Description: 全流程证据授权码申请
- * Summary: 全流程证据授权码申请
- */
+// Description:
+//
+// Description: 全流程证据授权码申请
+//
+// Summary: 全流程证据授权码申请
 func (client *Client) ApplyFlowAuthEx(request *ApplyFlowAuthRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyFlowAuthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64003,10 +67607,11 @@ func (client *Client) ApplyFlowAuthEx(request *ApplyFlowAuthRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 全流程详情查询
- * Summary: 全流程详情查询
- */
+// Description:
+//
+// Description: 全流程详情查询
+//
+// Summary: 全流程详情查询
 func (client *Client) DetailFlowInstance(request *DetailFlowInstanceRequest) (_result *DetailFlowInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -64019,10 +67624,11 @@ func (client *Client) DetailFlowInstance(request *DetailFlowInstanceRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 全流程详情查询
- * Summary: 全流程详情查询
- */
+// Description:
+//
+// Description: 全流程详情查询
+//
+// Summary: 全流程详情查询
 func (client *Client) DetailFlowInstanceEx(request *DetailFlowInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DetailFlowInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64037,10 +67643,11 @@ func (client *Client) DetailFlowInstanceEx(request *DetailFlowInstanceRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 合约校验接口
- * Summary: 合约校验接口
- */
+// Description:
+//
+// Description: 合约校验接口
+//
+// Summary: 合约校验接口
 func (client *Client) CheckContract(request *CheckContractRequest) (_result *CheckContractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -64053,10 +67660,11 @@ func (client *Client) CheckContract(request *CheckContractRequest) (_result *Che
 	return _result, _err
 }
 
-/**
- * Description: 合约校验接口
- * Summary: 合约校验接口
- */
+// Description:
+//
+// Description: 合约校验接口
+//
+// Summary: 合约校验接口
 func (client *Client) CheckContractEx(request *CheckContractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckContractResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64071,10 +67679,11 @@ func (client *Client) CheckContractEx(request *CheckContractRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 查询合约核验结果
- * Summary: 查询合约核验结果
- */
+// Description:
+//
+// Description: 查询合约核验结果
+//
+// Summary: 查询合约核验结果
 func (client *Client) QueryContractStatus(request *QueryContractStatusRequest) (_result *QueryContractStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -64087,10 +67696,11 @@ func (client *Client) QueryContractStatus(request *QueryContractStatusRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 查询合约核验结果
- * Summary: 查询合约核验结果
- */
+// Description:
+//
+// Description: 查询合约核验结果
+//
+// Summary: 查询合约核验结果
 func (client *Client) QueryContractStatusEx(request *QueryContractStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64105,10 +67715,11 @@ func (client *Client) QueryContractStatusEx(request *QueryContractStatusRequest,
 	return _result, _err
 }
 
-/**
- * Description: 根据业务场景码创建raceId
- * Summary: traceId创建接口
- */
+// Description:
+//
+// Description: 根据业务场景码创建raceId
+//
+// Summary: traceId创建接口
 func (client *Client) CreateTrafficTraceid(request *CreateTrafficTraceidRequest) (_result *CreateTrafficTraceidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -64121,10 +67732,11 @@ func (client *Client) CreateTrafficTraceid(request *CreateTrafficTraceidRequest)
 	return _result, _err
 }
 
-/**
- * Description: 根据业务场景码创建raceId
- * Summary: traceId创建接口
- */
+// Description:
+//
+// Description: 根据业务场景码创建raceId
+//
+// Summary: traceId创建接口
 func (client *Client) CreateTrafficTraceidEx(request *CreateTrafficTraceidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTrafficTraceidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64139,10 +67751,11 @@ func (client *Client) CreateTrafficTraceidEx(request *CreateTrafficTraceidReques
 	return _result, _err
 }
 
-/**
- * Description: 业务方操作行为日志传入
- * Summary: 操作行为日志传入
- */
+// Description:
+//
+// Description: 业务方操作行为日志传入
+//
+// Summary: 操作行为日志传入
 func (client *Client) UploadTrafficOperatelog(request *UploadTrafficOperatelogRequest) (_result *UploadTrafficOperatelogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -64155,10 +67768,11 @@ func (client *Client) UploadTrafficOperatelog(request *UploadTrafficOperatelogRe
 	return _result, _err
 }
 
-/**
- * Description: 业务方操作行为日志传入
- * Summary: 操作行为日志传入
- */
+// Description:
+//
+// Description: 业务方操作行为日志传入
+//
+// Summary: 操作行为日志传入
 func (client *Client) UploadTrafficOperatelogEx(request *UploadTrafficOperatelogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadTrafficOperatelogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64173,10 +67787,11 @@ func (client *Client) UploadTrafficOperatelogEx(request *UploadTrafficOperatelog
 	return _result, _err
 }
 
-/**
- * Description: e签宝组织机构外部账号查询开放文档
- * Summary: e签宝组织机构外部账号查询开放文档
- */
+// Description:
+//
+// Description: e签宝组织机构外部账号查询开放文档
+//
+// Summary: e签宝组织机构外部账号查询开放文档
 func (client *Client) QueryContractEsignorg(request *QueryContractEsignorgRequest) (_result *QueryContractEsignorgResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -64189,10 +67804,11 @@ func (client *Client) QueryContractEsignorg(request *QueryContractEsignorgReques
 	return _result, _err
 }
 
-/**
- * Description: e签宝组织机构外部账号查询开放文档
- * Summary: e签宝组织机构外部账号查询开放文档
- */
+// Description:
+//
+// Description: e签宝组织机构外部账号查询开放文档
+//
+// Summary: e签宝组织机构外部账号查询开放文档
 func (client *Client) QueryContractEsignorgEx(request *QueryContractEsignorgRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractEsignorgResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64207,10 +67823,11 @@ func (client *Client) QueryContractEsignorgEx(request *QueryContractEsignorgRequ
 	return _result, _err
 }
 
-/**
- * Description: e签宝用户信息外部账号查询开放文档
- * Summary: e签宝用户信息外部账号查询开放文档
- */
+// Description:
+//
+// Description: e签宝用户信息外部账号查询开放文档
+//
+// Summary: e签宝用户信息外部账号查询开放文档
 func (client *Client) QueryContractEsignuser(request *QueryContractEsignuserRequest) (_result *QueryContractEsignuserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -64223,10 +67840,11 @@ func (client *Client) QueryContractEsignuser(request *QueryContractEsignuserRequ
 	return _result, _err
 }
 
-/**
- * Description: e签宝用户信息外部账号查询开放文档
- * Summary: e签宝用户信息外部账号查询开放文档
- */
+// Description:
+//
+// Description: e签宝用户信息外部账号查询开放文档
+//
+// Summary: e签宝用户信息外部账号查询开放文档
 func (client *Client) QueryContractEsignuserEx(request *QueryContractEsignuserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryContractEsignuserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64241,10 +67859,11 @@ func (client *Client) QueryContractEsignuserEx(request *QueryContractEsignuserRe
 	return _result, _err
 }
 
-/**
- * Description: 测试
- * Summary: 测试
- */
+// Description:
+//
+// Description: 测试
+//
+// Summary: 测试
 func (client *Client) ImportContractUser(request *ImportContractUserRequest) (_result *ImportContractUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -64257,10 +67876,11 @@ func (client *Client) ImportContractUser(request *ImportContractUserRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 测试
- * Summary: 测试
- */
+// Description:
+//
+// Description: 测试
+//
+// Summary: 测试
 func (client *Client) ImportContractUserEx(request *ImportContractUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportContractUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64275,10 +67895,11 @@ func (client *Client) ImportContractUserEx(request *ImportContractUserRequest, h
 	return _result, _err
 }
 
-/**
- * Description: e签宝合规改造外部账号信息查询
- * Summary: e签宝合规改造外部账号信息查询
- */
+// Description:
+//
+// Description: e签宝合规改造外部账号信息查询
+//
+// Summary: e签宝合规改造外部账号信息查询
 func (client *Client) QueryEsignAccount(request *QueryEsignAccountRequest) (_result *QueryEsignAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -64291,10 +67912,11 @@ func (client *Client) QueryEsignAccount(request *QueryEsignAccountRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: e签宝合规改造外部账号信息查询
- * Summary: e签宝合规改造外部账号信息查询
- */
+// Description:
+//
+// Description: e签宝合规改造外部账号信息查询
+//
+// Summary: e签宝合规改造外部账号信息查询
 func (client *Client) QueryEsignAccountEx(request *QueryEsignAccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryEsignAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
